@@ -1,0 +1,73 @@
+# test-set scene -> S3_gourd_vase_line60_water40_compare.exr
+LookAt 0 -60 10.5  0 0 10.5  0 0 1
+Camera "perspective" "float fov" [24]
+Sampler "zsobol" "integer pixelsamples" [192]
+Integrator "volpath" "integer maxdepth" [48] "bool regularize" [false]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["S3_gourd_vase_line60_water40_compare.exr"] "integer xresolution" [900] "integer yresolution" [1200] "bool savefp16" [false]
+
+WorldBegin
+AttributeBegin  # light panel (Lambertian light box)
+  AreaLightSource "diffuse" "string filename" ["../../outputs/testset/patterns/rg_checker.png"] "float scale" [0.8] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+  Shape "trianglemesh" "point3 P" [30 25 -29.5 -30 25 -29.5 -30 25 50.5 30 25 50.5] "point2 uv" [0 0 1 0 1 1 0 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+LightSource "infinite" "rgb L" [0.25 0.25 0.2625]
+AttributeBegin  # matte black pedestal
+  Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]
+  Shape "cylinder" "float radius" [2.48073] "float zmin" [-8.05] "float zmax" [-0.05]
+  Shape "disk" "float height" [-0.05] "float radius" [2.48073]
+AttributeEnd
+MakeNamedMaterial "glass" "string type" "dielectric" "float eta" [1.5]
+Texture "sAmtDry" "float" "imagemap" "string filename" ["../../outputs/testset/textures/scale_amount_dry_vase_gourd.png"] "string encoding" "linear"
+Texture "sAmtWet" "float" "imagemap" "string filename" ["../../outputs/testset/textures/scale_amount_wet_vase_gourd.png"] "string encoding" "linear"
+Texture "sThick" "float" "imagemap" "string filename" ["../../outputs/testset/textures/scale_thick_vase_gourd.png"] "string encoding" "linear"
+Texture "sRefl" "spectrum" "imagemap" "string filename" ["../../outputs/testset/textures/scale_refl_vase_gourd.png"]
+Texture "sTrans" "spectrum" "imagemap" "string filename" ["../../outputs/testset/textures/scale_trans_vase_gourd.png"]
+MakeNamedMaterial "wall_out" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "dep_diffuse" "string type" "diffusetransmission" "texture reflectance" "sRefl" "texture transmittance" "sTrans"
+MakeNamedMaterial "dep_fwd_dry" "string type" "dielectric" "float eta" [1.5] "float roughness" [0.22] "bool remaproughness" false
+MakeNamedMaterial "deposit_dry" "string type" "mix" "string materials" ["dep_fwd_dry" "dep_diffuse"] "texture amount" "sThick"
+MakeNamedMaterial "wall_in_dry" "string type" "mix" "string materials" ["glass" "deposit_dry"] "texture amount" "sAmtDry"
+MakeNamedMaterial "glass_wet_liq1" "string type" "dielectric" "float eta" [1.12528]
+MakeNamedMaterial "dep_fwd_wet1" "string type" "dielectric" "float eta" [1.12528] "float roughness" [0.10] "bool remaproughness" false
+MakeNamedMaterial "deposit_wet1" "string type" "mix" "string materials" ["dep_fwd_wet1" "dep_diffuse"] "texture amount" "sThick"
+MakeNamedMaterial "wall_in_wet_liq1" "string type" "mix" "string materials" ["glass_wet_liq1" "deposit_wet1"] "texture amount" "sAmtWet"
+AttributeBegin  # outer wall
+  NamedMaterial "wall_out"
+  Shape "plymesh" "string filename" ["mesh_gourd_outer.ply"]
+AttributeEnd
+AttributeBegin  # rim + outer bottom
+  NamedMaterial "glass"
+  Shape "disk" "float height" [21] "float radius" [2.33928] "float innerradius" [2.08882]
+  AttributeBegin
+    ReverseOrientation
+    Shape "disk" "float height" [0] "float radius" [3.5439]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # inner bottom (glass|liquid)
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "disk" "float height" [0.5] "float radius" [3.62062]
+AttributeEnd
+AttributeBegin  # inner wall wetted by water
+  MediumInterface "" "liq1"
+  NamedMaterial "wall_in_wet_liq1"
+  Shape "plymesh" "string filename" ["mesh_gourd_inner_0.500_8.700.ply"]
+AttributeEnd
+AttributeBegin  # inner wall wetted by water
+  MediumInterface "" "liq1"
+  NamedMaterial "wall_in_wet_liq1"
+  Shape "plymesh" "string filename" ["mesh_gourd_inner_8.700_9.000.ply"]
+AttributeEnd
+AttributeBegin  # dry inner wall
+  NamedMaterial "wall_in_dry"
+  Shape "plymesh" "string filename" ["mesh_gourd_inner_9.000_21.000.ply"]
+AttributeEnd
+MakeNamedMedium "liq1" "string type" "homogeneous" "rgb sigma_a" [0.0035 0.0015 0.0003] "rgb sigma_s" [0 0 0] "float scale" [1]
+AttributeBegin  # free surface + meniscus
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate 0 0 8.7
+  Shape "plymesh" "string filename" ["mesh_S3_gourd_vase_line60_water40_surface.ply"]
+AttributeEnd

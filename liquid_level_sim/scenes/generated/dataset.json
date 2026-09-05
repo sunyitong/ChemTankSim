@@ -1,0 +1,614 @@
+[
+  {
+    "sid": "s000",
+    "container": "cylinder",
+    "r_in": 3.951650840906684,
+    "half_y": 3.951650840906684,
+    "wall": 0.24802987751879377,
+    "height": 8.16193751272311,
+    "fill": 0.8513168386995108,
+    "liquid": "oil",
+    "liquid_eta": 1.47,
+    "sigma_a": [
+      0.03,
+      0.08,
+      0.5
+    ],
+    "sigma_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "glass": "borosilicate",
+    "glass_eta": 1.47,
+    "eye": [
+      16.60665565018039,
+      -33.753939724948914,
+      12.953387075149305
+    ],
+    "look": [
+      0.4699927917848189,
+      -0.33786872770172194,
+      3.71959227494714
+    ],
+    "fov": 23.39745784966679,
+    "panel_L": 10.94830763476856,
+    "sky_L": 0.5797909009283574,
+    "checker_scale": 29.796147216528205,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 6.9483948409943865,
+    "gt_row_analytic": 152.68825199954765,
+    "gt_row_far_analytic": 115.89381811212264,
+    "passes": {
+      "beauty": "s000_beauty.pbrt",
+      "liquid": "s000_liquid.pbrt",
+      "surface": "s000_surface.pbrt",
+      "container": "s000_container.pbrt"
+    }
+  },
+  {
+    "sid": "s001",
+    "container": "box",
+    "r_in": 3.8630323306154155,
+    "half_y": 2.234206597047066,
+    "wall": 0.282176444756418,
+    "height": 11.240868943986358,
+    "fill": 0.8350241618931146,
+    "liquid": "milk_dilute",
+    "liquid_eta": 1.345,
+    "sigma_a": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "sigma_s": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "glass": "acrylic",
+    "glass_eta": 1.49,
+    "eye": [
+      -0.9685117300936334,
+      -35.56258926470821,
+      13.879005657323885
+    ],
+    "look": [
+      -0.07899379745545954,
+      0.13306436813256195,
+      6.5229859123734295
+    ],
+    "fov": 31.666063677707587,
+    "panel_L": 14.77009776552717,
+    "sky_L": 0.602858474720074,
+    "checker_scale": 18.16787696627135,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 9.38639716890255,
+    "gt_row_analytic": 173.97192226299507,
+    "gt_row_far_analytic": 161.06145460400452,
+    "passes": {
+      "beauty": "s001_beauty.pbrt",
+      "liquid": "s001_liquid.pbrt",
+      "surface": "s001_surface.pbrt",
+      "container": "s001_container.pbrt"
+    }
+  },
+  {
+    "sid": "s002",
+    "container": "cylinder",
+    "r_in": 3.776127703177578,
+    "half_y": 3.776127703177578,
+    "wall": 0.27943547930924817,
+    "height": 8.37308745740964,
+    "fill": 0.7394401180837206,
+    "liquid": "milk_dilute",
+    "liquid_eta": 1.345,
+    "sigma_a": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "sigma_s": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "glass": "soda_lime",
+    "glass_eta": 1.52,
+    "eye": [
+      3.7933190462647985,
+      -34.54608366149292,
+      17.191060803152027
+    ],
+    "look": [
+      -0.20023783525308192,
+      0.2763342916238698,
+      4.608184956613684
+    ],
+    "fov": 22.629842742611995,
+    "panel_L": 19.1701896911495,
+    "sky_L": 0.3775963636749653,
+    "checker_scale": 26.853520866339238,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 6.1913967782323045,
+    "gt_row_analytic": 225.28205754643724,
+    "gt_row_far_analytic": 151.5131187322001,
+    "passes": {
+      "beauty": "s002_beauty.pbrt",
+      "liquid": "s002_liquid.pbrt",
+      "surface": "s002_surface.pbrt",
+      "container": "s002_container.pbrt"
+    }
+  },
+  {
+    "sid": "s003",
+    "container": "box",
+    "r_in": 2.7126241459735496,
+    "half_y": 2.248076446541564,
+    "wall": 0.25111168995288036,
+    "height": 9.791878285742282,
+    "fill": 0.8635804123506017,
+    "liquid": "tea",
+    "liquid_eta": 1.34,
+    "sigma_a": [
+      0.06,
+      0.22,
+      0.6
+    ],
+    "sigma_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "glass": "acrylic",
+    "glass_eta": 1.49,
+    "eye": [
+      1.3787309159940617,
+      -27.492260023430514,
+      17.548761959563727
+    ],
+    "look": [
+      0.05692909359410847,
+      0.3773602359496032,
+      5.086225845605631
+    ],
+    "fov": 31.63838545973801,
+    "panel_L": 16.03185627961383,
+    "sky_L": 0.5056659724614028,
+    "checker_scale": 21.119824420408257,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 8.456074287688223,
+    "gt_row_analytic": 169.5117982095635,
+    "gt_row_far_analytic": 126.67015741589165,
+    "passes": {
+      "beauty": "s003_beauty.pbrt",
+      "liquid": "s003_liquid.pbrt",
+      "surface": "s003_surface.pbrt",
+      "container": "s003_container.pbrt"
+    }
+  },
+  {
+    "sid": "s004",
+    "container": "cylinder",
+    "r_in": 2.9389500171427527,
+    "half_y": 2.9389500171427527,
+    "wall": 0.20574162115540195,
+    "height": 9.268187391032308,
+    "fill": 0.770032460368073,
+    "liquid": "milk_dilute",
+    "liquid_eta": 1.345,
+    "sigma_a": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "sigma_s": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "glass": "borosilicate",
+    "glass_eta": 1.47,
+    "eye": [
+      11.993888208166446,
+      -23.587362103373916,
+      13.184406785664201
+    ],
+    "look": [
+      -0.5170977018193214,
+      0.2144687511706702,
+      4.1764481370758535
+    ],
+    "fov": 23.495503330482617,
+    "panel_L": 10.386415708248332,
+    "sky_L": 0.32808691124886713,
+    "checker_scale": 25.189164867768575,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 7.13680513986896,
+    "gt_row_analytic": 146.55030311135334,
+    "gt_row_far_analytic": 91.92152104577885,
+    "passes": {
+      "beauty": "s004_beauty.pbrt",
+      "liquid": "s004_liquid.pbrt",
+      "surface": "s004_surface.pbrt",
+      "container": "s004_container.pbrt"
+    }
+  },
+  {
+    "sid": "s005",
+    "container": "box",
+    "r_in": 3.5873967597961687,
+    "half_y": 2.1858877698369783,
+    "wall": 0.293628019191103,
+    "height": 9.5651842009385,
+    "fill": 0.7935682107565484,
+    "liquid": "milk_dilute",
+    "liquid_eta": 1.345,
+    "sigma_a": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "sigma_s": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "glass": "acrylic",
+    "glass_eta": 1.49,
+    "eye": [
+      3.377496154702073,
+      -38.38222843506074,
+      19.431813642602627
+    ],
+    "look": [
+      0.09563401289472706,
+      -0.05932427204261381,
+      5.182178765581874
+    ],
+    "fov": 31.96257839353573,
+    "panel_L": 19.169412179474563,
+    "sky_L": 0.5776637794455785,
+    "checker_scale": 15.317967811146358,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 7.5906261118955705,
+    "gt_row_analytic": 201.88424505447975,
+    "gt_row_far_analytic": 172.25241492040024,
+    "passes": {
+      "beauty": "s005_beauty.pbrt",
+      "liquid": "s005_liquid.pbrt",
+      "surface": "s005_surface.pbrt",
+      "container": "s005_container.pbrt"
+    }
+  },
+  {
+    "sid": "s006",
+    "container": "cylinder",
+    "r_in": 3.482206276576062,
+    "half_y": 3.482206276576062,
+    "wall": 0.29831086059401213,
+    "height": 9.945776807876667,
+    "fill": 0.28414992253195925,
+    "liquid": "milk_dilute",
+    "liquid_eta": 1.345,
+    "sigma_a": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "sigma_s": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "glass": "soda_lime",
+    "glass_eta": 1.52,
+    "eye": [
+      -13.247280143808633,
+      -33.73290250828259,
+      13.618002231847223
+    ],
+    "look": [
+      0.35349956605269106,
+      -0.20095662093641342,
+      5.639842467276755
+    ],
+    "fov": 23.00607520216096,
+    "panel_L": 11.46358488912304,
+    "sky_L": 0.5441847240669336,
+    "checker_scale": 14.723745085849798,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 2.826091709478312,
+    "gt_row_analytic": 349.14084256929067,
+    "gt_row_far_analytic": 288.29349428186663,
+    "passes": {
+      "beauty": "s006_beauty.pbrt",
+      "liquid": "s006_liquid.pbrt",
+      "surface": "s006_surface.pbrt",
+      "container": "s006_container.pbrt"
+    }
+  },
+  {
+    "sid": "s007",
+    "container": "box",
+    "r_in": 3.3478771555650138,
+    "half_y": 2.7528247855871593,
+    "wall": 0.18373755125270871,
+    "height": 11.64006405879616,
+    "fill": 0.613399924325625,
+    "liquid": "milk_dilute",
+    "liquid_eta": 1.345,
+    "sigma_a": [
+      0.02,
+      0.02,
+      0.02
+    ],
+    "sigma_s": [
+      0.12,
+      0.12,
+      0.12
+    ],
+    "glass": "acrylic",
+    "glass_eta": 1.49,
+    "eye": [
+      2.557928305263639,
+      -34.39375003066345,
+      16.649081589292898
+    ],
+    "look": [
+      -0.155832071597775,
+      0.5766199807767224,
+      5.034843433485108
+    ],
+    "fov": 22.21636509855024,
+    "panel_L": 19.61031280239611,
+    "sky_L": 0.3647401794891034,
+    "checker_scale": 15.982322630790907,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 7.1400144128109915,
+    "gt_row_analytic": 200.16634777763656,
+    "gt_row_far_analytic": 146.49564546274098,
+    "passes": {
+      "beauty": "s007_beauty.pbrt",
+      "liquid": "s007_liquid.pbrt",
+      "surface": "s007_surface.pbrt",
+      "container": "s007_container.pbrt"
+    }
+  },
+  {
+    "sid": "s008",
+    "container": "cylinder",
+    "r_in": 3.9117568221024133,
+    "half_y": 3.9117568221024133,
+    "wall": 0.18318956059361216,
+    "height": 11.202986361416723,
+    "fill": 0.4375198188521265,
+    "liquid": "tea",
+    "liquid_eta": 1.34,
+    "sigma_a": [
+      0.06,
+      0.22,
+      0.6
+    ],
+    "sigma_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "glass": "acrylic",
+    "glass_eta": 1.49,
+    "eye": [
+      -6.375468934888844,
+      -26.669548276885603,
+      14.763224728199035
+    ],
+    "look": [
+      0.17631086380238703,
+      -0.17964723912416125,
+      5.1106949030371025
+    ],
+    "fov": 27.036365052098873,
+    "panel_L": 10.393787070846924,
+    "sky_L": 0.3353224344161383,
+    "checker_scale": 29.811762379560015,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 4.901528563449888,
+    "gt_row_analytic": 289.49273921372605,
+    "gt_row_far_analytic": 199.2578520043541,
+    "passes": {
+      "beauty": "s008_beauty.pbrt",
+      "liquid": "s008_liquid.pbrt",
+      "surface": "s008_surface.pbrt",
+      "container": "s008_container.pbrt"
+    }
+  },
+  {
+    "sid": "s009",
+    "container": "box",
+    "r_in": 3.624237628715505,
+    "half_y": 2.973657191270783,
+    "wall": 0.3085874886793464,
+    "height": 9.434221205246407,
+    "fill": 0.22231666912187287,
+    "liquid": "tea",
+    "liquid_eta": 1.34,
+    "sigma_a": [
+      0.06,
+      0.22,
+      0.6
+    ],
+    "sigma_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "glass": "borosilicate",
+    "glass_eta": 1.47,
+    "eye": [
+      15.59615258130549,
+      -31.79813892641422,
+      11.736241716450992
+    ],
+    "look": [
+      0.21144214115925397,
+      0.4145095124419397,
+      4.625593347650455
+    ],
+    "fov": 24.506873392851116,
+    "panel_L": 15.96791393469411,
+    "sky_L": 0.45480991179467767,
+    "checker_scale": 16.797111751223056,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 2.0973846341093223,
+    "gt_row_analytic": 343.5234260260803,
+    "gt_row_far_analytic": 277.70709067651933,
+    "passes": {
+      "beauty": "s009_beauty.pbrt",
+      "liquid": "s009_liquid.pbrt",
+      "surface": "s009_surface.pbrt",
+      "container": "s009_container.pbrt"
+    }
+  },
+  {
+    "sid": "s010",
+    "container": "cylinder",
+    "r_in": 3.3967578353339922,
+    "half_y": 3.3967578353339922,
+    "wall": 0.25120401820876864,
+    "height": 9.639621582630218,
+    "fill": 0.34161464084017373,
+    "liquid": "oil",
+    "liquid_eta": 1.47,
+    "sigma_a": [
+      0.03,
+      0.08,
+      0.5
+    ],
+    "sigma_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "glass": "acrylic",
+    "glass_eta": 1.49,
+    "eye": [
+      10.046100001384518,
+      -29.327180827106385,
+      13.523753251827152
+    ],
+    "look": [
+      0.0727202626242287,
+      -0.5850764174048227,
+      5.3277120062755134
+    ],
+    "fov": 25.359165544734605,
+    "panel_L": 10.456964935684166,
+    "sky_L": 0.3983091074764219,
+    "checker_scale": 17.842086525221664,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 3.2930358647854088,
+    "gt_row_analytic": 328.62429437714286,
+    "gt_row_far_analytic": 260.1041747815553,
+    "passes": {
+      "beauty": "s010_beauty.pbrt",
+      "liquid": "s010_liquid.pbrt",
+      "surface": "s010_surface.pbrt",
+      "container": "s010_container.pbrt"
+    }
+  },
+  {
+    "sid": "s011",
+    "container": "box",
+    "r_in": 3.5427648432767516,
+    "half_y": 2.626388760847361,
+    "wall": 0.3048720957988851,
+    "height": 10.440542617078957,
+    "fill": 0.7971704799063842,
+    "liquid": "oil",
+    "liquid_eta": 1.47,
+    "sigma_a": [
+      0.03,
+      0.08,
+      0.5
+    ],
+    "sigma_s": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "glass": "borosilicate",
+    "glass_eta": 1.47,
+    "eye": [
+      -5.134713743144184,
+      -27.375432290407595,
+      18.60754470305733
+    ],
+    "look": [
+      0.39468332514911464,
+      -0.5031322717530351,
+      5.535310283992868
+    ],
+    "fov": 28.98582688975347,
+    "panel_L": 11.60079779024541,
+    "sky_L": 0.3780842373005285,
+    "checker_scale": 21.170165226298337,
+    "width": 640,
+    "height_px": 480,
+    "spp": 128,
+    "mask_spp": 16,
+    "gap": 0.02,
+    "liquid_height": 8.32289236853989,
+    "gt_row_analytic": 184.45550029058487,
+    "gt_row_far_analytic": 114.04983724751459,
+    "passes": {
+      "beauty": "s011_beauty.pbrt",
+      "liquid": "s011_liquid.pbrt",
+      "surface": "s011_surface.pbrt",
+      "container": "s011_container.pbrt"
+    }
+  }
+]

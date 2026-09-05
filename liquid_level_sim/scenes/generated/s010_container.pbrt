@@ -1,0 +1,41 @@
+# liquid-level study sample s010 pass=container
+LookAt 10.0461 -29.3272 13.5238  0.0727203 -0.585076 5.32771  0 0 1
+Camera "perspective" "float fov" [25.3592]
+Sampler "independent" "integer pixelsamples" [16]
+Integrator "path" "integer maxdepth" [0]
+PixelFilter "box"
+Film "rgb" "string filename" ["s010_container.png"] "integer xresolution" [640] "integer yresolution" [480]
+
+WorldBegin
+AttributeBegin  # table
+  Material "interface"
+  Shape "trianglemesh" "point3 P" [-60 -60 0 60 -60 0 60 60 0 -60 60 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # backdrop wall
+  Material "interface"
+  Shape "trianglemesh" "point3 P" [-60 25 0 -60 25 60 60 25 60 60 25 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # container
+  AreaLightSource "diffuse" "rgb L" [1 1 1] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+Shape "cylinder" "float radius" [3.64796] "float zmin" [0] "float zmax" [9.89083]
+Shape "cylinder" "float radius" [3.39676] "float zmin" [0.251204] "float zmax" [9.89083]
+Shape "disk" "float height" [9.89083] "float radius" [3.64796] "float innerradius" [3.39676]
+AttributeBegin
+  ReverseOrientation
+  Shape "disk" "float height" [0] "float radius" [3.64796] "float innerradius" [0]
+AttributeEnd
+Shape "disk" "float height" [0.251204] "float radius" [3.39676] "float innerradius" [0]
+AttributeEnd
+AttributeBegin  # liquid side + bottom
+  Material "interface"
+Shape "cylinder" "float radius" [3.37676] "float zmin" [0.271204] "float zmax" [3.56424]
+AttributeBegin
+  ReverseOrientation
+  Shape "disk" "float height" [0.271204] "float radius" [3.37676] "float innerradius" [0]
+AttributeEnd
+AttributeEnd
+AttributeBegin  # liquid free surface
+  Material "interface"
+Shape "disk" "float height" [3.56424] "float radius" [3.37676] "float innerradius" [0]
+AttributeEnd

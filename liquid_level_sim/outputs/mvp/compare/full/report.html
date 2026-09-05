@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8">
+<title>Phase-0 液位折射畸变验证 — pbrt-v4</title>
+<style>
+ body{font-family:system-ui,"Microsoft YaHei",Segoe UI,sans-serif;margin:24px;color:#1f2937;background:#fafafa;max-width:1500px}
+ h1{font-size:22px} h2{font-size:17px;margin-top:30px;border-bottom:1px solid #e5e7eb;padding-bottom:4px}
+ table{border-collapse:collapse;font-size:13px;margin:8px 0} th,td{border:1px solid #e5e7eb;padding:4px 9px;text-align:right}
+ th{background:#f3f4f6} td.l,th.l{text-align:left}
+ img{max-width:100%;border:1px solid #e5e7eb;background:#fff}
+ .meta{font-size:12px;color:#6b7280} .box{background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px 14px;margin:10px 0}
+ .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+ code{background:#f3f4f6;padding:1px 4px;border-radius:3px}
+</style></head><body>
+<h1>Phase-0：背景图案折射畸变 vs 液位 — 高质量物理渲染验证</h1>
+<p class="meta">生成 2026-09-02 15:26 · 渲染器 pbrt-v4 (CPU volpath, 512 spp, 1080×1440，共 26 张，累计 85 分钟) · 场景：15 cm 内径 × 20 cm 内高玻璃圆柱、水 η=1.333、水平针孔相机、Lambertian 发光板 · 研究计划 <code>docs/RESEARCH.md</code></p>
+
+<div class="box">
+<b>结论摘要（数字由本次渲染自动生成）</b>
+<ul>
+<li><b>液体段改变背景的强度</b>（fill 0.50，液面以下 ΔE 均值，相对空容器）：white <b>4.3</b>，R/G checker <b>65.1</b>，mosaic <b>78.9</b>，grid lines <b>23.0</b>。
+    图案背景下液体段的背景外观与空容器完全不同（横向放大并左右翻转），白板下几乎不变 —— 这是 H2 的直接证据。</li>
+<li><b>4 mm 液位变化的可检测性</b>（液位带内 ΔE 均值 / 同场景换随机种子的噪声底）：white <b>27.8</b>（噪声底 1.3，SNR 21）；R/G checker <b>62.1</b>（噪声底 1.5，SNR 42）；mosaic <b>66.2</b>；grid lines <b>32.2</b>。</li>
+<li><b>弯月面对照</b>：白板下 fill 0.50 的液位线亮度对比度 有弯月面 0.297 → 平液面 0.005；4 mm 变化的带内 ΔE 有弯月面 27.8 → 平液面 1.1。
+    即白板下能看到液位线主要依赖弯月面（和液面掠射菲涅尔带），这类线索窄、且在真实脏壁/遮挡下最先失效；图案背景不依赖它（棋盘格 62.1 → 34.3）。</li>
+<li><b>柱面透镜放大率：渲染 vs 独立光线追迹</b>（棋盘格横向周期，px）：板直视 119.5，透过空容器 111.7，透过液体 390.6；液体/空气比 <b>3.50</b>，竖向比 1.05。
+    与 pbrt 无关的二维几何光学追迹（穿过玻璃壁+水）预测：直视 119.6，空容器 111.1，液体 393.5，液体/空气 <b>3.54</b>，图像中心局部放大 ×8.67，左右翻转 = True。渲染与追迹一致，说明渲染器的折射几何可信。
+    （文档中的近轴平行光公式给 2.13，明显偏低：相机距离有限、孔径 = 整个圆柱，近轴近似不成立。）</li>
+<li><b>液位定位</b>：差分曲线的过渡行相对几何真值行（前内壁）的偏差：white 0.25:-49 0.50:-17 0.52:-17 0.75:-15；R/G checker 0.25:-60 0.50:-15 0.52:-15 0.75:-13；mosaic 0.25:-60 0.50:-13 0.52:-13 0.75:-11；grid lines 0.25:-55 0.50:-15 0.52:-16 0.75:-13 px（1 px ≈ 0.21 mm）。负偏差 = 过渡出现在几何液位之上，对应弯月面顶端（+0.3 cm ≈ 15 px）和液面远端边缘；这是真值口径问题（RESEARCH.md §10.6），不是检测误差。</li>
+</ul>
+</div>
+
+<h2>1. 实验设置</h2>
+<div class="grid">
+<div>
+<table>
+<tr><th class="l">参数</th><th>值</th></tr>
+<tr><td class="l">容器内径 / 内高 / 壁厚 / 底厚 (cm)</td><td>15.0 / 20.0 / 0.3 / 0.5</td></tr>
+<tr><td class="l">玻璃 η / 水 η</td><td>1.5 / 1.333</td></tr>
+<tr><td class="l">水吸收 σ_a (R,G,B) /cm</td><td>[0.0035, 0.0015, 0.0003]</td></tr>
+<tr><td class="l">弯月面</td><td>h=0.30 cm, l_c=0.27 cm（另渲染平液面对照）</td></tr>
+<tr><td class="l">相机位置 (x,y,z) cm / fov</td><td>[0.0, -60.0, 10.25] / 24.0°（横向；竖向 ≈31.6°）</td></tr>
+<tr><td class="l">发光板 距轴 / 尺寸 (cm) / 亮度</td><td>25.0 / 50.0 × 60.0 / 线性 0.8</td></tr>
+<tr><td class="l">容器包围框 (行上,行下,列左,列右)</td><td>(221, 1219, 206, 874)</td></tr>
+<tr><td class="l">分析 ROI 行 / 列（容器中央 60% 列）</td><td>(224, 1191) / (339, 740)</td></tr>
+<tr><td class="l">积分器 / 采样</td><td>volpath maxdepth 64 / zsobol 512 spp, gaussian filter</td></tr>
+</table>
+<p class="meta">液体/玻璃无空气隙（嵌套介质：湿壁 η=η_g/η_w，干壁 η=η_g，底 η=η_g/η_w，液面 η=η_w）；水体为吸收介质；发光板为理想 Lambertian 面、自身反射率 0；暗室无其他光源；针孔相机；pbrt 为左手系，图像左侧对应世界 +x。</p>
+</div>
+<div><img src="../../renders/overview.png" alt="overview"><p class="meta">3/4 视角总览（fill 0.50，红绿棋盘格板；左下灰盒 = 相机位置代理；此图另加了微弱环境光以便看清几何）</p></div>
+</div>
+<p><img src="sheet_patterns.png" alt="patterns" style="max-width:1100px"></p>
+<p class="meta">发光板贴图（50×60 cm，50 px/cm；棋盘格 2 cm、马赛克 1.5 cm、网格 1 cm 间距 / 1 mm 线宽、5 cm 粗线）。</p>
+
+<h2>2. 渲染总览：行 = 背景图案，列 = 液位（0 / 5 / 10 / 10.4 / 15 cm）</h2>
+<img src="sheet_renders.png">
+<p class="meta">原始 1080×1440 PNG 与线性 EXR 在 <code>outputs/mvp/renders/</code>。观察要点：液面以下棋盘格变为横向拉长的矩形（柱面透镜横向放大、竖向不变）；马赛克在液面以下左右翻转；网格线的竖线在液体段被放大成粗条，横线不变；白板下只剩一条细线。</p>
+
+<h2>3. 液位线附近 100% 局部放大（绿色刻线 = 几何真值行，前内壁）</h2>
+<img src="sheet_zoom_level.png">
+
+<h2>4. 液体段对背景的改变：|render(fill) − render(empty)|</h2>
+<img src="diff_vs_empty.png">
+<table>
+<tr><th class="l">图案</th><th>fill</th><th>液位 cm</th><th>GT 行(近)</th><th>GT 行(远)</th><th>ΔE 腔内均值</th><th>ΔE 液面以下</th><th>ΔE 液面以上</th><th>过渡行</th><th>过渡−GT近 (px)</th><th>过渡−GT远 (px)</th><th>单图液位线对比度</th><th>渲染秒</th></tr>
+
+<tr><td class="l">white</td><td>0.25</td><td>5.0</td><td>949.9</td><td>898.8</td>
+<td>2.49</td><td>6.41</td><td>0.01</td>
+<td>901</td><td>-48.9</td><td>+2.2</td><td>0.233</td><td>212.5</td></tr>
+
+<tr><td class="l">white</td><td>0.50</td><td>10.0</td><td>707.9</td><td>710.6</td>
+<td>2.69</td><td>4.28</td><td>0.03</td>
+<td>691</td><td>-16.9</td><td>-19.6</td><td>0.297</td><td>192.9</td></tr>
+
+<tr><td class="l">white</td><td>0.52</td><td>10.4</td><td>688.5</td><td>695.5</td>
+<td>2.73</td><td>4.20</td><td>0.54</td>
+<td>672</td><td>-16.5</td><td>-23.5</td><td>0.293</td><td>191.9</td></tr>
+
+<tr><td class="l">white</td><td>0.75</td><td>15.0</td><td>465.9</td><td>522.4</td>
+<td>3.26</td><td>3.62</td><td>2.31</td>
+<td>451</td><td>-14.9</td><td>-71.4</td><td>0.323</td><td>197.9</td></tr>
+
+<tr><td class="l">R/G checker</td><td>0.25</td><td>5.0</td><td>949.9</td><td>898.8</td>
+<td>18.43</td><td>61.96</td><td>0.01</td>
+<td>890</td><td>-59.9</td><td>-8.8</td><td>0.208</td><td>209.6</td></tr>
+
+<tr><td class="l">R/G checker</td><td>0.50</td><td>10.0</td><td>707.9</td><td>710.6</td>
+<td>33.56</td><td>65.07</td><td>0.05</td>
+<td>693</td><td>-14.9</td><td>-17.6</td><td>0.183</td><td>199.9</td></tr>
+
+<tr><td class="l">R/G checker</td><td>0.52</td><td>10.4</td><td>688.5</td><td>695.5</td>
+<td>34.95</td><td>65.23</td><td>0.78</td>
+<td>674</td><td>-14.5</td><td>-21.5</td><td>0.170</td><td>199.5</td></tr>
+
+<tr><td class="l">R/G checker</td><td>0.75</td><td>15.0</td><td>465.9</td><td>522.4</td>
+<td>50.44</td><td>65.91</td><td>12.72</td>
+<td>453</td><td>-12.9</td><td>-69.4</td><td>0.174</td><td>199.0</td></tr>
+
+<tr><td class="l">mosaic</td><td>0.25</td><td>5.0</td><td>949.9</td><td>898.8</td>
+<td>25.70</td><td>80.70</td><td>0.02</td>
+<td>890</td><td>-59.9</td><td>-8.8</td><td>0.053</td><td>201.2</td></tr>
+
+<tr><td class="l">mosaic</td><td>0.50</td><td>10.0</td><td>707.9</td><td>710.6</td>
+<td>40.43</td><td>78.85</td><td>0.05</td>
+<td>695</td><td>-12.9</td><td>-15.6</td><td>0.322</td><td>202.3</td></tr>
+
+<tr><td class="l">mosaic</td><td>0.52</td><td>10.4</td><td>688.5</td><td>695.5</td>
+<td>42.07</td><td>79.01</td><td>0.68</td>
+<td>676</td><td>-12.5</td><td>-19.5</td><td>0.117</td><td>197.0</td></tr>
+
+<tr><td class="l">mosaic</td><td>0.75</td><td>15.0</td><td>465.9</td><td>522.4</td>
+<td>59.80</td><td>78.45</td><td>14.41</td>
+<td>455</td><td>-10.9</td><td>-67.4</td><td>0.355</td><td>200.0</td></tr>
+
+<tr><td class="l">grid lines</td><td>0.25</td><td>5.0</td><td>949.9</td><td>898.8</td>
+<td>6.99</td><td>22.41</td><td>0.02</td>
+<td>895</td><td>-54.9</td><td>-3.8</td><td>0.184</td><td>204.0</td></tr>
+
+<tr><td class="l">grid lines</td><td>0.50</td><td>10.0</td><td>707.9</td><td>710.6</td>
+<td>12.06</td><td>22.96</td><td>0.03</td>
+<td>693</td><td>-14.9</td><td>-17.6</td><td>0.217</td><td>201.5</td></tr>
+
+<tr><td class="l">grid lines</td><td>0.52</td><td>10.4</td><td>688.5</td><td>695.5</td>
+<td>12.50</td><td>22.93</td><td>0.50</td>
+<td>673</td><td>-15.5</td><td>-22.5</td><td>0.286</td><td>198.3</td></tr>
+
+<tr><td class="l">grid lines</td><td>0.75</td><td>15.0</td><td>465.9</td><td>522.4</td>
+<td>18.09</td><td>23.38</td><td>5.05</td>
+<td>453</td><td>-12.9</td><td>-69.4</td><td>0.378</td><td>200.4</td></tr>
+
+</table>
+<p class="meta">"ΔE 液面以上" 只统计液面远端边缘再往上 16 px 以外的区域（排除液面椭圆与弯月面带）。"单图液位线对比度" = 仅用该张图，真值行上方 16 px 至下方 4 px 的带内行均亮度相对上下邻域的下降比例（正 = 暗线）；对图案背景该值受格子影响，仅供白板参考。</p>
+
+<h2>5. 灵敏度：液位 +4 mm（0.50 → 0.52）引起的图像变化，以及蒙特卡洛噪声底</h2>
+<img src="sensitivity_4mm.png">
+<table>
+<tr><th class="l">图案</th><th>ΔE 腔内均值</th><th>ΔE 液位带内均值</th><th>行均 ΔE 峰值</th><th>ΔE&gt;5 像素占比</th><th>差分峰值行</th><th>两 GT 行</th><th>噪声底 带内 ΔE</th><th>噪声底 腔内 ΔE</th><th>SNR(带)</th></tr>
+
+<tr><td class="l">white</td><td>1.12</td><td>27.81</td><td>56.0</td><td>2.2%</td><td>698</td><td>707.9 / 688.5</td>
+<td>1.33</td><td>0.73</td><td>21</td></tr>
+
+<tr><td class="l">R/G checker</td><td>2.51</td><td>62.14</td><td>78.7</td><td>3.5%</td><td>698</td><td>707.9 / 688.5</td>
+<td>1.49</td><td>0.64</td><td>42</td></tr>
+
+<tr><td class="l">mosaic</td><td>2.67</td><td>66.20</td><td>83.3</td><td>3.7%</td><td>698</td><td>707.9 / 688.5</td>
+<td>—</td><td>—</td><td>—</td></tr>
+
+<tr><td class="l">grid lines</td><td>1.30</td><td>32.19</td><td>49.8</td><td>3.0%</td><td>679</td><td>707.9 / 688.5</td>
+<td>—</td><td>—</td><td>—</td></tr>
+
+</table>
+<p class="meta">液位带 = 两液位真值行之间再向上扩 16 px（含弯月面）、向下扩 4 px。噪声底 = 同一场景、同一 spp、不同随机种子的两次渲染之差（只对 white 与 R/G checker 渲染了对照）。</p>
+
+
+<h2>6. 弯月面对照：白板下的液位线到底来自什么？</h2>
+<img src="meniscus_control.png">
+<table>
+<tr><th class="l">图案</th><th>液位线对比度（有弯月面）</th><th>液位线对比度（平液面）</th><th>+4 mm 带内 ΔE（有弯月面）</th><th>+4 mm 带内 ΔE（平液面）</th><th>噪声底</th></tr>
+
+<tr><td class="l">white</td><td>0.297</td><td>0.005</td><td>27.81</td><td>1.10</td><td>1.33</td></tr>
+
+<tr><td class="l">R/G checker</td><td>0.183</td><td>0.004</td><td>62.14</td><td>34.29</td><td>1.49</td></tr>
+
+</table>
+<p class="meta">注意相机高度 (z=10.25) 与 fill 0.50 的液面 (z=10.50) 几乎等高，液面接近边缘视，这是对白板最有利的配置之一（液面本身投影成一条线）；相机偏离液面高度后，平液面在白板下的可见性会进一步下降 —— Phase 1 需扫描相机高度。</p>
+
+
+
+<h2>7. 棋盘格周期 vs 行：柱面透镜放大率的直接测量</h2>
+<img src="checker_period.png">
+<table>
+<tr><th class="l">fill</th><th>板直视 横向周期 px</th><th>透过空气段</th><th>透过液体段</th><th>液体/空气</th><th>液体/直视</th><th>空气/直视</th><th>竖向 空气</th><th>竖向 液体</th><th>竖向比</th></tr>
+
+<tr><td class="l">0.00</td><td>119.5</td><td>111.7</td><td>—</td>
+<td>—</td><td>—</td><td>0.93</td>
+<td>119.3</td><td>—</td><td>—</td></tr>
+
+<tr><td class="l">0.25</td><td>119.5</td><td>111.7</td><td>386.4</td>
+<td>3.46</td><td>3.23</td><td>0.93</td>
+<td>119.3</td><td>123.4</td><td>1.03</td></tr>
+
+<tr><td class="l">0.50</td><td>119.5</td><td>111.7</td><td>390.6</td>
+<td>3.50</td><td>3.27</td><td>0.93</td>
+<td>119.3</td><td>124.8</td><td>1.05</td></tr>
+
+<tr><td class="l">0.52</td><td>119.5</td><td>111.7</td><td>390.8</td>
+<td>3.50</td><td>3.27</td><td>0.93</td>
+<td>119.3</td><td>124.8</td><td>1.05</td></tr>
+
+<tr><td class="l">0.75</td><td>119.5</td><td>111.9</td><td>391.7</td>
+<td>3.50</td><td>3.28</td><td>0.94</td>
+<td>108.4</td><td>124.8</td><td>1.15</td></tr>
+
+</table>
+<p class="meta">周期用 R−G 信号过零点间距的中位数估计（容器中央 60% 列）。近轴平行光公式 M_h·(d_cam + D)/d_cam = 2.13 仅作量级参考。</p>
+
+<h3>7b. 独立二维光线追迹 vs 渲染</h3>
+<img src="lens_raytrace.png">
+<table>
+<tr><th class="l">量</th><th>二维追迹预测</th><th>渲染实测（中平面行带）</th></tr>
+<tr><td class="l">板直视横向周期 px</td><td>119.6</td><td>119.5</td></tr>
+<tr><td class="l">透过空容器（空气段）</td><td>111.1</td><td>111.0</td></tr>
+<tr><td class="l">透过液体段</td><td>393.5</td><td>393.5</td></tr>
+<tr><td class="l">液体/空气 周期比</td><td>3.54</td><td>3.55</td></tr>
+<tr><td class="l">空气/直视 周期比</td><td>0.93</td><td>0.93</td></tr>
+<tr><td class="l">图像中心局部放大（液体/直视）</td><td>8.67</td><td>见上图曲线</td></tr>
+</table>
+<p class="meta">追迹在相机光轴所在的水平面内精确（所有折射面法线水平）；渲染的"中平面行带"取图像中心 ±40 px 行、容器中央 60% 列，且只在该行带完全处于液体段（fill 0.75）或空气段（fill 0 / 0.25）时统计。</p>
+
+
+
+<h2>8. 文件</h2>
+<p class="meta">场景 <code>scenes/mvp/*.pbrt</code>（<code>free_surface.ply</code> / <code>free_surface_flat.ply</code> 液面网格）· 图案 <code>outputs/mvp/patterns/</code> · 渲染 <code>outputs/mvp/renders/</code> · 本目录 <code>metrics.json</code> 含全部数值与逐行曲线 · 复现：<code>.venv\Scripts\python scripts\mvp_run.py --spp 512</code></p>
+</body></html>

@@ -1,0 +1,71 @@
+# test-set scene -> B3_cyl_dcm_water_checker.exr
+LookAt 0 -60 10.25  0 0 10.25  0 0 1
+Camera "perspective" "float fov" [24]
+Sampler "zsobol" "integer pixelsamples" [160]
+Integrator "volpath" "integer maxdepth" [48] "bool regularize" [true]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["B3_cyl_dcm_water_checker.exr"] "integer xresolution" [900] "integer yresolution" [1200] "bool savefp16" [false]
+
+WorldBegin
+AttributeBegin  # light panel (Lambertian light box)
+  AreaLightSource "diffuse" "string filename" ["../../outputs/testset/patterns/rg_checker.png"] "float scale" [0.8] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+  Shape "trianglemesh" "point3 P" [30 25 -29.75 -30 25 -29.75 -30 25 50.25 30 25 50.25] "point2 uv" [0 0 1 0 1 1 0 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # matte black pedestal
+  Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]
+  Shape "cylinder" "float radius" [4] "float zmin" [-8.05] "float zmax" [-0.05]
+  Shape "disk" "float height" [-0.05] "float radius" [4]
+AttributeEnd
+MakeNamedMaterial "glass" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_out" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_in_dry" "string type" "dielectric" "float eta" [1.5]
+AttributeBegin  # outer wall
+  NamedMaterial "wall_out"
+  Shape "plymesh" "string filename" ["mesh_cylinder_outer.ply"]
+AttributeEnd
+AttributeBegin  # rim + outer bottom
+  NamedMaterial "glass"
+  Shape "disk" "float height" [20.5] "float radius" [7.8] "float innerradius" [7.5]
+  AttributeBegin
+    ReverseOrientation
+    Shape "disk" "float height" [0] "float radius" [7.8]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # inner bottom (glass|liquid)
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.05337]
+  Shape "disk" "float height" [0.5] "float radius" [7.5]
+AttributeEnd
+AttributeBegin  # inner wall wetted by dcm
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.05337]
+  Shape "plymesh" "string filename" ["mesh_cylinder_inner_0.500_6.500.ply"]
+AttributeEnd
+AttributeBegin  # inner wall wetted by water
+  MediumInterface "" "liq2"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "plymesh" "string filename" ["mesh_cylinder_inner_6.500_12.500.ply"]
+AttributeEnd
+AttributeBegin  # inner wall wetted by water
+  MediumInterface "" "liq2"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "plymesh" "string filename" ["mesh_cylinder_inner_12.500_12.800.ply"]
+AttributeEnd
+AttributeBegin  # dry inner wall
+  NamedMaterial "wall_in_dry"
+  Shape "plymesh" "string filename" ["mesh_cylinder_inner_12.800_20.500.ply"]
+AttributeEnd
+MakeNamedMedium "liq1" "string type" "homogeneous" "rgb sigma_a" [0.001 0.001 0.002] "rgb sigma_s" [0 0 0] "float scale" [1]
+MakeNamedMedium "liq2" "string type" "homogeneous" "rgb sigma_a" [0.0035 0.0015 0.0003] "rgb sigma_s" [0 0 0] "float scale" [1]
+AttributeBegin
+  MediumInterface "liq1" "liq2"
+  Material "dielectric" "float eta" [1.06827]
+  Shape "disk" "float height" [6.5] "float radius" [7.499]
+AttributeEnd
+AttributeBegin  # free surface + meniscus
+  MediumInterface "liq2" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate 0 0 12.5
+  Shape "plymesh" "string filename" ["mesh_B3_cyl_dcm_water_checker_surface.ply"]
+AttributeEnd

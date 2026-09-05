@@ -1,0 +1,24 @@
+# --- third-party renderer: not vendored. Clone https://github.com/mmp/pbrt-v4 (commit 5f7a606) into
+#     ./pbrt-v4 and run build_pbrt.bat (see README.md)
+pbrt-v4/
+
+# --- python environments
+liquid_level_sim/.venv/
+liquid_level_sim/.venv_broken_othermachine/
+**/__pycache__/
+*.pyc
+
+# --- heavy / regenerable render products (PNG images, reports and manifests ARE tracked)
+*.exr
+*.pfm
+liquid_level_sim/outputs/*/textures/
+liquid_level_sim/outputs/*/patterns/
+liquid_level_sim/outputs/testset/cases_embed.js
+liquid_level_sim/outputs/*/*_log.txt
+liquid_level_sim/outputs/*/*_err.txt
+liquid_level_sim/scenes/**/*.ply
+
+# --- local tooling
+.claude/
+Thumbs.db
+desktop.ini

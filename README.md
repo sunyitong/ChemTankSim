@@ -1,0 +1,32 @@
+# ChemTankSim — liquid-level detection from refraction of a backlit pattern
+
+Synthetic-data study of reading the liquid level in a transparent vessel from how the liquid
+refracts a structured light panel behind it, rendered with a physically based renderer
+(pbrt-v4), plus a browser tool that compares an empty-vessel baseline with a filled photo.
+
+**Live demo (GitHub Pages):** `https://sunyitong.github.io/ChemTankSim/` — the Level Diff Bench
+web app with 25 bundled test cases. Gallery of renders: `https://sunyitong.github.io/ChemTankSim/gallery.html`
+
+## What is here
+
+| Path | Content |
+|---|---|
+| `liquid_level_sim/docs/RESEARCH.md` | Research plan, physics, experiment log, limescale morphology references (Chinese) |
+| `liquid_level_sim/scripts/mvp_*.py` | Phase 0: 15 × 20 cm cylinder, four backlight patterns, five levels, diff / sensitivity / ray-trace analysis |
+| `liquid_level_sim/scripts/testset_*.py` | Phase 1: gourd / Erlenmeyer / reagent / round-bottom vessels, wide–tele lenses, layered liquids, sensor-noise post-processing, evaluation |
+| `liquid_level_sim/scripts/scale_model.py`, `scale_run.py` | Physically motivated limescale deposits (water-line ring, creep, film, tide marks, droplets, drips) |
+| `liquid_level_sim/webapp/level_diff_bench.html` | Single-file web app: ROI box, difference heat map / overlay, adaptive robust diff, multi-layer detection, bundled cases with ground truth |
+| `liquid_level_sim/outputs/**/images`, `compare`, `eval` | Rendered PNG datasets, contact sheets, metrics, reports (EXR originals are not tracked) |
+| `docs/` | GitHub Pages site (`index.html` = web app, `gallery.html` = renders) |
+
+## Reproduce
+
+1. Clone pbrt-v4 into `./pbrt-v4` (`git clone https://github.com/mmp/pbrt-v4 && cd pbrt-v4 && git checkout 5f7a606 && git submodule update --init --recursive`)
+   and build it with `build_pbrt.bat` (MSVC 2022 + Ninja; CPU only).
+2. `cd liquid_level_sim && uv venv --python 3.11 .venv && uv pip install numpy opencv-python matplotlib jinja2 ninja imageio`
+3. Phase 0: `.venv\Scripts\python scripts\mvp_run.py --spp 512` → `outputs/mvp/report.html`
+4. Phase 1 test set: `scripts\testset_run.py`, evaluation `scripts\testset_eval.py`, limescale samples `scripts\scale_run.py`
+5. Web app bundle: `scripts\webapp_bundle.py <out.js> outputs/testset/cases.json outputs/scale/cases.json` then `scripts\webapp_build.py <template> <out.js> <fragment>`
+
+Details, parameters and findings: [liquid_level_sim/README.md](liquid_level_sim/README.md) and
+[liquid_level_sim/docs/RESEARCH.md](liquid_level_sim/docs/RESEARCH.md).

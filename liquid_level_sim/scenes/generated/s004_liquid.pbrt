@@ -1,0 +1,42 @@
+# liquid-level study sample s004 pass=liquid
+LookAt 11.9939 -23.5874 13.1844  -0.517098 0.214469 4.17645  0 0 1
+Camera "perspective" "float fov" [23.4955]
+Sampler "independent" "integer pixelsamples" [16]
+Integrator "path" "integer maxdepth" [0]
+PixelFilter "box"
+Film "rgb" "string filename" ["s004_liquid.png"] "integer xresolution" [640] "integer yresolution" [480]
+
+WorldBegin
+AttributeBegin  # table
+  Material "interface"
+  Shape "trianglemesh" "point3 P" [-60 -60 0 60 -60 0 60 60 0 -60 60 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # backdrop wall
+  Material "interface"
+  Shape "trianglemesh" "point3 P" [-60 25 0 -60 25 60 60 25 60 60 25 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # container
+  Material "interface"
+Shape "cylinder" "float radius" [3.14469] "float zmin" [0] "float zmax" [9.47393]
+Shape "cylinder" "float radius" [2.93895] "float zmin" [0.205742] "float zmax" [9.47393]
+Shape "disk" "float height" [9.47393] "float radius" [3.14469] "float innerradius" [2.93895]
+AttributeBegin
+  ReverseOrientation
+  Shape "disk" "float height" [0] "float radius" [3.14469] "float innerradius" [0]
+AttributeEnd
+Shape "disk" "float height" [0.205742] "float radius" [2.93895] "float innerradius" [0]
+AttributeEnd
+AttributeBegin  # liquid side + bottom
+  AreaLightSource "diffuse" "rgb L" [1 1 1] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+Shape "cylinder" "float radius" [2.91895] "float zmin" [0.225742] "float zmax" [7.36255]
+AttributeBegin
+  ReverseOrientation
+  Shape "disk" "float height" [0.225742] "float radius" [2.91895] "float innerradius" [0]
+AttributeEnd
+AttributeEnd
+AttributeBegin  # liquid free surface
+  AreaLightSource "diffuse" "rgb L" [1 1 1] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+Shape "disk" "float height" [7.36255] "float radius" [2.91895] "float innerradius" [0]
+AttributeEnd

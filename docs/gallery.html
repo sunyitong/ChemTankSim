@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ChemTankSim Gallery</title>
+<style>
+body{margin:0;background:#000;color:#e6e9ec;font:14px/1.5 "IBM Plex Sans",system-ui,sans-serif}
+header{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid #1c2228}
+.brand{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.18em;color:#8b959e}
+a{color:#5fd4c8;text-decoration:none} a:hover{text-decoration:underline}
+main{max-width:1500px;margin:0 auto;padding:18px 24px 48px}
+h2{font-size:13px;letter-spacing:.14em;color:#8b959e;font-family:"JetBrains Mono",ui-monospace,monospace;margin:28px 0 8px}
+p{color:#8b959e;margin:0 0 10px;max-width:70ch}
+img{max-width:100%;display:block;border:1px solid #1c2228;background:#0d1013}
+</style></head><body>
+<header><span class="brand">CHEMTANKSIM · GALLERY</span><a href="./">← Level Diff Bench (web app)</a><a href="https://github.com/sunyitong/ChemTankSim">source on GitHub</a></header>
+<main>
+<h2>PHASE 0 · CYLINDER 15 × 20 cm · FOUR PANELS × FIVE LEVELS</h2>
+<p>Rows: white, R/G checker, mosaic, grid. Columns: 0 / 5 / 10 / 10.4 / 15 cm of water. pbrt-v4, 512 spp.</p>
+<img src="gallery/mvp_sheet_renders.png" alt="Phase 0 renders">
+<h2>LEVEL LINE AT 100 %</h2>
+<img src="gallery/mvp_sheet_zoom_level.png" alt="zoom at the level line">
+<h2>SENSITIVITY TO A 4 mm LEVEL CHANGE, WITH MONTE-CARLO NOISE FLOOR</h2>
+<img src="gallery/mvp_sensitivity_4mm.png" alt="sensitivity">
+<h2>HOW MUCH OF THE WHITE-PANEL VISIBILITY IS THE MENISCUS</h2>
+<img src="gallery/mvp_meniscus_control.png" alt="meniscus control">
+<h2>RENDER vs INDEPENDENT 2-D RAY TRACE</h2>
+<img src="gallery/mvp_lens_raytrace.png" alt="ray trace">
+<h2>PHASE 1 · VESSELS, LENSES, LAYERED LIQUIDS (baseline | compare)</h2>
+<img src="gallery/testset_contact_sheet.png" alt="test set">
+<h2>WATER / n-HEXANE INTERFACE: MAGNIFICATION PROFILE FINDS THE Δn = 0.04 BOUNDARY</h2>
+<img src="gallery/eval_profiles_B2.png" alt="evaluation profiles">
+<h2>LIMESCALE DEPOSITS (physically motivated model; baseline dry | filled, submerged part index-matched)</h2>
+<img src="gallery/limescale_contact_sheet.png" alt="limescale">
+<h2>WATER-LINE RING, MACRO, WHITE PANEL</h2>
+<img src="gallery/limescale_macro_white.png" alt="limescale macro">
+</main></body></html>

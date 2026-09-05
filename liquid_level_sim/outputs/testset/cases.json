@@ -1,0 +1,240 @@
+{
+  "resolution": [
+    900,
+    1200
+  ],
+  "cases": [
+    {
+      "case": "A1_gourd_normal_checker",
+      "baseline": "base_gourd_normal_rg_checker_clean11_dz0",
+      "compare": "A1_gourd_normal_checker",
+      "roi_frac": [
+        0.23222222222222222,
+        0.18333333333333332,
+        0.5355555555555556,
+        0.6266666666666667
+      ],
+      "gt_rows_frac": [
+        0.5239619860207508
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "gourd · normal · rg_checker",
+      "note": ""
+    },
+    {
+      "case": "A2_gourd_wide_mosaic",
+      "baseline": "base_gourd_wide_mosaic_clean12_dz0",
+      "compare": "A2_gourd_wide_mosaic",
+      "roi_frac": [
+        0.2477777777777778,
+        0.19833333333333333,
+        0.5044444444444445,
+        0.6041666666666666
+      ],
+      "gt_rows_frac": [
+        0.4175021535332295
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "gourd · wide · mosaic",
+      "note": ""
+    },
+    {
+      "case": "A3_erlenmeyer_tele_grid",
+      "baseline": "base_erlenmeyer_tele_grid_clean13_dz0",
+      "compare": "A3_erlenmeyer_tele_grid",
+      "roi_frac": [
+        0.2588888888888889,
+        0.2225,
+        0.4822222222222222,
+        0.5508333333333333
+      ],
+      "gt_rows_frac": [
+        0.559981015871099
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "erlenmeyer · tele · grid",
+      "note": ""
+    },
+    {
+      "case": "A4_florence_normal_checker",
+      "baseline": "base_florence_normal_rg_checker_clean14_dz0",
+      "compare": "A4_florence_normal_checker",
+      "roi_frac": [
+        0.27,
+        0.20166666666666666,
+        0.46,
+        0.5833333333333334
+      ],
+      "gt_rows_frac": [
+        0.46857602743981536
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "florence · normal · rg_checker",
+      "note": ""
+    },
+    {
+      "case": "A5_reagent_wide_checker",
+      "baseline": "base_reagent_wide_rg_checker_clean15_dz0",
+      "compare": "A5_reagent_wide_checker",
+      "roi_frac": [
+        0.3333333333333333,
+        0.23083333333333333,
+        0.3333333333333333,
+        0.54
+      ],
+      "gt_rows_frac": [
+        0.49049018883164847
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "reagent · wide · rg_checker",
+      "note": ""
+    },
+    {
+      "case": "A6_erlenmeyer_normal_mosaic_tea",
+      "baseline": "base_erlenmeyer_normal_mosaic_clean16_dz2",
+      "compare": "A6_erlenmeyer_normal_mosaic_tea",
+      "roi_frac": [
+        0.26222222222222225,
+        0.2833333333333333,
+        0.47555555555555556,
+        0.5666666666666667
+      ],
+      "gt_rows_frac": [
+        0.6009530381331555
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "tea"
+      ],
+      "label": "erlenmeyer · normal · mosaic",
+      "note": ""
+    },
+    {
+      "case": "B1_cyl_water_oil_checker",
+      "baseline": "base_cylinder_normal_rg_checker_clean0_dz0",
+      "compare": "B1_cyl_water_oil_checker",
+      "roi_frac": [
+        0.21555555555555556,
+        0.15916666666666668,
+        0.5688888888888889,
+        0.665
+      ],
+      "gt_rows_frac": [
+        0.5588078763684807,
+        0.39078537245853584
+      ],
+      "gt_kinds": [
+        "liquid-liquid interface",
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water",
+        "sunflower_oil"
+      ],
+      "label": "cylinder · normal · rg_checker · water + sunflower_oil",
+      "note": "water below, sunflower oil above: dn = 0.14, oil slightly yellow"
+    },
+    {
+      "case": "B2_cyl_water_hexane_checker",
+      "baseline": "base_cylinder_normal_rg_checker_clean0_dz0",
+      "compare": "B2_cyl_water_hexane_checker",
+      "roi_frac": [
+        0.21555555555555556,
+        0.15916666666666668,
+        0.5688888888888889,
+        0.665
+      ],
+      "gt_rows_frac": [
+        0.5588078763684807,
+        0.39078537245853584
+      ],
+      "gt_kinds": [
+        "liquid-liquid interface",
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water",
+        "hexane"
+      ],
+      "label": "cylinder · normal · rg_checker · water + hexane",
+      "note": "water below, n-hexane above: dn = 0.04, both colourless (hardest case)"
+    },
+    {
+      "case": "B3_cyl_dcm_water_checker",
+      "baseline": "base_cylinder_normal_rg_checker_clean0_dz0",
+      "compare": "B3_cyl_dcm_water_checker",
+      "roi_frac": [
+        0.21555555555555556,
+        0.15916666666666668,
+        0.5688888888888889,
+        0.665
+      ],
+      "gt_rows_frac": [
+        0.6260168779324586,
+        0.42438987324052485
+      ],
+      "gt_kinds": [
+        "liquid-liquid interface",
+        "free surface"
+      ],
+      "gt_liquids": [
+        "dcm",
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · dcm + water",
+      "note": "dichloromethane below (denser), water above: dn = 0.09"
+    },
+    {
+      "case": "B4_cyl_water_hexane_white",
+      "baseline": "base_cylinder_normal_white_clean0_dz0",
+      "compare": "B4_cyl_water_hexane_white",
+      "roi_frac": [
+        0.21555555555555556,
+        0.15916666666666668,
+        0.5688888888888889,
+        0.665
+      ],
+      "gt_rows_frac": [
+        0.5588078763684807,
+        0.39078537245853584
+      ],
+      "gt_kinds": [
+        "liquid-liquid interface",
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water",
+        "hexane"
+      ],
+      "label": "cylinder · normal · white · water + hexane",
+      "note": "same as B2 against a plain white panel"
+    }
+  ]
+}

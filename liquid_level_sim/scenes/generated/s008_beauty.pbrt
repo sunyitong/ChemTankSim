@@ -1,0 +1,58 @@
+# liquid-level study sample s008 pass=beauty
+LookAt -6.37547 -26.6695 14.7632  0.176311 -0.179647 5.11069  0 0 1
+Camera "perspective" "float fov" [27.0364]
+Sampler "zsobol" "integer pixelsamples" [128]
+Integrator "volpath" "integer maxdepth" [40] "bool regularize" [true]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["s008_beauty.exr"] "integer xresolution" [640] "integer yresolution" [480] "bool savefp16" [false]
+
+WorldBegin
+LightSource "infinite" "rgb L" [0.335322 0.335322 0.362148]
+AttributeBegin  # soft key light panel above/front
+  AreaLightSource "diffuse" "rgb L" [10.3938 10.3938 10.3938]
+  Translate -6 -14 30
+  Rotate 155 1 0 0
+  Shape "disk" "float radius" [9]
+AttributeEnd
+AttributeBegin  # dim fill light from the other side
+  AreaLightSource "diffuse" "rgb L" [2.59845 2.59845 2.91026]
+  Translate 18 -6 20
+  Rotate -125 0 1 0
+  Shape "disk" "float radius" [6]
+AttributeEnd
+AttributeBegin  # table
+  Texture "checks" "spectrum" "checkerboard" "float uscale" [29.8118] "float vscale" [29.8118] "rgb tex1" [0.72 0.70 0.66] "rgb tex2" [0.18 0.18 0.20]
+  Material "coateddiffuse" "texture reflectance" "checks" "float roughness" [0.15]
+  Shape "trianglemesh" "point3 P" [-60 -60 0 60 -60 0 60 60 0 -60 60 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # backdrop wall
+  Texture "stripes" "spectrum" "checkerboard" "float uscale" [24] "float vscale" [1] "rgb tex1" [0.55 0.57 0.60] "rgb tex2" [0.30 0.31 0.34]
+  Material "diffuse" "texture reflectance" "stripes"
+  Shape "trianglemesh" "point3 P" [-60 25 0 -60 25 60 60 25 60 60 25 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # container
+  Material "dielectric" "float eta" [1.49]
+Shape "cylinder" "float radius" [4.09495] "float zmin" [0] "float zmax" [11.3862]
+Shape "cylinder" "float radius" [3.91176] "float zmin" [0.18319] "float zmax" [11.3862]
+Shape "disk" "float height" [11.3862] "float radius" [4.09495] "float innerradius" [3.91176]
+AttributeBegin
+  ReverseOrientation
+  Shape "disk" "float height" [0] "float radius" [4.09495] "float innerradius" [0]
+AttributeEnd
+Shape "disk" "float height" [0.18319] "float radius" [3.91176] "float innerradius" [0]
+AttributeEnd
+MakeNamedMedium "liq" "string type" "homogeneous" "rgb sigma_a" [0.06 0.22 0.6] "rgb sigma_s" [0 0 0] "float scale" [1]
+AttributeBegin  # liquid side + bottom
+  MediumInterface "liq" ""
+  Material "dielectric" "float eta" [1.34]
+Shape "cylinder" "float radius" [3.89176] "float zmin" [0.20319] "float zmax" [5.10472]
+AttributeBegin
+  ReverseOrientation
+  Shape "disk" "float height" [0.20319] "float radius" [3.89176] "float innerradius" [0]
+AttributeEnd
+AttributeEnd
+AttributeBegin  # liquid free surface
+  MediumInterface "liq" ""
+  Material "dielectric" "float eta" [1.34]
+Shape "disk" "float height" [5.10472] "float radius" [3.89176] "float innerradius" [0]
+AttributeEnd

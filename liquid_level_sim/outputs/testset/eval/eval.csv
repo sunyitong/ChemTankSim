@@ -1,0 +1,11 @@
+case,gt_rows,step_raw_err_px,step_adapt_err_px,adapt_contrast,cp_v2_rows,cp_v2_err_px_each_gt
+A1_gourd_normal_checker,629,-9.5,-12.4,0.96,616/768/832,-12.4
+A2_gourd_wide_mosaic,501,0.1,-4.4,0.97,497/910/788,-4.4
+A3_erlenmeyer_tele_grid,672,-16.9,-15.4,0.67,657,-15.4
+A4_florence_normal_checker,562,-14.2,-12.4,0.97,550/842/706,-12.4
+A5_reagent_wide_checker,589,-14.5,-13.8,0.97,575,-13.8
+A6_erlenmeyer_normal_mosaic_tea,721,-21.0,-21.4,0.95,700,-21.4
+B1_cyl_water_oil_checker,671/469,-8.3,-8.6,0.95,460/667,-3.6/-8.6
+B2_cyl_water_hexane_checker,671/469,-4.2,-5.1,0.98,464/665,-5.6/-5.1
+B3_cyl_dcm_water_checker,751/509,-9.5,-10.3,0.98,499/739,-12.2/-10.3
+B4_cyl_water_hexane_white,671/469,477.1,496.1,0.89,965,294.4/496.1

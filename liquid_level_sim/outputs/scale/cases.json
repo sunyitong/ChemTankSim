@@ -1,0 +1,339 @@
+{
+  "resolution": [
+    900,
+    1200
+  ],
+  "cases": [
+    {
+      "case": "S1_cyl_vase_line60_water45",
+      "baseline": "S1_cyl_vase_line60_water45_baseline",
+      "compare": "S1_cyl_vase_line60_water45_compare",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.5252033755864918
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · limescale vase",
+      "note": "long-standing line at 60 %, film below; now filled to 45 %: film below 45 % is submerged"
+    },
+    {
+      "case": "S2_cyl_tide_water30_mosaic",
+      "baseline": "S2_cyl_tide_water30_mosaic_baseline",
+      "compare": "S2_cyl_tide_water30_mosaic_compare",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.6260168779324586
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · mosaic · limescale tide",
+      "note": "level fell 60 -> 45 % in steps (tide marks), splashes and pour streaks; now 30 %"
+    },
+    {
+      "case": "S3_gourd_vase_line60_water40",
+      "baseline": "S3_gourd_vase_line60_water40_baseline",
+      "compare": "S3_gourd_vase_line60_water40_compare",
+      "roi_frac": [
+        0.22898313878639207,
+        0.18345552623234745,
+        0.5420337224272159,
+        0.6261381171732183
+      ],
+      "gt_rows_frac": [
+        0.5563340126654379
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "gourd · normal · rg_checker · limescale vase",
+      "note": "same deposit history on the gourd flask"
+    },
+    {
+      "case": "S4_cyl_vase_macro_checker",
+      "baseline": "S4_cyl_vase_macro_checker_baseline",
+      "compare": "S4_cyl_vase_macro_checker_compare",
+      "roi_frac": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "gt_rows_frac": [
+        0.7284993273693336
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · macro · rg_checker · limescale vase",
+      "note": "macro view of the water-line ring, checker panel"
+    },
+    {
+      "case": "S5_cyl_vase_macro_white",
+      "baseline": "S5_cyl_vase_macro_white_baseline",
+      "compare": "S5_cyl_vase_macro_white_compare",
+      "roi_frac": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "gt_rows_frac": [
+        0.7284993273693336
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · macro · white · limescale vase",
+      "note": "macro view of the water-line ring, white panel"
+    },
+    {
+      "case": "V1_cyl_line30_water55",
+      "baseline": "V1_cyl_line30_water55_baseline",
+      "compare": "V1_cyl_line30_water55_compare",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.45799437402251386
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · limescale line30",
+      "note": "old line at 30 %, now filled above it: the ring and film are submerged (wet, index-matched)"
+    },
+    {
+      "case": "V2_cyl_line50thin_water35_grid",
+      "baseline": "V2_cyl_line50thin_water35_grid_baseline",
+      "compare": "V2_cyl_line50thin_water35_grid_compare",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.5924123771504697
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · grid · limescale line50_thin",
+      "note": "a single thin ring at 50 %, no film"
+    },
+    {
+      "case": "V3_erl_line75heavy_water40_mosaic",
+      "baseline": "V3_erl_line75heavy_water40_mosaic_baseline",
+      "compare": "V3_erl_line75heavy_water40_mosaic_compare",
+      "roi_frac": [
+        0.2590377639572648,
+        0.22254899588919377,
+        0.48192447208547046,
+        0.5623040722659732
+      ],
+      "gt_rows_frac": [
+        0.5496514910176928
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "erlenmeyer · normal · mosaic · limescale line75_heavy",
+      "note": "heavy iron-tinted ring at 75 % on the Erlenmeyer cone, film below"
+    },
+    {
+      "case": "V4_reagent_line92full_water60",
+      "baseline": "V4_reagent_line92full_water60_baseline",
+      "compare": "V4_reagent_line92full_water60_compare",
+      "roi_frac": [
+        0.31509216106276333,
+        0.219422656710971,
+        0.3698156778744734,
+        0.5533048623004991
+      ],
+      "gt_rows_frac": [
+        0.4332985917455908
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "reagent · normal · rg_checker · limescale line92_full",
+      "note": "bottle kept nearly full: film on the whole wall, ring at 92 %"
+    },
+    {
+      "case": "V5_cyl_band4060_water50",
+      "baseline": "V5_cyl_band4060_water50_baseline",
+      "compare": "V5_cyl_band4060_water50_compare",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.49159887480450276
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · limescale band4060",
+      "note": "level fluctuated 40-60 %: dense tide-mark band; current level inside the band"
+    },
+    {
+      "case": "V6_gourd_tilted_water45_mosaic",
+      "baseline": "V6_gourd_tilted_water45_mosaic_baseline",
+      "compare": "V6_gourd_tilted_water45_mosaic_compare",
+      "roi_frac": [
+        0.22898313878639207,
+        0.18345552623234745,
+        0.5420337224272159,
+        0.6261381171732183
+      ],
+      "gt_rows_frac": [
+        0.5239619860207508
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "gourd · normal · mosaic · limescale tilted",
+      "note": "gourd stored tilted while drying: inclined line and film boundary"
+    },
+    {
+      "case": "V7_cyl_splash_water30_wide",
+      "baseline": "V7_cyl_splash_water30_wide_baseline",
+      "compare": "V7_cyl_splash_water30_wide_compare",
+      "roi_frac": [
+        0.22581473132367313,
+        0.14432899020809223,
+        0.5483705373526537,
+        0.6938296126020964
+      ],
+      "gt_rows_frac": [
+        0.6313430523628931
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · wide · rg_checker · limescale splash",
+      "note": "splash/pour dominated: many droplet rings and streaks, faint line at 45 %"
+    },
+    {
+      "case": "V8_cyl_sector_water50",
+      "baseline": "V8_cyl_sector_water50_baseline",
+      "compare": "V8_cyl_sector_water50_compare",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.49159887480450276
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · limescale sector",
+      "note": "deposit only on one third of the circumference, current level at the old line"
+    },
+    {
+      "case": "V9_erl_dripsonly_water45_tele",
+      "baseline": "V9_erl_dripsonly_water45_tele_baseline",
+      "compare": "V9_erl_dripsonly_water45_tele_compare",
+      "roi_frac": [
+        0.2556375243750292,
+        0.22215673232077293,
+        0.48872495124994164,
+        0.5511803108777127
+      ],
+      "gt_rows_frac": [
+        0.5208704261312823
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "erlenmeyer · tele · rg_checker · limescale drips_only",
+      "note": "no water line: pour streaks from the rim and scattered droplets"
+    },
+    {
+      "case": "V10_cyl_line50thin_water50_white",
+      "baseline": "V10_cyl_line50thin_water50_white_baseline",
+      "compare": "V10_cyl_line50thin_water50_white_compare",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.49159887480450276
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · white · limescale line50_thin",
+      "note": "thin old ring exactly at the current level, white panel (hardest case)"
+    }
+  ],
+  "image_dir": "C:\\Users\\ysun13\\Desktop\\projects\\ChemTankSim\\liquid_level_sim\\outputs\\scale\\images"
+}

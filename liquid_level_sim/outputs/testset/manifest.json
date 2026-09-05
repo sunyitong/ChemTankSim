@@ -1,0 +1,989 @@
+{
+  "resolution": [
+    900,
+    1200
+  ],
+  "spp": 160,
+  "jobs": [
+    {
+      "name": "base_gourd_normal_rg_checker_clean11_dz0",
+      "role": "baseline",
+      "combo": null,
+      "part": "A",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [],
+        "rim_row_front": 216.14663147881694,
+        "bottom_row_front": 975.512372086679
+      },
+      "jitter": false,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_gourd_normal_rg_checker_clean11_dz0.png"
+    },
+    {
+      "name": "A1_gourd_normal_checker",
+      "role": "compare",
+      "combo": "A1_gourd_normal_checker",
+      "baseline": "base_gourd_normal_rg_checker_clean11_dz0",
+      "part": "A",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "layers": [
+        [
+          "water",
+          0.45
+        ]
+      ],
+      "note": "",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 9.725,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.44999999999999996,
+            "top_row_front": 628.754383224901,
+            "top_row_back": 626.0685260042958,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 216.14663147881694,
+        "bottom_row_front": 975.512372086679
+      },
+      "jitter": true,
+      "post": {
+        "gain": 1.001166412241065,
+        "shift_px": [
+          -1.5922555498941855,
+          2.089032290881648
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "A1_gourd_normal_checker.png"
+    },
+    {
+      "name": "base_gourd_wide_mosaic_clean12_dz0",
+      "role": "baseline",
+      "combo": null,
+      "part": "A",
+      "vessel": "gourd",
+      "camera": "wide",
+      "pattern": "mosaic",
+      "dirt": null,
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -34.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 44.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [],
+        "rim_row_front": 233.52002227614125,
+        "bottom_row_front": 966.6369268617663
+      },
+      "jitter": false,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_gourd_wide_mosaic_clean12_dz0.png"
+    },
+    {
+      "name": "A2_gourd_wide_mosaic",
+      "role": "compare",
+      "combo": "A2_gourd_wide_mosaic",
+      "baseline": "base_gourd_wide_mosaic_clean12_dz0",
+      "part": "A",
+      "vessel": "gourd",
+      "camera": "wide",
+      "pattern": "mosaic",
+      "dirt": null,
+      "layers": [
+        [
+          "water",
+          0.62
+        ]
+      ],
+      "note": "",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -34.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 44.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 13.209999999999999,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.62,
+            "top_row_front": 501.00258423987543,
+            "top_row_back": 519.5329943532989,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 233.52002227614125,
+        "bottom_row_front": 966.6369268617663
+      },
+      "jitter": true,
+      "post": {
+        "gain": 1.0475285938744636,
+        "shift_px": [
+          0.297144225264943,
+          1.6034628089802698
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "A2_gourd_wide_mosaic.png"
+    },
+    {
+      "name": "base_erlenmeyer_tele_grid_clean13_dz0",
+      "role": "baseline",
+      "combo": null,
+      "part": "A",
+      "vessel": "erlenmeyer",
+      "camera": "tele",
+      "pattern": "grid",
+      "dirt": null,
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -130.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 11.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [],
+        "rim_row_front": 262.5880787849275,
+        "bottom_row_front": 932.0044518381827
+      },
+      "jitter": false,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_erlenmeyer_tele_grid_clean13_dz0.png"
+    },
+    {
+      "name": "A3_erlenmeyer_tele_grid",
+      "role": "compare",
+      "combo": "A3_erlenmeyer_tele_grid",
+      "baseline": "base_erlenmeyer_tele_grid_clean13_dz0",
+      "part": "A",
+      "vessel": "erlenmeyer",
+      "camera": "tele",
+      "pattern": "grid",
+      "dirt": null,
+      "layers": [
+        [
+          "water",
+          0.38
+        ]
+      ],
+      "note": "",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -130.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 11.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 7.309,
+            "z_bottom_cm": 0.45,
+            "fill_of_inner_height": 0.38,
+            "top_row_front": 671.9772190453189,
+            "top_row_back": 667.7089718483239,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 262.5880787849275,
+        "bottom_row_front": 932.0044518381827
+      },
+      "jitter": true,
+      "post": {
+        "gain": 0.9550105484657669,
+        "shift_px": [
+          0.19730689384232614,
+          -1.0173567635117324
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "A3_erlenmeyer_tele_grid.png"
+    },
+    {
+      "name": "base_florence_normal_rg_checker_clean14_dz0",
+      "role": "baseline",
+      "combo": null,
+      "part": "A",
+      "vessel": "florence",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.0
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.0
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Round-bottom flask",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 237.91969398575256,
+        "bottom_row_front": 945.7199818814723
+      },
+      "jitter": false,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_florence_normal_rg_checker_clean14_dz0.png"
+    },
+    {
+      "name": "A4_florence_normal_checker",
+      "role": "compare",
+      "combo": "A4_florence_normal_checker",
+      "baseline": "base_florence_normal_rg_checker_clean14_dz0",
+      "part": "A",
+      "vessel": "florence",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "layers": [
+        [
+          "water",
+          0.55
+        ]
+      ],
+      "note": "",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.0
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.0
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Round-bottom flask",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 11.0,
+            "z_bottom_cm": 0.0,
+            "fill_of_inner_height": 0.539,
+            "top_row_front": 562.2912329277784,
+            "top_row_back": 566.8464888757776,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 237.91969398575256,
+        "bottom_row_front": 945.7199818814723
+      },
+      "jitter": true,
+      "post": {
+        "gain": 0.9730025018182523,
+        "shift_px": [
+          -1.04985279981204,
+          2.096044659515509
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "A4_florence_normal_checker.png"
+    },
+    {
+      "name": "base_reagent_wide_rg_checker_clean15_dz0",
+      "role": "baseline",
+      "combo": null,
+      "part": "A",
+      "vessel": "reagent",
+      "camera": "wide",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -34.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 44.0
+        },
+        "vessel": "Wide-mouth reagent bottle",
+        "inner_height_cm": 17.9,
+        "layers": [],
+        "rim_row_front": 272.7271592329945,
+        "bottom_row_front": 929.0394664249634
+      },
+      "jitter": false,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_reagent_wide_rg_checker_clean15_dz0.png"
+    },
+    {
+      "name": "A5_reagent_wide_checker",
+      "role": "compare",
+      "combo": "A5_reagent_wide_checker",
+      "baseline": "base_reagent_wide_rg_checker_clean15_dz0",
+      "part": "A",
+      "vessel": "reagent",
+      "camera": "wide",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "layers": [
+        [
+          "water",
+          0.5
+        ]
+      ],
+      "note": "",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -34.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 44.0
+        },
+        "vessel": "Wide-mouth reagent bottle",
+        "inner_height_cm": 17.9,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 9.549999999999999,
+            "z_bottom_cm": 0.6,
+            "fill_of_inner_height": 0.5,
+            "top_row_front": 588.5882265979782,
+            "top_row_back": 591.3704358158265,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 272.7271592329945,
+        "bottom_row_front": 929.0394664249634
+      },
+      "jitter": true,
+      "post": {
+        "gain": 0.9505256975794322,
+        "shift_px": [
+          -0.519720300977019,
+          -2.2564714883465053
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "A5_reagent_wide_checker.png"
+    },
+    {
+      "name": "base_erlenmeyer_normal_mosaic_clean16_dz2",
+      "role": "baseline",
+      "combo": null,
+      "part": "A",
+      "vessel": "erlenmeyer",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "dirt": null,
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            11.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            11.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [],
+        "rim_row_front": 335.9109474849715,
+        "bottom_row_front": 1024.4199731012457
+      },
+      "jitter": false,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_erlenmeyer_normal_mosaic_clean16_dz2.png"
+    },
+    {
+      "name": "A6_erlenmeyer_normal_mosaic_tea",
+      "role": "compare",
+      "combo": "A6_erlenmeyer_normal_mosaic_tea",
+      "baseline": "base_erlenmeyer_normal_mosaic_clean16_dz2",
+      "part": "A",
+      "vessel": "erlenmeyer",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "dirt": null,
+      "layers": [
+        [
+          "tea",
+          0.42
+        ]
+      ],
+      "note": "",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            11.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            11.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [
+          {
+            "liquid": "tea",
+            "label": "tea (tinted water)",
+            "eta": 1.335,
+            "z_top_cm": 8.031,
+            "z_bottom_cm": 0.45,
+            "fill_of_inner_height": 0.42,
+            "top_row_front": 721.1436457597865,
+            "top_row_back": 706.9080437749485,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 335.9109474849715,
+        "bottom_row_front": 1024.4199731012457
+      },
+      "jitter": true,
+      "post": {
+        "gain": 1.0124086182959522,
+        "shift_px": [
+          2.386177097187673,
+          -1.6385650756027044
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "A6_erlenmeyer_normal_mosaic_tea.png"
+    },
+    {
+      "name": "base_cylinder_normal_rg_checker_clean0_dz0",
+      "role": "baseline",
+      "combo": null,
+      "part": "B",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_cylinder_normal_rg_checker_clean0_dz0.png"
+    },
+    {
+      "name": "B1_cyl_water_oil_checker",
+      "role": "compare",
+      "combo": "B1_cyl_water_oil_checker",
+      "baseline": "base_cylinder_normal_rg_checker_clean0_dz0",
+      "part": "B",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "layers": [
+        [
+          "water",
+          0.4
+        ],
+        [
+          "sunflower_oil",
+          0.25
+        ]
+      ],
+      "note": "water below, sunflower oil above: dn = 0.14, oil slightly yellow",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 8.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.4,
+            "top_row_front": 670.5694516421769,
+            "top_row_back": 654.8873512772486,
+            "kind": "liquid-liquid interface"
+          },
+          {
+            "liquid": "sunflower_oil",
+            "label": "sunflower oil",
+            "eta": 1.472,
+            "z_top_cm": 13.5,
+            "z_bottom_cm": 8.5,
+            "fill_of_inner_height": 0.65,
+            "top_row_front": 468.942446950243,
+            "top_row_back": 498.06634762796676,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "post": {
+        "gain": 0.9550795404134789,
+        "shift_px": [
+          -0.3725496559708006,
+          -0.5762050459057804
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "B1_cyl_water_oil_checker.png"
+    },
+    {
+      "name": "B2_cyl_water_hexane_checker",
+      "role": "compare",
+      "combo": "B2_cyl_water_hexane_checker",
+      "baseline": "base_cylinder_normal_rg_checker_clean0_dz0",
+      "part": "B",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "layers": [
+        [
+          "water",
+          0.4
+        ],
+        [
+          "hexane",
+          0.25
+        ]
+      ],
+      "note": "water below, n-hexane above: dn = 0.04, both colourless (hardest case)",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 8.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.4,
+            "top_row_front": 670.5694516421769,
+            "top_row_back": 654.8873512772486,
+            "kind": "liquid-liquid interface"
+          },
+          {
+            "liquid": "hexane",
+            "label": "n-hexane",
+            "eta": 1.375,
+            "z_top_cm": 13.5,
+            "z_bottom_cm": 8.5,
+            "fill_of_inner_height": 0.65,
+            "top_row_front": 468.942446950243,
+            "top_row_back": 498.06634762796676,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "post": {
+        "gain": 0.9997264757290656,
+        "shift_px": [
+          1.6659291893207921,
+          0.4923968382402566
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "B2_cyl_water_hexane_checker.png"
+    },
+    {
+      "name": "B3_cyl_dcm_water_checker",
+      "role": "compare",
+      "combo": "B3_cyl_dcm_water_checker",
+      "baseline": "base_cylinder_normal_rg_checker_clean0_dz0",
+      "part": "B",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "dirt": null,
+      "layers": [
+        [
+          "dcm",
+          0.3
+        ],
+        [
+          "water",
+          0.3
+        ]
+      ],
+      "note": "dichloromethane below (denser), water above: dn = 0.09",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "dcm",
+            "label": "dichloromethane",
+            "eta": 1.424,
+            "z_top_cm": 6.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.3,
+            "top_row_front": 751.2202535189504,
+            "top_row_back": 717.6157527369613,
+            "kind": "liquid-liquid interface"
+          },
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 12.5,
+            "z_bottom_cm": 6.5,
+            "fill_of_inner_height": 0.6,
+            "top_row_front": 509.26784788862983,
+            "top_row_back": 529.4305483578231,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "post": {
+        "gain": 1.0239668690244985,
+        "shift_px": [
+          1.9735507444221252,
+          2.2679011485660636
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "B3_cyl_dcm_water_checker.png"
+    },
+    {
+      "name": "base_cylinder_normal_white_clean0_dz0",
+      "role": "baseline",
+      "combo": null,
+      "part": "B",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "white",
+      "dirt": null,
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_cylinder_normal_white_clean0_dz0.png"
+    },
+    {
+      "name": "B4_cyl_water_hexane_white",
+      "role": "compare",
+      "combo": "B4_cyl_water_hexane_white",
+      "baseline": "base_cylinder_normal_white_clean0_dz0",
+      "part": "B",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "white",
+      "dirt": null,
+      "layers": [
+        [
+          "water",
+          0.4
+        ],
+        [
+          "hexane",
+          0.25
+        ]
+      ],
+      "note": "same as B2 against a plain white panel",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 8.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.4,
+            "top_row_front": 670.5694516421769,
+            "top_row_back": 654.8873512772486,
+            "kind": "liquid-liquid interface"
+          },
+          {
+            "liquid": "hexane",
+            "label": "n-hexane",
+            "eta": 1.375,
+            "z_top_cm": 13.5,
+            "z_bottom_cm": 8.5,
+            "fill_of_inner_height": 0.65,
+            "top_row_front": 468.942446950243,
+            "top_row_back": 498.06634762796676,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "post": {
+        "gain": 0.9785520861603912,
+        "shift_px": [
+          -2.446020823902821,
+          -1.208665978329705
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "B4_cyl_water_hexane_white.png"
+    }
+  ]
+}

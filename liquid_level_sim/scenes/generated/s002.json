@@ -1,0 +1,51 @@
+{
+  "sid": "s002",
+  "container": "cylinder",
+  "r_in": 3.776127703177578,
+  "half_y": 3.776127703177578,
+  "wall": 0.27943547930924817,
+  "height": 8.37308745740964,
+  "fill": 0.7394401180837206,
+  "liquid": "milk_dilute",
+  "liquid_eta": 1.345,
+  "sigma_a": [
+    0.02,
+    0.02,
+    0.02
+  ],
+  "sigma_s": [
+    0.12,
+    0.12,
+    0.12
+  ],
+  "glass": "soda_lime",
+  "glass_eta": 1.52,
+  "eye": [
+    3.7933190462647985,
+    -34.54608366149292,
+    17.191060803152027
+  ],
+  "look": [
+    -0.20023783525308192,
+    0.2763342916238698,
+    4.608184956613684
+  ],
+  "fov": 22.629842742611995,
+  "panel_L": 19.1701896911495,
+  "sky_L": 0.3775963636749653,
+  "checker_scale": 26.853520866339238,
+  "width": 640,
+  "height_px": 480,
+  "spp": 128,
+  "mask_spp": 16,
+  "gap": 0.02,
+  "liquid_height": 6.1913967782323045,
+  "gt_row_analytic": 225.28205754643724,
+  "gt_row_far_analytic": 151.5131187322001,
+  "passes": {
+    "beauty": "s002_beauty.pbrt",
+    "liquid": "s002_liquid.pbrt",
+    "surface": "s002_surface.pbrt",
+    "container": "s002_container.pbrt"
+  }
+}

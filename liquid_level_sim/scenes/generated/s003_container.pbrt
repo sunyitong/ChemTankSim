@@ -1,0 +1,47 @@
+# liquid-level study sample s003 pass=container
+LookAt 1.37873 -27.4923 17.5488  0.0569291 0.37736 5.08623  0 0 1
+Camera "perspective" "float fov" [31.6384]
+Sampler "independent" "integer pixelsamples" [16]
+Integrator "path" "integer maxdepth" [0]
+PixelFilter "box"
+Film "rgb" "string filename" ["s003_container.png"] "integer xresolution" [640] "integer yresolution" [480]
+
+WorldBegin
+AttributeBegin  # table
+  Material "interface"
+  Shape "trianglemesh" "point3 P" [-60 -60 0 60 -60 0 60 60 0 -60 60 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # backdrop wall
+  Material "interface"
+  Shape "trianglemesh" "point3 P" [-60 25 0 -60 25 60 60 25 60 60 25 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # container
+  AreaLightSource "diffuse" "rgb L" [1 1 1] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+Shape "trianglemesh" "point3 P" [2.96374 -2.49919 0 2.96374 2.49919 0 2.96374 2.49919 10.043 2.96374 -2.49919 10.043] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.96374 -2.49919 0 -2.96374 -2.49919 10.043 -2.96374 2.49919 10.043 -2.96374 2.49919 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.96374 2.49919 0 -2.96374 2.49919 10.043 2.96374 2.49919 10.043 2.96374 2.49919 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.96374 -2.49919 0 2.96374 -2.49919 0 2.96374 -2.49919 10.043 -2.96374 -2.49919 10.043] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.96374 -2.49919 0 -2.96374 2.49919 0 2.96374 2.49919 0 2.96374 -2.49919 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [2.71262 -2.24808 0.251112 2.71262 -2.24808 10.044 2.71262 2.24808 10.044 2.71262 2.24808 0.251112] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.71262 -2.24808 0.251112 -2.71262 2.24808 0.251112 -2.71262 2.24808 10.044 -2.71262 -2.24808 10.044] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.71262 2.24808 0.251112 2.71262 2.24808 0.251112 2.71262 2.24808 10.044 -2.71262 2.24808 10.044] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.71262 -2.24808 0.251112 -2.71262 -2.24808 10.044 2.71262 -2.24808 10.044 2.71262 -2.24808 0.251112] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.71262 -2.24808 0.251112 2.71262 -2.24808 0.251112 2.71262 2.24808 0.251112 -2.71262 2.24808 0.251112] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.96374 -2.49919 10.043 2.96374 -2.49919 10.043 2.71262 -2.24808 10.043 -2.71262 -2.24808 10.043] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [2.71262 -2.24808 10.043 2.96374 -2.49919 10.043 2.96374 2.49919 10.043 2.71262 2.24808 10.043] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.71262 2.24808 10.043 2.71262 2.24808 10.043 2.96374 2.49919 10.043 -2.96374 2.49919 10.043] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.96374 -2.49919 10.043 -2.71262 -2.24808 10.043 -2.71262 2.24808 10.043 -2.96374 2.49919 10.043] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # liquid side + bottom
+  Material "interface"
+Shape "trianglemesh" "point3 P" [2.69262 -2.22808 0.271112 2.69262 2.22808 0.271112 2.69262 2.22808 8.72719 2.69262 -2.22808 8.72719] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.69262 -2.22808 0.271112 -2.69262 -2.22808 8.72719 -2.69262 2.22808 8.72719 -2.69262 2.22808 0.271112] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.69262 2.22808 0.271112 -2.69262 2.22808 8.72719 2.69262 2.22808 8.72719 2.69262 2.22808 0.271112] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.69262 -2.22808 0.271112 2.69262 -2.22808 0.271112 2.69262 -2.22808 8.72719 -2.69262 -2.22808 8.72719] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-2.69262 -2.22808 0.271112 -2.69262 2.22808 0.271112 2.69262 2.22808 0.271112 2.69262 -2.22808 0.271112] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # liquid free surface
+  Material "interface"
+Shape "trianglemesh" "point3 P" [-2.69262 -2.22808 8.72719 2.69262 -2.22808 8.72719 2.69262 2.22808 8.72719 -2.69262 2.22808 8.72719] "integer indices" [0 1 2 0 2 3]
+AttributeEnd

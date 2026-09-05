@@ -1,0 +1,60 @@
+# test-set scene -> A3_erlenmeyer_tele_grid.exr
+LookAt 0 -130 9.25  0 0 9.25  0 0 1
+Camera "perspective" "float fov" [11]
+Sampler "zsobol" "integer pixelsamples" [160]
+Integrator "volpath" "integer maxdepth" [48] "bool regularize" [true]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["A3_erlenmeyer_tele_grid.exr"] "integer xresolution" [900] "integer yresolution" [1200] "bool savefp16" [false]
+
+WorldBegin
+AttributeBegin  # light panel (Lambertian light box)
+  AreaLightSource "diffuse" "string filename" ["../../outputs/testset/patterns/grid.png"] "float scale" [0.8] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+  Shape "trianglemesh" "point3 P" [30 25 -30.75 -30 25 -30.75 -30 25 49.25 30 25 49.25] "point2 uv" [0 0 1 0 1 1 0 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # matte black pedestal
+  Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]
+  Shape "cylinder" "float radius" [4] "float zmin" [-8.05] "float zmax" [-0.05]
+  Shape "disk" "float height" [-0.05] "float radius" [4]
+AttributeEnd
+MakeNamedMaterial "glass" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_out" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_in_dry" "string type" "dielectric" "float eta" [1.5]
+AttributeBegin  # outer wall
+  NamedMaterial "wall_out"
+  Shape "plymesh" "string filename" ["mesh_erlenmeyer_outer.ply"]
+AttributeEnd
+AttributeBegin  # rim + outer bottom
+  NamedMaterial "glass"
+  Shape "disk" "float height" [18.5] "float radius" [2.1] "float innerradius" [1.88]
+  AttributeBegin
+    ReverseOrientation
+    Shape "disk" "float height" [0] "float radius" [6.5]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # inner bottom (glass|liquid)
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "disk" "float height" [0.45] "float radius" [6.12796]
+AttributeEnd
+AttributeBegin  # inner wall wetted by water
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "plymesh" "string filename" ["mesh_erlenmeyer_inner_0.450_7.309.ply"]
+AttributeEnd
+AttributeBegin  # inner wall wetted by water
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "plymesh" "string filename" ["mesh_erlenmeyer_inner_7.309_7.609.ply"]
+AttributeEnd
+AttributeBegin  # dry inner wall
+  NamedMaterial "wall_in_dry"
+  Shape "plymesh" "string filename" ["mesh_erlenmeyer_inner_7.609_18.500.ply"]
+AttributeEnd
+MakeNamedMedium "liq1" "string type" "homogeneous" "rgb sigma_a" [0.0035 0.0015 0.0003] "rgb sigma_s" [0 0 0] "float scale" [1]
+AttributeBegin  # free surface + meniscus
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate 0 0 7.309
+  Shape "plymesh" "string filename" ["mesh_A3_erlenmeyer_tele_grid_surface.ply"]
+AttributeEnd

@@ -1,0 +1,63 @@
+# test-set scene -> base_florence_normal_rg_checker_clean14_dz0.exr
+LookAt 0 -60 10  0 0 10  0 0 1
+Camera "perspective" "float fov" [24]
+Sampler "zsobol" "integer pixelsamples" [160]
+Integrator "volpath" "integer maxdepth" [48] "bool regularize" [true]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["base_florence_normal_rg_checker_clean14_dz0.exr"] "integer xresolution" [900] "integer yresolution" [1200] "bool savefp16" [false]
+
+WorldBegin
+AttributeBegin  # light panel (Lambertian light box)
+  AreaLightSource "diffuse" "string filename" ["../../outputs/testset/patterns/rg_checker.png"] "float scale" [0.8] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+  Shape "trianglemesh" "point3 P" [30 25 -30 -30 25 -30 -30 25 50 30 25 50] "point2 uv" [0 0 1 0 1 1 0 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+MakeNamedMaterial "glass" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_out" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_in_dry" "string type" "dielectric" "float eta" [1.5]
+AttributeBegin  # outer sphere + neck
+  NamedMaterial "wall_out"
+  AttributeBegin
+    Translate 0 0 6.3
+    Shape "sphere" "float radius" [6.3] "float zmax" [6.05207]
+  AttributeEnd
+  Shape "cylinder" "float radius" [1.75] "float zmin" [12.3521] "float zmax" [20]
+AttributeEnd
+AttributeBegin  # rim
+  NamedMaterial "glass"
+  Shape "disk" "float height" [20] "float radius" [1.75] "float innerradius" [1.53]
+AttributeEnd
+AttributeBegin  # inner piece
+  NamedMaterial "wall_in_dry"
+  AttributeBegin
+    ReverseOrientation
+    Translate 0 0 6.3
+    Shape "sphere" "float radius" [6.08] "float zmin" [-6.08] "float zmax" [5.88434]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # inner piece
+  NamedMaterial "wall_in_dry"
+  AttributeBegin
+    ReverseOrientation
+    Shape "cylinder" "float radius" [1.53] "float zmin" [12.1843] "float zmax" [20]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # cork ring
+  Material "coateddiffuse" "rgb reflectance" [0.30 0.20 0.12] "float roughness" [0.5]
+  Shape "cylinder" "float radius" [5.4] "float zmin" [-1.56724] "float zmax" [1.43276]
+  AttributeBegin
+    ReverseOrientation
+    Shape "cylinder" "float radius" [4] "float zmin" [-1.56724] "float zmax" [1.43276]
+  AttributeEnd
+  Shape "disk" "float height" [1.43276] "float radius" [5.4] "float innerradius" [4]
+  AttributeBegin
+    ReverseOrientation
+    Shape "disk" "float height" [-1.56724] "float radius" [5.4] "float innerradius" [4]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # matte black pedestal
+  Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]
+  Shape "cylinder" "float radius" [5.4] "float zmin" [-9.61724] "float zmax" [-1.61724]
+  Shape "disk" "float height" [-1.61724] "float radius" [5.4]
+AttributeEnd
+

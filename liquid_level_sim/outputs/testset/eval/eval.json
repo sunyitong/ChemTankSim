@@ -1,0 +1,677 @@
+{
+  "resolution": [
+    900,
+    1200
+  ],
+  "rows": [
+    {
+      "case": "A1_gourd_normal_checker",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "roi": {
+        "x0": 209,
+        "x1": 691,
+        "y0": 220,
+        "y1": 972
+      },
+      "roi_height_px": 752,
+      "gt": [
+        {
+          "row": 628.754383224901,
+          "pct": 45.644363932858916,
+          "kind": "free surface",
+          "liquid": "water"
+        }
+      ],
+      "step_raw": {
+        "row": 619.2845717418593,
+        "pct": 46.90364737475276,
+        "contrast": 0.5048884865659168
+      },
+      "step_adapt": {
+        "row": 616.3087404685903,
+        "pct": 47.29936961853853,
+        "contrast": 0.9635618414509152,
+        "thresh": 0.1044405847787857,
+        "shift": [
+          -1,
+          1
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          616.3087404685903,
+          768.0,
+          832.0
+        ],
+        "pcts": [
+          47.29936961853853,
+          27.127659574468083,
+          18.617021276595743
+        ],
+        "jumps": [
+          Infinity,
+          5.029838022165393,
+          3.1116794543904853
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": -9.469811483041667,
+        "step_adapt_vs_top": -12.44564275631069,
+        "cp_v2_vs_each_gt": [
+          -12.44564275631069
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": -1.2592834418938386,
+        "step_adapt_vs_top": -1.6550056856796131,
+        "cp_v2_vs_each_gt": [
+          -1.6550056856796131
+        ]
+      }
+    },
+    {
+      "case": "A2_gourd_wide_mosaic",
+      "vessel": "gourd",
+      "camera": "wide",
+      "pattern": "mosaic",
+      "roi": {
+        "x0": 223,
+        "x1": 677,
+        "y0": 238,
+        "y1": 963
+      },
+      "roi_height_px": 725,
+      "gt": [
+        {
+          "row": 501.00258423987543,
+          "pct": 63.72378148415512,
+          "kind": "free surface",
+          "liquid": "water"
+        }
+      ],
+      "step_raw": {
+        "row": 501.0846353597026,
+        "pct": 63.71246408831689,
+        "contrast": 0.6412306507307184
+      },
+      "step_adapt": {
+        "row": 496.6058389506865,
+        "pct": 64.33022911025013,
+        "contrast": 0.9662122914172973,
+        "thresh": 0.06611722707748413,
+        "shift": [
+          0,
+          1
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          496.6058389506865,
+          910.0,
+          788.0
+        ],
+        "pcts": [
+          64.33022911025013,
+          7.310344827586207,
+          24.137931034482758
+        ],
+        "jumps": [
+          Infinity,
+          7.7425260331761265,
+          3.7411433365735394
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": 0.08205111982715607,
+        "step_adapt_vs_top": -4.396745289188914,
+        "cp_v2_vs_each_gt": [
+          -4.396745289188914
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": 0.011317395838228423,
+        "step_adapt_vs_top": -0.6064476260950226,
+        "cp_v2_vs_each_gt": [
+          -0.6064476260950226
+        ]
+      }
+    },
+    {
+      "case": "A3_erlenmeyer_tele_grid",
+      "vessel": "erlenmeyer",
+      "camera": "tele",
+      "pattern": "grid",
+      "roi": {
+        "x0": 233,
+        "x1": 667,
+        "y0": 267,
+        "y1": 928
+      },
+      "roi_height_px": 661,
+      "gt": [
+        {
+          "row": 671.9772190453189,
+          "pct": 38.73264462249336,
+          "kind": "free surface",
+          "liquid": "water"
+        }
+      ],
+      "step_raw": {
+        "row": 655.0949449893185,
+        "pct": 41.286695160466195,
+        "contrast": 0.40826734846135676
+      },
+      "step_adapt": {
+        "row": 656.6141085017438,
+        "pct": 41.05686709504633,
+        "contrast": 0.674314097676916,
+        "thresh": 0.034212637692689896,
+        "shift": [
+          0,
+          -1
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          656.6141085017438
+        ],
+        "pcts": [
+          41.05686709504633
+        ],
+        "jumps": [
+          Infinity
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": -16.88227405600037,
+        "step_adapt_vs_top": -15.36311054357509,
+        "cp_v2_vs_each_gt": [
+          -15.36311054357509
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": -2.554050537972824,
+        "step_adapt_vs_top": -2.3242224725529637,
+        "cp_v2_vs_each_gt": [
+          -2.3242224725529637
+        ]
+      }
+    },
+    {
+      "case": "A4_florence_normal_checker",
+      "vessel": "florence",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "roi": {
+        "x0": 243,
+        "x1": 657,
+        "y0": 242,
+        "y1": 942
+      },
+      "roi_height_px": 700,
+      "gt": [
+        {
+          "row": 562.2912329277784,
+          "pct": 54.24410958174594,
+          "kind": "free surface",
+          "liquid": "water"
+        }
+      ],
+      "step_raw": {
+        "row": 548.1200137246499,
+        "pct": 56.268569467907156,
+        "contrast": 0.5297782874145035
+      },
+      "step_adapt": {
+        "row": 549.878791769986,
+        "pct": 56.01731546143056,
+        "contrast": 0.9699948717117942,
+        "thresh": 0.12481258809566498,
+        "shift": [
+          -1,
+          1
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          549.878791769986,
+          842.0,
+          706.0
+        ],
+        "pcts": [
+          56.01731546143056,
+          14.285714285714285,
+          33.714285714285715
+        ],
+        "jumps": [
+          Infinity,
+          4.960317460317478,
+          1.8518518518518878
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": -14.171219203128544,
+        "step_adapt_vs_top": -12.412441157792387,
+        "cp_v2_vs_each_gt": [
+          -12.412441157792387
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": -2.0244598861612206,
+        "step_adapt_vs_top": -1.7732058796846268,
+        "cp_v2_vs_each_gt": [
+          -1.7732058796846268
+        ]
+      }
+    },
+    {
+      "case": "A5_reagent_wide_checker",
+      "vessel": "reagent",
+      "camera": "wide",
+      "pattern": "rg_checker",
+      "roi": {
+        "x0": 300,
+        "x1": 600,
+        "y0": 277,
+        "y1": 925
+      },
+      "roi_height_px": 648,
+      "gt": [
+        {
+          "row": 588.5882265979782,
+          "pct": 51.915397129941645,
+          "kind": "free surface",
+          "liquid": "water"
+        }
+      ],
+      "step_raw": {
+        "row": 574.1082897507195,
+        "pct": 54.1499552853828,
+        "contrast": 0.4570029132941961
+      },
+      "step_adapt": {
+        "row": 574.81300235856,
+        "pct": 54.0412033397284,
+        "contrast": 0.9718983648942999,
+        "thresh": 0.048980049788951874,
+        "shift": [
+          0,
+          -1
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          574.81300235856
+        ],
+        "pcts": [
+          54.0412033397284
+        ],
+        "jumps": [
+          Infinity
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": -14.479936847258728,
+        "step_adapt_vs_top": -13.775224239418208,
+        "cp_v2_vs_each_gt": [
+          -13.775224239418208
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": -2.2345581554411615,
+        "step_adapt_vs_top": -2.1258062097867603,
+        "cp_v2_vs_each_gt": [
+          -2.1258062097867603
+        ]
+      }
+    },
+    {
+      "case": "A6_erlenmeyer_normal_mosaic_tea",
+      "vessel": "erlenmeyer",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "roi": {
+        "x0": 236,
+        "x1": 664,
+        "y0": 340,
+        "y1": 1020
+      },
+      "roi_height_px": 680,
+      "gt": [
+        {
+          "row": 721.1436457597865,
+          "pct": 43.94946385885493,
+          "kind": "free surface",
+          "liquid": "tea"
+        }
+      ],
+      "step_raw": {
+        "row": 700.0976330427139,
+        "pct": 47.04446572901266,
+        "contrast": 0.6102124133193725
+      },
+      "step_adapt": {
+        "row": 699.7722778329577,
+        "pct": 47.09231208338858,
+        "contrast": 0.9483326213734462,
+        "thresh": 0.1891898214817047,
+        "shift": [
+          1,
+          -1
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          699.7722778329577
+        ],
+        "pcts": [
+          47.09231208338858
+        ],
+        "jumps": [
+          Infinity
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": -21.046012717072585,
+        "step_adapt_vs_top": -21.37136792682884,
+        "cp_v2_vs_each_gt": [
+          -21.37136792682884
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": -3.095001870157733,
+        "step_adapt_vs_top": -3.142848224533653,
+        "cp_v2_vs_each_gt": [
+          -3.142848224533653
+        ]
+      }
+    },
+    {
+      "case": "B1_cyl_water_oil_checker",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "roi": {
+        "x0": 194,
+        "x1": 706,
+        "y0": 191,
+        "y1": 989
+      },
+      "roi_height_px": 798,
+      "gt": [
+        {
+          "row": 670.5694516421769,
+          "pct": 39.90357748844901,
+          "kind": "liquid-liquid interface",
+          "liquid": "water"
+        },
+        {
+          "row": 468.942446950243,
+          "pct": 65.1701194297941,
+          "kind": "free surface",
+          "liquid": "sunflower_oil"
+        }
+      ],
+      "step_raw": {
+        "row": 460.63495928150115,
+        "pct": 66.21115798477429,
+        "contrast": 0.7144388045190518
+      },
+      "step_adapt": {
+        "row": 460.3196264546837,
+        "pct": 66.25067337660606,
+        "contrast": 0.945797274609954,
+        "thresh": 0.04834028333425522,
+        "shift": [
+          0,
+          0
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          460.3196264546837,
+          667.0
+        ],
+        "pcts": [
+          66.25067337660606,
+          40.35087719298245
+        ],
+        "jumps": [
+          Infinity,
+          5.092592592592578
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": -8.307487668741828,
+        "step_adapt_vs_top": -8.622820495559267,
+        "cp_v2_vs_each_gt": [
+          -3.5694516421768867,
+          -8.622820495559267
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": -1.041038554980179,
+        "step_adapt_vs_top": -1.0805539468119383,
+        "cp_v2_vs_each_gt": [
+          -0.4472997045334445,
+          -1.0805539468119383
+        ]
+      }
+    },
+    {
+      "case": "B2_cyl_water_hexane_checker",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "roi": {
+        "x0": 194,
+        "x1": 706,
+        "y0": 191,
+        "y1": 989
+      },
+      "roi_height_px": 798,
+      "gt": [
+        {
+          "row": 670.5694516421769,
+          "pct": 39.90357748844901,
+          "kind": "liquid-liquid interface",
+          "liquid": "water"
+        },
+        {
+          "row": 468.942446950243,
+          "pct": 65.1701194297941,
+          "kind": "free surface",
+          "liquid": "hexane"
+        }
+      ],
+      "step_raw": {
+        "row": 464.70838084681736,
+        "pct": 65.70070415453417,
+        "contrast": 0.6719767174149325
+      },
+      "step_adapt": {
+        "row": 463.8484733464197,
+        "pct": 65.80846198666418,
+        "contrast": 0.9821554526965479,
+        "thresh": 0.0823366567492485,
+        "shift": [
+          1,
+          0
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          463.8484733464197,
+          665.0
+        ],
+        "pcts": [
+          65.80846198666418,
+          40.6015037593985
+        ],
+        "jumps": [
+          Infinity,
+          1.1904761904761516
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": -4.234066103425619,
+        "step_adapt_vs_top": -5.093973603823258,
+        "cp_v2_vs_each_gt": [
+          -5.569451642176887,
+          -5.093973603823258
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": -0.5305847247400525,
+        "step_adapt_vs_top": -0.6383425568700825,
+        "cp_v2_vs_each_gt": [
+          -0.6979262709494846,
+          -0.6383425568700825
+        ]
+      }
+    },
+    {
+      "case": "B3_cyl_dcm_water_checker",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "roi": {
+        "x0": 194,
+        "x1": 706,
+        "y0": 191,
+        "y1": 989
+      },
+      "roi_height_px": 798,
+      "gt": [
+        {
+          "row": 751.2202535189504,
+          "pct": 29.79696071191098,
+          "kind": "liquid-liquid interface",
+          "liquid": "dcm"
+        },
+        {
+          "row": 509.26784788862983,
+          "pct": 60.11681104152509,
+          "kind": "free surface",
+          "liquid": "water"
+        }
+      ],
+      "step_raw": {
+        "row": 499.74440157906025,
+        "pct": 61.31022536603255,
+        "contrast": 0.5430251164225042
+      },
+      "step_adapt": {
+        "row": 499.0126175098739,
+        "pct": 61.40192763034161,
+        "contrast": 0.9793934358284111,
+        "thresh": 0.07607903331518173,
+        "shift": [
+          1,
+          1
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          499.0126175098739,
+          739.0
+        ],
+        "pcts": [
+          61.40192763034161,
+          31.32832080200501
+        ],
+        "jumps": [
+          Infinity,
+          2.7447089947089283
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": -9.523446309569579,
+        "step_adapt_vs_top": -10.255230378755925,
+        "cp_v2_vs_each_gt": [
+          -12.220253518950358,
+          -10.255230378755925
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": -1.193414324507466,
+        "step_adapt_vs_top": -1.2851165888165321,
+        "cp_v2_vs_each_gt": [
+          -1.5313600900940298,
+          -1.2851165888165321
+        ]
+      }
+    },
+    {
+      "case": "B4_cyl_water_hexane_white",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "white",
+      "roi": {
+        "x0": 194,
+        "x1": 706,
+        "y0": 191,
+        "y1": 989
+      },
+      "roi_height_px": 798,
+      "gt": [
+        {
+          "row": 670.5694516421769,
+          "pct": 39.90357748844901,
+          "kind": "liquid-liquid interface",
+          "liquid": "water"
+        },
+        {
+          "row": 468.942446950243,
+          "pct": 65.1701194297941,
+          "kind": "free surface",
+          "liquid": "hexane"
+        }
+      ],
+      "step_raw": {
+        "row": 946.0,
+        "pct": 5.3884711779448615,
+        "contrast": 0.6708519204306963
+      },
+      "step_adapt": {
+        "row": 965.0,
+        "pct": 3.007518796992481,
+        "contrast": 0.8912581232166691,
+        "thresh": 0.21399015188217163,
+        "shift": [
+          -2,
+          3
+        ]
+      },
+      "cp_v2": {
+        "rows": [
+          965.0
+        ],
+        "pcts": [
+          3.007518796992481
+        ],
+        "jumps": [
+          Infinity
+        ]
+      },
+      "err_px": {
+        "step_raw_vs_top": 477.057553049757,
+        "step_adapt_vs_top": 496.057553049757,
+        "cp_v2_vs_each_gt": [
+          294.4305483578231,
+          496.057553049757
+        ]
+      },
+      "err_pct": {
+        "step_raw_vs_top": 59.78164825184925,
+        "step_adapt_vs_top": 62.162600632801635,
+        "cp_v2_vs_each_gt": [
+          36.89605869145653,
+          62.162600632801635
+        ]
+      }
+    }
+  ]
+}

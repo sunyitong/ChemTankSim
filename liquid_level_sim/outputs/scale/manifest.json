@@ -1,0 +1,1574 @@
+{
+  "resolution": [
+    900,
+    1200
+  ],
+  "spp": 192,
+  "jobs": [
+    {
+      "name": "S1_cyl_vase_line60_water45_baseline",
+      "role": "baseline",
+      "combo": "S1_cyl_vase_line60_water45",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "vase",
+      "deposit_line_fill": 0.6,
+      "layers": [],
+      "note": "long-standing line at 60 %, film below; now filled to 45 %: film below 45 % is submerged",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S1_cyl_vase_line60_water45_baseline.png"
+    },
+    {
+      "name": "S1_cyl_vase_line60_water45_compare",
+      "role": "compare",
+      "combo": "S1_cyl_vase_line60_water45",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "vase",
+      "deposit_line_fill": 0.6,
+      "layers": [
+        [
+          "water",
+          0.45
+        ]
+      ],
+      "note": "long-standing line at 60 %, film below; now filled to 45 %: film below 45 % is submerged",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 9.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.45,
+            "top_row_front": 630.2440507037901,
+            "top_row_back": 623.5231505473922,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "post": {
+        "gain": 0.9914586041649325,
+        "shift_px": [
+          -0.9326371855988165,
+          2.410507218997708
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S1_cyl_vase_line60_water45_compare.png"
+    },
+    {
+      "name": "S2_cyl_tide_water30_mosaic_baseline",
+      "role": "baseline",
+      "combo": "S2_cyl_tide_water30_mosaic",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "deposit": "tide",
+      "deposit_line_fill": 0.6,
+      "layers": [],
+      "note": "level fell 60 -> 45 % in steps (tide marks), splashes and pour streaks; now 30 %",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S2_cyl_tide_water30_mosaic_baseline.png"
+    },
+    {
+      "name": "S2_cyl_tide_water30_mosaic_compare",
+      "role": "compare",
+      "combo": "S2_cyl_tide_water30_mosaic",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "deposit": "tide",
+      "deposit_line_fill": 0.6,
+      "layers": [
+        [
+          "water",
+          0.3
+        ]
+      ],
+      "note": "level fell 60 -> 45 % in steps (tide marks), splashes and pour streaks; now 30 %",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 6.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.3,
+            "top_row_front": 751.2202535189504,
+            "top_row_back": 717.6157527369613,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "post": {
+        "gain": 0.9897890234261203,
+        "shift_px": [
+          0.7313282742425642,
+          -1.1340853633879666
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S2_cyl_tide_water30_mosaic_compare.png"
+    },
+    {
+      "name": "S3_gourd_vase_line60_water40_baseline",
+      "role": "baseline",
+      "combo": "S3_gourd_vase_line60_water40",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "vase",
+      "deposit_line_fill": 0.6,
+      "layers": [],
+      "note": "same deposit history on the gourd flask",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [],
+        "rim_row_front": 216.14663147881694,
+        "bottom_row_front": 975.512372086679
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S3_gourd_vase_line60_water40_baseline.png"
+    },
+    {
+      "name": "S3_gourd_vase_line60_water40_compare",
+      "role": "compare",
+      "combo": "S3_gourd_vase_line60_water40",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "vase",
+      "deposit_line_fill": 0.6,
+      "layers": [
+        [
+          "water",
+          0.4
+        ]
+      ],
+      "note": "same deposit history on the gourd flask",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 8.700000000000001,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.4000000000000001,
+            "top_row_front": 667.6008151985255,
+            "top_row_back": 659.8904963332694,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 216.14663147881694,
+        "bottom_row_front": 975.512372086679
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "post": {
+        "gain": 0.9746355681408396,
+        "shift_px": [
+          2.3308990871571273,
+          2.1343727069700718
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S3_gourd_vase_line60_water40_compare.png"
+    },
+    {
+      "name": "S4_cyl_vase_macro_checker_baseline",
+      "role": "baseline",
+      "combo": "S4_cyl_vase_macro_checker",
+      "vessel": "cylinder",
+      "camera": "macro",
+      "pattern": "rg_checker",
+      "deposit": "vase",
+      "deposit_line_fill": 0.6,
+      "layers": [],
+      "note": "macro view of the water-line ring, checker panel",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -110.0,
+            12.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            12.5
+          ],
+          "fov_short_axis_deg": 5.5
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": -131.19784758186768,
+        "bottom_row_front": 1696.7967713728015
+      },
+      "jitter": false,
+      "cam_dz": 2.25,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S4_cyl_vase_macro_checker_baseline.png"
+    },
+    {
+      "name": "S4_cyl_vase_macro_checker_compare",
+      "role": "compare",
+      "combo": "S4_cyl_vase_macro_checker",
+      "vessel": "cylinder",
+      "camera": "macro",
+      "pattern": "rg_checker",
+      "deposit": "vase",
+      "deposit_line_fill": 0.6,
+      "layers": [
+        [
+          "water",
+          0.45
+        ]
+      ],
+      "note": "macro view of the water-line ring, checker panel",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -110.0,
+            12.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            12.5
+          ],
+          "fov_short_axis_deg": 5.5
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 9.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.45,
+            "top_row_front": 874.1991928432004,
+            "top_row_back": 839.195040565345,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": -131.19784758186768,
+        "bottom_row_front": 1696.7967713728015
+      },
+      "jitter": true,
+      "cam_dz": 2.25,
+      "post": {
+        "gain": 1.029652708450493,
+        "shift_px": [
+          -1.4234894695352918,
+          -1.900274610569333
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S4_cyl_vase_macro_checker_compare.png"
+    },
+    {
+      "name": "S5_cyl_vase_macro_white_baseline",
+      "role": "baseline",
+      "combo": "S5_cyl_vase_macro_white",
+      "vessel": "cylinder",
+      "camera": "macro",
+      "pattern": "white",
+      "deposit": "vase",
+      "deposit_line_fill": 0.6,
+      "layers": [],
+      "note": "macro view of the water-line ring, white panel",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -110.0,
+            12.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            12.5
+          ],
+          "fov_short_axis_deg": 5.5
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": -131.19784758186768,
+        "bottom_row_front": 1696.7967713728015
+      },
+      "jitter": false,
+      "cam_dz": 2.25,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S5_cyl_vase_macro_white_baseline.png"
+    },
+    {
+      "name": "S5_cyl_vase_macro_white_compare",
+      "role": "compare",
+      "combo": "S5_cyl_vase_macro_white",
+      "vessel": "cylinder",
+      "camera": "macro",
+      "pattern": "white",
+      "deposit": "vase",
+      "deposit_line_fill": 0.6,
+      "layers": [
+        [
+          "water",
+          0.45
+        ]
+      ],
+      "note": "macro view of the water-line ring, white panel",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -110.0,
+            12.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            12.5
+          ],
+          "fov_short_axis_deg": 5.5
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 9.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.45,
+            "top_row_front": 874.1991928432004,
+            "top_row_back": 839.195040565345,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": -131.19784758186768,
+        "bottom_row_front": 1696.7967713728015
+      },
+      "jitter": true,
+      "cam_dz": 2.25,
+      "post": {
+        "gain": 0.9877342934556559,
+        "shift_px": [
+          0.01511612084287739,
+          -2.3869256681666027
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "S5_cyl_vase_macro_white_compare.png"
+    },
+    {
+      "name": "V1_cyl_line30_water55_baseline",
+      "role": "baseline",
+      "combo": "V1_cyl_line30_water55",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "line30",
+      "deposit_line_fill": 0.3,
+      "layers": [],
+      "note": "old line at 30 %, now filled above it: the ring and film are submerged (wet, index-matched)",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 25.0,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V1_cyl_line30_water55_baseline.png"
+    },
+    {
+      "name": "V1_cyl_line30_water55_compare",
+      "role": "compare",
+      "combo": "V1_cyl_line30_water55",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "line30",
+      "deposit_line_fill": 0.3,
+      "layers": [
+        [
+          "water",
+          0.55
+        ]
+      ],
+      "note": "old line at 30 %, now filled above it: the ring and film are submerged (wet, index-matched)",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 11.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.55,
+            "top_row_front": 549.5932488270166,
+            "top_row_back": 560.7947490876795,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 27.2,
+      "post": {
+        "gain": 1.0180614470233853,
+        "shift_px": [
+          -0.11584299560765343,
+          -1.4320042896791745
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V1_cyl_line30_water55_compare.png"
+    },
+    {
+      "name": "V2_cyl_line50thin_water35_grid_baseline",
+      "role": "baseline",
+      "combo": "V2_cyl_line50thin_water35_grid",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "grid",
+      "deposit": "line50_thin",
+      "deposit_line_fill": 0.5,
+      "layers": [],
+      "note": "a single thin ring at 50 %, no film",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 24.1,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V2_cyl_line50thin_water35_grid_baseline.png"
+    },
+    {
+      "name": "V2_cyl_line50thin_water35_grid_compare",
+      "role": "compare",
+      "combo": "V2_cyl_line50thin_water35_grid",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "grid",
+      "deposit": "line50_thin",
+      "deposit_line_fill": 0.5,
+      "layers": [
+        [
+          "water",
+          0.35
+        ]
+      ],
+      "note": "a single thin ring at 50 %, no film",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 7.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.35,
+            "top_row_front": 710.8948525805636,
+            "top_row_back": 686.251552007105,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 25.4,
+      "post": {
+        "gain": 1.0429673182031782,
+        "shift_px": [
+          -0.029113811656569677,
+          1.9880455337395624
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V2_cyl_line50thin_water35_grid_compare.png"
+    },
+    {
+      "name": "V3_erl_line75heavy_water40_mosaic_baseline",
+      "role": "baseline",
+      "combo": "V3_erl_line75heavy_water40_mosaic",
+      "vessel": "erlenmeyer",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "deposit": "line75_heavy",
+      "deposit_line_fill": 0.75,
+      "layers": [],
+      "note": "heavy iron-tinted ring at 75 % on the Erlenmeyer cone, film below",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [],
+        "rim_row_front": 263.0587950670325,
+        "bottom_row_front": 945.8236817862004
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 19.7,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V3_erl_line75heavy_water40_mosaic_baseline.png"
+    },
+    {
+      "name": "V3_erl_line75heavy_water40_mosaic_compare",
+      "role": "compare",
+      "combo": "V3_erl_line75heavy_water40_mosaic",
+      "vessel": "erlenmeyer",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "deposit": "line75_heavy",
+      "deposit_line_fill": 0.75,
+      "layers": [
+        [
+          "water",
+          0.4
+        ]
+      ],
+      "note": "heavy iron-tinted ring at 75 % on the Erlenmeyer cone, film below",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 7.670000000000001,
+            "z_bottom_cm": 0.45,
+            "fill_of_inner_height": 0.4,
+            "top_row_front": 659.5817892212314,
+            "top_row_back": 652.3810501933306,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 263.0587950670325,
+        "bottom_row_front": 945.8236817862004
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 20.8,
+      "post": {
+        "gain": 0.9577967075029835,
+        "shift_px": [
+          1.6344429367866526,
+          -0.9753935742230768
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V3_erl_line75heavy_water40_mosaic_compare.png"
+    },
+    {
+      "name": "V4_reagent_line92full_water60_baseline",
+      "role": "baseline",
+      "combo": "V4_reagent_line92full_water60",
+      "vessel": "reagent",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "line92_full",
+      "deposit_line_fill": 0.92,
+      "layers": [],
+      "note": "bottle kept nearly full: film on the whole wall, ring at 92 %",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Wide-mouth reagent bottle",
+        "inner_height_cm": 17.9,
+        "layers": [],
+        "rim_row_front": 259.3071880531652,
+        "bottom_row_front": 931.2730228137642
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 19.7,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V4_reagent_line92full_water60_baseline.png"
+    },
+    {
+      "name": "V4_reagent_line92full_water60_compare",
+      "role": "compare",
+      "combo": "V4_reagent_line92full_water60",
+      "vessel": "reagent",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "line92_full",
+      "deposit_line_fill": 0.92,
+      "layers": [
+        [
+          "water",
+          0.6
+        ]
+      ],
+      "note": "bottle kept nearly full: film on the whole wall, ring at 92 %",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Wide-mouth reagent bottle",
+        "inner_height_cm": 17.9,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 11.339999999999998,
+            "z_bottom_cm": 0.6,
+            "fill_of_inner_height": 0.6,
+            "top_row_front": 519.958310094709,
+            "top_row_back": 531.6331177693992,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 259.3071880531652,
+        "bottom_row_front": 931.2730228137642
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 20.2,
+      "post": {
+        "gain": 0.9562330398253612,
+        "shift_px": [
+          -0.40066352902656854,
+          -1.7042889505154752
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V4_reagent_line92full_water60_compare.png"
+    },
+    {
+      "name": "V5_cyl_band4060_water50_baseline",
+      "role": "baseline",
+      "combo": "V5_cyl_band4060_water50",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "band4060",
+      "deposit_line_fill": 0.6,
+      "layers": [],
+      "note": "level fluctuated 40-60 %: dense tide-mark band; current level inside the band",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 26.4,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V5_cyl_band4060_water50_baseline.png"
+    },
+    {
+      "name": "V5_cyl_band4060_water50_compare",
+      "role": "compare",
+      "combo": "V5_cyl_band4060_water50",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "band4060",
+      "deposit_line_fill": 0.6,
+      "layers": [
+        [
+          "water",
+          0.5
+        ]
+      ],
+      "note": "level fluctuated 40-60 %: dense tide-mark band; current level inside the band",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 10.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.5,
+            "top_row_front": 589.9186497654033,
+            "top_row_back": 592.1589498175359,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 27.1,
+      "post": {
+        "gain": 1.009678221016233,
+        "shift_px": [
+          1.2444192392242401,
+          -0.9966310232548459
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V5_cyl_band4060_water50_compare.png"
+    },
+    {
+      "name": "V6_gourd_tilted_water45_mosaic_baseline",
+      "role": "baseline",
+      "combo": "V6_gourd_tilted_water45_mosaic",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "deposit": "tilted",
+      "deposit_line_fill": 0.55,
+      "layers": [],
+      "note": "gourd stored tilted while drying: inclined line and film boundary",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [],
+        "rim_row_front": 216.14663147881694,
+        "bottom_row_front": 975.512372086679
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 25.1,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V6_gourd_tilted_water45_mosaic_baseline.png"
+    },
+    {
+      "name": "V6_gourd_tilted_water45_mosaic_compare",
+      "role": "compare",
+      "combo": "V6_gourd_tilted_water45_mosaic",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "deposit": "tilted",
+      "deposit_line_fill": 0.55,
+      "layers": [
+        [
+          "water",
+          0.45
+        ]
+      ],
+      "note": "gourd stored tilted while drying: inclined line and film boundary",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 9.725,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.44999999999999996,
+            "top_row_front": 628.754383224901,
+            "top_row_back": 626.0685260042958,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 216.14663147881694,
+        "bottom_row_front": 975.512372086679
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 23.6,
+      "post": {
+        "gain": 0.952269256039669,
+        "shift_px": [
+          -0.8733355534661529,
+          0.28925980495046755
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V6_gourd_tilted_water45_mosaic_compare.png"
+    },
+    {
+      "name": "V7_cyl_splash_water30_wide_baseline",
+      "role": "baseline",
+      "combo": "V7_cyl_splash_water30_wide",
+      "vessel": "cylinder",
+      "camera": "wide",
+      "pattern": "rg_checker",
+      "deposit": "splash",
+      "deposit_line_fill": 0.45,
+      "layers": [],
+      "note": "splash/pour dominated: many droplet rings and streaks, faint line at 45 %",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -34.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 44.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 169.19478824971068,
+        "bottom_row_front": 1009.7903233722263
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 24.9,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V7_cyl_splash_water30_wide_baseline.png"
+    },
+    {
+      "name": "V7_cyl_splash_water30_wide_compare",
+      "role": "compare",
+      "combo": "V7_cyl_splash_water30_wide",
+      "vessel": "cylinder",
+      "camera": "wide",
+      "pattern": "rg_checker",
+      "deposit": "splash",
+      "deposit_line_fill": 0.45,
+      "layers": [
+        [
+          "water",
+          0.3
+        ]
+      ],
+      "note": "splash/pour dominated: many droplet rings and streaks, faint line at 45 %",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -34.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 44.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 6.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.3,
+            "top_row_front": 757.6116628354717,
+            "top_row_back": 700.6435919310843,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 169.19478824971068,
+        "bottom_row_front": 1009.7903233722263
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 26.7,
+      "post": {
+        "gain": 0.9898435818938124,
+        "shift_px": [
+          0.26407728365181304,
+          1.2591052164755872
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V7_cyl_splash_water30_wide_compare.png"
+    },
+    {
+      "name": "V8_cyl_sector_water50_baseline",
+      "role": "baseline",
+      "combo": "V8_cyl_sector_water50",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "sector",
+      "deposit_line_fill": 0.5,
+      "layers": [],
+      "note": "deposit only on one third of the circumference, current level at the old line",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 24.9,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V8_cyl_sector_water50_baseline.png"
+    },
+    {
+      "name": "V8_cyl_sector_water50_compare",
+      "role": "compare",
+      "combo": "V8_cyl_sector_water50",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "deposit": "sector",
+      "deposit_line_fill": 0.5,
+      "layers": [
+        [
+          "water",
+          0.5
+        ]
+      ],
+      "note": "deposit only on one third of the circumference, current level at the old line",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 10.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.5,
+            "top_row_front": 589.9186497654033,
+            "top_row_back": 592.1589498175359,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 28.1,
+      "post": {
+        "gain": 0.9856638643872995,
+        "shift_px": [
+          -2.2229038480556884,
+          1.2408619501440707
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V8_cyl_sector_water50_compare.png"
+    },
+    {
+      "name": "V9_erl_dripsonly_water45_tele_baseline",
+      "role": "baseline",
+      "combo": "V9_erl_dripsonly_water45_tele",
+      "vessel": "erlenmeyer",
+      "camera": "tele",
+      "pattern": "rg_checker",
+      "deposit": "drips_only",
+      "deposit_line_fill": 0.05,
+      "layers": [],
+      "note": "no water line: pour streaks from the rim and scattered droplets",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -130.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 11.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [],
+        "rim_row_front": 262.5880787849275,
+        "bottom_row_front": 932.0044518381827
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 18.1,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V9_erl_dripsonly_water45_tele_baseline.png"
+    },
+    {
+      "name": "V9_erl_dripsonly_water45_tele_compare",
+      "role": "compare",
+      "combo": "V9_erl_dripsonly_water45_tele",
+      "vessel": "erlenmeyer",
+      "camera": "tele",
+      "pattern": "rg_checker",
+      "deposit": "drips_only",
+      "deposit_line_fill": 0.05,
+      "layers": [
+        [
+          "water",
+          0.45
+        ]
+      ],
+      "note": "no water line: pour streaks from the rim and scattered droplets",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -130.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 11.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 8.5725,
+            "z_bottom_cm": 0.45,
+            "fill_of_inner_height": 0.45,
+            "top_row_front": 625.0445113575388,
+            "top_row_back": 623.703864926058,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 262.5880787849275,
+        "bottom_row_front": 932.0044518381827
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 20.4,
+      "post": {
+        "gain": 1.044147256265119,
+        "shift_px": [
+          0.8915868259484099,
+          -1.944573890726401
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V9_erl_dripsonly_water45_tele_compare.png"
+    },
+    {
+      "name": "V10_cyl_line50thin_water50_white_baseline",
+      "role": "baseline",
+      "combo": "V10_cyl_line50thin_water50_white",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "white",
+      "deposit": "line50_thin",
+      "deposit_line_fill": 0.5,
+      "layers": [],
+      "note": "thin old ring exactly at the current level, white panel (hardest case)",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "cam_dz": 0.0,
+      "render_seconds": 22.3,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V10_cyl_line50thin_water50_white_baseline.png"
+    },
+    {
+      "name": "V10_cyl_line50thin_water50_white_compare",
+      "role": "compare",
+      "combo": "V10_cyl_line50thin_water50_white",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "white",
+      "deposit": "line50_thin",
+      "deposit_line_fill": 0.5,
+      "layers": [
+        [
+          "water",
+          0.5
+        ]
+      ],
+      "note": "thin old ring exactly at the current level, white panel (hardest case)",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 10.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.5,
+            "top_row_front": 589.9186497654033,
+            "top_row_back": 592.1589498175359,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "cam_dz": 0.0,
+      "render_seconds": 25.0,
+      "post": {
+        "gain": 0.9671954087051857,
+        "shift_px": [
+          2.010746746353157,
+          -0.5447580532642193
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "V10_cyl_line50thin_water50_white_compare.png"
+    }
+  ]
+}

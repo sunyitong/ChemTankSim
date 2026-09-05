@@ -1,0 +1,48 @@
+# liquid-level study sample s009 pass=liquid
+LookAt 15.5962 -31.7981 11.7362  0.211442 0.41451 4.62559  0 0 1
+Camera "perspective" "float fov" [24.5069]
+Sampler "independent" "integer pixelsamples" [16]
+Integrator "path" "integer maxdepth" [0]
+PixelFilter "box"
+Film "rgb" "string filename" ["s009_liquid.png"] "integer xresolution" [640] "integer yresolution" [480]
+
+WorldBegin
+AttributeBegin  # table
+  Material "interface"
+  Shape "trianglemesh" "point3 P" [-60 -60 0 60 -60 0 60 60 0 -60 60 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # backdrop wall
+  Material "interface"
+  Shape "trianglemesh" "point3 P" [-60 25 0 -60 25 60 60 25 60 60 25 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # container
+  Material "interface"
+Shape "trianglemesh" "point3 P" [3.93283 -3.28224 0 3.93283 3.28224 0 3.93283 3.28224 9.74281 3.93283 -3.28224 9.74281] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.93283 -3.28224 0 -3.93283 -3.28224 9.74281 -3.93283 3.28224 9.74281 -3.93283 3.28224 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.93283 3.28224 0 -3.93283 3.28224 9.74281 3.93283 3.28224 9.74281 3.93283 3.28224 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.93283 -3.28224 0 3.93283 -3.28224 0 3.93283 -3.28224 9.74281 -3.93283 -3.28224 9.74281] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.93283 -3.28224 0 -3.93283 3.28224 0 3.93283 3.28224 0 3.93283 -3.28224 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [3.62424 -2.97366 0.308587 3.62424 -2.97366 9.74381 3.62424 2.97366 9.74381 3.62424 2.97366 0.308587] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.62424 -2.97366 0.308587 -3.62424 2.97366 0.308587 -3.62424 2.97366 9.74381 -3.62424 -2.97366 9.74381] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.62424 2.97366 0.308587 3.62424 2.97366 0.308587 3.62424 2.97366 9.74381 -3.62424 2.97366 9.74381] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.62424 -2.97366 0.308587 -3.62424 -2.97366 9.74381 3.62424 -2.97366 9.74381 3.62424 -2.97366 0.308587] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.62424 -2.97366 0.308587 3.62424 -2.97366 0.308587 3.62424 2.97366 0.308587 -3.62424 2.97366 0.308587] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.93283 -3.28224 9.74281 3.93283 -3.28224 9.74281 3.62424 -2.97366 9.74281 -3.62424 -2.97366 9.74281] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [3.62424 -2.97366 9.74281 3.93283 -3.28224 9.74281 3.93283 3.28224 9.74281 3.62424 2.97366 9.74281] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.62424 2.97366 9.74281 3.62424 2.97366 9.74281 3.93283 3.28224 9.74281 -3.93283 3.28224 9.74281] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.93283 -3.28224 9.74281 -3.62424 -2.97366 9.74281 -3.62424 2.97366 9.74281 -3.93283 3.28224 9.74281] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # liquid side + bottom
+  AreaLightSource "diffuse" "rgb L" [1 1 1] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+Shape "trianglemesh" "point3 P" [3.60424 -2.95366 0.328587 3.60424 2.95366 0.328587 3.60424 2.95366 2.42597 3.60424 -2.95366 2.42597] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.60424 -2.95366 0.328587 -3.60424 -2.95366 2.42597 -3.60424 2.95366 2.42597 -3.60424 2.95366 0.328587] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.60424 2.95366 0.328587 -3.60424 2.95366 2.42597 3.60424 2.95366 2.42597 3.60424 2.95366 0.328587] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.60424 -2.95366 0.328587 3.60424 -2.95366 0.328587 3.60424 -2.95366 2.42597 -3.60424 -2.95366 2.42597] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.60424 -2.95366 0.328587 -3.60424 2.95366 0.328587 3.60424 2.95366 0.328587 3.60424 -2.95366 0.328587] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # liquid free surface
+  AreaLightSource "diffuse" "rgb L" [1 1 1] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+Shape "trianglemesh" "point3 P" [-3.60424 -2.95366 2.42597 3.60424 -2.95366 2.42597 3.60424 2.95366 2.42597 -3.60424 2.95366 2.42597] "integer indices" [0 1 2 0 2 3]
+AttributeEnd

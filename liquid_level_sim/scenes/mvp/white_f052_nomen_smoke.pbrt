@@ -1,0 +1,48 @@
+# MVP liquid-level scene  ->  white_f052_nomen_smoke.exr
+LookAt 0 -60 10.25  0 0 10.25  0 0 1
+Camera "perspective" "float fov" [24]
+Sampler "zsobol" "integer pixelsamples" [64]
+Integrator "volpath" "integer maxdepth" [64]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["white_f052_nomen_smoke.exr"] "integer xresolution" [270] "integer yresolution" [360] "bool savefp16" [false]
+
+WorldBegin
+AttributeBegin  # light panel (Lambertian light box)
+  AreaLightSource "diffuse" "rgb L" [1 1 1] "float scale" [0.8] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+  Shape "trianglemesh" "point3 P" [25 25 -19.75 -25 25 -19.75 -25 25 40.25 25 25 40.25] "point2 uv" [0 0 1 0 1 1 0 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # matte black pedestal
+  Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]
+  Shape "cylinder" "float radius" [4] "float zmin" [-8.05] "float zmax" [-0.05]
+  Shape "disk" "float height" [-0.05] "float radius" [4]
+AttributeEnd
+AttributeBegin  # glass, air-facing surfaces
+  Material "dielectric" "float eta" [1.5]
+  Shape "cylinder" "float radius" [7.8] "float zmin" [0] "float zmax" [20.5]
+  Shape "disk" "float height" [20.5] "float radius" [7.8] "float innerradius" [7.5]
+  AttributeBegin
+    ReverseOrientation
+    Shape "disk" "float height" [0] "float radius" [7.8]
+  AttributeEnd
+  AttributeBegin  # dry inner wall above the contact line
+    ReverseOrientation
+    Shape "cylinder" "float radius" [7.5] "float zmin" [10.9] "float zmax" [20.5]
+  AttributeEnd
+AttributeEnd
+MakeNamedMedium "water" "string type" "homogeneous" "rgb sigma_a" [0.0035 0.0015 0.0003] "rgb sigma_s" [0 0 0] "float scale" [1]
+AttributeBegin  # wetted inner glass: inside = glass, outside (normal side) = water
+  MediumInterface "" "water"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "disk" "float height" [0.5] "float radius" [7.5]
+  AttributeBegin
+    ReverseOrientation
+    Shape "cylinder" "float radius" [7.5] "float zmin" [0.5] "float zmax" [10.9]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # free surface (+ meniscus): inside = water, outside = air
+  MediumInterface "water" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate 0 0 10.9
+  Shape "plymesh" "string filename" ["free_surface_flat.ply"]
+AttributeEnd

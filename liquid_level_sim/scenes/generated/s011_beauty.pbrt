@@ -1,0 +1,64 @@
+# liquid-level study sample s011 pass=beauty
+LookAt -5.13471 -27.3754 18.6075  0.394683 -0.503132 5.53531  0 0 1
+Camera "perspective" "float fov" [28.9858]
+Sampler "zsobol" "integer pixelsamples" [128]
+Integrator "volpath" "integer maxdepth" [40] "bool regularize" [true]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["s011_beauty.exr"] "integer xresolution" [640] "integer yresolution" [480] "bool savefp16" [false]
+
+WorldBegin
+LightSource "infinite" "rgb L" [0.378084 0.378084 0.408331]
+AttributeBegin  # soft key light panel above/front
+  AreaLightSource "diffuse" "rgb L" [11.6008 11.6008 11.6008]
+  Translate -6 -14 30
+  Rotate 155 1 0 0
+  Shape "disk" "float radius" [9]
+AttributeEnd
+AttributeBegin  # dim fill light from the other side
+  AreaLightSource "diffuse" "rgb L" [2.9002 2.9002 3.24822]
+  Translate 18 -6 20
+  Rotate -125 0 1 0
+  Shape "disk" "float radius" [6]
+AttributeEnd
+AttributeBegin  # table
+  Texture "checks" "spectrum" "checkerboard" "float uscale" [21.1702] "float vscale" [21.1702] "rgb tex1" [0.72 0.70 0.66] "rgb tex2" [0.18 0.18 0.20]
+  Material "coateddiffuse" "texture reflectance" "checks" "float roughness" [0.15]
+  Shape "trianglemesh" "point3 P" [-60 -60 0 60 -60 0 60 60 0 -60 60 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # backdrop wall
+  Texture "stripes" "spectrum" "checkerboard" "float uscale" [24] "float vscale" [1] "rgb tex1" [0.55 0.57 0.60] "rgb tex2" [0.30 0.31 0.34]
+  Material "diffuse" "texture reflectance" "stripes"
+  Shape "trianglemesh" "point3 P" [-60 25 0 -60 25 60 60 25 60 60 25 0] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # container
+  Material "dielectric" "float eta" [1.47]
+Shape "trianglemesh" "point3 P" [3.84764 -2.93126 0 3.84764 2.93126 0 3.84764 2.93126 10.7454 3.84764 -2.93126 10.7454] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.84764 -2.93126 0 -3.84764 -2.93126 10.7454 -3.84764 2.93126 10.7454 -3.84764 2.93126 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.84764 2.93126 0 -3.84764 2.93126 10.7454 3.84764 2.93126 10.7454 3.84764 2.93126 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.84764 -2.93126 0 3.84764 -2.93126 0 3.84764 -2.93126 10.7454 -3.84764 -2.93126 10.7454] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.84764 -2.93126 0 -3.84764 2.93126 0 3.84764 2.93126 0 3.84764 -2.93126 0] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [3.54276 -2.62639 0.304872 3.54276 -2.62639 10.7464 3.54276 2.62639 10.7464 3.54276 2.62639 0.304872] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.54276 -2.62639 0.304872 -3.54276 2.62639 0.304872 -3.54276 2.62639 10.7464 -3.54276 -2.62639 10.7464] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.54276 2.62639 0.304872 3.54276 2.62639 0.304872 3.54276 2.62639 10.7464 -3.54276 2.62639 10.7464] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.54276 -2.62639 0.304872 -3.54276 -2.62639 10.7464 3.54276 -2.62639 10.7464 3.54276 -2.62639 0.304872] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.54276 -2.62639 0.304872 3.54276 -2.62639 0.304872 3.54276 2.62639 0.304872 -3.54276 2.62639 0.304872] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.84764 -2.93126 10.7454 3.84764 -2.93126 10.7454 3.54276 -2.62639 10.7454 -3.54276 -2.62639 10.7454] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [3.54276 -2.62639 10.7454 3.84764 -2.93126 10.7454 3.84764 2.93126 10.7454 3.54276 2.62639 10.7454] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.54276 2.62639 10.7454 3.54276 2.62639 10.7454 3.84764 2.93126 10.7454 -3.84764 2.93126 10.7454] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.84764 -2.93126 10.7454 -3.54276 -2.62639 10.7454 -3.54276 2.62639 10.7454 -3.84764 2.93126 10.7454] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+MakeNamedMedium "liq" "string type" "homogeneous" "rgb sigma_a" [0.03 0.08 0.5] "rgb sigma_s" [0 0 0] "float scale" [1]
+AttributeBegin  # liquid side + bottom
+  MediumInterface "liq" ""
+  Material "dielectric" "float eta" [1.47]
+Shape "trianglemesh" "point3 P" [3.52276 -2.60639 0.324872 3.52276 2.60639 0.324872 3.52276 2.60639 8.64776 3.52276 -2.60639 8.64776] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.52276 -2.60639 0.324872 -3.52276 -2.60639 8.64776 -3.52276 2.60639 8.64776 -3.52276 2.60639 0.324872] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.52276 2.60639 0.324872 -3.52276 2.60639 8.64776 3.52276 2.60639 8.64776 3.52276 2.60639 0.324872] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.52276 -2.60639 0.324872 3.52276 -2.60639 0.324872 3.52276 -2.60639 8.64776 -3.52276 -2.60639 8.64776] "integer indices" [0 1 2 0 2 3]
+Shape "trianglemesh" "point3 P" [-3.52276 -2.60639 0.324872 -3.52276 2.60639 0.324872 3.52276 2.60639 0.324872 3.52276 -2.60639 0.324872] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+AttributeBegin  # liquid free surface
+  MediumInterface "liq" ""
+  Material "dielectric" "float eta" [1.47]
+Shape "trianglemesh" "point3 P" [-3.52276 -2.60639 8.64776 3.52276 -2.60639 8.64776 3.52276 2.60639 8.64776 -3.52276 2.60639 8.64776] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
