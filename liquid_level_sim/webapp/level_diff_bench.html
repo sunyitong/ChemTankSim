@@ -5,144 +5,216 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Level Diff Bench</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
+/* ---------- tokens: a dark instrument display, chosen (the renders carry black stands and saturated
+   checkers; a cool near-black ground integrates them). Amber is spent on one thing only: the level. */
 :root{
-  --bg:#000000; --surface:#0d1013; --surface-2:#141a1f;
-  --line:#1c2228; --line-2:#2a333b;
-  --ink:#e6e9ec; --ink-2:#8b959e; --ink-3:#586370;
-  --accent:#5fd4c8; --accent-dim:rgba(95,212,200,.5); --level:#ffb454; --layer:#ff8ad1; --gt:#22c55e;
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --bg:#0c0f13; --surface:#11161c; --surface-2:#182028;
+  --line:#222b35; --line-2:#2f3a46;
+  --ink:#eef2f6; --ink-2:#94a0ad; --ink-3:#5b6875;
+  --roi:#6fd3c9; --roi-dim:rgba(111,211,201,.45);
+  --level:#f6b545; --iface:#f08fbe; --gt:#43cf8f; --warn:#f6b545;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --gutter:20px; --pad:20px;
   color-scheme:dark;
 }
+*{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.4 var(--sans);overflow:hidden}
-.app{height:100vh;display:grid;grid-template-rows:auto minmax(0,1fr)}
-.bar{display:grid;grid-template-columns:auto 1fr auto;align-items:start;gap:6px 18px;padding:6px 16px;border-bottom:1px solid var(--line)}
-.brand{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--ink-2);white-space:nowrap;padding-top:5px}
-.chips{display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding-top:3px}
-.cases{display:flex;flex-direction:column;gap:3px;min-width:0}
-.grp{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
-.glabel{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-3);width:118px;flex:none;text-align:right;padding-right:6px;border-right:1px solid var(--line-2)}
-.cases button{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;padding:2px 8px;color:var(--ink-2);background:transparent;border:1px solid var(--line-2);border-radius:4px;line-height:1.5}
-.cases button:hover{color:var(--ink)}
-.cases button[aria-pressed="true"]{color:var(--accent);border-color:var(--accent-dim);background:var(--surface-2)}
-.hint{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--ink-3);white-space:nowrap}
-.chip{font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:2px 8px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink-3);white-space:nowrap}
-.chip.on{color:var(--level);border-color:rgba(255,180,84,.45)}
-.bench{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);min-height:0}
-.panel{display:grid;grid-template-rows:minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr);background:var(--bg);min-height:0;min-width:0}
-.view{position:relative;min-height:0;min-width:0;overflow:hidden;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.4 var(--sans);overflow:hidden;-webkit-font-smoothing:antialiased}
+.app{height:100vh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}
+.bar,.bench,.results{min-width:0}   /* grid items must be allowed to shrink below the case rail's content width */
+
+/* ---------- header: brand · case rail · status, one line */
+.bar{padding:0 var(--pad);border-bottom:1px solid var(--line)}
+.bar-top{display:flex;align-items:center;justify-content:space-between;gap:var(--gutter);height:44px}
+.brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap}
+.brand-name{font-weight:600;font-size:14px;letter-spacing:.01em}
+.brand-sub{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase}
+.cases{display:flex;align-items:center;gap:18px;height:38px;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.cases::-webkit-scrollbar{display:none}
+.grp{display:flex;align-items:center;gap:4px;flex:none}
+.glabel{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ink-3);text-transform:uppercase;padding-right:8px;margin-right:2px;border-right:1px solid var(--line-2);line-height:1;white-space:nowrap}
+.cases button{font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:0 8px;height:26px;color:var(--ink-2);background:transparent;border:1px solid transparent;border-radius:4px;line-height:1}
+.cases button:hover{color:var(--ink);border-color:var(--line-2)}
+.cases button[aria-pressed="true"]{color:var(--bg);background:var(--roi);border-color:var(--roi);font-weight:500}
+.status{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.chip{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--line-2);border-radius:999px;color:var(--ink-3);white-space:nowrap;max-width:36vw;overflow:hidden;text-overflow:ellipsis}
+.chip.on{color:var(--ink-2)}
+.chip.warn{color:var(--warn);border-color:rgba(246,181,69,.45)}
+.hint{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ink-3);white-space:nowrap}
+
+/* ---------- bench: three equal stages on one baseline */
+.bench{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--gutter);padding:0 var(--pad);min-height:0}
+.panel{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:0;min-width:0}
+.cap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:40px;white-space:nowrap}
+.eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+.meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
+.cap-l{display:flex;align-items:center;gap:10px;min-width:0}
+.adj{display:flex;align-items:center;gap:8px;min-width:0}
+.pill{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid var(--line-2);color:var(--ink-3);white-space:nowrap}
+.pill[data-mode="warp"],.pill[data-mode="identity-end"]{color:var(--roi);border-color:var(--roi-dim)}
+.pill[data-mode="photometric"]{color:var(--warn);border-color:rgba(246,181,69,.45)}
+.pill[data-mode="preview"]{color:var(--ink-2)}
+.view{position:relative;min-height:0;min-width:0;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:6px}
 .view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
-.tag{position:absolute;left:12px;top:10px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink-3);pointer-events:none}
-.drop{position:absolute;inset:12px;border:1px dashed var(--line-2);border-radius:8px;display:grid;place-items:center;color:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:.14em;pointer-events:none;text-align:center;line-height:2}
+.drop{position:absolute;inset:14px;border:1px dashed var(--line-2);border-radius:6px;display:grid;place-items:center;color:var(--ink-3);font-size:12px;letter-spacing:.06em;pointer-events:none;text-align:center;line-height:1.7}
 .view.has-img .drop{display:none}
-.view.over .drop{border-color:var(--accent);color:var(--accent)}
+.view.over{border-color:var(--roi)}
+.view.over .drop{border-color:var(--roi);color:var(--roi)}
 .view.pick{cursor:pointer}
-.ctl{display:flex;align-items:center;gap:10px;padding:10px 14px;border-top:1px solid var(--line);min-height:46px;min-width:0;flex-wrap:wrap}
-button{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line-2);border-radius:6px;padding:6px 12px;cursor:pointer;line-height:1.2}
-button:hover{border-color:var(--accent-dim)}
-button:disabled{opacity:.45;cursor:default}
-button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-button.primary{background:var(--accent);color:#03231f;border-color:var(--accent);font-weight:600}
-button.primary:hover{filter:brightness(1.08)}
-button.ghost{background:transparent;color:var(--ink-2)}
-.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:6px;overflow:hidden}
-.seg button{border:0;border-radius:0;background:transparent;color:var(--ink-2);padding:6px 12px}
+.ctl{display:flex;align-items:center;gap:10px;height:52px;min-width:0;white-space:nowrap;overflow:hidden}
+.ctl .ro{margin-left:auto}
+
+/* ---------- controls */
+button{font:inherit;font-size:12.5px;color:var(--ink);background:transparent;border:1px solid var(--line-2);border-radius:4px;height:30px;padding:0 12px;cursor:pointer;line-height:1;white-space:nowrap}
+button:hover{border-color:var(--ink-3);color:var(--ink)}
+button:disabled{opacity:.4;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--roi);outline-offset:2px}
+button.primary{background:var(--roi);color:#062a26;border-color:var(--roi);font-weight:600}
+button.primary:hover{filter:brightness(1.06)}
+button.ghost{color:var(--ink-2);border-color:transparent}
+button.ghost:hover{border-color:var(--line-2)}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:4px;overflow:hidden;flex:none}
+.seg button{border:0;border-radius:0;color:var(--ink-2);height:28px;padding:0 11px}
 .seg button+button{border-left:1px solid var(--line-2)}
-.seg button[aria-pressed="true"]{background:var(--surface-2);color:var(--accent)}
+.seg button[aria-pressed="true"]{background:var(--surface-2);color:var(--ink)}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.ro{color:var(--ink-3);font-size:11px;margin-left:auto;white-space:nowrap}
-.slider{display:flex;align-items:center;gap:8px;color:var(--ink-2);font-size:11px;white-space:nowrap}
-.slider output{font-family:var(--mono);font-size:11px;color:var(--ink-2);min-width:3.2em;text-align:right}
-input[type=range]{accent-color:var(--accent);width:110px;margin:0}
-select{font:inherit;font-size:12px;background:var(--surface);color:var(--ink);border:1px solid var(--line-2);border-radius:6px;padding:5px 8px}
-.tog{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2);font-size:11px;cursor:pointer;user-select:none;white-space:nowrap}
-.tog input{accent-color:var(--accent);margin:0}
-.metrics{display:flex;flex-wrap:wrap;gap:6px 16px;margin-left:auto;align-items:flex-end;justify-content:flex-end;min-width:0}
-.metrics.stale{opacity:.45}
-.m{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;gap:3px}
-.m b{font-family:var(--mono);font-weight:500;font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums}
-.m.level b{color:var(--level);font-size:20px}
-.m.layer b{color:var(--layer)}
-.m.gt b{color:var(--gt)}
-.m span{font-size:10px;color:var(--ink-3);letter-spacing:.1em;white-space:nowrap}
+.ro{color:var(--ink-3);font-size:11px;white-space:nowrap}
+.tog{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 10px 0 8px;border:1px solid var(--line-2);border-radius:4px;color:var(--ink-2);font-size:12px;cursor:pointer;user-select:none;white-space:nowrap;flex:none}
+.tog:has(input:checked){color:var(--ink);border-color:var(--ink-3)}
+.tog input{accent-color:var(--roi);margin:0;width:13px;height:13px}
+.slider{display:flex;align-items:center;gap:8px;color:var(--ink-2);font-size:12px;white-space:nowrap;min-width:0}
+.slider output{font-family:var(--mono);font-size:11px;color:var(--ink-2);min-width:3.4em;text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{accent-color:var(--roi);width:90px;margin:0}
+select{font:inherit;font-size:12px;height:28px;background:var(--surface);color:var(--ink);border:1px solid var(--line-2);border-radius:4px;padding:0 6px}
+
+/* ---------- results: one bar, one number */
+.results{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:0 var(--gutter);padding:12px var(--pad) 14px;border-top:1px solid var(--line);container-type:inline-size}
+.results.stale .hero b,.results.stale .kv b{opacity:.4}
+.hero{display:flex;align-items:baseline;gap:14px;white-space:nowrap}
+.hero .eyebrow{color:var(--level);opacity:.9}
+.hero b{font:400 clamp(34px,4.2cqi,64px)/1 var(--mono);color:var(--level);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.kvs{display:grid;grid-template-columns:repeat(3,minmax(0,auto));justify-content:start;gap:0 clamp(18px,3cqi,44px);min-width:0}
+.kv{display:flex;flex-direction:column;gap:5px;min-width:0;white-space:nowrap;padding-left:14px;border-left:1px solid var(--line)}
+.kv span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.kv b{font:500 clamp(15px,1.5cqi,20px)/1.1 var(--mono);color:var(--ink);font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis}
+.kv.gt b{color:var(--gt)}
+.kv.iface b{color:var(--iface)}
+.kv b small{font-size:.62em;font-weight:400;color:var(--ink-3);margin-left:6px;letter-spacing:0}
+.diag{position:relative;white-space:nowrap;font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+.diag:not([open]) .diag-row{display:none}
+.diag summary{list-style:none;cursor:pointer;letter-spacing:.12em;text-transform:uppercase;font-size:10px;padding:6px 0 6px 12px;border-left:1px solid var(--line);color:var(--ink-3)}
+.diag summary::-webkit-details-marker{display:none}
+.diag summary:hover{color:var(--ink-2)}
+.diag[open] summary{color:var(--ink-2)}
+.diag-row{position:absolute;right:0;bottom:calc(100% + 10px);display:flex;gap:14px;padding:8px 12px;background:var(--surface-2);border:1px solid var(--line-2);border-radius:6px;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.diag-row span{color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;font-size:9.5px;margin-right:5px}
 [hidden]{display:none!important}
-@media (max-width:980px){
-  .app{height:auto;min-height:100vh} body{overflow:auto}
-  .bench{grid-template-columns:1fr}
-  .view{min-height:320px}
-  .bar{grid-template-columns:1fr} .chips{align-items:flex-start}
+
+/* ---------- responsive: 3 → 2 → 1 stage per row; the page scrolls below the fitted-desktop width */
+@media (max-width:1179px){
+  html,body{height:auto} body{overflow:auto}
+  .app{height:auto;min-height:100vh}
+  .bench{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #p3{grid-column:1/-1}
+  .view{height:clamp(240px,44vh,520px)}
 }
-@media (prefers-reduced-motion:no-preference){ button,.seg button,.metrics{transition:border-color .15s,background .15s,color .15s,opacity .15s} }
+@media (max-width:760px){
+  :root{--gutter:14px;--pad:14px}
+  .hint,.brand-sub{display:none}
+  .chip{max-width:60vw}
+  .bench{grid-template-columns:1fr}
+  #p3{grid-column:auto}
+  .view{height:clamp(220px,52vw,420px)}
+  .results{grid-template-columns:1fr;row-gap:12px}
+  .kvs{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .diag summary{border-left:0;padding-left:0}
+  .diag-row{right:auto;left:0}
+}
+@media (prefers-reduced-motion:no-preference){ button,.seg button,.tog,.results b{transition:border-color .15s,background .15s,color .15s,opacity .15s} }
 </style>
 </head>
 <body>
 
 <div class="app">
   <header class="bar">
-    <span class="brand">LEVEL DIFF BENCH</span>
-    <nav class="cases" id="cases" aria-label="Test cases"></nav>
-    <div class="chips">
-      <span class="chip on" id="sampleChip">SAMPLE DATA · UPLOAD TO REPLACE</span>
-      <span class="chip" id="dimChip" hidden></span>
-      <span class="hint">← → PREV / NEXT CASE</span>
+    <div class="bar-top">
+      <div class="brand"><span class="brand-name">Level Diff Bench</span><span class="brand-sub">refraction · liquid level</span></div>
+      <div class="status">
+        <span class="chip on" id="sampleChip">Sample · upload to replace</span>
+        <span class="chip warn" id="dimChip" hidden></span>
+        <span class="hint">← → case</span>
+      </div>
     </div>
+    <nav class="cases" id="cases" aria-label="Test cases"></nav>
   </header>
   <main class="bench">
-    <section class="panel">
-      <div class="view pick" id="v1"><canvas id="c1"></canvas><span class="tag">BASELINE · EMPTY</span><div class="drop">DROP OR CLICK<br>BASELINE IMAGE</div></div>
+    <section class="panel" id="p1">
+      <div class="cap"><span class="eyebrow">Baseline · empty</span><span class="meta" id="baseText">—</span></div>
+      <div class="view pick" id="v1"><canvas id="c1"></canvas><div class="drop">Drop or click<br>baseline image</div></div>
       <div class="ctl">
-        <button id="b1">Baseline</button>
+        <button id="b1">Baseline…</button>
         <button id="reset" class="ghost">Reset ROI</button>
         <span class="ro mono" id="roiText">—</span>
       </div>
     </section>
-    <section class="panel">
-      <div class="view pick" id="v2"><canvas id="c2"></canvas><span class="tag">COMPARE · FILLED</span><div class="drop">DROP OR CLICK<br>COMPARE IMAGE</div></div>
+    <section class="panel" id="p2">
+      <div class="cap"><span class="eyebrow">Compare · filled</span><span class="meta" id="cmpText">—</span></div>
+      <div class="view pick" id="v2"><canvas id="c2"></canvas><div class="drop">Drop or click<br>compare image</div></div>
       <div class="ctl">
-        <button id="b2">Compare</button>
+        <button id="b2">Compare…</button>
         <button id="run" class="primary">Analyze</button>
         <label class="tog"><input type="checkbox" id="live" checked>Live</label>
-        <span class="ro mono" id="cmpText">—</span>
       </div>
     </section>
-    <section class="panel">
-      <div class="view" id="v3"><canvas id="c3"></canvas><span class="tag">ANALYSIS · ROI</span></div>
+    <section class="panel" id="p3">
+      <div class="cap">
+        <span class="cap-l"><span class="eyebrow" id="tag3">Analysis</span><span class="pill" id="mMode">—</span></span>
+        <span class="adj">
+          <label class="slider" id="gainRow">Gain<input type="range" id="gain" min="1" max="8" step="0.25" value="2"><output id="gainOut">×2.0</output></label>
+          <label class="slider" id="alphaRow" hidden>Opacity<input type="range" id="alpha" min="0" max="100" step="1" value="50"><output id="alphaOut">50%</output></label>
+          <select id="blend" hidden aria-label="Blend mode">
+            <option value="source-over">Normal</option>
+            <option value="difference">Difference</option>
+            <option value="exclusion">Exclusion</option>
+            <option value="screen">Screen</option>
+            <option value="lighter">Add</option>
+          </select>
+        </span>
+      </div>
+      <div class="view" id="v3"><canvas id="c3"></canvas></div>
       <div class="ctl">
         <div class="seg" role="group" aria-label="Mode">
           <button id="mDiff" aria-pressed="true">Diff</button>
           <button id="mOver" aria-pressed="false">Overlay</button>
         </div>
         <label class="tog" title="Heat map: denoise, exposure match, shift search, adaptive threshold. Level detection always runs on the aligned pair."><input type="checkbox" id="adapt" checked>Adaptive</label>
-        <label class="tog" title="Show liquid|liquid interfaces detected below the free surface (pink) and the per-row magnification curve. Detection always runs; this only toggles the display."><input type="checkbox" id="layers" checked>Layers</label>
-        <label class="slider" id="gainRow">Gain<input type="range" id="gain" min="1" max="8" step="0.25" value="2"><output id="gainOut">×2.0</output></label>
-        <label class="slider" id="alphaRow" hidden>Opacity<input type="range" id="alpha" min="0" max="100" step="1" value="50"><output id="alphaOut">50%</output></label>
-        <select id="blend" hidden aria-label="Blend mode">
-          <option value="source-over">Normal</option>
-          <option value="difference">Difference</option>
-          <option value="exclusion">Exclusion</option>
-          <option value="screen">Screen</option>
-          <option value="lighter">Add</option>
-        </select>
-        <div class="metrics" id="metrics">
-          <div class="m level"><b id="mLevel">—</b><span>LEVEL</span></div>
-          <div class="m gt"><b id="mGt">—</b><span>GT</span></div>
-          <div class="m gt"><b id="mErr">—</b><span>ERR</span></div>
-          <div class="m layer"><b id="mLayers">—</b><span>LAYERS</span></div>
-          <div class="m"><b id="mRow">—</b><span>ROW px</span></div>
-          <div class="m"><b id="mMode">—</b><span>MODE</span></div>
-          <div class="m"><b id="mZ">—</b><span>Z · JUMP</span></div>
-          <div class="m"><b id="mContrast">—</b><span>CONTRAST</span></div>
-          <div class="m"><b id="mFrac">—</b><span>CHANGED</span></div>
-          <div class="m"><b id="mShift">—</b><span>SHIFT px</span></div>
-          <div class="m"><b id="mNoise">—</b><span>THRESH</span></div>
-          <div class="m"><b id="mTime">—</b><span>MS</span></div>
-        </div>
+        <label class="tog" title="Show liquid|liquid interfaces below the free surface (pink) and the per-row magnification curve."><input type="checkbox" id="layers" checked>Layers</label>
       </div>
     </section>
   </main>
+  <footer class="results" id="metrics">
+    <div class="hero"><span class="eyebrow">Level</span><b id="mLevel">—</b></div>
+    <div class="kvs">
+      <div class="kv gt"><span>Ground truth</span><b id="mGt">—</b></div>
+      <div class="kv"><span>Δ vs truth · pt</span><b id="mErr">—</b></div>
+      <div class="kv iface"><span>Interfaces</span><b id="mLayers">—</b></div>
+    </div>
+    <details class="diag">
+      <summary>Details</summary>
+      <div class="diag-row">
+        <div><span>row</span><b id="mRow">—</b></div>
+        <div><span>z · jump</span><b id="mZ">—</b></div>
+        <div><span>contrast</span><b id="mContrast">—</b></div>
+        <div><span>changed</span><b id="mFrac">—</b></div>
+        <div><span>shift</span><b id="mShift">—</b></div>
+        <div><span>thresh</span><b id="mNoise">—</b></div>
+        <div><span>ms</span><b id="mTime">—</b></div>
+      </div>
+    </details>
+  </footer>
 </div>
 <input type="file" id="file" accept="image/*" hidden>
 
@@ -158,8 +230,8 @@ const $ = s => document.querySelector(s);
 const MAXW = 1600;                 // working resolution (longest side)
 const THR = 0.05;                  // "changed pixel" threshold on the 0..1 difference scale
 const THROTTLE_MS = 80;            // analysis rate while the ROI is being dragged
-const ACCENT = "#5fd4c8", LEVEL = "#ffb454", LAYER = "#ff8ad1", GT = "#22c55e", PROF = "#ff5a5a", INK2 = "#8b959e", INK3 = "#586370";
-const MONO = '"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace';
+const ACCENT = "#6fd3c9", LEVEL = "#f6b545", LAYER = "#f08fbe", GT = "#43cf8f", PROF = "#ff6b6b", INK2 = "#94a0ad", INK3 = "#5b6875";
+const MONO = '"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace';
 const CASES = window.CASES || [], CASE_IMAGES = window.CASE_IMAGES || {};
 
 // Only the ROI is ever analysed. Two result slots (raw / adaptive) each hold the cropped
@@ -654,7 +726,7 @@ const views = [$("#v1"), $("#v2"), $("#v3")], canvases = [$("#c1"), $("#c2"), $(
 const PAD_L = 36, PAD_R = 110, PAD_V = 14;               // side margins leave room for the ruler + labels
 function dims() { const im = state.base || state.cmp; return im ? { w: im.w, h: im.h } : null; }
 function fitRect(view, w, h) {
-  const cw = view.clientWidth, ch = view.clientHeight, aw = Math.max(40, cw - PAD_L - PAD_R), ah = Math.max(40, ch - 2 * PAD_V);
+  const cw = view.clientWidth, ch = view.clientHeight, padR = cw < 460 ? 86 : PAD_R, aw = Math.max(40, cw - PAD_L - padR), ah = Math.max(40, ch - 2 * PAD_V);
   const s = Math.min(aw / w, ah / h);
   return { s, ox: PAD_L + (aw - w * s) / 2, oy: PAD_V + (ah - h * s) / 2 };
 }
@@ -767,7 +839,7 @@ function marker(g, x, y, txt, color, big) {
   g.beginPath(); g.moveTo(x - 2, y); g.lineTo(x - 9, y - 5); g.lineTo(x - 9, y + 5); g.closePath(); g.fill();
   g.font = `${big ? "500 11px" : "10px"} ${MONO}`; g.textAlign = "left"; g.textBaseline = "middle";
   const tw = g.measureText(txt).width;
-  g.fillStyle = "rgba(0,0,0,.85)"; g.fillRect(x + 11, y - 8, tw + 8, 16);
+  g.fillStyle = "rgba(12,15,19,.92)"; g.fillRect(x + 11, y - 8, tw + 8, 16);
   g.fillStyle = color; g.fillText(txt, x + 15, y);
 }
 
@@ -802,7 +874,8 @@ function updateMetrics() {
   $("#mMode").textContent = A ? (A.det ? A.mode.toUpperCase() : "PREVIEW") : "—";
   const L0 = A && A.det && A.det.levels[0];
   $("#mZ").textContent = L0 ? (isFinite(L0.z) ? L0.z.toFixed(1) : "∞") + (isFinite(L0.jump) ? " · " + (L0.jump > 0 ? "+" : "") + L0.jump.toFixed(2) : "") : "—";
-  $("#v3 .tag").textContent = "ANALYSIS · " + (A ? (A.det ? A.mode.toUpperCase() : "PREVIEW") : "ROI");
+  $("#tag3").textContent = A && A.key !== roiKey() ? "Analysis · ROI changed" : "Analysis";
+  $("#mMode").dataset.mode = A ? (A.det ? A.mode.split(" ")[0] : "preview") : "";
   $("#mContrast").textContent = A ? A.contrast.toFixed(2) : "—";
   $("#mFrac").textContent = A ? fmtPct(A.frac) + "%" : "—";
   const sg = n => (n > 0 ? "+" : "") + n;
@@ -811,18 +884,17 @@ function updateMetrics() {
   $("#mTime").textContent = A ? (A.ms + (A.msLayers || 0)).toFixed(1) : "—";
   // ground truth + error (top surface = last GT entry, bundled cases only)
   const gts = A && state.gt ? state.gt.filter(gt => gt.row >= A.y0 && gt.row <= A.y1) : [];
-  if (A && gts.length) {
-    const pcts = gts.map(gt => (A.y1 - gt.row) / A.h * 100);
-    $("#mGt").textContent = pcts.map(p => p.toFixed(1)).join(" / ") + "%";
-    const top = Math.max(...pcts), err = A.levelPct - top;
-    let txt = (err > 0 ? "+" : "") + err.toFixed(1) + "%";
-    if ((A.layers || []).length && pcts.length > 1) {
-      const others = pcts.filter(p => p !== top).map(p => { const n = A.layers.reduce((b, L) => Math.abs(L.pct - p) < Math.abs(b - p) ? L.pct : b, Infinity); return isFinite(n) ? (n - p > 0 ? "+" : "") + (n - p).toFixed(1) + "%" : "—"; });
-      txt += " / " + others.join(" / ");
-    }
-    $("#mErr").textContent = txt;
-  } else { $("#mGt").textContent = "—"; $("#mErr").textContent = "—"; }
-  $("#mLayers").textContent = A && state.layers ? ((A.layers || []).length ? A.layers.map(L => L.pct.toFixed(1) + "%").join(" · ") : (A.det ? "none" : "…")) : "—";
+  const pcts = gts.map(gt => (A.y1 - gt.row) / A.h * 100), top = pcts.length ? Math.max(...pcts) : null;
+  const signed = v => (v > 0 ? "+" : "") + v.toFixed(1);
+  $("#mGt").textContent = top !== null ? top.toFixed(1) + "%" : "—";
+  $("#mErr").textContent = A && top !== null ? signed(A.levelPct - top) : "—";
+  const layers = A && state.layers ? (A.layers || []) : [], others = pcts.filter(p => p !== top);
+  if (!A || !state.layers) $("#mLayers").textContent = "—";
+  else if (!layers.length) $("#mLayers").textContent = A.det ? "none" : "…";
+  else $("#mLayers").innerHTML = layers.map(L => {                    // each interface with its own delta to the nearest GT interface
+    const near = others.length ? others.reduce((b, p) => Math.abs(p - L.pct) < Math.abs(b - L.pct) ? p : b, others[0]) : null;
+    return L.pct.toFixed(1) + "%" + (near !== null && Math.abs(near - L.pct) <= 6 ? "<small>" + signed(L.pct - near) + "</small>" : "");
+  }).join(" · ");
   const R = state.roi, ref = state.base || state.cmp;
   if (R && ref) {
     const k = ref.origW / ref.w;
@@ -831,6 +903,7 @@ function updateMetrics() {
 }
 function refreshChrome() {
   const b = state.base, c = state.cmp;
+  $("#baseText").textContent = b ? `${b.origW}×${b.origH}` : "—";
   $("#cmpText").textContent = c ? `${c.origW}×${c.origH}` : "—";
   const mism = b && c && (b.origW !== c.origW || b.origH !== c.origH);
   $("#dimChip").hidden = !mism;
@@ -943,13 +1016,13 @@ function loadCase(c) {
   Promise.all([load(c.base), load(c.cmp)]).then(([b, k]) => installPair(b, k, c.roi, c.gt, `${c.id} · ${c.label}`.toUpperCase(), c.id)).catch(() => {});
 }
 // case groups by id prefix: one row per family so related pairs sit side by side
-const GROUPS = [["A", "VESSELS · LENSES"], ["B", "LAYERED LIQUIDS"], ["S", "LIMESCALE · REF"], ["V", "LIMESCALE · VARIANTS"]];
+const GROUPS = [["A", "Vessels"], ["B", "Layered"], ["S", "Limescale"], ["V", "Variants"]];
 const ORDER = [{ id: "SAMPLE", load: loadSample }, ...CASES.map(c => ({ id: c.id, load: () => loadCase(c) }))];
 function buildCaseBar() {
   const nav = $("#cases");
-  const row = (label) => { const g = document.createElement("div"); g.className = "grp"; const l = document.createElement("span"); l.className = "glabel"; l.textContent = label; g.appendChild(l); nav.appendChild(g); return g; };
+  const row = (label) => { const g = document.createElement("div"); g.className = "grp"; if (label) { const l = document.createElement("span"); l.className = "glabel"; l.textContent = label; g.appendChild(l); } nav.appendChild(g); return g; };
   const mk = (parent, id, title) => { const b = document.createElement("button"); b.textContent = id; b.dataset.id = id; b.title = title; b.setAttribute("aria-pressed", "false"); parent.appendChild(b); return b; };
-  const first = row("SYNTHETIC");
+  const first = row("");
   mk(first, "SAMPLE", "Synthetic checker pair with shift, exposure and noise").addEventListener("click", loadSample);
   for (const [prefix, label] of GROUPS) {
     const cs = CASES.filter(c => c.id.startsWith(prefix));
