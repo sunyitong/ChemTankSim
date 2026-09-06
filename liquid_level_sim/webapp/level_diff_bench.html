@@ -627,10 +627,12 @@ function heatCanvas() {                                    // LUT pass over the 
 
 // ------------------------------------------------------------------ scheduling
 let rafId = 0, anaTimer = 0;
-function scheduleDraw() {                                   // rAF is paused in hidden tabs: fall back to a timer there
+let drawWatchdog = 0;
+function scheduleDraw() {                                   // rAF is paused in hidden or occluded windows: a watchdog timer draws instead
   if (rafId) return;
-  const tick = () => { rafId = 0; drawAll(); };
-  rafId = document.visibilityState === "visible" ? requestAnimationFrame(tick) : setTimeout(tick, 16);
+  const tick = () => { clearTimeout(drawWatchdog); drawWatchdog = 0; if (rafId) cancelAnimationFrame(rafId); rafId = 0; drawAll(); };
+  rafId = requestAnimationFrame(tick);
+  drawWatchdog = setTimeout(tick, 120);
 }
 function requestAnalysis(immediate) {
   if (!state.analyzed || !state.live) return;
