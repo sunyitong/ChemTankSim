@@ -15,7 +15,8 @@ web app with 25 bundled test cases. Gallery of renders: `https://sunyitong.githu
 | `liquid_level_sim/scripts/mvp_*.py` | Phase 0: 15 × 20 cm cylinder, four backlight patterns, five levels, diff / sensitivity / ray-trace analysis |
 | `liquid_level_sim/scripts/testset_*.py` | Phase 1: gourd / Erlenmeyer / reagent / round-bottom vessels, wide–tele lenses, layered liquids, sensor-noise post-processing, evaluation |
 | `liquid_level_sim/scripts/scale_model.py`, `scale_run.py` | Physically motivated limescale deposits (water-line ring, creep, film, tide marks, droplets, drips) |
-| `liquid_level_sim/webapp/level_diff_bench.html` | Single-file web app: ROI box, difference heat map / overlay, adaptive robust diff, multi-layer detection, bundled cases with ground truth |
+| `liquid_level_sim/scripts/level_detect.py`, `eval_all.py` | Level detector v3 (geometry first: per-row refraction-warp jumps, identity-plateau end, contact-line dip; deposits are photometric only and ignored) and its multi-resolution evaluation |
+| `liquid_level_sim/webapp/level_diff_bench.html` | Single-file web app: ROI box, difference heat map / overlay, adaptive robust diff, v3 multi-level detection (same code as `level_detect.py`), 25 bundled cases with ground truth |
 | `liquid_level_sim/outputs/**/images`, `compare`, `eval` | Rendered PNG datasets, contact sheets, metrics, reports (EXR originals are not tracked) |
 | `docs/` | GitHub Pages site (`index.html` = web app, `gallery.html` = renders) |
 
@@ -26,7 +27,8 @@ web app with 25 bundled test cases. Gallery of renders: `https://sunyitong.githu
 2. `cd liquid_level_sim && uv venv --python 3.11 .venv && uv pip install numpy opencv-python matplotlib jinja2 ninja imageio`
 3. Phase 0: `.venv\Scripts\python scripts\mvp_run.py --spp 512` → `outputs/mvp/report.html`
 4. Phase 1 test set: `scripts\testset_run.py`, evaluation `scripts\testset_eval.py`, limescale samples `scripts\scale_run.py`
-5. Web app bundle: `scripts\webapp_bundle.py <out.js> outputs/testset/cases.json outputs/scale/cases.json` then `scripts\webapp_build.py <template> <out.js> <fragment>`
+5. Detector evaluation: `scripts\eval_all.py --scales=1,0.85,0.75,0.65,0.55 outputs/testset/cases.json outputs/scale/cases.json` → `outputs/eval_all/eval_all.md`
+6. Web app bundle: `scripts\webapp_bundle.py <out.js> outputs/testset/cases.json outputs/scale/cases.json` then `scripts\webapp_build.py <template> <out.js> <fragment>`
 
 Details, parameters and findings: [liquid_level_sim/README.md](liquid_level_sim/README.md) and
 [liquid_level_sim/docs/RESEARCH.md](liquid_level_sim/docs/RESEARCH.md).

@@ -108,7 +108,10 @@ def main():
             print(f"  {key}: {tex_cache[key]['info']}")
 
     print("=== scenes ===")
-    jobs = []
+    # Baselines are the vessel as it was photographed when NEW: clean glass, same camera / panel /
+    # room light, no liquid. Only the compare frame carries liquid AND the deposit. Baselines are
+    # shared between scenarios with the same vessel, camera (incl. aim offset) and pattern.
+    jobs, seen = [], {}
     for c in combos:
         tex = tex_cache[(c.vessel, c.dirt.split(":")[1])]
         v = VESSELS[c.vessel]
@@ -116,14 +119,21 @@ def main():
         if c.camera == "macro":                            # aim the macro camera at the water-line ring
             line_z = v.tb + tex["line_fill"] * v.inner_height
             cc = replace(c, cam_dz=line_z - v.H / 2)
-        for filled, role in ((False, "baseline"), (True, "compare")):
-            name = f"{c.name}_{role}{tag}"
-            text, gt = build_scene(cc, filled, w, h, spp, tex, name + ".exr")
-            (TS_SCENES / f"{name}.pbrt").write_text(text, encoding="utf-8")
-            jobs.append({"name": name, "role": role, "combo": c.name, "vessel": c.vessel, "camera": c.camera, "pattern": c.pattern,
-                         "deposit": tex["preset"], "deposit_line_fill": tex["line_fill"], "layers": c.layers if filled else [],
-                         "note": c.note, "gt": gt, "jitter": filled, "cam_dz": cc.cam_dz})
-    print(f"  {len(jobs)} scenes at {w}x{h}, {spp} spp")
+        bkey = (c.vessel, c.camera, c.pattern, round(cc.cam_dz, 3))
+        if bkey not in seen:
+            bname = f"base_{c.vessel}_{c.camera}_{c.pattern}_dz{cc.cam_dz:g}{tag}"
+            text, gt = build_scene(cc, False, w, h, spp, {"ambient": tex["ambient"]}, bname + ".exr")
+            (TS_SCENES / f"{bname}.pbrt").write_text(text, encoding="utf-8")
+            jobs.append({"name": bname, "role": "baseline", "combo": None, "vessel": c.vessel, "camera": c.camera, "pattern": c.pattern,
+                         "deposit": None, "layers": [], "note": "clean vessel, no liquid", "gt": gt, "jitter": False, "cam_dz": cc.cam_dz})
+            seen[bkey] = bname
+        name = f"{c.name}{tag}"
+        text, gt = build_scene(cc, True, w, h, spp, tex, name + ".exr")
+        (TS_SCENES / f"{name}.pbrt").write_text(text, encoding="utf-8")
+        jobs.append({"name": name, "role": "compare", "combo": c.name, "baseline": seen[bkey], "vessel": c.vessel, "camera": c.camera,
+                     "pattern": c.pattern, "deposit": tex["preset"], "deposit_line_fill": tex["line_fill"], "layers": c.layers,
+                     "note": c.note, "gt": gt, "jitter": True, "cam_dz": cc.cam_dz})
+    print(f"  {len(jobs)} scenes ({sum(j['role'] == 'baseline' for j in jobs)} clean baselines) at {w}x{h}, {spp} spp")
 
     if not a.skip_render:
         print("=== render ===")
@@ -144,14 +154,14 @@ def main():
     print("=== contact sheet + cases ===")
     rows, cases = [], []
     for c in combos:
-        b = next((j for j in jobs if j["combo"] == c.name and j["role"] == "baseline"), None)
         k = next((j for j in jobs if j["combo"] == c.name and j["role"] == "compare"), None)
+        b = next((j for j in jobs if k and j["name"] == k.get("baseline")), None)
         if not (b and k and "png" in b and "png" in k):
             continue
         ib, ik = cv2.imread(str(IMAGES / b["png"])), cv2.imread(str(IMAGES / k["png"]))
         s = 320 / ik.shape[1]
         ib = cv2.resize(ib, None, fx=s, fy=s, interpolation=cv2.INTER_AREA); ik = cv2.resize(ik, None, fx=s, fy=s, interpolation=cv2.INTER_AREA)
-        for im, txt in ((ib, "baseline (deposit dry)"), (ik, c.name)):
+        for im, txt in ((ib, "baseline (clean, empty)"), (ik, c.name)):
             cv2.putText(im, txt, (6, 16), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (0, 0, 0), 3, cv2.LINE_AA)
             cv2.putText(im, txt, (6, 16), cv2.FONT_HERSHEY_SIMPLEX, 0.42, (255, 255, 255), 1, cv2.LINE_AA)
         rows.append(np.concatenate([ib, ik], axis=1))

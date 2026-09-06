@@ -6,8 +6,8 @@
   "cases": [
     {
       "case": "S1_cyl_vase_line60_water45",
-      "baseline": "S1_cyl_vase_line60_water45_baseline",
-      "compare": "S1_cyl_vase_line60_water45_compare",
+      "baseline": "base_cylinder_normal_rg_checker_dz0",
+      "compare": "S1_cyl_vase_line60_water45",
       "roi_frac": [
         0.21008689592667945,
         0.15888720031794645,
@@ -28,8 +28,8 @@
     },
     {
       "case": "S2_cyl_tide_water30_mosaic",
-      "baseline": "S2_cyl_tide_water30_mosaic_baseline",
-      "compare": "S2_cyl_tide_water30_mosaic_compare",
+      "baseline": "base_cylinder_normal_mosaic_dz0",
+      "compare": "S2_cyl_tide_water30_mosaic",
       "roi_frac": [
         0.21008689592667945,
         0.15888720031794645,
@@ -50,8 +50,8 @@
     },
     {
       "case": "S3_gourd_vase_line60_water40",
-      "baseline": "S3_gourd_vase_line60_water40_baseline",
-      "compare": "S3_gourd_vase_line60_water40_compare",
+      "baseline": "base_gourd_normal_rg_checker_dz0",
+      "compare": "S3_gourd_vase_line60_water40",
       "roi_frac": [
         0.22898313878639207,
         0.18345552623234745,
@@ -72,8 +72,8 @@
     },
     {
       "case": "S4_cyl_vase_macro_checker",
-      "baseline": "S4_cyl_vase_macro_checker_baseline",
-      "compare": "S4_cyl_vase_macro_checker_compare",
+      "baseline": "base_cylinder_macro_rg_checker_dz2.25",
+      "compare": "S4_cyl_vase_macro_checker",
       "roi_frac": [
         0.0,
         0.0,
@@ -94,8 +94,8 @@
     },
     {
       "case": "S5_cyl_vase_macro_white",
-      "baseline": "S5_cyl_vase_macro_white_baseline",
-      "compare": "S5_cyl_vase_macro_white_compare",
+      "baseline": "base_cylinder_macro_white_dz2.25",
+      "compare": "S5_cyl_vase_macro_white",
       "roi_frac": [
         0.0,
         0.0,
@@ -116,8 +116,8 @@
     },
     {
       "case": "V1_cyl_line30_water55",
-      "baseline": "V1_cyl_line30_water55_baseline",
-      "compare": "V1_cyl_line30_water55_compare",
+      "baseline": "base_cylinder_normal_rg_checker_dz0",
+      "compare": "V1_cyl_line30_water55",
       "roi_frac": [
         0.21008689592667945,
         0.15888720031794645,
@@ -138,8 +138,8 @@
     },
     {
       "case": "V2_cyl_line50thin_water35_grid",
-      "baseline": "V2_cyl_line50thin_water35_grid_baseline",
-      "compare": "V2_cyl_line50thin_water35_grid_compare",
+      "baseline": "base_cylinder_normal_grid_dz0",
+      "compare": "V2_cyl_line50thin_water35_grid",
       "roi_frac": [
         0.21008689592667945,
         0.15888720031794645,
@@ -160,8 +160,8 @@
     },
     {
       "case": "V3_erl_line75heavy_water40_mosaic",
-      "baseline": "V3_erl_line75heavy_water40_mosaic_baseline",
-      "compare": "V3_erl_line75heavy_water40_mosaic_compare",
+      "baseline": "base_erlenmeyer_normal_mosaic_dz0",
+      "compare": "V3_erl_line75heavy_water40_mosaic",
       "roi_frac": [
         0.2590377639572648,
         0.22254899588919377,
@@ -182,8 +182,8 @@
     },
     {
       "case": "V4_reagent_line92full_water60",
-      "baseline": "V4_reagent_line92full_water60_baseline",
-      "compare": "V4_reagent_line92full_water60_compare",
+      "baseline": "base_reagent_normal_rg_checker_dz0",
+      "compare": "V4_reagent_line92full_water60",
       "roi_frac": [
         0.31509216106276333,
         0.219422656710971,
@@ -204,8 +204,8 @@
     },
     {
       "case": "V5_cyl_band4060_water50",
-      "baseline": "V5_cyl_band4060_water50_baseline",
-      "compare": "V5_cyl_band4060_water50_compare",
+      "baseline": "base_cylinder_normal_rg_checker_dz0",
+      "compare": "V5_cyl_band4060_water50",
       "roi_frac": [
         0.21008689592667945,
         0.15888720031794645,
@@ -226,8 +226,8 @@
     },
     {
       "case": "V6_gourd_tilted_water45_mosaic",
-      "baseline": "V6_gourd_tilted_water45_mosaic_baseline",
-      "compare": "V6_gourd_tilted_water45_mosaic_compare",
+      "baseline": "base_gourd_normal_mosaic_dz0",
+      "compare": "V6_gourd_tilted_water45_mosaic",
       "roi_frac": [
         0.22898313878639207,
         0.18345552623234745,
@@ -248,8 +248,8 @@
     },
     {
       "case": "V7_cyl_splash_water30_wide",
-      "baseline": "V7_cyl_splash_water30_wide_baseline",
-      "compare": "V7_cyl_splash_water30_wide_compare",
+      "baseline": "base_cylinder_wide_rg_checker_dz0",
+      "compare": "V7_cyl_splash_water30_wide",
       "roi_frac": [
         0.22581473132367313,
         0.14432899020809223,
@@ -270,8 +270,8 @@
     },
     {
       "case": "V8_cyl_sector_water50",
-      "baseline": "V8_cyl_sector_water50_baseline",
-      "compare": "V8_cyl_sector_water50_compare",
+      "baseline": "base_cylinder_normal_rg_checker_dz0",
+      "compare": "V8_cyl_sector_water50",
       "roi_frac": [
         0.21008689592667945,
         0.15888720031794645,
@@ -292,8 +292,8 @@
     },
     {
       "case": "V9_erl_dripsonly_water45_tele",
-      "baseline": "V9_erl_dripsonly_water45_tele_baseline",
-      "compare": "V9_erl_dripsonly_water45_tele_compare",
+      "baseline": "base_erlenmeyer_tele_rg_checker_dz0",
+      "compare": "V9_erl_dripsonly_water45_tele",
       "roi_frac": [
         0.2556375243750292,
         0.22215673232077293,
@@ -314,8 +314,8 @@
     },
     {
       "case": "V10_cyl_line50thin_water50_white",
-      "baseline": "V10_cyl_line50thin_water50_white_baseline",
-      "compare": "V10_cyl_line50thin_water50_white_compare",
+      "baseline": "base_cylinder_normal_white_dz0",
+      "compare": "V10_cyl_line50thin_water50_white",
       "roi_frac": [
         0.21008689592667945,
         0.15888720031794645,

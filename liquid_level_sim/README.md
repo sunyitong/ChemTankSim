@@ -24,12 +24,15 @@ liquid_level_sim/
 │  ├─ testset_scenes.py     组合定义 COMBOS（A1–A6 单液体、B1–B4 分层液体）、材质（mix 玻璃/沉积）、圆底烧瓶解析球面
 │  ├─ testset_post.py       相机后处理：曝光抖动、亚像素平移、散粒+读出噪声
 │  ├─ testset_run.py        一键：图案 → 贴图 → 场景 → 渲染 → 后处理 → 拼图 + manifest.json（含真值行）
+│  ├─ level_detect.py       液位检测 v3（几何优先：逐行折射放大率跳变 + 恒等平台终点 + 接触线暗行；网页 JS 与之同源）
+│  ├─ eval_all.py           全部案例 × 多工作分辩率评估 → outputs/eval_all/{eval_all.md, eval_all.json, profiles_*.png}
 │  │  --- 旧管线（随机烧杯 + GT 掩膜通道，保留供 Phase 1 复用） ---
 │  ├─ gen_scenes.py / render.py / analyze.py / build_report.py / run_all.py
 ├─ webapp/level_diff_bench.html   单文件网页应用（英文 UI）：上传空容器基准图 + 有液位对比图，框选 ROI，
-│                                 差异热图 / 叠加模式，右侧 0–100% 刻度与液位估计；Adaptive 鲁棒差分；Layers 多液位；
-│                                 顶栏按钮内嵌 10 组测试案例（含真值与误差显示）；纯前端，双击直接打开
-│                                 重建：testset_eval.py → webapp_bundle.py → webapp_build.py <模板> <cases_embed.js> <输出>
+│                                 差异热图 / 叠加模式，右侧 0–100% 刻度与液位估计；Adaptive 鲁棒差分（热图）；
+│                                 液位检测 v3（几何优先，见 level_detect.py）：顶面 + 液-液界面，模式标签 WARP / IDENTITY-END / PHOTOMETRIC；
+│                                 顶栏按钮内嵌 25 组案例（A 容器/镜头、B 分层液体、S/V 水垢；含真值与误差显示）；纯前端，双击直接打开
+│                                 重建：webapp_bundle.py <cases_embed.js> <cases.json…> → webapp_build.py <模板> <cases_embed.js> <输出>
 ├─ scenes/mvp/             <pattern>_f<fill>[_nomen].pbrt, free_surface*.ply, manifest*.json
 ├─ scenes/generated/       旧管线场景
 └─ outputs/

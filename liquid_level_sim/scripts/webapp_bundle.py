@@ -18,7 +18,7 @@ import cv2
 from mvp_common import load_json
 from testset_scenes import TS_IMAGES, TS_OUT
 
-W_OUT, Q = 600, 86
+W_OUT, Q = 675, 86   # 675 px wide = 0.75 of the 900x1200 renders (detector is scale-robust; see eval_all spread table)
 
 
 def encode(png: Path) -> str:

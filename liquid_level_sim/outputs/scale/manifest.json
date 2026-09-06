@@ -6,16 +6,15 @@
   "spp": 192,
   "jobs": [
     {
-      "name": "S1_cyl_vase_line60_water45_baseline",
+      "name": "base_cylinder_normal_rg_checker_dz0",
       "role": "baseline",
-      "combo": "S1_cyl_vase_line60_water45",
+      "combo": null,
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "rg_checker",
-      "deposit": "vase",
-      "deposit_line_fill": 0.6,
+      "deposit": null,
       "layers": [],
-      "note": "long-standing line at 60 %, film below; now filled to 45 %: film below 45 % is submerged",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -38,6 +37,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
+      "render_seconds": 23.1,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -46,12 +46,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S1_cyl_vase_line60_water45_baseline.png"
+      "png": "base_cylinder_normal_rg_checker_dz0.png"
     },
     {
-      "name": "S1_cyl_vase_line60_water45_compare",
+      "name": "S1_cyl_vase_line60_water45",
       "role": "compare",
       "combo": "S1_cyl_vase_line60_water45",
+      "baseline": "base_cylinder_normal_rg_checker_dz0",
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "rg_checker",
@@ -98,6 +99,7 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
+      "render_seconds": 27.0,
       "post": {
         "gain": 0.9914586041649325,
         "shift_px": [
@@ -106,19 +108,18 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S1_cyl_vase_line60_water45_compare.png"
+      "png": "S1_cyl_vase_line60_water45.png"
     },
     {
-      "name": "S2_cyl_tide_water30_mosaic_baseline",
+      "name": "base_cylinder_normal_mosaic_dz0",
       "role": "baseline",
-      "combo": "S2_cyl_tide_water30_mosaic",
+      "combo": null,
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "mosaic",
-      "deposit": "tide",
-      "deposit_line_fill": 0.6,
+      "deposit": null,
       "layers": [],
-      "note": "level fell 60 -> 45 % in steps (tide marks), splashes and pour streaks; now 30 %",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -141,6 +142,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
+      "render_seconds": 23.1,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -149,12 +151,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S2_cyl_tide_water30_mosaic_baseline.png"
+      "png": "base_cylinder_normal_mosaic_dz0.png"
     },
     {
-      "name": "S2_cyl_tide_water30_mosaic_compare",
+      "name": "S2_cyl_tide_water30_mosaic",
       "role": "compare",
       "combo": "S2_cyl_tide_water30_mosaic",
+      "baseline": "base_cylinder_normal_mosaic_dz0",
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "mosaic",
@@ -201,6 +204,7 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
+      "render_seconds": 27.8,
       "post": {
         "gain": 0.9897890234261203,
         "shift_px": [
@@ -209,19 +213,18 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S2_cyl_tide_water30_mosaic_compare.png"
+      "png": "S2_cyl_tide_water30_mosaic.png"
     },
     {
-      "name": "S3_gourd_vase_line60_water40_baseline",
+      "name": "base_gourd_normal_rg_checker_dz0",
       "role": "baseline",
-      "combo": "S3_gourd_vase_line60_water40",
+      "combo": null,
       "vessel": "gourd",
       "camera": "normal",
       "pattern": "rg_checker",
-      "deposit": "vase",
-      "deposit_line_fill": 0.6,
+      "deposit": null,
       "layers": [],
-      "note": "same deposit history on the gourd flask",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -244,6 +247,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
+      "render_seconds": 20.1,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -252,12 +256,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S3_gourd_vase_line60_water40_baseline.png"
+      "png": "base_gourd_normal_rg_checker_dz0.png"
     },
     {
-      "name": "S3_gourd_vase_line60_water40_compare",
+      "name": "S3_gourd_vase_line60_water40",
       "role": "compare",
       "combo": "S3_gourd_vase_line60_water40",
+      "baseline": "base_gourd_normal_rg_checker_dz0",
       "vessel": "gourd",
       "camera": "normal",
       "pattern": "rg_checker",
@@ -304,6 +309,7 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
+      "render_seconds": 24.6,
       "post": {
         "gain": 0.9746355681408396,
         "shift_px": [
@@ -312,19 +318,18 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S3_gourd_vase_line60_water40_compare.png"
+      "png": "S3_gourd_vase_line60_water40.png"
     },
     {
-      "name": "S4_cyl_vase_macro_checker_baseline",
+      "name": "base_cylinder_macro_rg_checker_dz2.25",
       "role": "baseline",
-      "combo": "S4_cyl_vase_macro_checker",
+      "combo": null,
       "vessel": "cylinder",
       "camera": "macro",
       "pattern": "rg_checker",
-      "deposit": "vase",
-      "deposit_line_fill": 0.6,
+      "deposit": null,
       "layers": [],
-      "note": "macro view of the water-line ring, checker panel",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -347,6 +352,7 @@
       },
       "jitter": false,
       "cam_dz": 2.25,
+      "render_seconds": 39.7,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -355,12 +361,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S4_cyl_vase_macro_checker_baseline.png"
+      "png": "base_cylinder_macro_rg_checker_dz2.25.png"
     },
     {
-      "name": "S4_cyl_vase_macro_checker_compare",
+      "name": "S4_cyl_vase_macro_checker",
       "role": "compare",
       "combo": "S4_cyl_vase_macro_checker",
+      "baseline": "base_cylinder_macro_rg_checker_dz2.25",
       "vessel": "cylinder",
       "camera": "macro",
       "pattern": "rg_checker",
@@ -407,6 +414,7 @@
       },
       "jitter": true,
       "cam_dz": 2.25,
+      "render_seconds": 46.9,
       "post": {
         "gain": 1.029652708450493,
         "shift_px": [
@@ -415,19 +423,18 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S4_cyl_vase_macro_checker_compare.png"
+      "png": "S4_cyl_vase_macro_checker.png"
     },
     {
-      "name": "S5_cyl_vase_macro_white_baseline",
+      "name": "base_cylinder_macro_white_dz2.25",
       "role": "baseline",
-      "combo": "S5_cyl_vase_macro_white",
+      "combo": null,
       "vessel": "cylinder",
       "camera": "macro",
       "pattern": "white",
-      "deposit": "vase",
-      "deposit_line_fill": 0.6,
+      "deposit": null,
       "layers": [],
-      "note": "macro view of the water-line ring, white panel",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -450,6 +457,7 @@
       },
       "jitter": false,
       "cam_dz": 2.25,
+      "render_seconds": 37.4,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -458,12 +466,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S5_cyl_vase_macro_white_baseline.png"
+      "png": "base_cylinder_macro_white_dz2.25.png"
     },
     {
-      "name": "S5_cyl_vase_macro_white_compare",
+      "name": "S5_cyl_vase_macro_white",
       "role": "compare",
       "combo": "S5_cyl_vase_macro_white",
+      "baseline": "base_cylinder_macro_white_dz2.25",
       "vessel": "cylinder",
       "camera": "macro",
       "pattern": "white",
@@ -510,6 +519,7 @@
       },
       "jitter": true,
       "cam_dz": 2.25,
+      "render_seconds": 43.7,
       "post": {
         "gain": 0.9877342934556559,
         "shift_px": [
@@ -518,56 +528,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "S5_cyl_vase_macro_white_compare.png"
+      "png": "S5_cyl_vase_macro_white.png"
     },
     {
-      "name": "V1_cyl_line30_water55_baseline",
-      "role": "baseline",
-      "combo": "V1_cyl_line30_water55",
-      "vessel": "cylinder",
-      "camera": "normal",
-      "pattern": "rg_checker",
-      "deposit": "line30",
-      "deposit_line_fill": 0.3,
-      "layers": [],
-      "note": "old line at 30 %, now filled above it: the ring and film are submerged (wet, index-matched)",
-      "gt": {
-        "camera": {
-          "eye": [
-            0.0,
-            -60.0,
-            10.25
-          ],
-          "look": [
-            0.0,
-            0.0,
-            10.25
-          ],
-          "fov_short_axis_deg": 24.0
-        },
-        "vessel": "Cylinder 15 x 20 cm (MVP)",
-        "inner_height_cm": 20.0,
-        "layers": [],
-        "rim_row_front": 186.66464038153575,
-        "bottom_row_front": 993.1726591492709
-      },
-      "jitter": false,
-      "cam_dz": 0.0,
-      "render_seconds": 25.0,
-      "post": {
-        "gain": 1.0,
-        "shift_px": [
-          0.0,
-          0.0
-        ],
-        "noise_sigma_at_0.8": 0.014491376746189439
-      },
-      "png": "V1_cyl_line30_water55_baseline.png"
-    },
-    {
-      "name": "V1_cyl_line30_water55_compare",
+      "name": "V1_cyl_line30_water55",
       "role": "compare",
       "combo": "V1_cyl_line30_water55",
+      "baseline": "base_cylinder_normal_rg_checker_dz0",
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "rg_checker",
@@ -614,28 +581,27 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 27.2,
+      "render_seconds": 26.4,
       "post": {
-        "gain": 1.0180614470233853,
+        "gain": 0.990632504457002,
         "shift_px": [
-          -0.11584299560765343,
-          -1.4320042896791745
+          -0.9622683660206388,
+          -2.080345151511776
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V1_cyl_line30_water55_compare.png"
+      "png": "V1_cyl_line30_water55.png"
     },
     {
-      "name": "V2_cyl_line50thin_water35_grid_baseline",
+      "name": "base_cylinder_normal_grid_dz0",
       "role": "baseline",
-      "combo": "V2_cyl_line50thin_water35_grid",
+      "combo": null,
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "grid",
-      "deposit": "line50_thin",
-      "deposit_line_fill": 0.5,
+      "deposit": null,
       "layers": [],
-      "note": "a single thin ring at 50 %, no film",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -658,7 +624,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
-      "render_seconds": 24.1,
+      "render_seconds": 23.6,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -667,12 +633,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V2_cyl_line50thin_water35_grid_baseline.png"
+      "png": "base_cylinder_normal_grid_dz0.png"
     },
     {
-      "name": "V2_cyl_line50thin_water35_grid_compare",
+      "name": "V2_cyl_line50thin_water35_grid",
       "role": "compare",
       "combo": "V2_cyl_line50thin_water35_grid",
+      "baseline": "base_cylinder_normal_grid_dz0",
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "grid",
@@ -719,28 +686,27 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 25.4,
+      "render_seconds": 25.5,
       "post": {
-        "gain": 1.0429673182031782,
+        "gain": 0.9969764701435625,
         "shift_px": [
-          -0.029113811656569677,
-          1.9880455337395624
+          0.6130565569518014,
+          -1.8071284765660227
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V2_cyl_line50thin_water35_grid_compare.png"
+      "png": "V2_cyl_line50thin_water35_grid.png"
     },
     {
-      "name": "V3_erl_line75heavy_water40_mosaic_baseline",
+      "name": "base_erlenmeyer_normal_mosaic_dz0",
       "role": "baseline",
-      "combo": "V3_erl_line75heavy_water40_mosaic",
+      "combo": null,
       "vessel": "erlenmeyer",
       "camera": "normal",
       "pattern": "mosaic",
-      "deposit": "line75_heavy",
-      "deposit_line_fill": 0.75,
+      "deposit": null,
       "layers": [],
-      "note": "heavy iron-tinted ring at 75 % on the Erlenmeyer cone, film below",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -763,7 +729,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
-      "render_seconds": 19.7,
+      "render_seconds": 18.3,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -772,12 +738,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V3_erl_line75heavy_water40_mosaic_baseline.png"
+      "png": "base_erlenmeyer_normal_mosaic_dz0.png"
     },
     {
-      "name": "V3_erl_line75heavy_water40_mosaic_compare",
+      "name": "V3_erl_line75heavy_water40_mosaic",
       "role": "compare",
       "combo": "V3_erl_line75heavy_water40_mosaic",
+      "baseline": "base_erlenmeyer_normal_mosaic_dz0",
       "vessel": "erlenmeyer",
       "camera": "normal",
       "pattern": "mosaic",
@@ -824,28 +791,27 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 20.8,
+      "render_seconds": 21.5,
       "post": {
-        "gain": 0.9577967075029835,
+        "gain": 0.9612524971715902,
         "shift_px": [
-          1.6344429367866526,
-          -0.9753935742230768
+          0.7224649289050871,
+          0.018639821685647817
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V3_erl_line75heavy_water40_mosaic_compare.png"
+      "png": "V3_erl_line75heavy_water40_mosaic.png"
     },
     {
-      "name": "V4_reagent_line92full_water60_baseline",
+      "name": "base_reagent_normal_rg_checker_dz0",
       "role": "baseline",
-      "combo": "V4_reagent_line92full_water60",
+      "combo": null,
       "vessel": "reagent",
       "camera": "normal",
       "pattern": "rg_checker",
-      "deposit": "line92_full",
-      "deposit_line_fill": 0.92,
+      "deposit": null,
       "layers": [],
-      "note": "bottle kept nearly full: film on the whole wall, ring at 92 %",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -868,7 +834,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
-      "render_seconds": 19.7,
+      "render_seconds": 17.5,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -877,12 +843,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V4_reagent_line92full_water60_baseline.png"
+      "png": "base_reagent_normal_rg_checker_dz0.png"
     },
     {
-      "name": "V4_reagent_line92full_water60_compare",
+      "name": "V4_reagent_line92full_water60",
       "role": "compare",
       "combo": "V4_reagent_line92full_water60",
+      "baseline": "base_reagent_normal_rg_checker_dz0",
       "vessel": "reagent",
       "camera": "normal",
       "pattern": "rg_checker",
@@ -929,65 +896,22 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 20.2,
+      "render_seconds": 19.8,
       "post": {
-        "gain": 0.9562330398253612,
+        "gain": 1.03508584892616,
         "shift_px": [
-          -0.40066352902656854,
-          -1.7042889505154752
+          1.9876731257820603,
+          2.4320034654848968
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V4_reagent_line92full_water60_compare.png"
+      "png": "V4_reagent_line92full_water60.png"
     },
     {
-      "name": "V5_cyl_band4060_water50_baseline",
-      "role": "baseline",
-      "combo": "V5_cyl_band4060_water50",
-      "vessel": "cylinder",
-      "camera": "normal",
-      "pattern": "rg_checker",
-      "deposit": "band4060",
-      "deposit_line_fill": 0.6,
-      "layers": [],
-      "note": "level fluctuated 40-60 %: dense tide-mark band; current level inside the band",
-      "gt": {
-        "camera": {
-          "eye": [
-            0.0,
-            -60.0,
-            10.25
-          ],
-          "look": [
-            0.0,
-            0.0,
-            10.25
-          ],
-          "fov_short_axis_deg": 24.0
-        },
-        "vessel": "Cylinder 15 x 20 cm (MVP)",
-        "inner_height_cm": 20.0,
-        "layers": [],
-        "rim_row_front": 186.66464038153575,
-        "bottom_row_front": 993.1726591492709
-      },
-      "jitter": false,
-      "cam_dz": 0.0,
-      "render_seconds": 26.4,
-      "post": {
-        "gain": 1.0,
-        "shift_px": [
-          0.0,
-          0.0
-        ],
-        "noise_sigma_at_0.8": 0.014491376746189439
-      },
-      "png": "V5_cyl_band4060_water50_baseline.png"
-    },
-    {
-      "name": "V5_cyl_band4060_water50_compare",
+      "name": "V5_cyl_band4060_water50",
       "role": "compare",
       "combo": "V5_cyl_band4060_water50",
+      "baseline": "base_cylinder_normal_rg_checker_dz0",
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "rg_checker",
@@ -1034,28 +958,27 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 27.1,
+      "render_seconds": 28.1,
       "post": {
-        "gain": 1.009678221016233,
+        "gain": 0.9562330398253612,
         "shift_px": [
-          1.2444192392242401,
-          -0.9966310232548459
+          -0.40066352902656854,
+          -1.7042889505154752
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V5_cyl_band4060_water50_compare.png"
+      "png": "V5_cyl_band4060_water50.png"
     },
     {
-      "name": "V6_gourd_tilted_water45_mosaic_baseline",
+      "name": "base_gourd_normal_mosaic_dz0",
       "role": "baseline",
-      "combo": "V6_gourd_tilted_water45_mosaic",
+      "combo": null,
       "vessel": "gourd",
       "camera": "normal",
       "pattern": "mosaic",
-      "deposit": "tilted",
-      "deposit_line_fill": 0.55,
+      "deposit": null,
       "layers": [],
-      "note": "gourd stored tilted while drying: inclined line and film boundary",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -1078,7 +1001,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
-      "render_seconds": 25.1,
+      "render_seconds": 19.7,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -1087,12 +1010,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V6_gourd_tilted_water45_mosaic_baseline.png"
+      "png": "base_gourd_normal_mosaic_dz0.png"
     },
     {
-      "name": "V6_gourd_tilted_water45_mosaic_compare",
+      "name": "V6_gourd_tilted_water45_mosaic",
       "role": "compare",
       "combo": "V6_gourd_tilted_water45_mosaic",
+      "baseline": "base_gourd_normal_mosaic_dz0",
       "vessel": "gourd",
       "camera": "normal",
       "pattern": "mosaic",
@@ -1139,28 +1063,27 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 23.6,
+      "render_seconds": 22.2,
       "post": {
-        "gain": 0.952269256039669,
+        "gain": 1.009678221016233,
         "shift_px": [
-          -0.8733355534661529,
-          0.28925980495046755
+          1.2444192392242401,
+          -0.9966310232548459
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V6_gourd_tilted_water45_mosaic_compare.png"
+      "png": "V6_gourd_tilted_water45_mosaic.png"
     },
     {
-      "name": "V7_cyl_splash_water30_wide_baseline",
+      "name": "base_cylinder_wide_rg_checker_dz0",
       "role": "baseline",
-      "combo": "V7_cyl_splash_water30_wide",
+      "combo": null,
       "vessel": "cylinder",
       "camera": "wide",
       "pattern": "rg_checker",
-      "deposit": "splash",
-      "deposit_line_fill": 0.45,
+      "deposit": null,
       "layers": [],
-      "note": "splash/pour dominated: many droplet rings and streaks, faint line at 45 %",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -1183,7 +1106,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
-      "render_seconds": 24.9,
+      "render_seconds": 23.4,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -1192,12 +1115,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V7_cyl_splash_water30_wide_baseline.png"
+      "png": "base_cylinder_wide_rg_checker_dz0.png"
     },
     {
-      "name": "V7_cyl_splash_water30_wide_compare",
+      "name": "V7_cyl_splash_water30_wide",
       "role": "compare",
       "combo": "V7_cyl_splash_water30_wide",
+      "baseline": "base_cylinder_wide_rg_checker_dz0",
       "vessel": "cylinder",
       "camera": "wide",
       "pattern": "rg_checker",
@@ -1244,65 +1168,22 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 26.7,
+      "render_seconds": 27.6,
       "post": {
-        "gain": 0.9898435818938124,
+        "gain": 0.952269256039669,
         "shift_px": [
-          0.26407728365181304,
-          1.2591052164755872
+          -0.8733355534661529,
+          0.28925980495046755
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V7_cyl_splash_water30_wide_compare.png"
+      "png": "V7_cyl_splash_water30_wide.png"
     },
     {
-      "name": "V8_cyl_sector_water50_baseline",
-      "role": "baseline",
-      "combo": "V8_cyl_sector_water50",
-      "vessel": "cylinder",
-      "camera": "normal",
-      "pattern": "rg_checker",
-      "deposit": "sector",
-      "deposit_line_fill": 0.5,
-      "layers": [],
-      "note": "deposit only on one third of the circumference, current level at the old line",
-      "gt": {
-        "camera": {
-          "eye": [
-            0.0,
-            -60.0,
-            10.25
-          ],
-          "look": [
-            0.0,
-            0.0,
-            10.25
-          ],
-          "fov_short_axis_deg": 24.0
-        },
-        "vessel": "Cylinder 15 x 20 cm (MVP)",
-        "inner_height_cm": 20.0,
-        "layers": [],
-        "rim_row_front": 186.66464038153575,
-        "bottom_row_front": 993.1726591492709
-      },
-      "jitter": false,
-      "cam_dz": 0.0,
-      "render_seconds": 24.9,
-      "post": {
-        "gain": 1.0,
-        "shift_px": [
-          0.0,
-          0.0
-        ],
-        "noise_sigma_at_0.8": 0.014491376746189439
-      },
-      "png": "V8_cyl_sector_water50_baseline.png"
-    },
-    {
-      "name": "V8_cyl_sector_water50_compare",
+      "name": "V8_cyl_sector_water50",
       "role": "compare",
       "combo": "V8_cyl_sector_water50",
+      "baseline": "base_cylinder_normal_rg_checker_dz0",
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "rg_checker",
@@ -1349,28 +1230,27 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 28.1,
+      "render_seconds": 25.3,
       "post": {
-        "gain": 0.9856638643872995,
+        "gain": 0.9686521437516334,
         "shift_px": [
-          -2.2229038480556884,
-          1.2408619501440707
+          -2.2744240861698795,
+          -0.5992214842145565
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V8_cyl_sector_water50_compare.png"
+      "png": "V8_cyl_sector_water50.png"
     },
     {
-      "name": "V9_erl_dripsonly_water45_tele_baseline",
+      "name": "base_erlenmeyer_tele_rg_checker_dz0",
       "role": "baseline",
-      "combo": "V9_erl_dripsonly_water45_tele",
+      "combo": null,
       "vessel": "erlenmeyer",
       "camera": "tele",
       "pattern": "rg_checker",
-      "deposit": "drips_only",
-      "deposit_line_fill": 0.05,
+      "deposit": null,
       "layers": [],
-      "note": "no water line: pour streaks from the rim and scattered droplets",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -1393,7 +1273,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
-      "render_seconds": 18.1,
+      "render_seconds": 17.5,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -1402,12 +1282,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V9_erl_dripsonly_water45_tele_baseline.png"
+      "png": "base_erlenmeyer_tele_rg_checker_dz0.png"
     },
     {
-      "name": "V9_erl_dripsonly_water45_tele_compare",
+      "name": "V9_erl_dripsonly_water45_tele",
       "role": "compare",
       "combo": "V9_erl_dripsonly_water45_tele",
+      "baseline": "base_erlenmeyer_tele_rg_checker_dz0",
       "vessel": "erlenmeyer",
       "camera": "tele",
       "pattern": "rg_checker",
@@ -1454,28 +1335,27 @@
       },
       "jitter": true,
       "cam_dz": 0.0,
-      "render_seconds": 20.4,
+      "render_seconds": 18.9,
       "post": {
-        "gain": 1.044147256265119,
+        "gain": 0.9978785163803922,
         "shift_px": [
-          0.8915868259484099,
-          -1.944573890726401
+          -0.9334337475048793,
+          -2.205121668925065
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V9_erl_dripsonly_water45_tele_compare.png"
+      "png": "V9_erl_dripsonly_water45_tele.png"
     },
     {
-      "name": "V10_cyl_line50thin_water50_white_baseline",
+      "name": "base_cylinder_normal_white_dz0",
       "role": "baseline",
-      "combo": "V10_cyl_line50thin_water50_white",
+      "combo": null,
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "white",
-      "deposit": "line50_thin",
-      "deposit_line_fill": 0.5,
+      "deposit": null,
       "layers": [],
-      "note": "thin old ring exactly at the current level, white panel (hardest case)",
+      "note": "clean vessel, no liquid",
       "gt": {
         "camera": {
           "eye": [
@@ -1498,7 +1378,7 @@
       },
       "jitter": false,
       "cam_dz": 0.0,
-      "render_seconds": 22.3,
+      "render_seconds": 21.6,
       "post": {
         "gain": 1.0,
         "shift_px": [
@@ -1507,12 +1387,13 @@
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V10_cyl_line50thin_water50_white_baseline.png"
+      "png": "base_cylinder_normal_white_dz0.png"
     },
     {
-      "name": "V10_cyl_line50thin_water50_white_compare",
+      "name": "V10_cyl_line50thin_water50_white",
       "role": "compare",
       "combo": "V10_cyl_line50thin_water50_white",
+      "baseline": "base_cylinder_normal_white_dz0",
       "vessel": "cylinder",
       "camera": "normal",
       "pattern": "white",
@@ -1561,14 +1442,14 @@
       "cam_dz": 0.0,
       "render_seconds": 25.0,
       "post": {
-        "gain": 0.9671954087051857,
+        "gain": 1.034756794090773,
         "shift_px": [
-          2.010746746353157,
-          -0.5447580532642193
+          -0.521597737452546,
+          0.8339808855028554
         ],
         "noise_sigma_at_0.8": 0.014491376746189439
       },
-      "png": "V10_cyl_line50thin_water50_white_compare.png"
+      "png": "V10_cyl_line50thin_water50_white.png"
     }
   ]
 }

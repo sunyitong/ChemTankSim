@@ -103,7 +103,7 @@ def header(cfg: Setup, out_image: str, spp: int, width: int, height: int) -> str
 
 def materials(combo: Combo, tex: dict | None, lay: list | None = None) -> str:
     L = [f'MakeNamedMaterial "glass" "string type" "dielectric" "float eta" [{_f(ETA_GLASS)}]']
-    if not tex:
+    if not tex or not (tex.get("kind") == "scale" or "dirt_amount" in tex):      # clean glass
         L += ['MakeNamedMaterial "wall_out" "string type" "dielectric" "float eta" [1.5]',
               'MakeNamedMaterial "wall_in_dry" "string type" "dielectric" "float eta" [1.5]']
         return "\n".join(L)
