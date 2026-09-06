@@ -370,8 +370,8 @@ function levelFromProfile(prof) {
 //     per-row warp JUMPS, measured across unreliable bands by local linear fits on the nearest reliable
 //     rows on each side; the free surface is anchored by the end of the identity plateau (air region) and
 //     the dark contact line. Rows are ROI-local half-resolution rows.
-const NCC_MIN = 0.35, STRUCT_MIN = 0.045, Z_MIN = 4, J_MIN = 0.08, SIGMA_MAX = 0.12, Z_MIN_SEC = 15, BOTTOM_ZONE = 0.18, CENTRAL = 0.70;
-const W_FLOOR = 0.02, PHI_MIN = 0.05, PHI_MEAS = 0.20, NCC_SURE = 0.55, LOGM_LIQ = 0.30, RHO_DIP = 0.92;
+const NCC_MIN = 0.35, STRUCT_MIN = 0.045, Z_MIN = 4, J_MIN = 0.08, SIGMA_MAX = 0.12, Z_MIN_SEC = 15, BOTTOM_ZONE = 0.20, CENTRAL = 0.70;
+const W_FLOOR = 0.02, PHI_MIN = 0.05, PHI_MEAS = 0.20, NCC_SURE = 0.55, LOGM_LIQ = 0.30, RHO_DIP = 0.92, LINE_MIN = 0.06;
 
 function centralCols(hw) { const cx = (hw - 1) / 2; return [Math.round(cx - CENTRAL * hw / 2), Math.round(cx + CENTRAL * hw / 2)]; }
 function rowStructure(B, hw, hh) {                         // baseline luminance std/mean, central columns
@@ -546,7 +546,14 @@ function detectLevels(B, C, hw, hh, dE, thresh) {
       const ri = Math.floor(row), lo = Math.max(0, ri - 2 * w), hi = Math.min(n, ri + 2 * w);
       let qu = 0, nu = 0, qd = 0, nd = 0, sn = 0, cn = 0;
       for (let i = lo; i < ri; i++) { nu++; qu += good[i]; } for (let i = ri; i < hi; i++) { nd++; qd += good[i]; if (good[i]) { sn += ncc[i]; cn++; } }
-      accepted.push({ row, jump: J, z: Z[r], z2: g2.Z[r], sigma: g1.S[r], quality: Math.min(nu ? qu / nu : 0, nd ? qd / nd : 0), nccBelow: cn ? sn / cn : 0 });
+      // contact-line anomaly: two liquids meet the wall with a meniscus that redirects light, so a liquid|liquid
+      // interface always shows a bright or dark line; a magnification regime change inside ONE liquid (focal
+      // caustic of a spherical / conical vessel) is photometrically smooth.
+      const hl = Math.max(3, Math.round(n * 0.015)), ctx = [];
+      for (let i = Math.max(0, ri - 2 * w); i < Math.max(0, ri - hl); i++) ctx.push(rho[i]);
+      for (let i = ri + hl + 1; i < Math.min(n, ri + 2 * w); i++) ctx.push(rho[i]);
+      let line = 0; if (ctx.length) { const med = median(ctx); for (let i = Math.max(0, ri - hl); i <= Math.min(n - 1, ri + hl); i++) line = Math.max(line, Math.abs(rho[i] - med)); }
+      accepted.push({ row, jump: J, z: Z[r], z2: g2.Z[r], sigma: g1.S[r], quality: Math.min(nu ? qu / nu : 0, nd ? qd / nd : 0), nccBelow: cn ? sn / cn : 0, line });
     }
     accepted.sort((a, b) => a.row - b.row);
   }
@@ -570,11 +577,11 @@ function detectLevels(B, C, hw, hh, dE, thresh) {
       accepted[0] = { ...accepted[0], row: rowS };
     } else {                                               // plateau ended long before the first jump (or none)
       let weak = 0, m = 0; if (first !== null) for (let r = top; r < Math.min(n, Math.floor(first)); r++) { m++; if (ncc1[r] >= 0.3) weak++; }
-      if (!m || weak / m < 0.5) { accepted.unshift({ row: dip !== null ? dip : top, jump: NaN, z: Infinity, z2: Infinity, sigma: 0, quality: 1, nccBelow: 1 }); mode = "identity-end"; }
+      if (!m || weak / m < 0.5) { accepted.unshift({ row: dip !== null ? dip : top, jump: NaN, z: Infinity, z2: Infinity, sigma: 0, quality: 1, nccBelow: 1, line: 1 }); mode = "identity-end"; }
     }
   }
   // ---- secondary boundaries: stable plateaus on both sides, a true step (z does not shrink with 2w), not in the bottom zone
-  const levels = accepted.filter((a, i) => i === 0 || (a.sigma <= SIGMA_MAX && a.z >= Z_MIN_SEC && a.z2 >= 0.6 * a.z && a.quality >= 0.5 && a.nccBelow >= 0.55 && a.row < n * (1 - BOTTOM_ZONE)))
+  const levels = accepted.filter((a, i) => i === 0 || (a.sigma <= SIGMA_MAX && a.z >= Z_MIN_SEC && a.z2 >= 0.6 * a.z && a.quality >= 0.5 && a.nccBelow >= 0.55 && a.line >= LINE_MIN && a.row < n * (1 - BOTTOM_ZONE)))
                          .slice(0, 3).map(a => ({ row: a.row, jump: a.jump, z: a.z }));
   const cls = new Uint8Array(n); for (let i = 0; i < n; i++) cls[i] = identity[i] ? 1 : liquid[i] ? 2 : 0;
   return { mode, levels, logM, ncc, cls, fracPattern: ng / n, surface: top, cands: accepted };

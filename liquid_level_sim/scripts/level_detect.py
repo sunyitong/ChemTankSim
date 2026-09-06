@@ -42,13 +42,14 @@ MAX_LEVELS = 3
 CENTRAL = 0.70        # fraction of ROI width used for the warp correlation (excludes wall edges)
 SIGMA_MAX = 0.12      # plateau residual scale (log M) allowed for a secondary (liquid|liquid) boundary
 Z_MIN_SECONDARY = 15.0  # significance required for a secondary boundary
-BOTTOM_ZONE = 0.18      # fraction of the ROI height above the bottom where rays cross the vessel bottom
+BOTTOM_ZONE = 0.20      # fraction of the ROI height above the bottom where rays cross the vessel bottom
 W_FLOOR = 0.02          # correlation weight of columns that did not change (geometry is measured where the image changed)
 PHI_MIN = 0.05          # rows whose changed-column fraction is below this are identity (M = 1) by definition
 PHI_MEAS = 0.20         # minimum changed-column fraction for a measurable warp (fewer columns are over-fitted)
 NCC_SURE = 0.55         # correlation from which a warp estimate is trusted as evidence (identity or liquid)
 LOGM_LIQ = 0.30         # |log M| from which a trusted warp counts as liquid (a lens), unless it is flipped
 RHO_DIP = 0.92          # row luminance (relative to the air region) below which the contact line / TIR band begins
+LINE_MIN = 0.06         # luminance anomaly (bright or dark, vs the local median) a liquid|liquid contact line must show
 
 
 @dataclass
@@ -69,6 +70,7 @@ class Detection:
     cls: np.ndarray | None = None               # per-row class: 1 identity, 2 liquid, 0 unknown
     rho: np.ndarray | None = None               # compare/baseline row luminance ratio
     ncc1: np.ndarray | None = None              # correlation of the identity hypothesis (M = 1)
+    amb: np.ndarray | None = None               # fraction of warp hypotheses within 0.10 of the best NCC
     surface: int | None = None                  # row after the identity plateau (free-surface upper bound)
 
 
@@ -142,6 +144,7 @@ def warp_profile(B, C, weights=None, n_scale=49, m_lo=0.5, m_hi=8.0, central=CEN
         xs_c = np.asarray(cols)
     scales = np.exp(np.linspace(math.log(m_lo), math.log(m_hi), n_scale))
     logM = np.zeros(h, np.float32); best = np.full(h, -1.0, np.float32); flip = np.ones(h, np.float32); ncc1 = np.zeros(h, np.float32)
+    land = []                                                             # NCC of every hypothesis, for the ambiguity measure
     W = np.ones((h, len(xs_c)), np.float32) if weights is None else weights[:, xs_c]
     W3 = np.repeat(W, 3, axis=1)                                          # per channel
     Cc = C[:, xs_c, :].reshape(h, -1)
@@ -159,9 +162,15 @@ def warp_profile(B, C, weights=None, n_scale=49, m_lo=0.5, m_hi=8.0, central=CEN
             ncc = (Cc * Bs).sum(axis=1) / (nC * (np.linalg.norm(Bs, axis=1) + 1e-6))
             if sgn > 0 and abs(M - 1.0) < 1e-6:
                 ncc1 = ncc.astype(np.float32)
+            land.append(ncc)
             up = ncc > best
             best[up] = ncc[up]; logM[up] = math.log(M); flip[up] = sgn
-    return logM, best, flip, ncc1
+    # ambiguity: fraction of all hypotheses that match (nearly) as well as the best one. A row whose
+    # compare content has no horizontal structure (one magnified cell across the columns, dark band)
+    # is matched equally well by most warps: its estimate is meaningless whatever the best NCC is.
+    L = np.stack(land, axis=1)
+    amb = (L >= best[:, None] - 0.10).mean(axis=1).astype(np.float32)
+    return logM, best, flip, ncc1, amb
 
 
 def row_structure(B, central=CENTRAL):
@@ -332,7 +341,8 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
         det.zscore = z; det.levels = [{"row": float(p), "jump": float("nan"), "z": float(z[p])} for p in pk]
         return det
     weights, phi = change_weights(B, Ca, thresh)
-    logM, ncc, flip, ncc1 = warp_profile(B, Ca, weights=weights)
+    logM, ncc, flip, ncc1, amb = warp_profile(B, Ca, weights=weights)
+    det.amb = amb
     unchanged = phi < PHI_MIN                              # nothing moved in this row: identity warp by definition
     logM[unchanged] = 0.0; flip[unchanged] = 1.0; ncc[unchanged] = 1.0; ncc1[unchanged] = 1.0
     # a warp is measurable only where enough columns changed (a handful of droplet columns would be
@@ -376,8 +386,14 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
                 q_up = good[lo:int(row)]; q_dn = good[int(row):hi]
                 quality = min(q_up.mean() if len(q_up) else 0, q_dn.mean() if len(q_dn) else 0)
                 ncc_dn = float(ncc[int(row):hi][q_dn].mean()) if q_dn.any() else 0.0
+                # contact-line anomaly: two liquids meet the wall with a meniscus that redirects light, so a
+                # liquid|liquid interface always shows a bright or dark line; a magnification regime change
+                # inside ONE liquid (focal caustic of a spherical / conical vessel) is photometrically smooth.
+                ri = int(round(row)); hl = max(3, round(n * 0.015)); near = rho[max(0, ri - hl):ri + hl + 1]
+                ctx = np.concatenate([rho[max(0, ri - 2 * w):max(0, ri - hl)], rho[ri + hl + 1:min(n, ri + 2 * w)]])
+                line = float(np.max(np.abs(near - np.median(ctx)))) if len(ctx) and len(near) else 0.0
                 accepted.append({"row": row, "jump": float(J[r]), "z": float(Z[r]), "z2": float(Z2[r]), "sigma": float(S[r]),
-                                 "quality": float(quality), "ncc_below": ncc_dn})
+                                 "quality": float(quality), "ncc_below": ncc_dn, "line": line})
         accepted.sort(key=lambda d: d["row"])
     det.cands = [dict(a) for a in accepted]
     # ---- free surface as the end of the identity plateau ------------------------------------
@@ -430,7 +446,7 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
             between = ncc1[top:min(n, int(first))] if first is not None else np.zeros(0)
             if not len(between) or (between >= 0.3).mean() < 0.5:
                 row_s = float(dip) if dip is not None else float(top)
-                accepted.insert(0, {"row": row_s, "jump": float("nan"), "z": float("inf"), "z2": float("inf"), "sigma": 0.0, "quality": 1.0, "ncc_below": 1.0})
+                accepted.insert(0, {"row": row_s, "jump": float("nan"), "z": float("inf"), "z2": float("inf"), "sigma": 0.0, "quality": 1.0, "ncc_below": 1.0, "line": 1.0})
                 det.mode = "warp/identity-end"
     # Secondary boundaries (liquid|liquid interfaces) are reported only where the magnification is
     # measured stably on both sides and the jump is a step: its significance must not shrink when the
@@ -439,8 +455,9 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
     # change that is not a liquid boundary): no secondary boundary is reported there.
     det.levels = [a for i, a in enumerate(accepted)
                   if i == 0 or (a["sigma"] <= SIGMA_MAX and a["z"] >= Z_MIN_SECONDARY and a["z2"] >= 0.6 * a["z"]
-                                and a["quality"] >= 0.5 and a["ncc_below"] >= 0.55 and a["row"] < n * (1 - BOTTOM_ZONE))][:max_levels]
+                                and a["quality"] >= 0.5 and a["ncc_below"] >= 0.55 and a["line"] >= LINE_MIN
+                                and a["row"] < n * (1 - BOTTOM_ZONE))][:max_levels]
     for a in det.levels:
-        for k in ("sigma", "quality", "ncc_below", "z2"):
+        for k in ("sigma", "quality", "ncc_below", "z2", "line"):
             a.pop(k, None)
     return det

@@ -31,12 +31,12 @@
 | A1_gourd_normal_checker | +1.7 | +1.2 | +1.2 | +1.2 | +1.2 | 0.5 |
 | A2_gourd_wide_mosaic | +0.4 | +0.3 | +0.3 | +0.6 | +0.1 | 0.4 |
 | A3_erlenmeyer_tele_grid | +2.0 | +1.8 | +1.6 | +1.6 | +2.4 | 0.8 |
-| A4_florence_normal_checker | +1.8 | +1.7 | +1.9 (+1FP) | +1.9 | +2.1 (+1FP) | 0.5 |
+| A4_florence_normal_checker | +1.8 | +1.7 | +1.9 | +1.9 | +2.1 | 0.5 |
 | A5_reagent_wide_checker | +1.2 | +1.0 | +1.1 | +0.6 | +1.0 | 0.6 |
 | A6_erlenmeyer_normal_mosaic_tea | +2.5 | +2.4 | +2.7 | +2.7 | +3.1 (+1FP) | 0.7 |
 | B1_cyl_water_oil_checker | +0.2 / +0.5 | +0.3 / +0.4 | +0.3 / +0.5 | +0.4 / +0.2 | +0.4 / +1.1 | 1.0 |
 | B2_cyl_water_hexane_checker | -0.1 / +0.2 | -0.0 / +0.1 | -0.0 / +0.1 | miss / +0.2 | miss / +0.2 | 0.2 |
-| B3_cyl_dcm_water_checker | +0.8 / +1.3 | miss / +0.7 (+1FP) | +0.4 / +0.8 | -0.7 / +1.0 | +0.5 / +0.7 | 0.6 |
+| B3_cyl_dcm_water_checker | +0.8 / +1.3 | miss / +0.7 | +0.4 / +0.8 | -0.7 / +1.0 | +0.5 / +0.7 | 0.6 |
 | B4_cyl_water_hexane_white | miss / +1.7 | miss / +1.9 | miss / +1.8 | miss / +1.7 | miss / +2.5 | 0.8 |
 | S1_cyl_vase_line60_water45 | -0.6 | -0.6 | -0.7 | -0.5 | -0.5 | 0.3 |
 | S2_cyl_tide_water30_mosaic | +0.3 | +5.7 (+1FP) | +0.4 | +0.4 | +0.5 | 5.4 |
@@ -53,4 +53,4 @@
 | V8_cyl_sector_water50 | +1.6 | +1.4 | +1.6 | +1.4 | +1.2 | 0.4 |
 | V9_erl_dripsonly_water45_tele | +2.1 | +2.2 | +1.4 | +1.2 | +0.8 | 1.4 |
 | V10_cyl_line50thin_water50_white | +1.6 | +2.0 | +1.9 | +2.2 | +2.6 | 1.0 |
-**scales [0.55, 0.65, 0.75, 0.85, 1.0]: 136/145 interfaces found within 6 pt, 10 false positives, median |err| 1.24 pt, max |err| 5.68 pt**
+**scales [0.55, 0.65, 0.75, 0.85, 1.0]: 136/145 interfaces found within 6 pt, 7 false positives, median |err| 1.24 pt, max |err| 5.68 pt**
