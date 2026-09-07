@@ -1049,7 +1049,7 @@ function loadCase(c) {
   Promise.all([load(c.base), load(c.cmp)]).then(([b, k]) => installPair(b, k, c.roi, c.gt, `${c.id} · ${c.label}`.toUpperCase(), c.id)).catch(() => {});
 }
 // case groups by id prefix: one row per family so related pairs sit side by side
-const GROUPS = [["A", "Vessels"], ["B", "Layered"], ["S", "Limescale"], ["V", "Variants"], ["R", "Fixtures"], ["F", "Video"]];
+const GROUPS = [["A", "Vessels"], ["B", "Layered"], ["S", "Limescale"], ["V", "Variants"], ["R", "Fixtures"], ["K", "Lab HDRI"], ["F", "Video"]];
 const ORDER = [{ id: "SAMPLE", load: loadSample }, ...CASES.map(c => ({ id: c.id, load: () => loadCase(c) }))];
 function buildCaseBar() {
   const nav = $("#cases");
