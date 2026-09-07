@@ -48,6 +48,7 @@ PHI_MIN = 0.05          # rows whose changed-column fraction is below this are i
 PHI_MEAS = 0.20         # minimum changed-column fraction for a measurable warp (fewer columns are over-fitted)
 NCC_SURE = 0.55         # correlation from which a warp estimate is trusted as evidence (identity or liquid)
 LOGM_LIQ = 0.30         # |log M| from which a trusted warp counts as liquid (a lens), unless it is flipped
+ORIENT_MIN = 0.15       # upright-vs-mirrored NCC margin from which the orientation of a warp is observable
 RHO_DIP = 0.92          # row luminance (relative to the air region) below which the contact line / TIR band begins
 LINE_MIN = 0.06         # luminance anomaly (bright or dark, vs the local median) a liquid|liquid contact line must show
 
@@ -67,7 +68,8 @@ class Detection:
     phi: np.ndarray | None = None
     f: np.ndarray | None = None
     cands: list = field(default_factory=list)   # jump candidates before the surface merge / secondary gates
-    cls: np.ndarray | None = None               # per-row class: 1 identity, 2 liquid, 0 unknown
+    cls: np.ndarray | None = None               # per-row class: 1 identity, 2 liquid, 3 upright de-magnified (air side), 0 unknown
+    air: np.ndarray | None = None               # identity | upright de-magnified
     rho: np.ndarray | None = None               # compare/baseline row luminance ratio
     ncc1: np.ndarray | None = None              # correlation of the identity hypothesis (M = 1)
     amb: np.ndarray | None = None               # fraction of warp hypotheses within 0.10 of the best NCC
@@ -146,6 +148,7 @@ def warp_profile(B, C, weights=None, n_scale=49, m_lo=0.5, m_hi=8.0, central=CEN
         xs_c = np.asarray(cols)
     scales = np.exp(np.linspace(math.log(m_lo), math.log(m_hi), n_scale))
     logM = np.zeros(h, np.float32); best = np.full(h, -1.0, np.float32); flip = np.ones(h, np.float32); ncc1 = np.zeros(h, np.float32)
+    best_sgn = {1.0: np.full(h, -1.0, np.float32), -1.0: np.full(h, -1.0, np.float32)}   # best NCC per orientation
     land = []                                                             # NCC of every hypothesis, for the ambiguity measure
     W = np.ones((h, len(xs_c)), np.float32) if weights is None else weights[:, xs_c]
     W3 = np.repeat(W, 3, axis=1)                                          # per channel
@@ -165,6 +168,7 @@ def warp_profile(B, C, weights=None, n_scale=49, m_lo=0.5, m_hi=8.0, central=CEN
             if sgn > 0 and abs(M - 1.0) < 1e-6:
                 ncc1 = ncc.astype(np.float32)
             land.append(ncc)
+            best_sgn[sgn] = np.maximum(best_sgn[sgn], ncc.astype(np.float32))
             up = ncc > best
             best[up] = ncc[up]; logM[up] = math.log(M); flip[up] = sgn
     # ambiguity: fraction of all hypotheses that match (nearly) as well as the best one. A row whose
@@ -172,7 +176,8 @@ def warp_profile(B, C, weights=None, n_scale=49, m_lo=0.5, m_hi=8.0, central=CEN
     # is matched equally well by most warps: its estimate is meaningless whatever the best NCC is.
     L = np.stack(land, axis=1)
     amb = (L >= best[:, None] - 0.10).mean(axis=1).astype(np.float32)
-    return logM, best, flip, ncc1, amb
+    orient = best_sgn[1.0] - best_sgn[-1.0]                              # > 0: upright fits better than any mirrored warp
+    return logM, best, flip, ncc1, amb, orient
 
 
 def row_structure(B, central=CENTRAL):
@@ -343,10 +348,10 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
         det.zscore = z; det.levels = [{"row": float(p), "jump": float("nan"), "z": float(z[p])} for p in pk]
         return det
     weights, phi = change_weights(B, Ca, thresh)
-    logM, ncc, flip, ncc1, amb = warp_profile(B, Ca, weights=weights)
+    logM, ncc, flip, ncc1, amb, orient = warp_profile(B, Ca, weights=weights)
     det.amb = amb
     unchanged = phi < PHI_MIN                              # nothing moved in this row: identity warp by definition
-    logM[unchanged] = 0.0; flip[unchanged] = 1.0; ncc[unchanged] = 1.0; ncc1[unchanged] = 1.0
+    logM[unchanged] = 0.0; flip[unchanged] = 1.0; ncc[unchanged] = 1.0; ncc1[unchanged] = 1.0; orient[unchanged] = 0.0
     # a warp is measurable only where enough columns changed (a handful of droplet columns would be
     # over-fitted by the 98 candidate warps) and the baseline row carries pattern
     measurable = struct & (unchanged | (phi >= PHI_MEAS))
@@ -357,8 +362,16 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
     # or a mirror image. Everything else (dark band, dense deposit, wobbling deposit refraction, too
     # few changed columns) is UNKNOWN and never used as evidence for the surface.
     identity = struct & (unchanged | ((ncc1 >= NCC_SURE) & (ncc1 >= ncc - 0.15)))   # M = 1 has no free parameter: no over-fit
-    liquid = measurable & ~identity & (ncc >= NCC_SURE) & ((np.abs(logM) >= LOGM_LIQ) | (flip < 0))
-    det.cls = identity.astype(np.int8) + 2 * liquid.astype(np.int8)
+    # A liquid in a convex vessel is a converging lens: it gives an upright MAGNIFIED virtual image or an
+    # inverted real image, never an upright de-magnified one. A trusted upright warp with M < 1 is glass or
+    # deposit refraction (a film of varying thickness) and counts on the air side — provided the
+    # orientation is observable, i.e. the mirrored warps fit clearly worse (a symmetric pattern cannot
+    # tell a flip, and a de-magnified inverted image is a perfectly possible liquid).
+    dewarp = measurable & ~identity & (ncc >= NCC_SURE) & (flip > 0) & (logM <= -0.05) & (orient >= ORIENT_MIN)
+    liquid = measurable & ~identity & ~dewarp & (ncc >= NCC_SURE) & ((np.abs(logM) >= LOGM_LIQ) | (flip < 0))
+    air = identity | dewarp
+    det.cls = identity.astype(np.int8) + 2 * liquid.astype(np.int8) + 3 * dewarp.astype(np.int8)
+    det.air = air
     lum = np.array([0.299, 0.587, 0.114], np.float32); cx = (B.shape[1] - 1) / 2
     c0, c1 = int(round(cx - CENTRAL * B.shape[1] / 2)), int(round(cx + CENTRAL * B.shape[1] / 2))
     rho = (Ca[:, c0:c1] @ lum).mean(axis=1) / ((B[:, c0:c1] @ lum).mean(axis=1) + 1e-3); det.rho = rho
@@ -408,17 +421,18 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
     # row (upper edge of the transition band, refined by the band's photometric step) is kept.
     # The plateau is judged on measurable rows only: a deposit ring, a fixture or a moved room-light
     # reflection turns air rows into unknown rows, which say nothing about the regime. Identity must
-    # dominate the known rows above (>= 60 %) and amount to at least w rows; below, identity must be
-    # absent for `long` rows (liquid rows are often unknown in a cone, so all rows count there).
+    # dominate the known rows above (>= 60 %) and amount to at least w rows; below, air rows must be
+    # (nearly) absent for `long` rows (liquid rows are often unknown in a cone, so all rows count there; a
+    # periodic pattern mirrored in the liquid can produce a few stray identity rows).
     long = max(2 * w, round(n * 0.15)); top = None
-    known = identity | liquid
+    known = air | liquid
     for r in range(edge_top, n - edge_bot):
-        if not identity[r]:
+        if not air[r]:
             continue
-        ib, kb = int(identity[max(0, r - long):r + 1].sum()), int(known[max(0, r - long):r + 1].sum())
-        if ib >= w and ib >= 0.6 * kb and identity[r + 1:r + 1 + long].mean() < 0.15:
+        ib, kb = int(air[max(0, r - long):r + 1].sum()), int(known[max(0, r - long):r + 1].sum())
+        if ib >= w and ib >= 0.6 * kb and air[r + 1:r + 1 + long].mean() < 0.15:
             j = r
-            while j + 1 < n - edge_bot and identity[j + 1:j + 4].any():
+            while j + 1 < n - edge_bot and air[j + 1:j + 4].any():
                 j += 1
             top = j + 1; break
     det.ident = identity; det.surface = top
@@ -463,19 +477,52 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
         # horizon); seen from below, a bright band is the total-internal-reflection mirror of the lit
         # liquid and the level is at its start like any dark band.
         dip = None
-        below = rs[top + 1:min(top + 4, n)]
         camera_above = horizon_row is not None and top > horizon_row
-        if camera_above and len(below) and below.mean() >= 1.03 * ref:
-            dip = next((r for r in range(top + 1, stop) if rs[r + 1] < 1.0 * ref), None)
+        if camera_above:
+            # Seen from ABOVE, the identity end is the far rim and the rows down to the front rim show the
+            # surface itself.
+            #   * BRIGHT band directly below the far rim = the panel mirrored in the surface: the level is
+            #     where it falls back below the air level (unchanged rule).
+            #   * DARK band directly below the far rim over rows whose warp cannot be measured (tilted or
+            #     curved wall: the liquid refracts vertically and the surface mirrors the room): the band runs
+            #     to its darkest row within the geometric depth (<= 0.5 of the distance below the image
+            #     horizon, at most w; the curved wall of a bulb widens the band beyond the plain 2r/D), and the level is the first row after it that crosses back to the air
+            #     level — the tilted wall's meniscus line starts there — or, for a strong band, that has
+            #     recovered half-way and flattened (tinted liquid: plateau below the air level).
+            #   * otherwise (measurable rows below, a vertical wall): the first darkening is the meniscus
+            #     shadow / the deposit ring at the level, as before.
+            below = rs[top + 1:min(top + 4, n)]
+            if len(below) and below.mean() >= 1.03 * ref:
+                dip = next((r for r in range(top + 1, stop) if rs[r + 1] < 1.0 * ref), None)
+            else:
+                depth = min(w, int(round(0.5 * (top - horizon_row)))) + 2
+                tol = 0.03 * ref
+                half = range(top + 1, min(top + max(2, depth // 2) + 1, n - 2))
+                unmeasurable = len(half) > 0 and np.mean([not (air[r] or liquid[r]) for r in half]) >= 0.5
+                start = next((r for r in range(top + 1, min(top + 4, n - 2)) if rs[r] < ref - tol and rs[r + 1] < ref - tol), None)
+                if unmeasurable and start is not None:
+                    lo, hi = start, min(top + depth + 1, n - 2)
+                    e = int(lo + np.argmin(rs[lo:hi])); dev = float(ref - rs[e])
+                    for r in range(e + 1, hi):
+                        back = ref - rs[r]
+                        flat = abs(rs[r + 1] - rs[r]) <= tol / 2 and abs(rs[r + 2] - rs[r + 1]) <= tol / 2
+                        if back <= 0 or (dev >= 3 * tol and back <= 0.5 * dev and flat):
+                            dip = r; break
+            if dip is None:                                             # first darkening below the identity end
+                dip = next((r for r in range(top, stop) if rs[r] < RHO_DIP * ref and rs[r + 1] < RHO_DIP * ref), None)
         else:
-            dip = next((r for r in range(top, stop) if rs[r] < RHO_DIP * ref and rs[r + 1] < RHO_DIP * ref), None)
+            # Seen from BELOW, the meniscus shadow / total-internal-reflection band starts at the level: the
+            # first darkening at or just above the identity end (the plateau's trailing extension may have
+            # swallowed the dark meniscus row).
+            dip = next((r for r in range(max(edge_top, top - 1), stop) if rs[r] < RHO_DIP * ref and rs[r + 1] < RHO_DIP * ref), None)
         det.dip, det.first_jump = dip, first
         if first is not None and first <= top + 2 * w:
-            # The first jump belongs to the surface. A jump located above the identity end means the
-            # trailing identity rows were band artefacts (mirrored periodic pattern): take the jump.
-            # Otherwise the level is the contact-line dip, else the identity end moved down to the
+            # The first jump belongs to the surface. Seen from below, a jump located above the identity end
+            # means the trailing identity rows were band artefacts (mirrored periodic pattern): take the
+            # jump. Seen from above such a jump is the far rim itself and the contact line decides.
+            # Otherwise the level is the contact-line row, else the identity end moved down to the
             # photometric step inside the band when dense deposit haze sits directly above the liquid.
-            if first < top:
+            if first < top and not camera_above:
                 row_s = float(first)
             elif dip is not None:
                 row_s = float(dip)

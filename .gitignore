@@ -26,3 +26,4 @@ desktop.ini
 # --- pouring sequences: MP4 + baseline still + metadata are tracked, the 81 PNG frames per sequence are not
 #     (regenerate with scripts/pour_video.py; eval_video.py falls back to decoding the MP4)
 liquid_level_sim/outputs/pour/*/frames/frame_*.png
+liquid_level_sim/outputs/pour/quality/*.png

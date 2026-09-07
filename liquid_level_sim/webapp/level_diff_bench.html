@@ -460,7 +460,7 @@ function levelFromProfile(prof) {
 //     rows on each side; the free surface is anchored by the end of the identity plateau (air region) and
 //     the dark contact line. Rows are ROI-local half-resolution rows.
 const NCC_MIN = 0.35, STRUCT_MIN = 0.045, Z_MIN = 4, J_MIN = 0.08, SIGMA_MAX = 0.12, Z_MIN_SEC = 15, BOTTOM_ZONE = 0.20, CENTRAL = 0.70;
-const W_FLOOR = 0.02, PHI_MIN = 0.05, PHI_MEAS = 0.20, NCC_SURE = 0.55, LOGM_LIQ = 0.30, RHO_DIP = 0.92, LINE_MIN = 0.06;
+const W_FLOOR = 0.02, PHI_MIN = 0.05, PHI_MEAS = 0.20, NCC_SURE = 0.55, LOGM_LIQ = 0.30, ORIENT_MIN = 0.15, RHO_DIP = 0.92, LINE_MIN = 0.06;
 
 function centralCols(hw) { const cx = (hw - 1) / 2; return [Math.round(cx - CENTRAL * hw / 2), Math.round(cx + CENTRAL * hw / 2)]; }
 function rowStructure(B, hw, hh) {                         // baseline luminance std/mean, central columns
@@ -500,6 +500,7 @@ function changeWeights(B, C, hw, hh, thresh) {             // weights: changed c
 function warpProfile(B, C, hw, hh, W) {                    // best rigid horizontal warp per row + identity-hypothesis NCC
   const [c0, c1] = centralCols(hw), nc = c1 - c0, cx = (hw - 1) / 2;
   const logM = new Float32Array(hh), ncc = new Float32Array(hh).fill(-1), flip = new Float32Array(hh).fill(1), ncc1 = new Float32Array(hh);
+  const bestPos = new Float32Array(hh).fill(-1), bestNeg = new Float32Array(hh).fill(-1);   // best NCC per orientation
   const mcR = new Float32Array(hh), mcG = new Float32Array(hh), mcB = new Float32Array(hh), varC = new Float32Array(hh);
   for (let y = 0; y < hh; y++) {
     const o = y * hw; let sw = 0, sr = 0, sg = 0, sb = 0;
@@ -527,10 +528,12 @@ function warpProfile(B, C, hw, hh, W) {                    // best rigid horizon
       }
       const n = cov / (Math.sqrt(Math.max(varC[y], 1e-12) * Math.max(vb, 1e-12)) + 1e-9);
       if (isIdentity) ncc1[y] = n;
+      if (sgn > 0) { if (n > bestPos[y]) bestPos[y] = n; } else if (n > bestNeg[y]) bestNeg[y] = n;
       if (n > ncc[y]) { ncc[y] = n; logM[y] = Math.log(M); flip[y] = sgn; }
     }
   }
-  return { logM, ncc, flip, ncc1 };
+  const orient = new Float32Array(hh); for (let y = 0; y < hh; y++) orient[y] = bestPos[y] - bestNeg[y];   // > 0: upright fits better than any mirrored warp
+  return { logM, ncc, flip, ncc1, orient };
 }
 function medianFilter(a, w) {
   w = Math.max(3, w | 1); const half = w >> 1, n = a.length, out = new Float32Array(n), buf = new Array(w);
@@ -607,15 +610,19 @@ function detectLevels(B, C, hw, hh, dE, thresh, horizonRow) {   // horizonRow: R
     const { peaks, z } = spikePeaks(dE, w, edgeTop, edgeBot, 1);
     return { mode: "photometric", levels: peaks.map(p => ({ row: p, jump: NaN, z: z[p] })), logM: null, ncc: null, cls: null, fracPattern: ns / n, surface: null };
   }
-  const { W, phi } = changeWeights(B, C, hw, hh, thresh), { logM, ncc, flip, ncc1 } = warpProfile(B, C, hw, hh, W);
-  const measurable = new Uint8Array(n), good = new Uint8Array(n), identity = new Uint8Array(n), liquid = new Uint8Array(n); let ng = 0;
+  const { W, phi } = changeWeights(B, C, hw, hh, thresh), { logM, ncc, flip, ncc1, orient } = warpProfile(B, C, hw, hh, W);
+  const measurable = new Uint8Array(n), good = new Uint8Array(n), identity = new Uint8Array(n), liquid = new Uint8Array(n), dewarp = new Uint8Array(n), air = new Uint8Array(n); let ng = 0;
   for (let i = 0; i < n; i++) {
     const unchanged = phi[i] < PHI_MIN;                      // nothing moved in this row: identity warp by definition
-    if (unchanged) { logM[i] = 0; flip[i] = 1; ncc[i] = 1; ncc1[i] = 1; }
+    if (unchanged) { logM[i] = 0; flip[i] = 1; ncc[i] = 1; ncc1[i] = 1; orient[i] = 0; }
     measurable[i] = struct[i] && (unchanged || phi[i] >= PHI_MEAS) ? 1 : 0;   // too few changed columns would be over-fitted
     good[i] = ncc[i] > NCC_MIN && measurable[i] ? 1 : 0; ng += good[i];
     identity[i] = struct[i] && (unchanged || (ncc1[i] >= NCC_SURE && ncc1[i] >= ncc[i] - 0.15)) ? 1 : 0;   // M = 1 explains the row
-    liquid[i] = measurable[i] && !identity[i] && ncc[i] >= NCC_SURE && (Math.abs(logM[i]) >= LOGM_LIQ || flip[i] < 0) ? 1 : 0;
+    // a liquid in a convex vessel is a converging lens: never an upright de-magnified image. A trusted upright
+    // warp with M < 1 is glass / deposit refraction and counts on the air side, when the orientation is observable
+    dewarp[i] = measurable[i] && !identity[i] && ncc[i] >= NCC_SURE && flip[i] > 0 && logM[i] <= -0.05 && orient[i] >= ORIENT_MIN ? 1 : 0;
+    liquid[i] = measurable[i] && !identity[i] && !dewarp[i] && ncc[i] >= NCC_SURE && (Math.abs(logM[i]) >= LOGM_LIQ || flip[i] < 0) ? 1 : 0;
+    air[i] = identity[i] || dewarp[i] ? 1 : 0;
   }
   const rho = rowLuminanceRatio(B, C, hw, hh);
   // ---- jump candidates
@@ -648,15 +655,15 @@ function detectLevels(B, C, hw, hh, dE, thresh, horizonRow) {   // horizonRow: R
   }
   // ---- free surface = end of the identity plateau, anchored at the dark contact line
   const long = Math.max(2 * w, Math.round(n * 0.15)); let top = null, mode = "warp", dipRow = null, firstRow = null;
-  const idFrac = (a, b) => { let s = 0, m = 0; for (let i = Math.max(0, a); i < Math.min(n, b); i++) { s += identity[i]; m++; } return m ? s / m : 0; };
-  // Judged on measurable rows only (unknown rows are transparent): identity must dominate the known rows
-  // above (>= 60 %) and amount to at least w rows; below, identity must be absent for `long` rows.
+  const airFrac = (a, b) => { let s = 0, m = 0; for (let i = Math.max(0, a); i < Math.min(n, b); i++) { s += air[i]; m++; } return m ? s / m : 0; };
+  // Judged on measurable rows only (unknown rows are transparent): air rows (identity + upright de-magnified)
+  // must dominate the known rows above (>= 60 %) and amount to at least w rows; below, air must be absent for `long` rows.
   const cnt = (arr, a, b) => { let s = 0; for (let i = Math.max(0, a); i < Math.min(n, b); i++) s += arr[i]; return s; };
   for (let r = edgeTop; r < n - edgeBot; r++) {
-    if (!identity[r]) continue;
-    const ib = cnt(identity, r - long, r + 1), kb = ib + cnt(liquid, r - long, r + 1);
-    if (ib >= w && ib >= 0.6 * kb && idFrac(r + 1, r + 1 + long) < 0.15) {
-      let j = r; while (j + 1 < n - edgeBot && (identity[j + 1] || identity[j + 2] || identity[j + 3])) j++;   // trailing identity rows (gaps <= 2)
+    if (!air[r]) continue;
+    const ib = cnt(air, r - long, r + 1), kb = ib + cnt(liquid, r - long, r + 1);
+    if (ib >= w && ib >= 0.6 * kb && airFrac(r + 1, r + 1 + long) < 0.15) {
+      let j = r; while (j + 1 < n - edgeBot && (air[j + 1] || air[j + 2] || air[j + 3])) j++;   // trailing air rows (gaps <= 2)
       top = j + 1; break;
     }
   }
@@ -678,18 +685,39 @@ function detectLevels(B, C, hw, hh, dE, thresh, horizonRow) {   // horizonRow: R
       let botL = null; for (let r = top; r < Math.min(n - 3, top + 3 * w); r++) if (liquid[r] && liquid[r + 1] && liquid[r + 2]) { botL = r; break; }
       if (botL !== null) stop = Math.min(stop, botL + 2);
     }
-    // What lies directly below the identity end decides where the contact line is: a band BRIGHTER than
-    // the air region is the far rim's view of the surface mirroring the panel (only when the surface is
-    // seen from above, i.e. the level lies below the image horizon): the level is where that brightness
-    // returns to the air level. A DARKER band (meniscus shadow, total internal reflection): its first row.
-    // Neither: the identity end itself.
-    let dip = null, bm = 0, bc = 0; for (let r = top + 1; r < Math.min(top + 4, n); r++) { bm += rs[r]; bc++; }
+    // Seen from ABOVE the identity end is the far rim and the rows down to the front rim show the surface itself.
+    // BRIGHT band right below it = the panel mirrored in the surface: the level is where it falls back below the
+    // air level (unchanged). DARK band right below it over UNMEASURABLE rows (tilted / curved wall: the liquid
+    // refracts vertically, the surface mirrors the room): the band runs to its darkest row within the geometric
+    // depth (<= 0.5 of the distance below the image horizon, at most w) and the level is the first row after it
+    // back across the air level (the tilted wall's meniscus line starts there) or, for a strong band, recovered
+    // half-way and flattened (tinted liquid). Otherwise the first darkening is the meniscus shadow, as before.
+    let dip = null;
     const cameraAbove = horizonRow != null && top > horizonRow;
-    if (cameraAbove && bc && bm / bc >= 1.03 * ref) { for (let r = top + 1; r < stop; r++) if (rs[r + 1] < 1.0 * ref) { dip = r; break; } }
-    else { for (let r = top; r < stop; r++) if (rs[r] < RHO_DIP * ref && rs[r + 1] < RHO_DIP * ref) { dip = r; break; } }
+    if (cameraAbove) {
+      let bm = 0, bc = 0; for (let r = top + 1; r < Math.min(top + 4, n); r++) { bm += rs[r]; bc++; }
+      if (bc && bm / bc >= 1.03 * ref) { for (let r = top + 1; r < stop; r++) if (rs[r + 1] < 1.0 * ref) { dip = r; break; } }
+      else {
+        const depth = Math.min(w, Math.round(0.5 * (top - horizonRow))) + 2, tol = 0.03 * ref;
+        const h1 = Math.min(top + Math.max(2, Math.floor(depth / 2)) + 1, n - 2);
+        let unk = 0, hm = 0; for (let r = top + 1; r < h1; r++) { hm++; if (!air[r] && !liquid[r]) unk++; }
+        let start = null; for (let r = top + 1; r < Math.min(top + 4, n - 2); r++) if (rs[r] < ref - tol && rs[r + 1] < ref - tol) { start = r; break; }
+        if (hm && unk / hm >= 0.5 && start !== null) {
+          const hi = Math.min(top + depth + 1, n - 2); let e = start; for (let r = start; r < hi; r++) if (rs[r] < rs[e]) e = r;
+          const dev = ref - rs[e];
+          for (let r = e + 1; r < hi; r++) {
+            const back = ref - rs[r], flat = Math.abs(rs[r + 1] - rs[r]) <= tol / 2 && Math.abs(rs[r + 2] - rs[r + 1]) <= tol / 2;
+            if (back <= 0 || (dev >= 3 * tol && back <= 0.5 * dev && flat)) { dip = r; break; }
+          }
+        }
+      }
+      if (dip === null) for (let r = top; r < stop; r++) if (rs[r] < RHO_DIP * ref && rs[r + 1] < RHO_DIP * ref) { dip = r; break; }
+    } else {                                                   // seen from below: the meniscus / TIR band starts at the level
+      for (let r = Math.max(edgeTop, top - 1); r < stop; r++) if (rs[r] < RHO_DIP * ref && rs[r + 1] < RHO_DIP * ref) { dip = r; break; }
+    }
     dipRow = dip; firstRow = first;
     if (first !== null && first <= top + 2 * w) {          // the first jump belongs to the surface
-      let rowS; if (first < top) rowS = first; else if (dip !== null) rowS = dip; else { const bk = bandStep(dE, top, Math.floor(first) + 1); rowS = bk !== null ? bk : top; }
+      let rowS; if (first < top && !cameraAbove) rowS = first; else if (dip !== null) rowS = dip; else { const bk = bandStep(dE, top, Math.floor(first) + 1); rowS = bk !== null ? bk : top; }
       accepted[0] = { ...accepted[0], row: rowS };
     } else {                                               // plateau ended long before the first jump (or none)
       let weak = 0, m = 0; if (first !== null) for (let r = top; r < Math.min(n, Math.floor(first)); r++) { m++; if (ncc1[r] >= 0.3) weak++; }
@@ -699,7 +727,7 @@ function detectLevels(B, C, hw, hh, dE, thresh, horizonRow) {   // horizonRow: R
   // ---- secondary boundaries: stable plateaus on both sides, a true step (z does not shrink with 2w), not in the bottom zone
   const levels = accepted.filter((a, i) => i === 0 || (a.sigma <= SIGMA_MAX && a.z >= Z_MIN_SEC && a.z2 >= 0.6 * a.z && a.quality >= 0.5 && a.nccBelow >= 0.55 && a.line >= LINE_MIN && a.row < n * (1 - BOTTOM_ZONE)))
                          .slice(0, 3).map(a => ({ row: a.row, jump: a.jump, z: a.z }));
-  const cls = new Uint8Array(n); for (let i = 0; i < n; i++) cls[i] = identity[i] ? 1 : liquid[i] ? 2 : 0;
+  const cls = new Uint8Array(n); for (let i = 0; i < n; i++) cls[i] = air[i] ? 1 : liquid[i] ? 2 : 0;
   return { mode, levels, logM, ncc, cls, fracPattern: ng / n, surface: top, dip: dipRow, firstJump: firstRow, cands: accepted };
 }
 
