@@ -25,6 +25,11 @@
 | V8_cyl_sector_water50 | warp | 50.0 | 51.6 | +1.6 | 0 | +1.7 |
 | V9_erl_dripsonly_water45_tele | warp | 45.8 | 48.0 | +2.1 | 0 | -41.5 |
 | V10_cyl_line50thin_water50_white | photometric | 50.0 | 51.6 | +1.6 | 0 | -47.0 |
+| R1_cyl_stirrer_water50 | warp/identity-end | 50.0 | 51.1 | +1.1 | 0 | +1.6 |
+| R2_cyl_dosing_tube_water45_mosaic | warp | 45.0 | 46.6 | +1.7 | 0 | +1.9 |
+| R3_cyl_reactor_water60 | warp | 60.1 | 61.4 | +1.3 | 0 | +1.0 |
+| R4_erl_rod_water40_grid | warp | 41.8 | 35.4 | miss | 1 | -36.7 |
+| R5_cyl_stirrer_water_oil | warp | 39.9 / 65.2 | 66.2 / 41.1 | +1.2 / +1.0 | 0 | +1.1 |
 
 | case | x1.00 | x0.85 | x0.75 | x0.65 | x0.55 | top spread (pt) |
 |---|---|---|---|---|---|---|
@@ -53,4 +58,9 @@
 | V8_cyl_sector_water50 | +1.6 | +1.4 | +1.6 | +1.4 | +1.2 | 0.4 |
 | V9_erl_dripsonly_water45_tele | +2.1 | +2.2 | +1.4 | +1.2 | +0.8 | 1.4 |
 | V10_cyl_line50thin_water50_white | +1.6 | +2.0 | +1.9 | +2.2 | +2.6 | 1.0 |
-**scales [0.55, 0.65, 0.75, 0.85, 1.0]: 136/145 interfaces found within 6 pt, 7 false positives, median |err| 1.24 pt, max |err| 5.68 pt**
+| R1_cyl_stirrer_water50 | +1.1 | +1.1 | +1.2 | +1.0 | +1.2 | 0.2 |
+| R2_cyl_dosing_tube_water45_mosaic | +1.7 | +1.7 | +1.6 | +1.9 | +2.2 | 0.6 |
+| R3_cyl_reactor_water60 | +1.3 | +1.3 | +1.2 | +1.4 | +0.9 | 0.5 |
+| R4_erl_rod_water40_grid | miss (+1FP) | +1.0 | +1.3 | +1.5 | +1.6 | 8.0 |
+| R5_cyl_stirrer_water_oil | +1.2 / +1.0 | miss / +0.4 | miss / +0.5 | +1.1 / +0.9 | +2.2 / +1.1 | 0.7 |
+**scales [0.55, 0.65, 0.75, 0.85, 1.0]: 163/175 interfaces found within 6 pt, 8 false positives, median |err| 1.24 pt, max |err| 5.68 pt**

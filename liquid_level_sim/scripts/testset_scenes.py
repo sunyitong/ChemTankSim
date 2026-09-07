@@ -56,6 +56,7 @@ class Combo:
     cam_dz: float = 0.0                   # camera height offset from the vessel mid-height (cm)
     part: str = "A"
     note: str = ""
+    inserts: list = field(default_factory=list)   # fixtures / pour stream, see inserts_block()
 
 
 COMBOS = [
@@ -288,6 +289,83 @@ def liquids_block(vessel: Vessel, lay: list[dict], r_in, mesh_dir: Path, tag: st
     return "\n".join(L)
 
 
+# ----------------------------------------------------------------------------- inserts: rods, probes, dosing tubes, pour stream
+INSERT_MATERIALS = {
+    "steel": 'Material "conductor" "spectrum eta" "metal-Al-eta" "spectrum k" "metal-Al-k" "float roughness" [0.10] "bool remaproughness" [false]',
+    "ptfe": 'Material "diffuse" "rgb reflectance" [0.86 0.86 0.84]',
+    "glass": 'Material "dielectric" "float eta" [1.50]',
+    "black": 'Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]',
+}
+
+
+def _medium_at(lay: list[dict], z: float) -> str:
+    for i, l in enumerate(lay):
+        if l["z0"] <= z < l["z1"]:
+            return f"liq{i + 1}"
+    return ""
+
+
+def _split(z0: float, z1: float, lay: list[dict]) -> list[tuple[float, float, str]]:
+    """Split [z0, z1] at every liquid boundary so each piece sits in one medium."""
+    zs = sorted({z0, z1, *[l["z1"] for l in lay if z0 < l["z1"] < z1], *[l["z0"] for l in lay if z0 < l["z0"] < z1]})
+    return [(a, b, _medium_at(lay, 0.5 * (a + b))) for a, b in zip(zs[:-1], zs[1:]) if b - a > 1e-6]
+
+
+def _box(cx, cy, z0, z1, hx, hy, ang_deg):
+    """Box rotated about z (8 vertices, 12 triangles): pbrt has no box primitive."""
+    c, sn = math.cos(math.radians(ang_deg)), math.sin(math.radians(ang_deg))
+    P = []
+    for z in (z0, z1):
+        for sx, sy in ((-1, -1), (1, -1), (1, 1), (-1, 1)):
+            x, y = sx * hx, sy * hy
+            P.append((cx + c * x - sn * y, cy + sn * x + c * y, z))
+    idx = [0, 2, 1, 0, 3, 2, 4, 5, 6, 4, 6, 7, 0, 1, 5, 0, 5, 4, 1, 2, 6, 1, 6, 5, 2, 3, 7, 2, 7, 6, 3, 0, 4, 3, 4, 7]
+    return f'Shape "trianglemesh" "point3 P" [{" ".join(_f(v) for p in P for v in p)}] "integer indices" [{" ".join(map(str, idx))}]'
+
+
+def inserts_block(vessel: Vessel, lay: list[dict], inserts: list, filled: bool) -> str:
+    """Fixtures inside the vessel. Each insert is a dict:
+       rod / tube : material (steel | ptfe | glass | black), x, y, radius, z0_frac (lower end as a fraction of
+                    the inner height), above_rim (cm), frames = "both" | "compare" (inserted for dosing only),
+                    paddle = half-width (cm) of a stirrer blade at the lower end
+       stream     : liquid column from (x, y, z_top) down to z_bot with radius r, droplets = [(x, y, z, r), ...]
+    Opaque and glass inserts are split at every liquid boundary so the medium outside their surface is
+    right; the stream and droplets carry the top liquid's medium inside a dielectric surface."""
+    L = []
+    top_liq = lay[-1] if lay else None
+    for ins in inserts:
+        if ins.get("frames", "both") == "compare" and not filled:
+            continue
+        kind = ins.get("type", "rod")
+        if kind == "stream":
+            if not top_liq:
+                continue
+            med = f"liq{len(lay)}"; eta = _f(top_liq["eta"]); x, y, r = ins["x"], ins["y"], ins["r"]
+            L += ["AttributeBegin  # pour stream", f'  MediumInterface "{med}" ""', f'  Material "dielectric" "float eta" [{eta}]',
+                  f"  Translate {_f(x)} {_f(y)} 0",
+                  f'  Shape "cylinder" "float radius" [{_f(r)}] "float zmin" [{_f(ins["z_bot"])}] "float zmax" [{_f(ins["z_top"])}]',
+                  "AttributeEnd"]
+            for (dx, dy, dz, dr) in ins.get("droplets", []):
+                L += ["AttributeBegin  # droplet", f'  MediumInterface "{med}" ""', f'  Material "dielectric" "float eta" [{eta}]',
+                      f"  Translate {_f(dx)} {_f(dy)} {_f(dz)}", f'  Shape "sphere" "float radius" [{_f(dr)}]', "AttributeEnd"]
+            continue
+        x, y, r = ins.get("x", 0.0), ins.get("y", 0.0), ins["radius"]
+        z0 = vessel.tb + ins.get("z0_frac", 0.1) * vessel.inner_height
+        z1 = vessel.H + ins.get("above_rim", 4.0)
+        mname = ins.get("material", "steel"); mat = INSERT_MATERIALS[mname]
+        for a, b, med in _split(z0, z1, lay):
+            L += [f"AttributeBegin  # {kind} ({mname})", f'  MediumInterface "" "{med}"', f"  {mat}",
+                  f"  Translate {_f(x)} {_f(y)} 0",
+                  f'  Shape "cylinder" "float radius" [{_f(r)}] "float zmin" [{_f(a)}] "float zmax" [{_f(b)}]', "AttributeEnd"]
+        med0 = _medium_at(lay, z0)
+        L += [f"AttributeBegin  # {kind} lower end", f'  MediumInterface "" "{med0}"', f"  {mat}", f"  Translate {_f(x)} {_f(y)} 0",
+              "  ReverseOrientation", f'  Shape "disk" "float height" [{_f(z0)}] "float radius" [{_f(r)}]', "AttributeEnd"]
+        if ins.get("paddle"):
+            L += ["AttributeBegin  # stirrer blade", f'  MediumInterface "" "{med0}"', f"  {mat}",
+                  "  " + _box(x, y, z0, z0 + 0.5, ins["paddle"], 0.12, ins.get("paddle_angle", 25.0)), "AttributeEnd"]
+    return "\n".join(L)
+
+
 # ----------------------------------------------------------------------------- scene assembly
 def build_scene(combo: Combo, filled: bool, width: int, height: int, spp: int, tex: dict | None, out_image: str) -> tuple[str, dict]:
     vessel = VESSELS[combo.vessel]
@@ -311,6 +389,8 @@ def build_scene(combo: Combo, filled: bool, width: int, height: int, spp: int, t
         cfg2 = Setup(**{**cfg.__dict__, "pedestal_gap": 3.05 - (vessel.params["R"] - math.sqrt(vessel.params["R"] ** 2 - vessel.params["ring_r"] ** 2))})
         parts.append(pedestal(cfg2))
     parts.append(liquids_block(vessel, lay, r_in, TS_SCENES, combo.name))
+    if combo.inserts:
+        parts.append(inserts_block(vessel, lay, combo.inserts, filled))
     # ground truth: image rows of each interface at the FRONT inner wall
     gt = {"camera": {"eye": cfg.eye, "look": cfg.look, "fov_short_axis_deg": cfg.fov}, "vessel": vessel.label,
           "inner_height_cm": vessel.inner_height, "layers": []}

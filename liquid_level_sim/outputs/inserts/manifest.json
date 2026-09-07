@@ -1,0 +1,610 @@
+{
+  "resolution": [
+    900,
+    1200
+  ],
+  "spp": 160,
+  "jobs": [
+    {
+      "name": "base_cylinder_normal_rg_checker_rods+0",
+      "role": "baseline",
+      "combo": null,
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        }
+      ],
+      "layers": [],
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "render_seconds": 23.7,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_cylinder_normal_rg_checker_rods+0.png"
+    },
+    {
+      "name": "R1_cyl_stirrer_water50",
+      "role": "compare",
+      "combo": "R1_cyl_stirrer_water50",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        }
+      ],
+      "layers": [
+        [
+          "water",
+          0.5
+        ]
+      ],
+      "note": "stainless stirrer shaft (8 mm) with blade on the axis, fixture present in both frames",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 10.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.5,
+            "top_row_front": 589.9186497654033,
+            "top_row_back": 592.1589498175359,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "render_seconds": 27.0,
+      "post": {
+        "gain": 1.0208255253155099,
+        "shift_px": [
+          2.3042711367807414,
+          2.334182805145633
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "R1_cyl_stirrer_water50.png"
+    },
+    {
+      "name": "base_cylinder_normal_mosaic_none",
+      "role": "baseline",
+      "combo": null,
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "fixtures": [],
+      "layers": [],
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "render_seconds": 26.2,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_cylinder_normal_mosaic_none.png"
+    },
+    {
+      "name": "R2_cyl_dosing_tube_water45_mosaic",
+      "role": "compare",
+      "combo": "R2_cyl_dosing_tube_water45_mosaic",
+      "baseline": "base_cylinder_normal_mosaic_none",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "fixtures": [
+        {
+          "type": "tube",
+          "material": "ptfe",
+          "x": -3.0,
+          "y": -0.8,
+          "radius": 0.4,
+          "z0_frac": 0.3,
+          "above_rim": 5.0,
+          "frames": "compare"
+        }
+      ],
+      "layers": [
+        [
+          "water",
+          0.45
+        ]
+      ],
+      "note": "PTFE dosing tube (8 mm) inserted for the compare frame only, dipping below the level",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 9.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.45,
+            "top_row_front": 630.2440507037901,
+            "top_row_back": 623.5231505473922,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "render_seconds": 25.8,
+      "post": {
+        "gain": 0.9524713399175108,
+        "shift_px": [
+          0.4925602903564381,
+          -1.650731131114806
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "R2_cyl_dosing_tube_water45_mosaic.png"
+    },
+    {
+      "name": "base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4",
+      "role": "baseline",
+      "combo": null,
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        },
+        {
+          "type": "rod",
+          "material": "glass",
+          "x": 4.6,
+          "y": 1.0,
+          "radius": 0.3,
+          "z0_frac": 0.15,
+          "above_rim": 8.0
+        },
+        {
+          "type": "tube",
+          "material": "ptfe",
+          "x": -4.4,
+          "y": -0.8,
+          "radius": 0.4,
+          "z0_frac": 0.22,
+          "above_rim": 5.0
+        }
+      ],
+      "layers": [],
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": false,
+      "render_seconds": 26.9,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4.png"
+    },
+    {
+      "name": "R3_cyl_reactor_water60",
+      "role": "compare",
+      "combo": "R3_cyl_reactor_water60",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        },
+        {
+          "type": "rod",
+          "material": "glass",
+          "x": 4.6,
+          "y": 1.0,
+          "radius": 0.3,
+          "z0_frac": 0.15,
+          "above_rim": 8.0
+        },
+        {
+          "type": "tube",
+          "material": "ptfe",
+          "x": -4.4,
+          "y": -0.8,
+          "radius": 0.4,
+          "z0_frac": 0.22,
+          "above_rim": 5.0
+        }
+      ],
+      "layers": [
+        [
+          "water",
+          0.6
+        ]
+      ],
+      "note": "reactor set-up: stirrer shaft + glass thermometer + PTFE dip tube, all fixtures in both frames",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 12.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.6,
+            "top_row_front": 509.26784788862983,
+            "top_row_back": 529.4305483578231,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "render_seconds": 27.9,
+      "post": {
+        "gain": 1.048533826831446,
+        "shift_px": [
+          2.093786422375345,
+          -1.9602063865962234
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "R3_cyl_reactor_water60.png"
+    },
+    {
+      "name": "base_erlenmeyer_normal_grid_rods+0.9",
+      "role": "baseline",
+      "combo": null,
+      "vessel": "erlenmeyer",
+      "camera": "normal",
+      "pattern": "grid",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.9,
+          "y": 0.0,
+          "radius": 0.3,
+          "z0_frac": 0.1,
+          "above_rim": 6.0
+        }
+      ],
+      "layers": [],
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [],
+        "rim_row_front": 263.0587950670325,
+        "bottom_row_front": 945.8236817862004
+      },
+      "jitter": false,
+      "render_seconds": 18.0,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_erlenmeyer_normal_grid_rods+0.9.png"
+    },
+    {
+      "name": "R4_erl_rod_water40_grid",
+      "role": "compare",
+      "combo": "R4_erl_rod_water40_grid",
+      "baseline": "base_erlenmeyer_normal_grid_rods+0.9",
+      "vessel": "erlenmeyer",
+      "camera": "normal",
+      "pattern": "grid",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.9,
+          "y": 0.0,
+          "radius": 0.3,
+          "z0_frac": 0.1,
+          "above_rim": 6.0
+        }
+      ],
+      "layers": [
+        [
+          "water",
+          0.4
+        ]
+      ],
+      "note": "steel rod (6 mm) off-axis through the Erlenmeyer neck, both frames",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Erlenmeyer 1 L",
+        "inner_height_cm": 18.05,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 7.670000000000001,
+            "z_bottom_cm": 0.45,
+            "fill_of_inner_height": 0.4,
+            "top_row_front": 659.5817892212314,
+            "top_row_back": 652.3810501933306,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 263.0587950670325,
+        "bottom_row_front": 945.8236817862004
+      },
+      "jitter": true,
+      "render_seconds": 20.1,
+      "post": {
+        "gain": 1.0070347524460912,
+        "shift_px": [
+          -1.139037774935718,
+          1.0986165151500753
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "R4_erl_rod_water40_grid.png"
+    },
+    {
+      "name": "R5_cyl_stirrer_water_oil",
+      "role": "compare",
+      "combo": "R5_cyl_stirrer_water_oil",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        }
+      ],
+      "layers": [
+        [
+          "water",
+          0.4
+        ],
+        [
+          "sunflower_oil",
+          0.25
+        ]
+      ],
+      "note": "water + sunflower oil with the stirrer shaft: two interfaces behind a partial occluder",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 8.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.4,
+            "top_row_front": 670.5694516421769,
+            "top_row_back": 654.8873512772486,
+            "kind": "liquid-liquid interface"
+          },
+          {
+            "liquid": "sunflower_oil",
+            "label": "sunflower oil",
+            "eta": 1.472,
+            "z_top_cm": 13.5,
+            "z_bottom_cm": 8.5,
+            "fill_of_inner_height": 0.65,
+            "top_row_front": 468.942446950243,
+            "top_row_back": 498.06634762796676,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 186.66464038153575,
+        "bottom_row_front": 993.1726591492709
+      },
+      "jitter": true,
+      "render_seconds": 25.1,
+      "post": {
+        "gain": 1.0283731229836424,
+        "shift_px": [
+          2.4236402335555383,
+          0.013248301842289756
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "R5_cyl_stirrer_water_oil.png"
+    }
+  ]
+}

@@ -424,6 +424,10 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
         ref = float(np.median(rho[ref_rows])) if ref_rows else 1.0
         rs = np.convolve(rho, np.ones(3) / 3, mode="same")
         stop = int(min(n - 2, top + 3 * w, (first + w) if first is not None else n))
+        if first is None:                                  # no jump to bound the band: stop at the first liquid run
+            bot_l = next((r for r in range(top, min(n - 3, top + 3 * w)) if liquid[r] and liquid[r + 1] and liquid[r + 2]), None)
+            if bot_l is not None:
+                stop = int(min(stop, bot_l + 2))
         dip = next((r for r in range(top, stop) if rs[r] < RHO_DIP * ref and rs[r + 1] < RHO_DIP * ref), None)
         if first is not None and first <= top + 2 * w:
             # The first jump belongs to the surface. A jump located above the identity end means the

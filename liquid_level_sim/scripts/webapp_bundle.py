@@ -1,10 +1,11 @@
-"""Bundle test-set image pairs into the web app.
+"""Bundle test-set image pairs (and video sequences) into the web app.
 
-Reads one or more cases.json files (written by testset_eval.py and scale_run.py), downsizes the
-post-processed PNGs to 600 x 800, JPEG-encodes them and writes a `window.CASES` / `window.CASE_IMAGES`
-JavaScript snippet that level_diff_bench.html includes inline. Shared baselines are embedded once.
+Reads one or more cases.json files (written by testset_eval.py, scale_run.py, inserts_run.py) and
+cases_video.json (pour_video.py). Still pairs are downsized to 675 px wide and JPEG-encoded; a video
+case embeds its MP4 as a base64 data URL plus the baseline still at the video's native size. Writes a
+`window.CASES` / `window.CASE_IMAGES` / `window.CASE_VIDEOS` snippet that level_diff_bench.html includes.
 
-  python scripts/webapp_bundle.py <out.js> <cases.json> [<cases2.json> ...]
+  python scripts/webapp_bundle.py <out.js> <cases.json> [<cases2.json> ...] [<cases_video.json>]
 """
 from __future__ import annotations
 
@@ -21,32 +22,43 @@ from testset_scenes import TS_IMAGES, TS_OUT
 W_OUT, Q = 675, 86   # 675 px wide = 0.75 of the 900x1200 renders (detector is scale-robust; see eval_all spread table)
 
 
-def encode(png: Path) -> str:
+def encode(png: Path, width: int | None = W_OUT, q: int = Q) -> str:
     im = cv2.imread(str(png))
     if im is None:
         raise FileNotFoundError(png)
-    h = round(im.shape[0] * W_OUT / im.shape[1])
-    im = cv2.resize(im, (W_OUT, h), interpolation=cv2.INTER_AREA)
-    ok, buf = cv2.imencode(".jpg", im, [cv2.IMWRITE_JPEG_QUALITY, Q])
+    if width and im.shape[1] != width:
+        h = round(im.shape[0] * width / im.shape[1])
+        im = cv2.resize(im, (width, h), interpolation=cv2.INTER_AREA)
+    ok, buf = cv2.imencode(".jpg", im, [cv2.IMWRITE_JPEG_QUALITY, q])
     assert ok
     return "data:image/jpeg;base64," + base64.b64encode(buf.tobytes()).decode("ascii")
 
 
 def main(out_js: Path, case_files: list[Path]):
-    images, out = {}, []
+    images, videos, out = {}, {}, []
     for cf in case_files:
         data = load_json(cf)
         img_dir = Path(data.get("image_dir", TS_IMAGES))
         for c in data["cases"]:
+            if c.get("kind") == "video":
+                if c["baseline"] not in images:
+                    images[c["baseline"]] = encode(img_dir / f"{c['baseline']}.png", width=None, q=90)
+                mp4 = cf.parent / c["video"]
+                videos[c["case"]] = "data:video/mp4;base64," + base64.b64encode(mp4.read_bytes()).decode("ascii")
+                out.append({"id": c["case"].split("_")[0], "case": c["case"], "kind": "video", "label": c["label"], "note": c["note"],
+                            "base": c["baseline"], "video": c["case"], "fps": c["fps"], "seconds": c["seconds"], "frames": c["n_frames"],
+                            "roi": c["roi_frac"], "gtFrames": [f["gt_rows_frac"] for f in c["frames"]]})
+                continue
             for key in ("baseline", "compare"):
                 if c[key] not in images:
                     images[c[key]] = encode(img_dir / f"{c[key]}.png")
             out.append({"id": c["case"].split("_")[0], "case": c["case"], "label": c["label"], "note": c["note"],
                         "base": c["baseline"], "cmp": c["compare"], "roi": c["roi_frac"],
                         "gt": [{"frac": f, "kind": k, "liquid": l} for f, k, l in zip(c["gt_rows_frac"], c["gt_kinds"], c["gt_liquids"])]})
-    js = "window.CASES = " + json.dumps(out, ensure_ascii=False) + ";\nwindow.CASE_IMAGES = " + json.dumps(images) + ";\n"
+    js = ("window.CASES = " + json.dumps(out, ensure_ascii=False) + ";\nwindow.CASE_IMAGES = " + json.dumps(images)
+          + ";\nwindow.CASE_VIDEOS = " + json.dumps(videos) + ";\n")
     out_js.write_text(js, encoding="utf-8")
-    print(f"{len(out)} cases, {len(images)} images, {len(js) / 1e6:.2f} MB -> {out_js}")
+    print(f"{len(out)} cases, {len(images)} images, {len(videos)} videos, {len(js) / 1e6:.2f} MB -> {out_js}")
 
 
 if __name__ == "__main__":

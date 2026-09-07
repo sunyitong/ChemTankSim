@@ -1,0 +1,110 @@
+# test-set scene -> F1_f053.exr
+LookAt 0 -60 10.25  0 0 10.25  0 0 1
+Camera "perspective" "float fov" [24]
+Sampler "zsobol" "integer pixelsamples" [32]
+Integrator "volpath" "integer maxdepth" [48] "bool regularize" [false]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["F1_f053.exr"] "integer xresolution" [450] "integer yresolution" [600] "bool savefp16" [false]
+
+WorldBegin
+AttributeBegin  # light panel (Lambertian light box)
+  AreaLightSource "diffuse" "string filename" ["../../outputs/testset/patterns/rg_checker.png"] "float scale" [0.8] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+  Shape "trianglemesh" "point3 P" [30 25 -29.75 -30 25 -29.75 -30 25 50.25 30 25 50.25] "point2 uv" [0 0 1 0 1 1 0 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+LightSource "infinite" "rgb L" [0.2 0.2 0.21]
+AttributeBegin  # matte black pedestal
+  Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]
+  Shape "cylinder" "float radius" [4] "float zmin" [-8.05] "float zmax" [-0.05]
+  Shape "disk" "float height" [-0.05] "float radius" [4]
+AttributeEnd
+MakeNamedMaterial "glass" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_out" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_in_dry" "string type" "dielectric" "float eta" [1.5]
+AttributeBegin  # outer wall
+  NamedMaterial "wall_out"
+  Shape "plymesh" "string filename" ["mesh_cylinder_outer.ply"]
+AttributeEnd
+AttributeBegin  # rim + outer bottom
+  NamedMaterial "glass"
+  Shape "disk" "float height" [20.5] "float radius" [7.8] "float innerradius" [7.5]
+  AttributeBegin
+    ReverseOrientation
+    Shape "disk" "float height" [0] "float radius" [7.8]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # inner bottom (glass|liquid)
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "disk" "float height" [0.5] "float radius" [7.5]
+AttributeEnd
+AttributeBegin  # inner wall wetted by water
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "plymesh" "string filename" ["mesh_cylinder_inner_0.500_8.598.ply"]
+AttributeEnd
+AttributeBegin  # inner wall wetted by water
+  MediumInterface "" "liq1"
+  Material "dielectric" "float eta" [1.12528]
+  Shape "plymesh" "string filename" ["mesh_cylinder_inner_8.598_8.898.ply"]
+AttributeEnd
+AttributeBegin  # dry inner wall
+  NamedMaterial "wall_in_dry"
+  Shape "plymesh" "string filename" ["mesh_cylinder_inner_8.898_20.500.ply"]
+AttributeEnd
+MakeNamedMedium "liq1" "string type" "homogeneous" "rgb sigma_a" [0.0035 0.0015 0.0003] "rgb sigma_s" [0 0 0] "float scale" [1]
+AttributeBegin  # free surface + meniscus
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate 0 0 8.5975
+  Shape "plymesh" "string filename" ["mesh_F1_f053_surface.ply"]
+AttributeEnd
+AttributeBegin  # tube (ptfe)
+  MediumInterface "" ""
+  Material "diffuse" "rgb reflectance" [0.86 0.86 0.84]
+  Translate -2.8 0 0
+  Shape "cylinder" "float radius" [0.4] "float zmin" [16.5] "float zmax" [26.5]
+AttributeEnd
+AttributeBegin  # tube lower end
+  MediumInterface "" ""
+  Material "diffuse" "rgb reflectance" [0.86 0.86 0.84]
+  Translate -2.8 0 0
+  ReverseOrientation
+  Shape "disk" "float height" [16.5] "float radius" [0.4]
+AttributeEnd
+AttributeBegin  # pour stream
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate -2.8 0 0
+  Shape "cylinder" "float radius" [0.290729] "float zmin" [8.1975] "float zmax" [16.45]
+AttributeEnd
+AttributeBegin  # droplet
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate -3.4 0.2 10.1899
+  Shape "sphere" "float radius" [0.2]
+AttributeEnd
+AttributeBegin  # droplet
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate -2.2 0.2 13.9912
+  Shape "sphere" "float radius" [0.2]
+AttributeEnd
+AttributeBegin  # droplet
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate -3.22288 0.978879 9.03319
+  Shape "sphere" "float radius" [0.143952]
+AttributeEnd
+AttributeBegin  # droplet
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate -1.90642 -0.637063 9.26121
+  Shape "sphere" "float radius" [0.163552]
+AttributeEnd
+AttributeBegin  # droplet
+  MediumInterface "liq1" ""
+  Material "dielectric" "float eta" [1.333]
+  Translate -1.967 -0.0392632 8.94074
+  Shape "sphere" "float radius" [0.134454]
+AttributeEnd

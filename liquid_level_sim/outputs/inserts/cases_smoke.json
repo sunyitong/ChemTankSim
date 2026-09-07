@@ -1,0 +1,53 @@
+{
+  "resolution": [
+    300,
+    400
+  ],
+  "cases": [
+    {
+      "case": "R1_cyl_stirrer_water50",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0_smoke",
+      "compare": "R1_cyl_stirrer_water50_smoke",
+      "roi_frac": [
+        0.21008689592667945,
+        0.16555386698461313,
+        0.5798262081466411,
+        0.6520900156397792
+      ],
+      "gt_rows_frac": [
+        0.4915988748045027
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · stirrer shaft",
+      "note": "stainless stirrer shaft (8 mm) with blade on the axis, fixture present in both frames"
+    },
+    {
+      "case": "R3_cyl_reactor_water60",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4_smoke",
+      "compare": "R3_cyl_reactor_water60_smoke",
+      "roi_frac": [
+        0.21008689592667945,
+        0.16555386698461313,
+        0.5798262081466411,
+        0.6520900156397792
+      ],
+      "gt_rows_frac": [
+        0.42438987324052485
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+      "note": "reactor set-up: stirrer shaft + glass thermometer + PTFE dip tube, all fixtures in both frames"
+    }
+  ],
+  "image_dir": "C:\\Users\\ysun13\\Desktop\\projects\\ChemTankSim\\liquid_level_sim\\outputs\\inserts\\images"
+}

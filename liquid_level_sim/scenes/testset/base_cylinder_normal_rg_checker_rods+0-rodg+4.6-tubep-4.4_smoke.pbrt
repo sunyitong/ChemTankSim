@@ -1,0 +1,88 @@
+# test-set scene -> base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4_smoke.exr
+LookAt 0 -60 10.25  0 0 10.25  0 0 1
+Camera "perspective" "float fov" [24]
+Sampler "zsobol" "integer pixelsamples" [24]
+Integrator "volpath" "integer maxdepth" [48] "bool regularize" [false]
+PixelFilter "gaussian"
+Film "rgb" "string filename" ["base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4_smoke.exr"] "integer xresolution" [300] "integer yresolution" [400] "bool savefp16" [false]
+
+WorldBegin
+AttributeBegin  # light panel (Lambertian light box)
+  AreaLightSource "diffuse" "string filename" ["../../outputs/testset/patterns/rg_checker.png"] "float scale" [0.8] "bool twosided" true
+  Material "diffuse" "rgb reflectance" [0 0 0]
+  Shape "trianglemesh" "point3 P" [30 25 -29.75 -30 25 -29.75 -30 25 50.25 30 25 50.25] "point2 uv" [0 0 1 0 1 1 0 1] "integer indices" [0 1 2 0 2 3]
+AttributeEnd
+LightSource "infinite" "rgb L" [0.2 0.2 0.21]
+AttributeBegin  # matte black pedestal
+  Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]
+  Shape "cylinder" "float radius" [4] "float zmin" [-8.05] "float zmax" [-0.05]
+  Shape "disk" "float height" [-0.05] "float radius" [4]
+AttributeEnd
+MakeNamedMaterial "glass" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_out" "string type" "dielectric" "float eta" [1.5]
+MakeNamedMaterial "wall_in_dry" "string type" "dielectric" "float eta" [1.5]
+AttributeBegin  # outer wall
+  NamedMaterial "wall_out"
+  Shape "plymesh" "string filename" ["mesh_cylinder_outer.ply"]
+AttributeEnd
+AttributeBegin  # rim + outer bottom
+  NamedMaterial "glass"
+  Shape "disk" "float height" [20.5] "float radius" [7.8] "float innerradius" [7.5]
+  AttributeBegin
+    ReverseOrientation
+    Shape "disk" "float height" [0] "float radius" [7.8]
+  AttributeEnd
+AttributeEnd
+AttributeBegin  # inner bottom (dry)
+  NamedMaterial "glass"
+  Shape "disk" "float height" [0.5] "float radius" [7.5]
+AttributeEnd
+AttributeBegin  # dry inner wall
+  NamedMaterial "wall_in_dry"
+  Shape "plymesh" "string filename" ["mesh_cylinder_inner_0.500_20.500.ply"]
+AttributeEnd
+
+AttributeBegin  # rod (steel)
+  MediumInterface "" ""
+  Material "conductor" "spectrum eta" "metal-Al-eta" "spectrum k" "metal-Al-k" "float roughness" [0.10] "bool remaproughness" [false]
+  Translate 0 0 0
+  Shape "cylinder" "float radius" [0.4] "float zmin" [2.1] "float zmax" [26.5]
+AttributeEnd
+AttributeBegin  # rod lower end
+  MediumInterface "" ""
+  Material "conductor" "spectrum eta" "metal-Al-eta" "spectrum k" "metal-Al-k" "float roughness" [0.10] "bool remaproughness" [false]
+  Translate 0 0 0
+  ReverseOrientation
+  Shape "disk" "float height" [2.1] "float radius" [0.4]
+AttributeEnd
+AttributeBegin  # stirrer blade
+  MediumInterface "" ""
+  Material "conductor" "spectrum eta" "metal-Al-eta" "spectrum k" "metal-Al-k" "float roughness" [0.10] "bool remaproughness" [false]
+  Shape "trianglemesh" "point3 P" [-1.94316 -1.03852 2.1 2.04459 0.821003 2.1 1.94316 1.03852 2.1 -2.04459 -0.821003 2.1 -1.94316 -1.03852 2.6 2.04459 0.821003 2.6 1.94316 1.03852 2.6 -2.04459 -0.821003 2.6] "integer indices" [0 2 1 0 3 2 4 5 6 4 6 7 0 1 5 0 5 4 1 2 6 1 6 5 2 3 7 2 7 6 3 0 4 3 4 7]
+AttributeEnd
+AttributeBegin  # rod (glass)
+  MediumInterface "" ""
+  Material "dielectric" "float eta" [1.50]
+  Translate 4.6 1 0
+  Shape "cylinder" "float radius" [0.3] "float zmin" [3.5] "float zmax" [28.5]
+AttributeEnd
+AttributeBegin  # rod lower end
+  MediumInterface "" ""
+  Material "dielectric" "float eta" [1.50]
+  Translate 4.6 1 0
+  ReverseOrientation
+  Shape "disk" "float height" [3.5] "float radius" [0.3]
+AttributeEnd
+AttributeBegin  # tube (ptfe)
+  MediumInterface "" ""
+  Material "diffuse" "rgb reflectance" [0.86 0.86 0.84]
+  Translate -4.4 -0.8 0
+  Shape "cylinder" "float radius" [0.4] "float zmin" [4.9] "float zmax" [25.5]
+AttributeEnd
+AttributeBegin  # tube lower end
+  MediumInterface "" ""
+  Material "diffuse" "rgb reflectance" [0.86 0.86 0.84]
+  Translate -4.4 -0.8 0
+  ReverseOrientation
+  Shape "disk" "float height" [4.9] "float radius" [0.4]
+AttributeEnd

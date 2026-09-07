@@ -3608,5 +3608,731 @@
   ],
   "false_positives": [],
   "top_err_pct": 2.6093980343899474
+ },
+ {
+  "case": "R1_cyl_stirrer_water50",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · stirrer shaft",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9624060150375939,
+  "gt_pct": [
+   50.01019426498705
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.127819548872175
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.5628975967550076,
+  "err_pct_per_gt": [
+   1.1176252838851255
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1176252838851255
+ },
+ {
+  "case": "R1_cyl_stirrer_water50",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · stirrer shaft",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9705014749262537,
+  "gt_pct": [
+   50.01018375543552
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.104565537555224
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.616156693520665,
+  "err_pct_per_gt": [
+   1.0943817821197044
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0943817821197044
+ },
+ {
+  "case": "R1_cyl_stirrer_water50",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · stirrer shaft",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9632107023411371,
+  "gt_pct": [
+   50.01018575558389
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.25208681135225
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.6561949017759972,
+  "err_pct_per_gt": [
+   1.2419010557683592
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2419010557683592
+ },
+ {
+  "case": "R1_cyl_stirrer_water50",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · stirrer shaft",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9536679536679536,
+  "gt_pct": [
+   50.01018837234833
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.05973025048169
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.605881432499153,
+  "err_pct_per_gt": [
+   1.0495418781333612
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0495418781333612
+ },
+ {
+  "case": "R1_cyl_stirrer_water50",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · stirrer shaft",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.954337899543379,
+  "gt_pct": [
+   50.010191942831014
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.252847380410024
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.6591307596187121,
+  "err_pct_per_gt": [
+   1.2426554375790104
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2426554375790104
+ },
+ {
+  "case": "R2_cyl_dosing_tube_water45_mosaic",
+  "scale": 1.0,
+  "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+  "mode": "warp",
+  "frac_pattern": 0.656641604010025,
+  "gt_pct": [
+   44.95688587671803
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.616541353383454
+  ],
+  "est_z": [
+   227.8307337480456
+  ],
+  "est_jump": [
+   1.4522953548996438
+  ],
+  "old_dE_top_err_pct": 1.9425333157916143,
+  "err_pct_per_gt": [
+   1.6596554766654208
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6596554766654208
+ },
+ {
+  "case": "R2_cyl_dosing_tube_water45_mosaic",
+  "scale": 0.85,
+  "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+  "mode": "warp",
+  "frac_pattern": 0.6371681415929203,
+  "gt_pct": [
+   44.96208496344307
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.68630338733431
+  ],
+  "est_z": [
+   210.67685899313935
+  ],
+  "est_jump": [
+   1.4539605176953696
+  ],
+  "old_dE_top_err_pct": 1.8747863454413434,
+  "err_pct_per_gt": [
+   1.7242184238912444
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.7242184238912444
+ },
+ {
+  "case": "R2_cyl_dosing_tube_water45_mosaic",
+  "scale": 0.75,
+  "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+  "mode": "warp",
+  "frac_pattern": 0.6254180602006689,
+  "gt_pct": [
+   44.961095487839295
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.57762938230384
+  ],
+  "est_z": [
+   197.56734423068005
+  ],
+  "est_jump": [
+   1.4483766117431576
+  ],
+  "old_dE_top_err_pct": 1.8207400728136207,
+  "err_pct_per_gt": [
+   1.6165338944645455
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6165338944645455
+ },
+ {
+  "case": "R2_cyl_dosing_tube_water45_mosaic",
+  "scale": 0.65,
+  "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+  "mode": "warp",
+  "frac_pattern": 0.6795366795366795,
+  "gt_pct": [
+   44.959800971586986
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.82080924855491
+  ],
+  "est_z": [
+   183.85829959726348
+  ],
+  "est_jump": [
+   1.4548089562657176
+  ],
+  "old_dE_top_err_pct": 1.7918587416462515,
+  "err_pct_per_gt": [
+   1.8610082769679224
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.8610082769679224
+ },
+ {
+  "case": "R2_cyl_dosing_tube_water45_mosaic",
+  "scale": 0.55,
+  "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+  "mode": "warp",
+  "frac_pattern": 0.6940639269406392,
+  "gt_pct": [
+   44.95803464986683
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.15261958997722
+  ],
+  "est_z": [
+   161.79677936118782
+  ],
+  "est_jump": [
+   1.3862943561310943
+  ],
+  "old_dE_top_err_pct": 2.1754440068228647,
+  "err_pct_per_gt": [
+   2.1945849401103885
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.1945849401103885
+ },
+ {
+  "case": "R3_cyl_reactor_water60",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+  "mode": "warp",
+  "frac_pattern": 0.9624060150375939,
+  "gt_pct": [
+   60.11681104152509
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   61.40350877192983
+  ],
+  "est_z": [
+   158.92258979075936
+  ],
+  "est_jump": [
+   1.182233372693719
+  ],
+  "old_dE_top_err_pct": 1.0149835598730022,
+  "err_pct_per_gt": [
+   1.2866977304047396
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2866977304047396
+ },
+ {
+  "case": "R3_cyl_reactor_water60",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+  "mode": "warp",
+  "frac_pattern": 0.9734513274336283,
+  "gt_pct": [
+   60.10638133942042
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   61.413843888070694
+  ],
+  "est_z": [
+   148.39388374051666
+  ],
+  "est_jump": [
+   1.209259464680795
+  ],
+  "old_dE_top_err_pct": 0.9597968663559797,
+  "err_pct_per_gt": [
+   1.3074625486502711
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.3074625486502711
+ },
+ {
+  "case": "R3_cyl_reactor_water60",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+  "mode": "warp",
+  "frac_pattern": 0.9732441471571907,
+  "gt_pct": [
+   60.108366291073054
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   61.26878130217028
+  ],
+  "est_z": [
+   141.81184012686452
+  ],
+  "est_jump": [
+   1.2086221639292518
+  ],
+  "old_dE_top_err_pct": 0.9156995285203777,
+  "err_pct_per_gt": [
+   1.1604150110972284
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1604150110972284
+ },
+ {
+  "case": "R3_cyl_reactor_water60",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+  "mode": "warp",
+  "frac_pattern": 0.972972972972973,
+  "gt_pct": [
+   60.110963173871035
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   61.46435452793835
+  ],
+  "est_z": [
+   71.92151390021958
+  ],
+  "est_jump": [
+   1.084660200899726
+  ],
+  "old_dE_top_err_pct": 0.9104492267441557,
+  "err_pct_per_gt": [
+   1.3533913540673126
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.3533913540673126
+ },
+ {
+  "case": "R3_cyl_reactor_water60",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+  "mode": "warp",
+  "frac_pattern": 0.9680365296803652,
+  "gt_pct": [
+   60.11450652875936
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   60.97166633064282
+  ],
+  "est_z": [
+   118.84263349015671
+  ],
+  "est_jump": [
+   1.192781659026976
+  ],
+  "old_dE_top_err_pct": 0.6597195873209216,
+  "err_pct_per_gt": [
+   0.8571598018834621
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.8571598018834621
+ },
+ {
+  "case": "R4_erl_rod_water40_grid",
+  "scale": 1.0,
+  "label": "erlenmeyer · normal · grid · steel rod",
+  "mode": "warp",
+  "frac_pattern": 0.8991097922848664,
+  "gt_pct": [
+   41.839734930187944
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   35.40740740740741
+  ],
+  "est_z": [
+   13.008243060655115
+  ],
+  "est_jump": [
+   0.09447883072039845
+  ],
+  "old_dE_top_err_pct": -36.698034543964795,
+  "err_pct_per_gt": [
+   null
+  ],
+  "false_positives": [
+   35.40740740740741
+  ],
+  "top_err_pct": -6.4323275227805325
+ },
+ {
+  "case": "R4_erl_rod_water40_grid",
+  "scale": 0.85,
+  "label": "erlenmeyer · normal · grid · steel rod",
+  "mode": "warp",
+  "frac_pattern": 0.975609756097561,
+  "gt_pct": [
+   41.87377685748316
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   42.857142857142854
+  ],
+  "est_z": [
+   24.47630964558337
+  ],
+  "est_jump": [
+   0.24849077683974316
+  ],
+  "old_dE_top_err_pct": -36.824714237428346,
+  "err_pct_per_gt": [
+   0.9833659996596964
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.9833659996596964
+ },
+ {
+  "case": "R4_erl_rod_water40_grid",
+  "scale": 0.75,
+  "label": "erlenmeyer · normal · grid · steel rod",
+  "mode": "warp",
+  "frac_pattern": 0.9723320158102767,
+  "gt_pct": [
+   41.76159250673447
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   43.08300395256917
+  ],
+  "est_z": [
+   25.677409526717078
+  ],
+  "est_jump": [
+   0.25382948593273896
+  ],
+  "old_dE_top_err_pct": -36.75580483794354,
+  "err_pct_per_gt": [
+   1.3214114458346984
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.3214114458346984
+ },
+ {
+  "case": "R4_erl_rod_water40_grid",
+  "scale": 0.65,
+  "label": "erlenmeyer · normal · grid · steel rod",
+  "mode": "warp",
+  "frac_pattern": 0.9726027397260274,
+  "gt_pct": [
+   41.84288516123278
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   43.37899543378995
+  ],
+  "est_z": [
+   26.158796495159073
+  ],
+  "est_jump": [
+   0.2713870447100976
+  ],
+  "old_dE_top_err_pct": -36.61097105162272,
+  "err_pct_per_gt": [
+   1.536110272557174
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.536110272557174
+ },
+ {
+  "case": "R4_erl_rod_water40_grid",
+  "scale": 0.55,
+  "label": "erlenmeyer · normal · grid · steel rod",
+  "mode": "warp",
+  "frac_pattern": 0.9837837837837838,
+  "gt_pct": [
+   41.84097464375275
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   43.39622641509434
+  ],
+  "est_z": [
+   25.422459392930378
+  ],
+  "est_jump": [
+   0.2735594990630295
+  ],
+  "old_dE_top_err_pct": -36.24997670697127,
+  "err_pct_per_gt": [
+   1.555251771341588
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.555251771341588
+ },
+ {
+  "case": "R5_cyl_stirrer_water_oil",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+  "mode": "warp",
+  "frac_pattern": 0.9523809523809523,
+  "gt_pct": [
+   39.90357748844901,
+   65.1701194297941
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.16541353383458,
+   41.10275689223057
+  ],
+  "est_z": [
+   62.75133928801248,
+   65.71807955982304
+  ],
+  "est_jump": [
+   0.49540206190654595,
+   -0.47913370188273885
+  ],
+  "old_dE_top_err_pct": 1.072121583245945,
+  "err_pct_per_gt": [
+   1.1991794037815637,
+   0.9952941040404824
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.9952941040404824
+ },
+ {
+  "case": "R5_cyl_stirrer_water_oil",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+  "mode": "warp",
+  "frac_pattern": 0.9646017699115044,
+  "gt_pct": [
+   39.91398617145062,
+   65.15448013141288
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.53755522827687
+  ],
+  "est_z": [
+   57.18626252109975
+  ],
+  "est_jump": [
+   0.4973128686188926
+  ],
+  "old_dE_top_err_pct": 0.49001272956492414,
+  "err_pct_per_gt": [
+   null,
+   0.38307509686399044
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.38307509686399044
+ },
+ {
+  "case": "R5_cyl_stirrer_water_oil",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+  "mode": "warp",
+  "frac_pattern": 0.9698996655518395,
+  "gt_pct": [
+   39.91200522009472,
+   65.15745655881766
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.6093489148581
+  ],
+  "est_z": [
+   52.8804068183894
+  ],
+  "est_jump": [
+   0.5198603919581779
+  ],
+  "old_dE_top_err_pct": 0.8904853619030035,
+  "err_pct_per_gt": [
+   null,
+   0.451892356040446
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.451892356040446
+ },
+ {
+  "case": "R5_cyl_stirrer_water_oil",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+  "mode": "warp",
+  "frac_pattern": 0.9459459459459459,
+  "gt_pct": [
+   39.90941357082563,
+   65.16135057463238
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.08863198458575,
+   41.040462427745666
+  ],
+  "est_z": [
+   44.25164881675586,
+   53.316994116740204
+  ],
+  "est_jump": [
+   0.44233776695913773,
+   -0.4813964435812398
+  ],
+  "old_dE_top_err_pct": 1.1827947931623868,
+  "err_pct_per_gt": [
+   1.1310488569200388,
+   0.9272814099533662
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.9272814099533662
+ },
+ {
+  "case": "R5_cyl_stirrer_water_oil",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+  "mode": "warp",
+  "frac_pattern": 0.9178082191780822,
+  "gt_pct": [
+   39.905877356902664,
+   65.16666382172353
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.2870159453303,
+   42.14123006833713
+  ],
+  "est_z": [
+   24.751757872625653,
+   39.53984204219863
+  ],
+  "est_jump": [
+   0.3087462354628569,
+   -0.42338799451539666
+  ],
+  "old_dE_top_err_pct": 1.2530089862518423,
+  "err_pct_per_gt": [
+   2.235352711434466,
+   1.1203521236067644
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1203521236067644
  }
 ]

@@ -1,0 +1,291 @@
+{
+  "resolution": [
+    300,
+    400
+  ],
+  "spp": 24,
+  "jobs": [
+    {
+      "name": "base_cylinder_normal_rg_checker_rods+0_smoke",
+      "role": "baseline",
+      "combo": null,
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        }
+      ],
+      "layers": [],
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 62.22154679384525,
+        "bottom_row_front": 331.05755304975696
+      },
+      "jitter": false,
+      "render_seconds": 1.4,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_cylinder_normal_rg_checker_rods+0_smoke.png"
+    },
+    {
+      "name": "R1_cyl_stirrer_water50_smoke",
+      "role": "compare",
+      "combo": "R1_cyl_stirrer_water50",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0_smoke",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        }
+      ],
+      "layers": [
+        [
+          "water",
+          0.5
+        ]
+      ],
+      "note": "stainless stirrer shaft (8 mm) with blade on the axis, fixture present in both frames",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 10.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.5,
+            "top_row_front": 196.6395499218011,
+            "top_row_back": 197.38631660584528,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 62.22154679384525,
+        "bottom_row_front": 331.05755304975696
+      },
+      "jitter": true,
+      "render_seconds": 1.5,
+      "post": {
+        "gain": 1.0230032793007835,
+        "shift_px": [
+          0.5429098401680452,
+          1.3323907108649995
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "R1_cyl_stirrer_water50_smoke.png"
+    },
+    {
+      "name": "base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4_smoke",
+      "role": "baseline",
+      "combo": null,
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        },
+        {
+          "type": "rod",
+          "material": "glass",
+          "x": 4.6,
+          "y": 1.0,
+          "radius": 0.3,
+          "z0_frac": 0.15,
+          "above_rim": 8.0
+        },
+        {
+          "type": "tube",
+          "material": "ptfe",
+          "x": -4.4,
+          "y": -0.8,
+          "radius": 0.4,
+          "z0_frac": 0.22,
+          "above_rim": 5.0
+        }
+      ],
+      "layers": [],
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [],
+        "rim_row_front": 62.22154679384525,
+        "bottom_row_front": 331.05755304975696
+      },
+      "jitter": false,
+      "render_seconds": 1.4,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4_smoke.png"
+    },
+    {
+      "name": "R3_cyl_reactor_water60_smoke",
+      "role": "compare",
+      "combo": "R3_cyl_reactor_water60",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4_smoke",
+      "vessel": "cylinder",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.0,
+          "y": 0.0,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 6.0,
+          "paddle": 2.2
+        },
+        {
+          "type": "rod",
+          "material": "glass",
+          "x": 4.6,
+          "y": 1.0,
+          "radius": 0.3,
+          "z0_frac": 0.15,
+          "above_rim": 8.0
+        },
+        {
+          "type": "tube",
+          "material": "ptfe",
+          "x": -4.4,
+          "y": -0.8,
+          "radius": 0.4,
+          "z0_frac": 0.22,
+          "above_rim": 5.0
+        }
+      ],
+      "layers": [
+        [
+          "water",
+          0.6
+        ]
+      ],
+      "note": "reactor set-up: stirrer shaft + glass thermometer + PTFE dip tube, all fixtures in both frames",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Cylinder 15 x 20 cm (MVP)",
+        "inner_height_cm": 20.0,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 12.5,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.6,
+            "top_row_front": 169.75594929620993,
+            "top_row_back": 176.47684945260772,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 62.22154679384525,
+        "bottom_row_front": 331.05755304975696
+      },
+      "jitter": true,
+      "render_seconds": 1.5,
+      "post": {
+        "gain": 1.006053116266598,
+        "shift_px": [
+          -2.037895654771771,
+          1.7939257034053133
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "R3_cyl_reactor_water60_smoke.png"
+    }
+  ]
+}

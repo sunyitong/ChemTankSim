@@ -1,0 +1,122 @@
+{
+  "resolution": [
+    900,
+    1200
+  ],
+  "cases": [
+    {
+      "case": "R1_cyl_stirrer_water50",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0",
+      "compare": "R1_cyl_stirrer_water50",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.49159887480450276
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · stirrer shaft",
+      "note": "stainless stirrer shaft (8 mm) with blade on the axis, fixture present in both frames"
+    },
+    {
+      "case": "R2_cyl_dosing_tube_water45_mosaic",
+      "baseline": "base_cylinder_normal_mosaic_none",
+      "compare": "R2_cyl_dosing_tube_water45_mosaic",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.5252033755864918
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+      "note": "PTFE dosing tube (8 mm) inserted for the compare frame only, dipping below the level"
+    },
+    {
+      "case": "R3_cyl_reactor_water60",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0-rodg+4.6-tubep-4.4",
+      "compare": "R3_cyl_reactor_water60",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.42438987324052485
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+      "note": "reactor set-up: stirrer shaft + glass thermometer + PTFE dip tube, all fixtures in both frames"
+    },
+    {
+      "case": "R4_erl_rod_water40_grid",
+      "baseline": "base_erlenmeyer_normal_grid_rods+0.9",
+      "compare": "R4_erl_rod_water40_grid",
+      "roi_frac": [
+        0.2590377639572648,
+        0.22254899588919377,
+        0.48192447208547046,
+        0.5623040722659732
+      ],
+      "gt_rows_frac": [
+        0.5496514910176928
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "erlenmeyer · normal · grid · steel rod",
+      "note": "steel rod (6 mm) off-axis through the Erlenmeyer neck, both frames"
+    },
+    {
+      "case": "R5_cyl_stirrer_water_oil",
+      "baseline": "base_cylinder_normal_rg_checker_rods+0",
+      "compare": "R5_cyl_stirrer_water_oil",
+      "roi_frac": [
+        0.21008689592667945,
+        0.15888720031794645,
+        0.5798262081466411,
+        0.6654233489731126
+      ],
+      "gt_rows_frac": [
+        0.5588078763684807,
+        0.39078537245853584
+      ],
+      "gt_kinds": [
+        "liquid-liquid interface",
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water",
+        "sunflower_oil"
+      ],
+      "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+      "note": "water + sunflower oil with the stirrer shaft: two interfaces behind a partial occluder"
+    }
+  ],
+  "image_dir": "C:\\Users\\ysun13\\Desktop\\projects\\ChemTankSim\\liquid_level_sim\\outputs\\inserts\\images"
+}
