@@ -42,10 +42,14 @@ img{max-width:100%;display:block;border:1px solid #1c2228;background:#0d1013}
 <p>The HDRI replaces the constant ambient term: the ceiling lamp and the white walls appear as reflections on the steel rods and the glass; the filled frame has the room light rotated by 12° and dimmed by 15 %. Reagent bottle with a stirrer rod and tide marks; gourd flask with a rod, a thermometer and a water-line ring. Levels within 1–3 pt. Under the same light the water/oil interface of R5 is lost: the lamp reflection on the front wall swamps the strongly magnified water layer, identical in both frames, and biases its warp to identity.</p>
 <img src="gallery/env_childrens_hospital.png" alt="environment map" style="max-width:640px">
 <img src="gallery/lab_contact_sheet.png" alt="K group">
-<h2>POURING SEQUENCE · 20 fps · LEVEL 12 → 55 % IN 4 s (baseline, then five frames; lab HDRI)</h2>
-<img src="gallery/pour_contact_sheet.png" alt="pouring frames">
-<p>Detected level per frame against ground truth. Every frame is analysed independently against the empty-vessel baseline (dots), then a causal multi-hypothesis tracker follows the surface hypothesis consistent with a constant-velocity prediction (line); 81 of 81 frames within 6 pt, median error +0.83 pt.</p>
-<img src="gallery/pour_level_vs_time.png" alt="level vs time">
+<h2>POURING SEQUENCES · 20 fps · 4 s (baseline, then five frames; lab HDRI)</h2>
+<p>F1 cylinder, level 12 → 55 %. F2 Erlenmeyer with a heavy water-line ring at 75 % and a PTFE dosing tube through the neck; F3 wide-mouth reagent bottle with tide-mark limescale and a dosing tube; both 15 → 55 % with the room light rotated 12° and dimmed 15 % against the baseline. The deposit is dry above the level and index-matched where submerged, so it changes frame by frame as the level rises. Every frame is analysed independently against the empty-vessel baseline (dots), then a causal multi-hypothesis tracker follows the surface hypothesis consistent with a constant-velocity prediction (line); dashed green is the ground truth. The Erlenmeyer reads 2–5 points high at low levels: seen from above, a cone shows a wide far-rim band and its tilted wall breaks the per-row horizontal-warp model, so the estimate follows the far rim.</p>
+<img src="gallery/pour_F1_contact_sheet.png" alt="F1 pouring frames">
+<img src="gallery/pour_F1_level_vs_time.png" alt="F1 level vs time" style="max-width:880px">
+<img src="gallery/pour_F2_contact_sheet.png" alt="F2 pouring frames">
+<img src="gallery/pour_F2_level_vs_time.png" alt="F2 level vs time" style="max-width:880px">
+<img src="gallery/pour_F3_contact_sheet.png" alt="F3 pouring frames">
+<img src="gallery/pour_F3_level_vs_time.png" alt="F3 level vs time" style="max-width:880px">
 <h2>WATER-LINE RING, MACRO, WHITE PANEL</h2>
 <img src="gallery/limescale_macro_white.png" alt="limescale macro">
 </main></body></html>

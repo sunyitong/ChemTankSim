@@ -1,5 +1,3609 @@
 [
  {
+  "case": "A1_gourd_normal_checker",
+  "scale": 1.0,
+  "label": "gourd · normal · rg_checker",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9680851063829787,
+  "gt_pct": [
+   45.644363932858916
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.340425531914896
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.642761039923755,
+  "err_pct_per_gt": [
+   1.6960615990559802
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6960615990559802
+ },
+ {
+  "case": "A1_gourd_normal_checker",
+  "scale": 0.85,
+  "label": "gourd · normal · rg_checker",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9717868338557993,
+  "gt_pct": [
+   45.62735121421504
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.79186228482003
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.622568774334347,
+  "err_pct_per_gt": [
+   1.1645110706049877
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1645110706049877
+ },
+ {
+  "case": "A1_gourd_normal_checker",
+  "scale": 0.75,
+  "label": "gourd · normal · rg_checker",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9716312056737588,
+  "gt_pct": [
+   45.64436393285891
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.808510638297875
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.7056060399109114,
+  "err_pct_per_gt": [
+   1.1641467054389665
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1641467054389665
+ },
+ {
+  "case": "A1_gourd_normal_checker",
+  "scale": 0.65,
+  "label": "gourd · normal · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9590163934426229,
+  "gt_pct": [
+   45.666595276853656
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.830265848670756
+  ],
+  "est_z": [
+   6.615870556120911
+  ],
+  "est_jump": [
+   0.4375901711629141
+  ],
+  "old_dE_top_err_pct": 1.6879580055709553,
+  "err_pct_per_gt": [
+   1.1636705718171
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1636705718171
+ },
+ {
+  "case": "A1_gourd_normal_checker",
+  "scale": 0.55,
+  "label": "gourd · normal · rg_checker",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9806763285024155,
+  "gt_pct": [
+   45.6968814556291
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.85990338164252
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.8057995712491532,
+  "err_pct_per_gt": [
+   1.1630219260134211
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1630219260134211
+ },
+ {
+  "case": "A2_gourd_wide_mosaic",
+  "scale": 1.0,
+  "label": "gourd · wide · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.505524861878453,
+  "gt_pct": [
+   63.72378148415512
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   64.13793103448275
+  ],
+  "est_z": [
+   9.72005379336184
+  ],
+  "est_jump": [
+   2.1184765740272464
+  ],
+  "old_dE_top_err_pct": 0.5957828573635524,
+  "err_pct_per_gt": [
+   0.4141495503276289
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.4141495503276289
+ },
+ {
+  "case": "A2_gourd_wide_mosaic",
+  "scale": 0.85,
+  "label": "gourd · wide · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.474025974025974,
+  "gt_pct": [
+   63.7192550074726
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   64.0194489465154
+  ],
+  "est_z": [
+   6.748233046392256
+  ],
+  "est_jump": [
+   2.1673145380311456
+  ],
+  "old_dE_top_err_pct": 0.63377617352117,
+  "err_pct_per_gt": [
+   0.30019393904279923
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.30019393904279923
+ },
+ {
+  "case": "A2_gourd_wide_mosaic",
+  "scale": 0.75,
+  "label": "gourd · wide · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.4852941176470588,
+  "gt_pct": [
+   63.64854077575247
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   63.970588235294116
+  ],
+  "est_z": [
+   6.53177319182192
+  ],
+  "est_jump": [
+   0.4411182984526781
+  ],
+  "old_dE_top_err_pct": 0.6888821978666826,
+  "err_pct_per_gt": [
+   0.3220474595416434
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.3220474595416434
+ },
+ {
+  "case": "A2_gourd_wide_mosaic",
+  "scale": 0.65,
+  "label": "gourd · wide · mosaic",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.48936170212765956,
+  "gt_pct": [
+   63.76822085861592
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   64.3312101910828
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 0.7211584391542232,
+  "err_pct_per_gt": [
+   0.5629893324668842
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.5629893324668842
+ },
+ {
+  "case": "A2_gourd_wide_mosaic",
+  "scale": 0.55,
+  "label": "gourd · wide · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.5276381909547738,
+  "gt_pct": [
+   63.77157360101968
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   63.90977443609023
+  ],
+  "est_z": [
+   4.567934012969599
+  ],
+  "est_jump": [
+   0.4723819266383705
+  ],
+  "old_dE_top_err_pct": -16.256000353091913,
+  "err_pct_per_gt": [
+   0.13820083507054903
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.13820083507054903
+ },
+ {
+  "case": "A3_erlenmeyer_tele_grid",
+  "scale": 1.0,
+  "label": "erlenmeyer · tele · grid",
+  "mode": "warp",
+  "frac_pattern": 0.8757575757575757,
+  "gt_pct": [
+   38.73264462249336
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   40.69591527987897
+  ],
+  "est_z": [
+   12.052905510971017
+  ],
+  "est_jump": [
+   0.6133028163592752
+  ],
+  "old_dE_top_err_pct": 2.314722657837997,
+  "err_pct_per_gt": [
+   1.963270657385607
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.963270657385607
+ },
+ {
+  "case": "A3_erlenmeyer_tele_grid",
+  "scale": 0.85,
+  "label": "erlenmeyer · tele · grid",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.8825622775800712,
+  "gt_pct": [
+   38.757893916633265
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   40.213523131672595
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 2.6894647820606323,
+  "err_pct_per_gt": [
+   1.4556292150393304
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.4556292150393304
+ },
+ {
+  "case": "A3_erlenmeyer_tele_grid",
+  "scale": 0.75,
+  "label": "erlenmeyer · tele · grid",
+  "mode": "warp",
+  "frac_pattern": 0.907258064516129,
+  "gt_pct": [
+   38.713122120163476
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   40.32258064516129
+  ],
+  "est_z": [
+   15.173636398056132
+  ],
+  "est_jump": [
+   0.28713498428667
+  ],
+  "old_dE_top_err_pct": 2.7157018099103354,
+  "err_pct_per_gt": [
+   1.6094585249978124
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6094585249978124
+ },
+ {
+  "case": "A3_erlenmeyer_tele_grid",
+  "scale": 0.65,
+  "label": "erlenmeyer · tele · grid",
+  "mode": "warp",
+  "frac_pattern": 0.883177570093458,
+  "gt_pct": [
+   38.74471040105891
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   40.32634032634033
+  ],
+  "est_z": [
+   14.31441129681319
+  ],
+  "est_jump": [
+   0.2861072110609125
+  ],
+  "old_dE_top_err_pct": 2.830175378491809,
+  "err_pct_per_gt": [
+   1.581629925281419
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.581629925281419
+ },
+ {
+  "case": "A3_erlenmeyer_tele_grid",
+  "scale": 0.55,
+  "label": "erlenmeyer · tele · grid",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.8895027624309392,
+  "gt_pct": [
+   38.68113761021339
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   40.49586776859504
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -33.79661055587577,
+  "err_pct_per_gt": [
+   1.81473015838165
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.81473015838165
+ },
+ {
+  "case": "A4_florence_normal_checker",
+  "scale": 1.0,
+  "label": "florence · normal · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9971428571428571,
+  "gt_pct": [
+   54.24410958174594
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.00000000000001
+  ],
+  "est_z": [
+   32.228996645798055
+  ],
+  "est_jump": [
+   0.6604825615803062
+  ],
+  "old_dE_top_err_pct": 1.7727295553650038,
+  "err_pct_per_gt": [
+   1.7558904182540687
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.7558904182540687
+ },
+ {
+  "case": "A4_florence_normal_checker",
+  "scale": 0.85,
+  "label": "florence · normal · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 1.0,
+  "gt_pct": [
+   54.29452974981316
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   55.96638655462185
+  ],
+  "est_z": [
+   24.80849237192045
+  ],
+  "est_jump": [
+   0.4288824598768894
+  ],
+  "old_dE_top_err_pct": 1.8916989292541828,
+  "err_pct_per_gt": [
+   1.6718568048086908
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6718568048086908
+ },
+ {
+  "case": "A4_florence_normal_checker",
+  "scale": 0.75,
+  "label": "florence · normal · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9961832061068703,
+  "gt_pct": [
+   54.25220902751262
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.10687022900763
+  ],
+  "est_z": [
+   19.694065890591602
+  ],
+  "est_jump": [
+   0.5849928217326403
+  ],
+  "old_dE_top_err_pct": 1.968483728216583,
+  "err_pct_per_gt": [
+   1.8546612014950128
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.8546612014950128
+ },
+ {
+  "case": "A4_florence_normal_checker",
+  "scale": 0.65,
+  "label": "florence · normal · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9955947136563876,
+  "gt_pct": [
+   54.178175515811866
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.043956043956044
+  ],
+  "est_z": [
+   17.51767757689085
+  ],
+  "est_jump": [
+   0.7324966587891311
+  ],
+  "old_dE_top_err_pct": 2.014723824089373,
+  "err_pct_per_gt": [
+   1.8657805281441782
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.8657805281441782
+ },
+ {
+  "case": "A4_florence_normal_checker",
+  "scale": 0.55,
+  "label": "florence · normal · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9947916666666666,
+  "gt_pct": [
+   54.21813555577191
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.36363636363636
+  ],
+  "est_z": [
+   17.150139746623665
+  ],
+  "est_jump": [
+   0.5885222693855061
+  ],
+  "old_dE_top_err_pct": 2.039349079896681,
+  "err_pct_per_gt": [
+   2.145500807864451
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.145500807864451
+ },
+ {
+  "case": "A5_reagent_wide_checker",
+  "scale": 1.0,
+  "label": "reagent · wide · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9753086419753086,
+  "gt_pct": [
+   51.915397129941645
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   53.086419753086425
+  ],
+  "est_z": [
+   105.18589688422912
+  ],
+  "est_jump": [
+   0.7430164981305843
+  ],
+  "old_dE_top_err_pct": 2.1189545508704555,
+  "err_pct_per_gt": [
+   1.1710226231447791
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1710226231447791
+ },
+ {
+  "case": "A5_reagent_wide_checker",
+  "scale": 0.85,
+  "label": "reagent · wide · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9818181818181818,
+  "gt_pct": [
+   51.85118101483095
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   52.813067150635206
+  ],
+  "est_z": [
+   97.44730338007606
+  ],
+  "est_jump": [
+   0.7384213311468579
+  ],
+  "old_dE_top_err_pct": 2.0340095980126947,
+  "err_pct_per_gt": [
+   0.9618861358042565
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.9618861358042565
+ },
+ {
+  "case": "A5_reagent_wide_checker",
+  "scale": 0.75,
+  "label": "reagent · wide · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9753086419753086,
+  "gt_pct": [
+   51.966837459159755
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   53.086419753086425
+  ],
+  "est_z": [
+   95.07770199345696
+  ],
+  "est_jump": [
+   0.750909458535771
+  ],
+  "old_dE_top_err_pct": 2.039951785861639,
+  "err_pct_per_gt": [
+   1.119582293926669
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.119582293926669
+ },
+ {
+  "case": "A5_reagent_wide_checker",
+  "scale": 0.65,
+  "label": "reagent · wide · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.9142857142857143,
+  "gt_pct": [
+   51.88067760363757
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   52.49406175771971
+  ],
+  "est_z": [
+   88.1654641469845
+  ],
+  "est_jump": [
+   0.7509094444071294
+  ],
+  "old_dE_top_err_pct": 2.006894330334198,
+  "err_pct_per_gt": [
+   0.6133841540821408
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.6133841540821408
+ },
+ {
+  "case": "A5_reagent_wide_checker",
+  "scale": 0.55,
+  "label": "reagent · wide · rg_checker",
+  "mode": "warp",
+  "frac_pattern": 0.949438202247191,
+  "gt_pct": [
+   51.89817237286049
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   52.94117647058824
+  ],
+  "est_z": [
+   80.30654847431468
+  ],
+  "est_jump": [
+   0.7509094437280504
+  ],
+  "old_dE_top_err_pct": 2.530446887103203,
+  "err_pct_per_gt": [
+   1.0430040977277457
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0430040977277457
+ },
+ {
+  "case": "A6_erlenmeyer_normal_mosaic_tea",
+  "scale": 1.0,
+  "label": "erlenmeyer · normal · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.8235294117647058,
+  "gt_pct": [
+   43.94946385885493
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.470588235294116
+  ],
+  "est_z": [
+   8.582910175318966
+  ],
+  "est_jump": [
+   -1.293318322837651
+  ],
+  "old_dE_top_err_pct": 3.130755516957805,
+  "err_pct_per_gt": [
+   2.5211243764391895
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.5211243764391895
+ },
+ {
+  "case": "A6_erlenmeyer_normal_mosaic_tea",
+  "scale": 0.85,
+  "label": "erlenmeyer · normal · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.8408304498269896,
+  "gt_pct": [
+   43.94946385885491
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.36678200692042
+  ],
+  "est_z": [
+   8.43623139551896
+  ],
+  "est_jump": [
+   -1.0640522481343988
+  ],
+  "old_dE_top_err_pct": 3.1515900200621516,
+  "err_pct_per_gt": [
+   2.4173181480655046
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.4173181480655046
+ },
+ {
+  "case": "A6_erlenmeyer_normal_mosaic_tea",
+  "scale": 0.75,
+  "label": "erlenmeyer · normal · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.8235294117647058,
+  "gt_pct": [
+   43.94946385885493
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.666666666666664
+  ],
+  "est_z": [
+   10.312428981077362
+  ],
+  "est_jump": [
+   -1.026707400886382
+  ],
+  "old_dE_top_err_pct": 3.402648078647566,
+  "err_pct_per_gt": [
+   2.717202807811738
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.717202807811738
+ },
+ {
+  "case": "A6_erlenmeyer_normal_mosaic_tea",
+  "scale": 0.65,
+  "label": "erlenmeyer · normal · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.8371040723981901,
+  "gt_pct": [
+   43.94946385885492
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.60633484162896
+  ],
+  "est_z": [
+   9.336196583603524
+  ],
+  "est_jump": [
+   -0.8515589105774305
+  ],
+  "old_dE_top_err_pct": 2.8523361334099704,
+  "err_pct_per_gt": [
+   2.6568709827740378
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.6568709827740378
+ },
+ {
+  "case": "A6_erlenmeyer_normal_mosaic_tea",
+  "scale": 0.55,
+  "label": "erlenmeyer · normal · mosaic",
+  "mode": "warp",
+  "frac_pattern": 0.8502673796791443,
+  "gt_pct": [
+   43.94946385885491
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.05882352941176
+  ],
+  "est_z": [
+   4.650957010768526
+  ],
+  "est_jump": [
+   -0.757301537745206
+  ],
+  "old_dE_top_err_pct": 2.5095089223998315,
+  "err_pct_per_gt": [
+   3.1093596705568487
+  ],
+  "false_positives": [
+   47.05882352941176
+  ],
+  "top_err_pct": 3.1093596705568487
+ },
+ {
+  "case": "B1_cyl_water_oil_checker",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · water + sunflower_oil",
+  "mode": "warp",
+  "frac_pattern": 0.9799498746867168,
+  "gt_pct": [
+   39.90357748844901,
+   65.1701194297941
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.6641604010025,
+   40.100250626566414
+  ],
+  "est_z": [
+   63.52892752313562,
+   97.83820882501554
+  ],
+  "est_jump": [
+   0.5198603915814766,
+   0.7545668492631136
+  ],
+  "old_dE_top_err_pct": 1.0793510664301067,
+  "err_pct_per_gt": [
+   0.19667313811740428,
+   0.4940409712084062
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.4940409712084062
+ },
+ {
+  "case": "B1_cyl_water_oil_checker",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · water + sunflower_oil",
+  "mode": "warp",
+  "frac_pattern": 0.9793510324483776,
+  "gt_pct": [
+   39.91398617145062,
+   65.15448013141288
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.53755522827687,
+   40.20618556701031
+  ],
+  "est_z": [
+   56.633173522905984,
+   82.09582314306168
+  ],
+  "est_jump": [
+   0.5198603939287535,
+   0.6931471763987901
+  ],
+  "old_dE_top_err_pct": 1.093033153131941,
+  "err_pct_per_gt": [
+   0.29219939555969177,
+   0.38307509686399044
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.38307509686399044
+ },
+ {
+  "case": "B1_cyl_water_oil_checker",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · water + sunflower_oil",
+  "mode": "warp",
+  "frac_pattern": 0.9732441471571907,
+  "gt_pct": [
+   39.91200522009472,
+   65.15745655881766
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.6093489148581,
+   40.23372287145242
+  ],
+  "est_z": [
+   52.869139865366776,
+   79.41878686967962
+  ],
+  "est_jump": [
+   0.5198603831486683,
+   0.6931471712488912
+  ],
+  "old_dE_top_err_pct": 1.096114394405518,
+  "err_pct_per_gt": [
+   0.3217176513577016,
+   0.451892356040446
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.451892356040446
+ },
+ {
+  "case": "B1_cyl_water_oil_checker",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · water + sunflower_oil",
+  "mode": "warp",
+  "frac_pattern": 0.9691119691119691,
+  "gt_pct": [
+   39.90941357082563,
+   65.16135057463238
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.3179190751445,
+   40.26974951830443
+  ],
+  "est_z": [
+   49.9337339224909,
+   74.28542085178097
+  ],
+  "est_jump": [
+   0.5198603814621576,
+   0.6931472002952934
+  ],
+  "old_dE_top_err_pct": 1.14509302969347,
+  "err_pct_per_gt": [
+   0.36033594747880215,
+   0.15656850051212245
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.15656850051212245
+ },
+ {
+  "case": "B1_cyl_water_oil_checker",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · water + sunflower_oil",
+  "mode": "warp",
+  "frac_pattern": 0.9771689497716894,
+  "gt_pct": [
+   39.905877356902664,
+   65.16666382172353
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.2870159453303,
+   40.31890660592255
+  ],
+  "est_z": [
+   43.00406974603858,
+   66.93275878349924
+  ],
+  "est_jump": [
+   0.5115817517456945,
+   0.6931471855119421
+  ],
+  "old_dE_top_err_pct": 1.1867754828131467,
+  "err_pct_per_gt": [
+   0.41302924901988547,
+   1.1203521236067644
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1203521236067644
+ },
+ {
+  "case": "B2_cyl_water_hexane_checker",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · water + hexane",
+  "mode": "warp",
+  "frac_pattern": 0.9799498746867168,
+  "gt_pct": [
+   39.90357748844901,
+   65.1701194297941
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.41353383458647,
+   39.849624060150376
+  ],
+  "est_z": [
+   171.52119153448052,
+   18.807926854035397
+  ],
+  "est_jump": [
+   1.0974830408704588,
+   0.11552450267768188
+  ],
+  "old_dE_top_err_pct": 0.6373107026129929,
+  "err_pct_per_gt": [
+   -0.05395342829863381,
+   0.2434144047923752
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.2434144047923752
+ },
+ {
+  "case": "B2_cyl_water_hexane_checker",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · water + hexane",
+  "mode": "warp",
+  "frac_pattern": 0.9823008849557522,
+  "gt_pct": [
+   39.91398617145062,
+   65.15448013141288
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.24300441826215,
+   39.91163475699558
+  ],
+  "est_z": [
+   152.69981122287987,
+   16.804053762696935
+  ],
+  "est_jump": [
+   1.0974830431636893,
+   0.11552454586940897
+  ],
+  "old_dE_top_err_pct": 0.6248113089224034,
+  "err_pct_per_gt": [
+   -0.0023514144550347282,
+   0.08852428684926394
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.08852428684926394
+ },
+ {
+  "case": "B2_cyl_water_hexane_checker",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · water + hexane",
+  "mode": "warp",
+  "frac_pattern": 0.9732441471571907,
+  "gt_pct": [
+   39.91200522009472,
+   65.15745655881766
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.27545909849749,
+   39.89983305509182
+  ],
+  "est_z": [
+   139.4148176959602,
+   15.746840532998299
+  ],
+  "est_jump": [
+   1.0974830463377272,
+   0.115524554865301
+  ],
+  "old_dE_top_err_pct": 0.6380255331465321,
+  "err_pct_per_gt": [
+   -0.012172165002901636,
+   0.11800253967983565
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.11800253967983565
+ },
+ {
+  "case": "B2_cyl_water_hexane_checker",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · water + hexane",
+  "mode": "warp",
+  "frac_pattern": 0.972972972972973,
+  "gt_pct": [
+   39.90941357082563,
+   65.16135057463238
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.3179190751445
+  ],
+  "est_z": [
+   133.30981956904614
+  ],
+  "est_jump": [
+   1.0974830367494932
+  ],
+  "old_dE_top_err_pct": 0.6066970825550442,
+  "err_pct_per_gt": [
+   null,
+   0.15656850051212245
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.15656850051212245
+ },
+ {
+  "case": "B2_cyl_water_hexane_checker",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · water + hexane",
+  "mode": "warp",
+  "frac_pattern": 0.9771689497716894,
+  "gt_pct": [
+   39.905877356902664,
+   65.16666382172353
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   65.37585421412301
+  ],
+  "est_z": [
+   115.43760029917611
+  ],
+  "est_jump": [
+   1.111670597841924
+  ],
+  "old_dE_top_err_pct": 0.7189628510791835,
+  "err_pct_per_gt": [
+   null,
+   0.2091903923994778
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.2091903923994778
+ },
+ {
+  "case": "B3_cyl_dcm_water_checker",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · dcm + water",
+  "mode": "warp",
+  "frac_pattern": 0.974937343358396,
+  "gt_pct": [
+   29.79696071191098,
+   60.11681104152509
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   61.40350877192983,
+   30.576441102756892
+  ],
+  "est_z": [
+   202.16117114717005,
+   47.82050314753851
+  ],
+  "est_jump": [
+   1.2650473108603173,
+   -0.33575591017011086
+  ],
+  "old_dE_top_err_pct": 1.2826486341787913,
+  "err_pct_per_gt": [
+   0.7794803908459116,
+   1.2866977304047396
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2866977304047396
+ },
+ {
+  "case": "B3_cyl_dcm_water_checker",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · dcm + water",
+  "mode": "warp",
+  "frac_pattern": 0.9793510324483776,
+  "gt_pct": [
+   29.81778858746572,
+   60.10638133942042
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   60.824742268041234
+  ],
+  "est_z": [
+   183.14097508503673
+  ],
+  "est_jump": [
+   1.2689483637093182
+  ],
+  "old_dE_top_err_pct": 1.2556908910975935,
+  "err_pct_per_gt": [
+   null,
+   0.718360928620811
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.718360928620811
+ },
+ {
+  "case": "B3_cyl_dcm_water_checker",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · dcm + water",
+  "mode": "warp",
+  "frac_pattern": 0.9732441471571907,
+  "gt_pct": [
+   29.81382468460555,
+   60.108366291073054
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   60.934891485809686,
+   30.217028380634392
+  ],
+  "est_z": [
+   170.7349255697981,
+   28.352811612022162
+  ],
+  "est_jump": [
+   1.2451748426425284,
+   -0.8956336476663247
+  ],
+  "old_dE_top_err_pct": 1.2569411905871064,
+  "err_pct_per_gt": [
+   0.403203696028843,
+   0.8265251947366323
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.8265251947366323
+ },
+ {
+  "case": "B3_cyl_dcm_water_checker",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · dcm + water",
+  "mode": "warp",
+  "frac_pattern": 0.9691119691119691,
+  "gt_pct": [
+   29.80863876930294,
+   60.110963173871035
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   61.078998073217726,
+   29.09441233140655
+  ],
+  "est_z": [
+   164.52462825741026,
+   39.77096612634795
+  ],
+  "est_jump": [
+   1.2700228722749771,
+   -0.9830659460049517
+  ],
+  "old_dE_top_err_pct": 1.1386902166601232,
+  "err_pct_per_gt": [
+   -0.714226437896393,
+   0.9680348993466907
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.9680348993466907
+ },
+ {
+  "case": "B3_cyl_dcm_water_checker",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · dcm + water",
+  "mode": "warp",
+  "frac_pattern": 0.958904109589041,
+  "gt_pct": [
+   29.801562770974332,
+   60.11450652875936
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   60.820045558086555,
+   30.296127562642365
+  ],
+  "est_z": [
+   143.61421906580023,
+   114.15104344289183
+  ],
+  "est_jump": [
+   1.2775590348562273,
+   -1.064964681402571
+  ],
+  "old_dE_top_err_pct": 0.9576433254496024,
+  "err_pct_per_gt": [
+   0.4945647916680329,
+   0.7055390293271984
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.7055390293271984
+ },
+ {
+  "case": "B4_cyl_water_hexane_white",
+  "scale": 1.0,
+  "label": "cylinder · normal · white · water + hexane",
+  "mode": "photometric",
+  "frac_pattern": 0.07518796992481203,
+  "gt_pct": [
+   39.90357748844901,
+   65.1701194297941
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.9172932330827
+  ],
+  "est_z": [
+   1854.258580133319
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -62.16260063280162,
+  "err_pct_per_gt": [
+   null,
+   1.7471738032886037
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.7471738032886037
+ },
+ {
+  "case": "B4_cyl_water_hexane_white",
+  "scale": 0.85,
+  "label": "cylinder · normal · white · water + hexane",
+  "mode": "photometric",
+  "frac_pattern": 0.07374631268436578,
+  "gt_pct": [
+   39.91398617145062,
+   65.15448013141288
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   67.0103092783505
+  ],
+  "est_z": [
+   1866.8237623448172
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -63.30753206207935,
+  "err_pct_per_gt": [
+   null,
+   1.855829146937623
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.855829146937623
+ },
+ {
+  "case": "B4_cyl_water_hexane_white",
+  "scale": 0.75,
+  "label": "cylinder · normal · white · water + hexane",
+  "mode": "photometric",
+  "frac_pattern": 0.07357859531772576,
+  "gt_pct": [
+   39.91200522009472,
+   65.15745655881766
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.9449081803005
+  ],
+  "est_z": [
+   1092.140634233753
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -63.26790007956045,
+  "err_pct_per_gt": [
+   null,
+   1.7874516214828446
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.7874516214828446
+ },
+ {
+  "case": "B4_cyl_water_hexane_white",
+  "scale": 0.65,
+  "label": "cylinder · normal · white · water + hexane",
+  "mode": "photometric",
+  "frac_pattern": 0.07335907335907337,
+  "gt_pct": [
+   39.90941357082563,
+   65.16135057463238
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.85934489402698
+  ],
+  "est_z": [
+   1500.377778429538
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -61.885820709507136,
+  "err_pct_per_gt": [
+   null,
+   1.6979943193945957
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6979943193945957
+ },
+ {
+  "case": "B4_cyl_water_hexane_white",
+  "scale": 0.55,
+  "label": "cylinder · normal · white · water + hexane",
+  "mode": "photometric",
+  "frac_pattern": 0.0730593607305936,
+  "gt_pct": [
+   39.905877356902664,
+   65.16666382172353
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   67.65375854214123
+  ],
+  "est_z": [
+   1140.8286883185306
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -62.956737726964455,
+  "err_pct_per_gt": [
+   null,
+   2.4870947204177014
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.4870947204177014
+ },
+ {
+  "case": "S1_cyl_vase_line60_water45",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9298245614035088,
+  "gt_pct": [
+   44.95688587671803
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.3609022556391
+  ],
+  "est_z": [
+   186.25415172924468
+  ],
+  "est_jump": [
+   1.2117346407426728
+  ],
+  "old_dE_top_err_pct": 2.222106689169607,
+  "err_pct_per_gt": [
+   -0.5959836210789362
+  ],
+  "false_positives": [],
+  "top_err_pct": -0.5959836210789362
+ },
+ {
+  "case": "S1_cyl_vase_line60_water45",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9528023598820059,
+  "gt_pct": [
+   44.96208496344307
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.329896907216494
+  ],
+  "est_z": [
+   170.15547043191307
+  ],
+  "est_jump": [
+   1.2123212404237034
+  ],
+  "old_dE_top_err_pct": 2.3573666232787645,
+  "err_pct_per_gt": [
+   -0.6321880562265747
+  ],
+  "false_positives": [],
+  "top_err_pct": -0.6321880562265747
+ },
+ {
+  "case": "S1_cyl_vase_line60_water45",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9464882943143813,
+  "gt_pct": [
+   44.961095487839295
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.24040066777963
+  ],
+  "est_z": [
+   160.67526960457002
+  ],
+  "est_jump": [
+   1.212661614952372
+  ],
+  "old_dE_top_err_pct": 2.444665910729313,
+  "err_pct_per_gt": [
+   -0.7206948200596628
+  ],
+  "false_positives": [],
+  "top_err_pct": -0.7206948200596628
+ },
+ {
+  "case": "S1_cyl_vase_line60_water45",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9305019305019305,
+  "gt_pct": [
+   44.959800971586986
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.50867052023121
+  ],
+  "est_z": [
+   151.35213161836737
+  ],
+  "est_jump": [
+   1.2120032183519716
+  ],
+  "old_dE_top_err_pct": 2.5023116642248837,
+  "err_pct_per_gt": [
+   -0.45113045135577323
+  ],
+  "false_positives": [],
+  "top_err_pct": -0.45113045135577323
+ },
+ {
+  "case": "S1_cyl_vase_line60_water45",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9223744292237442,
+  "gt_pct": [
+   44.95803464986683
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.41913439635535
+  ],
+  "est_z": [
+   133.71566557843
+  ],
+  "est_jump": [
+   1.1994231907649104
+  ],
+  "old_dE_top_err_pct": 2.6299540924635423,
+  "err_pct_per_gt": [
+   -0.5389002535114784
+  ],
+  "false_positives": [],
+  "top_err_pct": -0.5389002535114784
+ },
+ {
+  "case": "S2_cyl_tide_water30_mosaic",
+  "scale": 1.0,
+  "label": "cylinder · normal · mosaic · limescale tide",
+  "mode": "warp",
+  "frac_pattern": 0.87468671679198,
+  "gt_pct": [
+   29.79696071191098
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.07769423558897
+  ],
+  "est_z": [
+   195.62256410580633
+  ],
+  "est_jump": [
+   1.3207228101904867
+  ],
+  "old_dE_top_err_pct": 4.831232404274989,
+  "err_pct_per_gt": [
+   1.2807335236779913
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2807335236779913
+ },
+ {
+  "case": "S2_cyl_tide_water30_mosaic",
+  "scale": 0.85,
+  "label": "cylinder · normal · mosaic · limescale tide",
+  "mode": "warp",
+  "frac_pattern": 0.8702064896755162,
+  "gt_pct": [
+   29.81778858746572
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   35.49337260677467
+  ],
+  "est_z": [
+   193.14207930635
+  ],
+  "est_jump": [
+   1.4151463686951298
+  ],
+  "old_dE_top_err_pct": 4.98730249441914,
+  "err_pct_per_gt": [
+   5.67558401930895
+  ],
+  "false_positives": [
+   35.49337260677467
+  ],
+  "top_err_pct": 5.67558401930895
+ },
+ {
+  "case": "S2_cyl_tide_water30_mosaic",
+  "scale": 0.75,
+  "label": "cylinder · normal · mosaic · limescale tide",
+  "mode": "warp",
+  "frac_pattern": 0.882943143812709,
+  "gt_pct": [
+   29.81382468460555
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.552587646076795
+  ],
+  "est_z": [
+   177.52888702321656
+  ],
+  "est_jump": [
+   1.4125565545973842
+  ],
+  "old_dE_top_err_pct": 4.9634506366557005,
+  "err_pct_per_gt": [
+   1.7387629614712452
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.7387629614712452
+ },
+ {
+  "case": "S2_cyl_tide_water30_mosaic",
+  "scale": 0.65,
+  "label": "cylinder · normal · mosaic · limescale tide",
+  "mode": "warp",
+  "frac_pattern": 0.8841698841698842,
+  "gt_pct": [
+   29.80863876930294
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.406551059730248
+  ],
+  "est_z": [
+   159.0046150332606
+  ],
+  "est_jump": [
+   1.367065892274727
+  ],
+  "old_dE_top_err_pct": 4.979977726744924,
+  "err_pct_per_gt": [
+   1.5979122904273062
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.5979122904273062
+ },
+ {
+  "case": "S2_cyl_tide_water30_mosaic",
+  "scale": 0.55,
+  "label": "cylinder · normal · mosaic · limescale tide",
+  "mode": "warp",
+  "frac_pattern": 0.8995433789954338,
+  "gt_pct": [
+   29.801562770974332
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.662870159453306
+  ],
+  "est_z": [
+   147.56174833627242
+  ],
+  "est_jump": [
+   1.4060628411935026
+  ],
+  "old_dE_top_err_pct": 4.974859151980301,
+  "err_pct_per_gt": [
+   1.8613073884789735
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.8613073884789735
+ },
+ {
+  "case": "S3_gourd_vase_line60_water40",
+  "scale": 1.0,
+  "label": "gourd · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.976063829787234,
+  "gt_pct": [
+   40.47861500019607
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   39.09574468085106
+  ],
+  "est_z": [
+   5.349360134004928
+  ],
+  "est_jump": [
+   0.506533147213364
+  ],
+  "old_dE_top_err_pct": 2.6521475969648023,
+  "err_pct_per_gt": [
+   -1.3828703193450096
+  ],
+  "false_positives": [],
+  "top_err_pct": -1.3828703193450096
+ },
+ {
+  "case": "S3_gourd_vase_line60_water40",
+  "scale": 0.85,
+  "label": "gourd · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.987460815047022,
+  "gt_pct": [
+   40.45998545872509
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   38.967136150234744
+  ],
+  "est_z": [
+   6.512694345295727
+  ],
+  "est_jump": [
+   -0.1961490534274216
+  ],
+  "old_dE_top_err_pct": 2.6498099412064917,
+  "err_pct_per_gt": [
+   -1.4928493084903494
+  ],
+  "false_positives": [],
+  "top_err_pct": -1.4928493084903494
+ },
+ {
+  "case": "S3_gourd_vase_line60_water40",
+  "scale": 0.75,
+  "label": "gourd · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9787234042553191,
+  "gt_pct": [
+   40.47861500019608
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   43.61702127659575
+  ],
+  "est_z": [
+   7.064960483721211
+  ],
+  "est_jump": [
+   -0.3020232367771222
+  ],
+  "old_dE_top_err_pct": 2.760017816923508,
+  "err_pct_per_gt": [
+   3.138406276399671
+  ],
+  "false_positives": [
+   43.61702127659575
+  ],
+  "top_err_pct": 3.138406276399671
+ },
+ {
+  "case": "S3_gourd_vase_line60_water40",
+  "scale": 0.65,
+  "label": "gourd · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9754098360655737,
+  "gt_pct": [
+   40.381038959212795
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   39.34426229508197
+  ],
+  "est_z": [
+   9.43968795895311
+  ],
+  "est_jump": [
+   0.44054301011043645
+  ],
+  "old_dE_top_err_pct": 2.7002555411984233,
+  "err_pct_per_gt": [
+   -1.0367766641308265
+  ],
+  "false_positives": [],
+  "top_err_pct": -1.0367766641308265
+ },
+ {
+  "case": "S3_gourd_vase_line60_water40",
+  "scale": 0.55,
+  "label": "gourd · normal · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9466019417475728,
+  "gt_pct": [
+   40.39214325443365
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   39.46731234866828
+  ],
+  "est_z": [
+   21.279821565945447
+  ],
+  "est_jump": [
+   0.7071020998668015
+  ],
+  "old_dE_top_err_pct": 2.5522777868254494,
+  "err_pct_per_gt": [
+   -0.9248309057653685
+  ],
+  "false_positives": [],
+  "top_err_pct": -0.9248309057653685
+ },
+ {
+  "case": "S4_cyl_vase_macro_checker",
+  "scale": 1.0,
+  "label": "cylinder · macro · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.955,
+  "gt_pct": [
+   27.150067263066628
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   28.833333333333332
+  ],
+  "est_z": [
+   143.01463248406478
+  ],
+  "est_jump": [
+   0.8417164105859313
+  ],
+  "old_dE_top_err_pct": 4.918593360226385,
+  "err_pct_per_gt": [
+   1.6832660702667042
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6832660702667042
+ },
+ {
+  "case": "S4_cyl_vase_macro_checker",
+  "scale": 0.85,
+  "label": "cylinder · macro · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9647058823529412,
+  "gt_pct": [
+   27.150067263066628
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   28.823529411764703
+  ],
+  "est_z": [
+   85.57339738782198
+  ],
+  "est_jump": [
+   0.8143862983659098
+  ],
+  "old_dE_top_err_pct": 4.856285574289384,
+  "err_pct_per_gt": [
+   1.673462148698075
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.673462148698075
+ },
+ {
+  "case": "S4_cyl_vase_macro_checker",
+  "scale": 0.75,
+  "label": "cylinder · macro · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9533333333333334,
+  "gt_pct": [
+   27.150067263066642
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   28.888888888888886
+  ],
+  "est_z": [
+   130.37398946139857
+  ],
+  "est_jump": [
+   0.8520162820729521
+  ],
+  "old_dE_top_err_pct": 4.903238445673889,
+  "err_pct_per_gt": [
+   1.7388216258222435
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.7388216258222435
+ },
+ {
+  "case": "S4_cyl_vase_macro_checker",
+  "scale": 0.65,
+  "label": "cylinder · macro · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.9179487179487179,
+  "gt_pct": [
+   27.150067263066642
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   28.974358974358978
+  ],
+  "est_z": [
+   78.33890558353202
+  ],
+  "est_jump": [
+   0.8191735092504003
+  ],
+  "old_dE_top_err_pct": 4.925207573537012,
+  "err_pct_per_gt": [
+   1.8242917112923358
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.8242917112923358
+ },
+ {
+  "case": "S4_cyl_vase_macro_checker",
+  "scale": 0.55,
+  "label": "cylinder · macro · rg_checker · limescale vase",
+  "mode": "warp",
+  "frac_pattern": 0.8848484848484849,
+  "gt_pct": [
+   27.150067263066635
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   28.78787878787879
+  ],
+  "est_z": [
+   89.54952469650182
+  ],
+  "est_jump": [
+   0.9649314965006303
+  ],
+  "old_dE_top_err_pct": 4.894195796051523,
+  "err_pct_per_gt": [
+   1.6378115248121539
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6378115248121539
+ },
+ {
+  "case": "S5_cyl_vase_macro_white",
+  "scale": 1.0,
+  "label": "cylinder · macro · white · limescale vase",
+  "mode": "photometric",
+  "frac_pattern": 0.0,
+  "gt_pct": [
+   27.150067263066628
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   49.333333333333336
+  ],
+  "est_z": [
+   1841.2811084029572
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 23.70042626701399,
+  "err_pct_per_gt": [
+   null
+  ],
+  "false_positives": [
+   49.333333333333336
+  ],
+  "top_err_pct": 22.183266070266708
+ },
+ {
+  "case": "S5_cyl_vase_macro_white",
+  "scale": 0.85,
+  "label": "cylinder · macro · white · limescale vase",
+  "mode": "photometric",
+  "frac_pattern": 0.0,
+  "gt_pct": [
+   27.150067263066628
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   29.01960784313726
+  ],
+  "est_z": [
+   1513.6245219036937
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -24.208890792478392,
+  "err_pct_per_gt": [
+   1.8695405800706304
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.8695405800706304
+ },
+ {
+  "case": "S5_cyl_vase_macro_white",
+  "scale": 0.75,
+  "label": "cylinder · macro · white · limescale vase",
+  "mode": "photometric",
+  "frac_pattern": 0.0,
+  "gt_pct": [
+   27.150067263066642
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   29.11111111111111
+  ],
+  "est_z": [
+   1320.7010676463442
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -24.03895615195553,
+  "err_pct_per_gt": [
+   1.9610438480444685
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.9610438480444685
+ },
+ {
+  "case": "S5_cyl_vase_macro_white",
+  "scale": 0.65,
+  "label": "cylinder · macro · white · limescale vase",
+  "mode": "photometric",
+  "frac_pattern": 0.0,
+  "gt_pct": [
+   27.150067263066642
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   29.230769230769234
+  ],
+  "est_z": [
+   984.0204768503704
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -24.073144186143566,
+  "err_pct_per_gt": [
+   2.0807019677025913
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.0807019677025913
+ },
+ {
+  "case": "S5_cyl_vase_macro_white",
+  "scale": 0.55,
+  "label": "cylinder · macro · white · limescale vase",
+  "mode": "photometric",
+  "frac_pattern": 0.0,
+  "gt_pct": [
+   27.150067263066635
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   28.78787878787879
+  ],
+  "est_z": [
+   512.0636802166699
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 2.483586264786563,
+  "err_pct_per_gt": [
+   1.6378115248121539
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6378115248121539
+ },
+ {
+  "case": "V1_cyl_line30_water55",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · limescale line30",
+  "mode": "warp",
+  "frac_pattern": 0.9473684210526315,
+  "gt_pct": [
+   55.06350265325606
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.64160401002506
+  ],
+  "est_z": [
+   193.40258744237042
+  ],
+  "est_jump": [
+   1.2130075513124658
+  ],
+  "old_dE_top_err_pct": 1.5347776677002116,
+  "err_pct_per_gt": [
+   1.5781013567690039
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.5781013567690039
+ },
+ {
+  "case": "V1_cyl_line30_water55",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · limescale line30",
+  "mode": "warp",
+  "frac_pattern": 0.9380530973451328,
+  "gt_pct": [
+   55.058282547427964
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.111929307805596
+  ],
+  "est_z": [
+   175.64619243134948
+  ],
+  "est_jump": [
+   1.1973346266352445
+  ],
+  "old_dE_top_err_pct": 1.5183870484454687,
+  "err_pct_per_gt": [
+   1.0536467603776316
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0536467603776316
+ },
+ {
+  "case": "V1_cyl_line30_water55",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · limescale line30",
+  "mode": "warp",
+  "frac_pattern": 0.939799331103679,
+  "gt_pct": [
+   55.05927602332847
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.26043405676127
+  ],
+  "est_z": [
+   168.9124386472155
+  ],
+  "est_jump": [
+   1.1995615998743518
+  ],
+  "old_dE_top_err_pct": 1.5013544304119435,
+  "err_pct_per_gt": [
+   1.2011580334327974
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2011580334327974
+ },
+ {
+  "case": "V1_cyl_line30_water55",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · limescale line30",
+  "mode": "warp",
+  "frac_pattern": 0.915057915057915,
+  "gt_pct": [
+   55.06057577310967
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.06936416184971
+  ],
+  "est_z": [
+   160.16393025897338
+  ],
+  "est_jump": [
+   1.2023658128567463
+  ],
+  "old_dE_top_err_pct": 1.5113682486719355,
+  "err_pct_per_gt": [
+   1.0087883887400437
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0087883887400437
+ },
+ {
+  "case": "V1_cyl_line30_water55",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · limescale line30",
+  "mode": "warp",
+  "frac_pattern": 0.9178082191780822,
+  "gt_pct": [
+   55.06234923579518
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   56.264236902050115
+  ],
+  "est_z": [
+   141.51700473366006
+  ],
+  "est_jump": [
+   1.2130076017104607
+  ],
+  "old_dE_top_err_pct": 1.89305944611381,
+  "err_pct_per_gt": [
+   1.2018876662549332
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2018876662549332
+ },
+ {
+  "case": "V2_cyl_line50thin_water35_grid",
+  "scale": 1.0,
+  "label": "cylinder · normal · grid · limescale line50_thin",
+  "mode": "warp",
+  "frac_pattern": 0.9674185463659147,
+  "gt_pct": [
+   34.85026910018
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   36.09022556390977
+  ],
+  "est_z": [
+   111.65512815382861
+  ],
+  "est_jump": [
+   1.8058411424263163
+  ],
+  "old_dE_top_err_pct": 1.4905830301458138,
+  "err_pct_per_gt": [
+   1.2399564637297686
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2399564637297686
+ },
+ {
+  "case": "V2_cyl_line50thin_water35_grid",
+  "scale": 0.85,
+  "label": "cylinder · normal · grid · limescale line50_thin",
+  "mode": "warp",
+  "frac_pattern": 0.967551622418879,
+  "gt_pct": [
+   34.86588737945817
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   36.08247422680412
+  ],
+  "est_z": [
+   143.25228965677573
+  ],
+  "est_jump": [
+   1.6110479041261527
+  ],
+  "old_dE_top_err_pct": -30.594900634244624,
+  "err_pct_per_gt": [
+   1.2165868473459511
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2165868473459511
+ },
+ {
+  "case": "V2_cyl_line50thin_water35_grid",
+  "scale": 0.75,
+  "label": "cylinder · normal · grid · limescale line50_thin",
+  "mode": "warp",
+  "frac_pattern": 0.9531772575250836,
+  "gt_pct": [
+   34.86291495235014
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   36.22704507512521
+  ],
+  "est_z": [
+   80.5403072811318
+  ],
+  "est_jump": [
+   1.5980039822862748
+  ],
+  "old_dE_top_err_pct": -30.689292247842626,
+  "err_pct_per_gt": [
+   1.364130122775073
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.364130122775073
+ },
+ {
+  "case": "V2_cyl_line50thin_water35_grid",
+  "scale": 0.65,
+  "label": "cylinder · normal · grid · limescale line50_thin",
+  "mode": "warp",
+  "frac_pattern": 0.9536679536679536,
+  "gt_pct": [
+   34.85902617006428
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   36.80154142581888
+  ],
+  "est_z": [
+   103.95484656353447
+  ],
+  "est_jump": [
+   1.4398090852931003
+  ],
+  "old_dE_top_err_pct": -30.81278339549781,
+  "err_pct_per_gt": [
+   1.9425152557546
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.9425152557546
+ },
+ {
+  "case": "V2_cyl_line50thin_water35_grid",
+  "scale": 0.55,
+  "label": "cylinder · normal · grid · limescale line50_thin",
+  "mode": "warp",
+  "frac_pattern": 0.91324200913242,
+  "gt_pct": [
+   34.85372006393849
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   36.674259681093396
+  ],
+  "est_z": [
+   136.5621345757327
+  ],
+  "est_jump": [
+   1.3386490431182068
+  ],
+  "old_dE_top_err_pct": -30.525701840703867,
+  "err_pct_per_gt": [
+   1.8205396171549069
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.8205396171549069
+ },
+ {
+  "case": "V3_erl_line75heavy_water40_mosaic",
+  "scale": 1.0,
+  "label": "erlenmeyer · normal · mosaic · limescale line75_heavy",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.6468842729970327,
+  "gt_pct": [
+   41.839734930187944
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   43.7037037037037
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.914635794984406,
+  "err_pct_per_gt": [
+   1.863968773515758
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.863968773515758
+ },
+ {
+  "case": "V3_erl_line75heavy_water40_mosaic",
+  "scale": 0.85,
+  "label": "erlenmeyer · normal · mosaic · limescale line75_heavy",
+  "mode": "warp",
+  "frac_pattern": 0.6759581881533101,
+  "gt_pct": [
+   41.87377685748316
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.599303135888505
+  ],
+  "est_z": [
+   15.12614287315919
+  ],
+  "est_jump": [
+   1.5708662716239603
+  ],
+  "old_dE_top_err_pct": 1.9219430732807723,
+  "err_pct_per_gt": [
+   2.725526278405347
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.725526278405347
+ },
+ {
+  "case": "V3_erl_line75heavy_water40_mosaic",
+  "scale": 0.75,
+  "label": "erlenmeyer · normal · mosaic · limescale line75_heavy",
+  "mode": "warp",
+  "frac_pattern": 0.7075098814229249,
+  "gt_pct": [
+   41.76159250673447
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.66403162055336
+  ],
+  "est_z": [
+   12.903839117018984
+  ],
+  "est_jump": [
+   1.6114842512105225
+  ],
+  "old_dE_top_err_pct": 1.8351258615612878,
+  "err_pct_per_gt": [
+   2.902439113818886
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.902439113818886
+ },
+ {
+  "case": "V3_erl_line75heavy_water40_mosaic",
+  "scale": 0.65,
+  "label": "erlenmeyer · normal · mosaic · limescale line75_heavy",
+  "mode": "warp",
+  "frac_pattern": 0.7031963470319634,
+  "gt_pct": [
+   41.84288516123278
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.74885844748858
+  ],
+  "est_z": [
+   14.434900926066918
+  ],
+  "est_jump": [
+   1.887213558236915
+  ],
+  "old_dE_top_err_pct": 1.7372423106730395,
+  "err_pct_per_gt": [
+   2.9059732862558008
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.9059732862558008
+ },
+ {
+  "case": "V3_erl_line75heavy_water40_mosaic",
+  "scale": 0.55,
+  "label": "erlenmeyer · normal · mosaic · limescale line75_heavy",
+  "mode": "warp",
+  "frac_pattern": 0.6756756756756757,
+  "gt_pct": [
+   41.84097464375275
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   44.474393530997304
+  ],
+  "est_z": [
+   16.085180993980376
+  ],
+  "est_jump": [
+   1.5996677520488563
+  ],
+  "old_dE_top_err_pct": 1.6649404390995102,
+  "err_pct_per_gt": [
+   2.6334188872445523
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.6334188872445523
+ },
+ {
+  "case": "V4_reagent_line92full_water60",
+  "scale": 1.0,
+  "label": "reagent · normal · rg_checker · limescale line92_full",
+  "mode": "warp",
+  "frac_pattern": 0.9397590361445783,
+  "gt_pct": [
+   61.30145932308601
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   62.65060240963856
+  ],
+  "est_z": [
+   32.078702652488744
+  ],
+  "est_jump": [
+   0.2227017267819377
+  ],
+  "old_dE_top_err_pct": 1.3985205744994929,
+  "err_pct_per_gt": [
+   1.3491430865525516
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.3491430865525516
+ },
+ {
+  "case": "V4_reagent_line92full_water60",
+  "scale": 0.85,
+  "label": "reagent · normal · rg_checker · limescale line92_full",
+  "mode": "warp",
+  "frac_pattern": 0.9574468085106383,
+  "gt_pct": [
+   61.35380078359882
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   62.76595744680851
+  ],
+  "est_z": [
+   22.346229561979435
+  ],
+  "est_jump": [
+   0.16983567327026633
+  ],
+  "old_dE_top_err_pct": 1.5823728999383562,
+  "err_pct_per_gt": [
+   1.4121566632096858
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.4121566632096858
+ },
+ {
+  "case": "V4_reagent_line92full_water60",
+  "scale": 0.75,
+  "label": "reagent · normal · rg_checker · limescale line92_full",
+  "mode": "warp",
+  "frac_pattern": 0.9518072289156626,
+  "gt_pct": [
+   61.25125851987314
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   62.65060240963856
+  ],
+  "est_z": [
+   20.97912631157959
+  ],
+  "est_jump": [
+   0.1732867942554869
+  ],
+  "old_dE_top_err_pct": 1.4789612900564393,
+  "err_pct_per_gt": [
+   1.3993438897654187
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.3993438897654187
+ },
+ {
+  "case": "V4_reagent_line92full_water60",
+  "scale": 0.65,
+  "label": "reagent · normal · rg_checker · limescale line92_full",
+  "mode": "warp",
+  "frac_pattern": 0.9305555555555556,
+  "gt_pct": [
+   61.348865379268325
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   62.5
+  ],
+  "est_z": [
+   19.80035191694535
+  ],
+  "est_jump": [
+   0.1732867957461176
+  ],
+  "old_dE_top_err_pct": 1.4163765813244495,
+  "err_pct_per_gt": [
+   1.1511346207316748
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1511346207316748
+ },
+ {
+  "case": "V4_reagent_line92full_water60",
+  "scale": 0.55,
+  "label": "reagent · normal · rg_checker · limescale line92_full",
+  "mode": "warp",
+  "frac_pattern": 0.9395604395604396,
+  "gt_pct": [
+   61.37614505422193
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   62.19178082191781
+  ],
+  "est_z": [
+   19.740657238275674
+  ],
+  "est_jump": [
+   0.20051688480585897
+  ],
+  "old_dE_top_err_pct": 1.0861460639185694,
+  "err_pct_per_gt": [
+   0.8156357676958805
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.8156357676958805
+ },
+ {
+  "case": "V5_cyl_band4060_water50",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · limescale band4060",
+  "mode": "warp",
+  "frac_pattern": 0.8721804511278195,
+  "gt_pct": [
+   50.01019426498705
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.37844611528822
+  ],
+  "est_z": [
+   174.85477434439343
+  ],
+  "est_jump": [
+   1.238369876452594
+  ],
+  "old_dE_top_err_pct": 9.50398229875902,
+  "err_pct_per_gt": [
+   1.3682518503011707
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.3682518503011707
+ },
+ {
+  "case": "V5_cyl_band4060_water50",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · limescale band4060",
+  "mode": "warp",
+  "frac_pattern": 0.8584070796460177,
+  "gt_pct": [
+   50.01018375543552
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.104565537555224
+  ],
+  "est_z": [
+   155.46289849685093
+  ],
+  "est_jump": [
+   1.2076870416197298
+  ],
+  "old_dE_top_err_pct": 9.467661669430186,
+  "err_pct_per_gt": [
+   1.0943817821197044
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0943817821197044
+ },
+ {
+  "case": "V5_cyl_band4060_water50",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · limescale band4060",
+  "mode": "warp",
+  "frac_pattern": 0.862876254180602,
+  "gt_pct": [
+   50.01018575558389
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.25208681135225
+  ],
+  "est_z": [
+   148.40980649495714
+  ],
+  "est_jump": [
+   1.2080347503797249
+  ],
+  "old_dE_top_err_pct": 9.432422939585848,
+  "err_pct_per_gt": [
+   1.2419010557683592
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2419010557683592
+ },
+ {
+  "case": "V5_cyl_band4060_water50",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · limescale band4060",
+  "mode": "warp",
+  "frac_pattern": 0.8532818532818532,
+  "gt_pct": [
+   50.01018837234833
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.05973025048169
+  ],
+  "est_z": [
+   138.43699014116274
+  ],
+  "est_jump": [
+   1.2098801192996098
+  ],
+  "old_dE_top_err_pct": 9.352527393110819,
+  "err_pct_per_gt": [
+   1.0495418781333612
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0495418781333612
+ },
+ {
+  "case": "V5_cyl_band4060_water50",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · limescale band4060",
+  "mode": "warp",
+  "frac_pattern": 0.8584474885844748,
+  "gt_pct": [
+   50.010191942831014
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.252847380410024
+  ],
+  "est_z": [
+   125.19460548884591
+  ],
+  "est_jump": [
+   1.2370792854395147
+  ],
+  "old_dE_top_err_pct": 9.825195318545532,
+  "err_pct_per_gt": [
+   1.2426554375790104
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2426554375790104
+ },
+ {
+  "case": "V6_gourd_tilted_water45_mosaic",
+  "scale": 1.0,
+  "label": "gourd · normal · mosaic · limescale tilted",
+  "mode": "warp",
+  "frac_pattern": 0.5851063829787234,
+  "gt_pct": [
+   45.644363932858916
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.6063829787234
+  ],
+  "est_z": [
+   47.352168468636954
+  ],
+  "est_jump": [
+   1.8388523137434931
+  ],
+  "old_dE_top_err_pct": -10.006066060518492,
+  "err_pct_per_gt": [
+   1.962019045864487
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.962019045864487
+ },
+ {
+  "case": "V6_gourd_tilted_water45_mosaic",
+  "scale": 0.85,
+  "label": "gourd · normal · mosaic · limescale tilted",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.6300940438871473,
+  "gt_pct": [
+   45.62735121421504
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.73082942097027
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -8.546586038923053,
+  "err_pct_per_gt": [
+   2.103478206755227
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.103478206755227
+ },
+ {
+  "case": "V6_gourd_tilted_water45_mosaic",
+  "scale": 0.75,
+  "label": "gourd · normal · mosaic · limescale tilted",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.6985815602836879,
+  "gt_pct": [
+   45.64436393285891
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.87234042553192
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -9.181013973400972,
+  "err_pct_per_gt": [
+   2.227976492673008
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.227976492673008
+ },
+ {
+  "case": "V6_gourd_tilted_water45_mosaic",
+  "scale": 0.65,
+  "label": "gourd · normal · mosaic · limescale tilted",
+  "mode": "warp",
+  "frac_pattern": 0.5983606557377049,
+  "gt_pct": [
+   45.55525633274885
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.540983606557376
+  ],
+  "est_z": [
+   33.05533585645017
+  ],
+  "est_jump": [
+   1.8604010092125576
+  ],
+  "old_dE_top_err_pct": -8.221898759855172,
+  "err_pct_per_gt": [
+   1.9857272738085285
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.9857272738085285
+ },
+ {
+  "case": "V6_gourd_tilted_water45_mosaic",
+  "scale": 0.55,
+  "label": "gourd · normal · mosaic · limescale tilted",
+  "mode": "warp",
+  "frac_pattern": 0.6310679611650486,
+  "gt_pct": [
+   45.56539690709551
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.699757869249396
+  ],
+  "est_z": [
+   55.26228890693369
+  ],
+  "est_jump": [
+   1.7452189353260654
+  ],
+  "old_dE_top_err_pct": -7.703149947651383,
+  "err_pct_per_gt": [
+   2.1343609621538846
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.1343609621538846
+ },
+ {
+  "case": "V7_cyl_splash_water30_wide",
+  "scale": 1.0,
+  "label": "cylinder · wide · rg_checker · limescale splash",
+  "mode": "warp",
+  "frac_pattern": 0.8461538461538461,
+  "gt_pct": [
+   29.81852787089175
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.332533013205282
+  ],
+  "est_z": [
+   157.93751434846894
+  ],
+  "est_jump": [
+   1.1812278712836932
+  ],
+  "old_dE_top_err_pct": 7.432261245196472,
+  "err_pct_per_gt": [
+   1.5140051423135326
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.5140051423135326
+ },
+ {
+  "case": "V7_cyl_splash_water30_wide",
+  "scale": 0.85,
+  "label": "cylinder · wide · rg_checker · limescale splash",
+  "mode": "warp",
+  "frac_pattern": 0.8135593220338984,
+  "gt_pct": [
+   29.806509405345906
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.35593220338983
+  ],
+  "est_z": [
+   144.70012201570503
+  ],
+  "est_jump": [
+   1.160504541727508
+  ],
+  "old_dE_top_err_pct": 7.419502721124772,
+  "err_pct_per_gt": [
+   1.5494227980439241
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.5494227980439241
+ },
+ {
+  "case": "V7_cyl_splash_water30_wide",
+  "scale": 0.75,
+  "label": "cylinder · wide · rg_checker · limescale splash",
+  "mode": "warp",
+  "frac_pattern": 0.7596153846153846,
+  "gt_pct": [
+   29.774239242531436
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.41025641025641
+  ],
+  "est_z": [
+   140.2873808333279
+  ],
+  "est_jump": [
+   1.168600890417293
+  ],
+  "old_dE_top_err_pct": 7.423631090771735,
+  "err_pct_per_gt": [
+   1.6360171677249724
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6360171677249724
+ },
+ {
+  "case": "V7_cyl_splash_water30_wide",
+  "scale": 0.65,
+  "label": "cylinder · wide · rg_checker · limescale splash",
+  "mode": "warp",
+  "frac_pattern": 0.7518518518518519,
+  "gt_pct": [
+   29.861815001283432
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.608133086876155
+  ],
+  "est_z": [
+   129.6480178169195
+  ],
+  "est_jump": [
+   1.18371661189119
+  ],
+  "old_dE_top_err_pct": 7.488931239977219,
+  "err_pct_per_gt": [
+   1.7463180855927227
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.7463180855927227
+ },
+ {
+  "case": "V7_cyl_splash_water30_wide",
+  "scale": 0.55,
+  "label": "cylinder · wide · rg_checker · limescale splash",
+  "mode": "warp",
+  "frac_pattern": 0.6899563318777293,
+  "gt_pct": [
+   29.762791580893133
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   31.877729257641924
+  ],
+  "est_z": [
+   120.42565338935948
+  ],
+  "est_jump": [
+   1.1369961561073163
+  ],
+  "old_dE_top_err_pct": 7.492626475289928,
+  "err_pct_per_gt": [
+   2.1149376767487915
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.1149376767487915
+ },
+ {
+  "case": "V8_cyl_sector_water50",
+  "scale": 1.0,
+  "label": "cylinder · normal · rg_checker · limescale sector",
+  "mode": "warp",
+  "frac_pattern": 0.9624060150375939,
+  "gt_pct": [
+   50.01019426498705
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.62907268170426
+  ],
+  "est_z": [
+   197.35230919281508
+  ],
+  "est_jump": [
+   1.2087667990395532
+  ],
+  "old_dE_top_err_pct": 1.6834416435018582,
+  "err_pct_per_gt": [
+   1.6188784167172088
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6188784167172088
+ },
+ {
+  "case": "V8_cyl_sector_water50",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · limescale sector",
+  "mode": "warp",
+  "frac_pattern": 0.967551622418879,
+  "gt_pct": [
+   50.01018375543552
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.39911634756995
+  ],
+  "est_z": [
+   175.28638745748026
+  ],
+  "est_jump": [
+   1.1973968380437057
+  ],
+  "old_dE_top_err_pct": 1.6953357797946396,
+  "err_pct_per_gt": [
+   1.3889325921344309
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.3889325921344309
+ },
+ {
+  "case": "V8_cyl_sector_water50",
+  "scale": 0.75,
+  "label": "cylinder · normal · rg_checker · limescale sector",
+  "mode": "warp",
+  "frac_pattern": 0.9632107023411371,
+  "gt_pct": [
+   50.01018575558389
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.58597662771286
+  ],
+  "est_z": [
+   169.09586467970396
+  ],
+  "est_jump": [
+   1.213007576322114
+  ],
+  "old_dE_top_err_pct": 1.678393464572224,
+  "err_pct_per_gt": [
+   1.5757908721289695
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.5757908721289695
+ },
+ {
+  "case": "V8_cyl_sector_water50",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · limescale sector",
+  "mode": "warp",
+  "frac_pattern": 0.9536679536679536,
+  "gt_pct": [
+   50.01018837234833
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.445086705202314
+  ],
+  "est_z": [
+   159.58510256402155
+  ],
+  "est_jump": [
+   1.202516820991269
+  ],
+  "old_dE_top_err_pct": 1.6046295337262535,
+  "err_pct_per_gt": [
+   1.434898332853983
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.434898332853983
+ },
+ {
+  "case": "V8_cyl_sector_water50",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · limescale sector",
+  "mode": "warp",
+  "frac_pattern": 0.958904109589041,
+  "gt_pct": [
+   50.010191942831014
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.252847380410024
+  ],
+  "est_z": [
+   142.84552488283992
+  ],
+  "est_jump": [
+   1.2130075499246264
+  ],
+  "old_dE_top_err_pct": 1.5590320597432168,
+  "err_pct_per_gt": [
+   1.2426554375790104
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2426554375790104
+ },
+ {
+  "case": "V9_erl_dripsonly_water45_tele",
+  "scale": 1.0,
+  "label": "erlenmeyer · tele · rg_checker · limescale drips_only",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9818181818181818,
+  "gt_pct": [
+   45.83290297162802
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.352496217851744
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -41.452776611936905,
+  "err_pct_per_gt": [
+   1.519593246223721
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.519593246223721
+ },
+ {
+  "case": "V9_erl_dripsonly_water45_tele",
+  "scale": 0.85,
+  "label": "erlenmeyer · tele · rg_checker · limescale drips_only",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9822064056939501,
+  "gt_pct": [
+   45.85625717901994
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.330960854092524
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -41.4797887213607,
+  "err_pct_per_gt": [
+   1.4747036750725826
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.4747036750725826
+ },
+ {
+  "case": "V9_erl_dripsonly_water45_tele",
+  "scale": 0.75,
+  "label": "erlenmeyer · tele · rg_checker · limescale drips_only",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9838709677419355,
+  "gt_pct": [
+   45.80980171004958
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   47.17741935483871
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -41.42228182709197,
+  "err_pct_per_gt": [
+   1.367617644789135
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.367617644789135
+ },
+ {
+  "case": "V9_erl_dripsonly_water45_tele",
+  "scale": 0.65,
+  "label": "erlenmeyer · tele · rg_checker · limescale drips_only",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9720930232558139,
+  "gt_pct": [
+   45.74908549246506
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.97674418604651
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -41.37640166861892,
+  "err_pct_per_gt": [
+   1.2276586935814464
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.2276586935814464
+ },
+ {
+  "case": "V9_erl_dripsonly_water45_tele",
+  "scale": 0.55,
+  "label": "erlenmeyer · tele · rg_checker · limescale drips_only",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9558011049723757,
+  "gt_pct": [
+   45.79215392654372
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.5564738292011
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -41.42193394781886,
+  "err_pct_per_gt": [
+   0.7643199026573839
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.7643199026573839
+ },
+ {
+  "case": "V10_cyl_line50thin_water50_white",
+  "scale": 1.0,
+  "label": "cylinder · normal · white · limescale line50_thin",
+  "mode": "photometric",
+  "frac_pattern": 0.07518796992481203,
+  "gt_pct": [
+   50.01019426498705
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.62907268170426
+  ],
+  "est_z": [
+   2292.786252995332
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -47.00267546799457,
+  "err_pct_per_gt": [
+   1.6188784167172088
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.6188784167172088
+ },
+ {
+  "case": "V10_cyl_line50thin_water50_white",
+  "scale": 0.85,
+  "label": "cylinder · normal · white · limescale line50_thin",
+  "mode": "photometric",
+  "frac_pattern": 0.07374631268436578,
+  "gt_pct": [
+   50.01018375543552
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.98821796759942
+  ],
+  "est_z": [
+   471.64243758924226
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -48.175620215376355,
+  "err_pct_per_gt": [
+   1.978034212163898
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.978034212163898
+ },
+ {
+  "case": "V10_cyl_line50thin_water50_white",
+  "scale": 0.75,
+  "label": "cylinder · normal · white · limescale line50_thin",
+  "mode": "photometric",
+  "frac_pattern": 0.07357859531772576,
+  "gt_pct": [
+   50.01018575558389
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   51.919866444073456
+  ],
+  "est_z": [
+   466.87011634881276
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -47.959621474631575,
+  "err_pct_per_gt": [
+   1.9096806884895656
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.9096806884895656
+ },
+ {
+  "case": "V10_cyl_line50thin_water50_white",
+  "scale": 0.65,
+  "label": "cylinder · normal · white · limescale line50_thin",
+  "mode": "photometric",
+  "frac_pattern": 0.07335907335907337,
+  "gt_pct": [
+   50.01018837234833
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   52.215799614643544
+  ],
+  "est_z": [
+   516.4566050547796
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -46.73465850722309,
+  "err_pct_per_gt": [
+   2.2056112422952125
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.2056112422952125
+ },
+ {
+  "case": "V10_cyl_line50thin_water50_white",
+  "scale": 0.55,
+  "label": "cylinder · normal · white · limescale line50_thin",
+  "mode": "photometric",
+  "frac_pattern": 0.0730593607305936,
+  "gt_pct": [
+   50.010191942831014
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   52.61958997722096
+  ],
+  "est_z": [
+   435.4619116318568
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": -47.66812737264621,
+  "err_pct_per_gt": [
+   2.6093980343899474
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.6093980343899474
+ },
+ {
   "case": "R1_cyl_stirrer_water50",
   "scale": 1.0,
   "label": "cylinder · normal · rg_checker · stirrer shaft",
@@ -29,6 +3633,34 @@
  },
  {
   "case": "R1_cyl_stirrer_water50",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · stirrer shaft",
+  "mode": "warp",
+  "frac_pattern": 0.9911504424778761,
+  "gt_pct": [
+   50.01018375543552
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   50.220913107511045
+  ],
+  "est_z": [
+   165.13145902727936
+  ],
+  "est_jump": [
+   1.2130075639837117
+  ],
+  "old_dE_top_err_pct": 1.547205424820966,
+  "err_pct_per_gt": [
+   0.2107293520755249
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.2107293520755249
+ },
+ {
+  "case": "R1_cyl_stirrer_water50",
   "scale": 0.75,
   "label": "cylinder · normal · rg_checker · stirrer shaft",
   "mode": "warp",
@@ -54,6 +3686,62 @@
   ],
   "false_positives": [],
   "top_err_pct": 0.24023160668655663
+ },
+ {
+  "case": "R1_cyl_stirrer_water50",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · stirrer shaft",
+  "mode": "warp",
+  "frac_pattern": 0.9845559845559846,
+  "gt_pct": [
+   50.01018837234833
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   50.28901734104046
+  ],
+  "est_z": [
+   150.54768156841237
+  ],
+  "est_jump": [
+   1.213007577464053
+  ],
+  "old_dE_top_err_pct": 1.5895178982115326,
+  "err_pct_per_gt": [
+   0.2788289686921317
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.2788289686921317
+ },
+ {
+  "case": "R1_cyl_stirrer_water50",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · stirrer shaft",
+  "mode": "warp",
+  "frac_pattern": 0.9726027397260274,
+  "gt_pct": [
+   50.010191942831014
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   50.79726651480638
+  ],
+  "est_z": [
+   137.29861108013733
+  ],
+  "est_jump": [
+   1.2130075650318852
+  ],
+  "old_dE_top_err_pct": 1.5816481219237062,
+  "err_pct_per_gt": [
+   0.7870745719753671
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.7870745719753671
  },
  {
   "case": "R2_cyl_dosing_tube_water45_mosaic",
@@ -85,6 +3773,34 @@
  },
  {
   "case": "R2_cyl_dosing_tube_water45_mosaic",
+  "scale": 0.85,
+  "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+  "mode": "warp",
+  "frac_pattern": 0.6194690265486725,
+  "gt_pct": [
+   44.96208496344307
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.68630338733431
+  ],
+  "est_z": [
+   200.67769518374334
+  ],
+  "est_jump": [
+   1.3862921963080639
+  ],
+  "old_dE_top_err_pct": 1.8706424297551933,
+  "err_pct_per_gt": [
+   1.7242184238912444
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.7242184238912444
+ },
+ {
+  "case": "R2_cyl_dosing_tube_water45_mosaic",
   "scale": 0.75,
   "label": "cylinder · normal · mosaic · dosing tube (compare only)",
   "mode": "warp",
@@ -110,6 +3826,67 @@
   ],
   "false_positives": [],
   "top_err_pct": 1.6833102368272463
+ },
+ {
+  "case": "R2_cyl_dosing_tube_water45_mosaic",
+  "scale": 0.65,
+  "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+  "mode": "warp",
+  "frac_pattern": 0.6795366795366795,
+  "gt_pct": [
+   44.959800971586986
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.51252345337979
+  ],
+  "est_z": [
+   175.56217904146217
+  ],
+  "est_jump": [
+   1.386291546716601
+  ],
+  "old_dE_top_err_pct": 1.7464785963930822,
+  "err_pct_per_gt": [
+   1.5527224817928058
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.5527224817928058
+ },
+ {
+  "case": "R2_cyl_dosing_tube_water45_mosaic",
+  "scale": 0.55,
+  "label": "cylinder · normal · mosaic · dosing tube (compare only)",
+  "mode": "warp",
+  "frac_pattern": 0.6164383561643836,
+  "gt_pct": [
+   44.95803464986683
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.69703872437358,
+   20.72892938496583
+  ],
+  "est_z": [
+   162.4028284107255,
+   17.597005747484037
+  ],
+  "est_jump": [
+   1.386294347632807,
+   -0.18345949591228616
+  ],
+  "old_dE_top_err_pct": 2.119122072338719,
+  "err_pct_per_gt": [
+   1.7390040745067452
+  ],
+  "false_positives": [
+   20.72892938496583
+  ],
+  "top_err_pct": 1.7390040745067452
  },
  {
   "case": "R3_cyl_reactor_water60",
@@ -141,6 +3918,34 @@
  },
  {
   "case": "R3_cyl_reactor_water60",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+  "mode": "warp",
+  "frac_pattern": 0.9852507374631269,
+  "gt_pct": [
+   60.10638133942042
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   61.11929307805597
+  ],
+  "est_z": [
+   170.53976300481528
+  ],
+  "est_jump": [
+   1.2634895529274128
+  ],
+  "old_dE_top_err_pct": 0.9831503992002126,
+  "err_pct_per_gt": [
+   1.0129117386355446
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0129117386355446
+ },
+ {
+  "case": "R3_cyl_reactor_water60",
   "scale": 0.75,
   "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
   "mode": "warp",
@@ -166,6 +3971,62 @@
   ],
   "false_positives": [],
   "top_err_pct": 0.4926353783760291
+ },
+ {
+  "case": "R3_cyl_reactor_water60",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+  "mode": "warp",
+  "frac_pattern": 0.9884169884169884,
+  "gt_pct": [
+   60.110963173871035
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   60.69364161849711
+  ],
+  "est_z": [
+   155.24992582775025
+  ],
+  "est_jump": [
+   1.2757101977440695
+  ],
+  "old_dE_top_err_pct": 0.898121409858966,
+  "err_pct_per_gt": [
+   0.582678444626076
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.582678444626076
+ },
+ {
+  "case": "R3_cyl_reactor_water60",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · stirrer + thermometer + dip tube",
+  "mode": "warp",
+  "frac_pattern": 0.9726027397260274,
+  "gt_pct": [
+   60.11450652875936
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   60.820045558086555
+  ],
+  "est_z": [
+   136.81772814489028
+  ],
+  "est_jump": [
+   1.264032375854006
+  ],
+  "old_dE_top_err_pct": 0.5920680701633003,
+  "err_pct_per_gt": [
+   0.7055390293271984
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.7055390293271984
  },
  {
   "case": "R4_erl_rod_water40_grid",
@@ -199,9 +4060,37 @@
  },
  {
   "case": "R4_erl_rod_water40_grid",
-  "scale": 0.75,
+  "scale": 0.85,
   "label": "erlenmeyer · normal · grid · steel rod",
   "mode": "warp",
+  "frac_pattern": 0.975609756097561,
+  "gt_pct": [
+   41.87377685748316
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   42.857142857142854
+  ],
+  "est_z": [
+   29.709028667428697
+  ],
+  "est_jump": [
+   0.3465965316366018
+  ],
+  "old_dE_top_err_pct": -36.82197912691003,
+  "err_pct_per_gt": [
+   0.9833659996596964
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.9833659996596964
+ },
+ {
+  "case": "R4_erl_rod_water40_grid",
+  "scale": 0.75,
+  "label": "erlenmeyer · normal · grid · steel rod",
+  "mode": "warp/identity-end",
   "frac_pattern": 0.9644268774703557,
   "gt_pct": [
    41.76159250673447
@@ -210,20 +4099,76 @@
    "free surface"
   ],
   "est_pct": [
-   43.873517786561266
+   42.68774703557312
   ],
   "est_z": [
-   21.75404789742352
+   Infinity
   ],
   "est_jump": [
-   0.2506686653835873
+   NaN
   ],
   "old_dE_top_err_pct": -36.760013960467305,
   "err_pct_per_gt": [
-   2.1119252798267922
+   0.9261545288386444
   ],
   "false_positives": [],
-  "top_err_pct": 2.1119252798267922
+  "top_err_pct": 0.9261545288386444
+ },
+ {
+  "case": "R4_erl_rod_water40_grid",
+  "scale": 0.65,
+  "label": "erlenmeyer · normal · grid · steel rod",
+  "mode": "warp",
+  "frac_pattern": 0.9634703196347032,
+  "gt_pct": [
+   41.84288516123278
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   43.37899543378995
+  ],
+  "est_z": [
+   25.370804061937424
+  ],
+  "est_jump": [
+   0.30274293539041375
+  ],
+  "old_dE_top_err_pct": -36.626736343130496,
+  "err_pct_per_gt": [
+   1.536110272557174
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.536110272557174
+ },
+ {
+  "case": "R4_erl_rod_water40_grid",
+  "scale": 0.55,
+  "label": "erlenmeyer · normal · grid · steel rod",
+  "mode": "warp",
+  "frac_pattern": 0.9891891891891892,
+  "gt_pct": [
+   41.84097464375275
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   42.857142857142854
+  ],
+  "est_z": [
+   24.180171361695916
+  ],
+  "est_jump": [
+   0.2926614067461088
+  ],
+  "old_dE_top_err_pct": -36.28308254813156,
+  "err_pct_per_gt": [
+   1.0161682133901024
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.0161682133901024
  },
  {
   "case": "R5_cyl_stirrer_water_oil",
@@ -258,6 +4203,37 @@
  },
  {
   "case": "R5_cyl_stirrer_water_oil",
+  "scale": 0.85,
+  "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+  "mode": "warp",
+  "frac_pattern": 0.976401179941003,
+  "gt_pct": [
+   39.91398617145062,
+   65.15448013141288
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   64.94845360824742
+  ],
+  "est_z": [
+   64.85208925981688
+  ],
+  "est_jump": [
+   0.5198603817784978
+  ],
+  "old_dE_top_err_pct": 0.6015150021968338,
+  "err_pct_per_gt": [
+   null,
+   -0.20602652316546255
+  ],
+  "false_positives": [],
+  "top_err_pct": -0.20602652316546255
+ },
+ {
+  "case": "R5_cyl_stirrer_water_oil",
   "scale": 0.75,
   "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
   "mode": "warp",
@@ -286,6 +4262,68 @@
   ],
   "false_positives": [],
   "top_err_pct": 0.451892356040446
+ },
+ {
+  "case": "R5_cyl_stirrer_water_oil",
+  "scale": 0.65,
+  "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+  "mode": "warp",
+  "frac_pattern": 0.9575289575289575,
+  "gt_pct": [
+   39.90941357082563,
+   65.16135057463238
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.08863198458575
+  ],
+  "est_z": [
+   55.81698997761452
+  ],
+  "est_jump": [
+   0.5198603784453011
+  ],
+  "old_dE_top_err_pct": 1.2582702107545032,
+  "err_pct_per_gt": [
+   null,
+   0.9272814099533662
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.9272814099533662
+ },
+ {
+  "case": "R5_cyl_stirrer_water_oil",
+  "scale": 0.55,
+  "label": "cylinder · normal · rg_checker · stirrer shaft, two liquids",
+  "mode": "warp",
+  "frac_pattern": 0.9497716894977168,
+  "gt_pct": [
+   39.905877356902664,
+   65.16666382172353
+  ],
+  "gt_kinds": [
+   "liquid-liquid interface",
+   "free surface"
+  ],
+  "est_pct": [
+   66.2870159453303
+  ],
+  "est_z": [
+   50.334960366660106
+  ],
+  "est_jump": [
+   0.5198603917452496
+  ],
+  "old_dE_top_err_pct": 1.1829865949471667,
+  "err_pct_per_gt": [
+   null,
+   1.1203521236067644
+  ],
+  "false_positives": [],
+  "top_err_pct": 1.1203521236067644
  },
  {
   "case": "K1_reagent_rod_scale_tide_water45",
@@ -317,9 +4355,37 @@
  },
  {
   "case": "K1_reagent_rod_scale_tide_water45",
+  "scale": 0.85,
+  "label": "reagent · normal · rg_checker · steel rod + tide marks · lab HDRI",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.8971631205673759,
+  "gt_pct": [
+   45.856570916081225
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.45390070921986
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 1.955997565578528,
+  "err_pct_per_gt": [
+   0.5973297931386341
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.5973297931386341
+ },
+ {
+  "case": "K1_reagent_rod_scale_tide_water45",
   "scale": 0.75,
   "label": "reagent · normal · rg_checker · steel rod + tide marks · lab HDRI",
-  "mode": "warp",
+  "mode": "warp/identity-end",
   "frac_pattern": 0.927710843373494,
   "gt_pct": [
    45.76501180605329
@@ -328,20 +4394,76 @@
    "free surface"
   ],
   "est_pct": [
-   47.791164658634536
+   46.1847389558233
   ],
   "est_z": [
-   18.160045968554087
+   Infinity
   ],
   "est_jump": [
-   0.17328679095555746
+   NaN
   ],
   "old_dE_top_err_pct": 2.0078883842543362,
   "err_pct_per_gt": [
-   2.026152852581248
+   0.41972714977001147
   ],
   "false_positives": [],
-  "top_err_pct": 2.026152852581248
+  "top_err_pct": 0.41972714977001147
+ },
+ {
+  "case": "K1_reagent_rod_scale_tide_water45",
+  "scale": 0.65,
+  "label": "reagent · normal · rg_checker · steel rod + tide marks · lab HDRI",
+  "mode": "warp/identity-end",
+  "frac_pattern": 0.9120370370370371,
+  "gt_pct": [
+   45.876957782776074
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.75925925925926
+  ],
+  "est_z": [
+   Infinity
+  ],
+  "est_jump": [
+   NaN
+  ],
+  "old_dE_top_err_pct": 2.037844874013352,
+  "err_pct_per_gt": [
+   0.8823014764831854
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.8823014764831854
+ },
+ {
+  "case": "K1_reagent_rod_scale_tide_water45",
+  "scale": 0.55,
+  "label": "reagent · normal · rg_checker · steel rod + tide marks · lab HDRI",
+  "mode": "warp",
+  "frac_pattern": 0.9340659340659341,
+  "gt_pct": [
+   45.881412725764356
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   46.849315068493155
+  ],
+  "est_z": [
+   15.921582318930646
+  ],
+  "est_jump": [
+   0.17328679337254146
+  ],
+  "old_dE_top_err_pct": 2.146471368900663,
+  "err_pct_per_gt": [
+   0.9679023427287987
+  ],
+  "false_positives": [],
+  "top_err_pct": 0.9679023427287987
  },
  {
   "case": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
@@ -373,6 +4495,34 @@
  },
  {
   "case": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
+  "scale": 0.85,
+  "label": "gourd · normal · mosaic · rod + thermometer + limescale ring · lab HDRI",
+  "mode": "warp",
+  "frac_pattern": 0.7586206896551724,
+  "gt_pct": [
+   40.45998545872509
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   43.3489827856025
+  ],
+  "est_z": [
+   15.245954514612377
+  ],
+  "est_jump": [
+   1.0866725742645602
+  ],
+  "old_dE_top_err_pct": -4.107841222693885,
+  "err_pct_per_gt": [
+   2.8889973268774085
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.8889973268774085
+ },
+ {
+  "case": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
   "scale": 0.75,
   "label": "gourd · normal · mosaic · rod + thermometer + limescale ring · lab HDRI",
   "mode": "warp",
@@ -400,5 +4550,63 @@
    43.61702127659575
   ],
   "top_err_pct": 3.138406276399671
+ },
+ {
+  "case": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
+  "scale": 0.65,
+  "label": "gourd · normal · mosaic · rod + thermometer + limescale ring · lab HDRI",
+  "mode": "warp",
+  "frac_pattern": 0.8032786885245902,
+  "gt_pct": [
+   40.381038959212795
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   43.44262295081967
+  ],
+  "est_z": [
+   14.011011830157837
+  ],
+  "est_jump": [
+   2.046257321607644
+  ],
+  "old_dE_top_err_pct": -4.449195807251748,
+  "err_pct_per_gt": [
+   3.0615839916068737
+  ],
+  "false_positives": [
+   43.44262295081967
+  ],
+  "top_err_pct": 3.0615839916068737
+ },
+ {
+  "case": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
+  "scale": 0.55,
+  "label": "gourd · normal · mosaic · rod + thermometer + limescale ring · lab HDRI",
+  "mode": "warp",
+  "frac_pattern": 0.6844660194174758,
+  "gt_pct": [
+   40.39214325443365
+  ],
+  "gt_kinds": [
+   "free surface"
+  ],
+  "est_pct": [
+   42.857142857142854
+  ],
+  "est_z": [
+   7.388400605212783
+  ],
+  "est_jump": [
+   1.3930713700692725
+  ],
+  "old_dE_top_err_pct": -3.8391859691887404,
+  "err_pct_per_gt": [
+   2.464999602709206
+  ],
+  "false_positives": [],
+  "top_err_pct": 2.464999602709206
  }
 ]

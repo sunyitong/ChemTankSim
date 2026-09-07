@@ -41,9 +41,10 @@ def main(out_js: Path, case_files: list[Path]):
         img_dir = Path(data.get("image_dir", TS_IMAGES))
         for c in data["cases"]:
             if c.get("kind") == "video":
+                vdir = Path(c["image_dir"]) if c.get("image_dir") else img_dir          # per-sequence frame directory
                 if c["baseline"] not in images:
-                    images[c["baseline"]] = encode(img_dir / f"{c['baseline']}.png", width=None, q=90)
-                mp4 = cf.parent / c["video"]
+                    images[c["baseline"]] = encode(vdir / f"{c['baseline']}.png", width=None, q=90)
+                mp4 = Path(c["video_path"]) if c.get("video_path") else cf.parent / c["video"]
                 videos[c["case"]] = "data:video/mp4;base64," + base64.b64encode(mp4.read_bytes()).decode("ascii")
                 out.append({"id": c["case"].split("_")[0], "case": c["case"], "kind": "video", "label": c["label"], "note": c["note"],
                             "base": c["baseline"], "video": c["case"], "fps": c["fps"], "seconds": c["seconds"], "frames": c["n_frames"],

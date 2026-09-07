@@ -406,16 +406,35 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
     # identity end is used as the primary level when the jump detector found nothing within 2w below
     # it (odd vessel shapes where the liquid plateau cannot be measured); otherwise the jump's located
     # row (upper edge of the transition band, refined by the band's photometric step) is kept.
+    # The plateau is judged on measurable rows only: a deposit ring, a fixture or a moved room-light
+    # reflection turns air rows into unknown rows, which say nothing about the regime. Identity must
+    # dominate the known rows above (>= 60 %) and amount to at least w rows; below, identity must be
+    # absent for `long` rows (liquid rows are often unknown in a cone, so all rows count there).
     long = max(2 * w, round(n * 0.15)); top = None
+    known = identity | liquid
     for r in range(edge_top, n - edge_bot):
-        if identity[r] and identity[max(0, r - long):r + 1].mean() >= 0.6 and identity[r + 1:r + 1 + long].mean() < 0.15:
+        if not identity[r]:
+            continue
+        ib, kb = int(identity[max(0, r - long):r + 1].sum()), int(known[max(0, r - long):r + 1].sum())
+        if ib >= w and ib >= 0.6 * kb and identity[r + 1:r + 1 + long].mean() < 0.15:
             j = r
             while j + 1 < n - edge_bot and identity[j + 1:j + 4].any():
                 j += 1
             top = j + 1; break
     det.ident = identity; det.surface = top
     if top is not None:
-        accepted = [a for a in accepted if a["row"] >= top - w]
+        # Candidates far above the identity end are not the surface. A candidate slightly above it
+        # contradicts identity rows and is kept only if it is a real regime change (|dlogM| >= LOGM_LIQ):
+        # a deposit edge or a static luminance feature perturbs the warp by ~0.1, a lens does not.
+        accepted = [a for a in accepted if a["row"] >= top - w and (a["row"] >= top or abs(a["jump"]) >= LOGM_LIQ)]
+
+        # The free surface has identity above and a lens below: |log M| must grow across it. A step from
+        # a deposit-refracted band (M != 1 through film of varying thickness) back to clean glass is not.
+        def lens_below(row):
+            r = int(round(row)); fa, fb = f[max(0, r - w):r], f[r + 1:r + 1 + w]
+            return len(fa) > 0 and len(fb) > 0 and abs(float(np.median(fb))) >= abs(float(np.median(fa))) + J_MIN / 2
+        while accepted and not lens_below(accepted[0]["row"]):
+            accepted.pop(0)
         first = accepted[0]["row"] if accepted else None
         # The contact line (meniscus at the front wall) is dark in transmission from any viewpoint,
         # and so is the total-internal-reflection band that starts at the level when the surface is

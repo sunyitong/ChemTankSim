@@ -96,18 +96,18 @@ AttributeEnd
 AttributeBegin  # droplet
   MediumInterface "liq1" ""
   Material "dielectric" "float eta" [1.333]
-  Translate -3.18719 -0.882632 3.87611
+  Translate -3.13129 -0.755206 3.87611
   Shape "sphere" "float radius" [0.158456]
 AttributeEnd
 AttributeBegin  # droplet
   MediumInterface "liq1" ""
   Material "dielectric" "float eta" [1.333]
-  Translate -1.86763 0.743026 4.22758
+  Translate -2.03004 0.613602 4.22758
   Shape "sphere" "float radius" [0.142591]
 AttributeEnd
 AttributeBegin  # droplet
   MediumInterface "liq1" ""
   Material "dielectric" "float eta" [1.333]
-  Translate -2.59167 -0.662019 4.01939
+  Translate -2.60914 -0.606496 4.01939
   Shape "sphere" "float radius" [0.167876]
 AttributeEnd

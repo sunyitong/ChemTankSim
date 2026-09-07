@@ -1,7 +1,7 @@
 """Evaluate the level detector on the pouring sequence: every frame against the baseline still.
 
   python scripts/eval_video.py [outputs/pour/video_meta.json]
-Writes outputs/pour/eval_video.json and outputs/pour/level_vs_time.png.
+Writes eval_video.json and level_vs_time.png next to the given video_meta.json (outputs/pour/<seq>/).
 """
 from __future__ import annotations
 
@@ -66,14 +66,28 @@ def srgb(p: Path) -> np.ndarray:
     return cv2.cvtColor(cv2.imread(str(p)), cv2.COLOR_BGR2RGB).astype(np.float32) / 255.0
 
 
+def srgb_array(bgr: np.ndarray) -> np.ndarray:
+    """Same conversion as srgb() for an already decoded BGR frame."""
+    return cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB).astype(np.float32) / 255.0
+
+
 def main(meta_path: Path):
     meta = load_json(meta_path); out_dir = meta_path.parent; frames_dir = out_dir / "frames"
     W, H = meta["resolution"]; fx, fy, fw, fh = meta["roi_frac"]
     x0, y0, x1, y1 = round(fx * W), round(fy * H), round(fx * W + fw * W), round(fy * H + fh * H)
     base = srgb(frames_dir / f"{meta['baseline']}.png")[y0:y1, x0:x1]
+    decoded = None
+    if not (frames_dir / "frame_000.png").exists():           # PNG frames are not tracked: decode the (intra-only) MP4
+        cap, decoded = cv2.VideoCapture(str(out_dir / meta["video"])), []
+        while True:
+            ok, fr = cap.read()
+            if not ok:
+                break
+            decoded.append(fr)
+        print(f"  frames decoded from {meta['video']}: {len(decoded)} (PNG frames absent)")
     rows = []
     for f in meta["frames"]:
-        img = srgb(frames_dir / f"frame_{f['i']:03d}.png")[y0:y1, x0:x1]
+        img = (srgb(frames_dir / f"frame_{f['i']:03d}.png") if decoded is None else srgb_array(decoded[f["i"]]))[y0:y1, x0:x1]
         det = detect(base, img, horizon_row=(H / 2 - y0) / 2)
         gt_pct = [(y1 - g * H) / (y1 - y0) * 100 for g in f["gt_rows_frac"]]
         est_pct = [(y1 - (y0 + l["row"] * 2)) / (y1 - y0) * 100 for l in det.levels]
@@ -102,7 +116,7 @@ def main(meta_path: Path):
     ax.plot(t, [r["est_pct"] if r["est_pct"] is not None else np.nan for r in rows], ".", color="#f6b545", ms=4, alpha=.6, label="per-frame detection")
     ax.plot(t, [r["tracked_pct"] if r["tracked_pct"] is not None else np.nan for r in rows], color="#f6b545", lw=1.6, label="temporal track")
     ax.set_xlabel("time (s)"); ax.set_ylabel("level (% of ROI height)"); ax.grid(alpha=.3); ax.legend(loc="lower right")
-    ax.set_title(f"pouring sequence, {meta['fps']} fps · per frame: median {summary['median_err_pt']:+.2f} pt, max {summary['max_abs_err_pt']:.1f} pt · "
+    ax.set_title(f"{meta['case']}, {meta['fps']} fps · per frame: median {summary['median_err_pt']:+.2f} pt, max {summary['max_abs_err_pt']:.1f} pt · "
                  f"tracked: median {summary['tracked_median_err_pt']:+.2f} pt, max {summary['tracked_max_abs_err_pt']:.1f} pt", fontsize=9)
     fig.tight_layout(); fig.savefig(out_dir / "level_vs_time.png", dpi=110)
     print(json.dumps(summary, indent=1))
