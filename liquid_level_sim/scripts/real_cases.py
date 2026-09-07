@@ -1,6 +1,6 @@
-"""Real footage cases (2026-09-07): a glass tumbler in front of a backlit red/green checker panel.
+"""Real footage cases (2026-09-07, second take): a glass tumbler in front of a backlit red/green checker panel.
   P1  photo pair  — empty vs filled tumbler (two stills from the same tripod position)
-  P2  pouring video — 1920x1080 @ 30 fps, 51 s; the level rises from ~12 s to ~42 s. Sampled at SAMPLE_FPS over
+  P2  pouring video — 1920x1080 @ 30 fps, 43 s; the stream starts at ~6 s, the level rises from ~12 s to ~37 s. Sampled at SAMPLE_FPS over
       [T0, T1] and played back at PLAY_FPS (time-lapse), baseline = a frame before the stream starts.
 Both are cropped to the same portrait window around the glass. No ground truth (real footage).
 
@@ -17,13 +17,13 @@ import numpy as np
 
 from mvp_common import PROJ_ROOT, save_json
 
-SRC = Path(r"C:\Users\ysun13\Desktop")
-PHOTO_EMPTY, PHOTO_FULL, VIDEO = SRC / "20260907-140026.JPG", SRC / "20260907-140152.JPG", SRC / "20260907-140051.mp4"
+SRC = Path(r"C:\Users\ysun13")
+PHOTO_EMPTY, PHOTO_FULL, VIDEO = SRC / "Pictures/20260907-143458.JPG", SRC / "Pictures/20260907-143549.JPG", SRC / "Videos/20260907-143503.mp4"
 OUT = PROJ_ROOT / "outputs" / "real"
-CROP = (555, 0, 1365, 1080)                    # x0, y0, x1, y1 in the 1920x1080 source: 3:4 portrait around the glass
-ROI_FRAC = [0.265, 0.218, 0.395, 0.588]        # inside the glass: below the rim ellipse, above the base (fraction of the crop)
+CROP = (520, 0, 1330, 1080)                    # x0, y0, x1, y1 in the 1920x1080 source: 3:4 portrait around the glass
+ROI_FRAC = [0.322, 0.185, 0.356, 0.606]        # inside the glass: below the rim ellipse, above the base (fraction of the crop)
 VIDEO_SIZE = (450, 600)                        # frames are downscaled to the size of the synthetic sequences
-T_BASE, T0, T1 = 1.0, 8.0, 46.0                # baseline time, sampled window (s, source time)
+T_BASE, T0, T1 = 1.0, 10.0, 38.0                # baseline time, sampled window (s, source time)
 SAMPLE_FPS, PLAY_FPS = 4.0, 20.0               # 4 source frames per second, played at 20 fps = 5x time-lapse
 CRF = 29
 
@@ -52,7 +52,8 @@ def main():
     p1 = {"case": "P1_real_tumbler_photo", "baseline": "P1_real_empty", "compare": "P1_real_full", "roi_frac": ROI_FRAC,
           "gt_rows_frac": [], "gt_kinds": [], "gt_liquids": [], "label": "real photo · glass tumbler · rg checker panel · empty vs filled",
           "note": "Two photographs from the same tripod position: empty tumbler, then filled to about three quarters. Backlit red/green checker "
-                  "panel, room lights off. No ground truth; the reading is the front-rim contact line as judged by eye.",
+                  "panel, room lights off. Between the two shots the phone refocused: the glass appears 1 % larger and about 14 px lower in the "
+                  "filled shot. No ground truth; the reading is the front-rim contact line as judged by eye.",
           "source": {"baseline": PHOTO_EMPTY.name, "compare": PHOTO_FULL.name, "crop": CROP}}
     save_json({"resolution": [w, h], "image_dir": str(img_dir), "cases": [p1]}, OUT / "cases.json")
     print(f"P1 stills {w}x{h}")

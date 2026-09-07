@@ -10,23 +10,23 @@
       "baseline": "P1_real_empty",
       "compare": "P1_real_full",
       "roi_frac": [
-        0.265,
-        0.218,
-        0.395,
-        0.588
+        0.322,
+        0.185,
+        0.356,
+        0.606
       ],
       "gt_rows_frac": [],
       "gt_kinds": [],
       "gt_liquids": [],
       "label": "real photo · glass tumbler · rg checker panel · empty vs filled",
-      "note": "Two photographs from the same tripod position: empty tumbler, then filled to about three quarters. Backlit red/green checker panel, room lights off. No ground truth; the reading is the front-rim contact line as judged by eye.",
+      "note": "Two photographs from the same tripod position: empty tumbler, then filled to about three quarters. Backlit red/green checker panel, room lights off. Between the two shots the phone refocused: the glass appears 1 % larger and about 14 px lower in the filled shot. No ground truth; the reading is the front-rim contact line as judged by eye.",
       "source": {
-        "baseline": "20260907-140026.JPG",
-        "compare": "20260907-140152.JPG",
+        "baseline": "20260907-143458.JPG",
+        "compare": "20260907-143549.JPG",
         "crop": [
-          555,
+          520,
           0,
-          1365,
+          1330,
           1080
         ]
       }
