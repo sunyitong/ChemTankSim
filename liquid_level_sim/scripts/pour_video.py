@@ -32,7 +32,7 @@ from testset_scenes import CAMERAS, TS_PATTERNS, TS_SCENES, VESSELS, Combo, buil
 
 OUT = PROJ_ROOT / "outputs" / "pour"
 COMPARE_ENV = dict(rotate=12.0, scale_mult=0.85)   # room light differs a little from the baseline photograph
-MP4_CRF = 26                                       # three embedded sequences must stay well under the 16 MB page budget
+MP4_CRF = 30                                       # four embedded sequences must stay under the 16 MB page budget
 
 SEQUENCES = {
     "F1": dict(name="F1_cyl_pour", vessel="cylinder", pattern="rg_checker", dirt=None, env_change=False,

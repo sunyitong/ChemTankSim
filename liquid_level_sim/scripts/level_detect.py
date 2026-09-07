@@ -51,6 +51,8 @@ LOGM_LIQ = 0.30         # |log M| from which a trusted warp counts as liquid (a 
 ORIENT_MIN = 0.15       # upright-vs-mirrored NCC margin from which the orientation of a warp is observable
 RHO_DIP = 0.92          # row luminance (relative to the air region) below which the contact line / TIR band begins
 LINE_MIN = 0.06         # luminance anomaly (bright or dark, vs the local median) a liquid|liquid contact line must show
+QUIET_FRAC = 0.25        # share of the ROI rows assumed unchanged (air) for the change-noise floor
+T_MAX = 0.25             # upper bound of the change-noise floor (a quarter of full scale)
 
 
 @dataclass
@@ -109,8 +111,14 @@ def robust_pair(b: np.ndarray, c: np.ndarray, R: int = 3):
 def photometric_profile(B, Ca):
     """Thresholded colour-difference row mean (heat map / fallback)."""
     d = np.linalg.norm(B - Ca, axis=2) / math.sqrt(3)
-    rm = d.mean(axis=1); quiet = np.argsort(rm)[:max(3, round(len(rm) * 0.25))]
-    q = d[quiet]; T = max(0.008, float(q.mean() + 3 * q.std()))
+    # Noise floor from the quietest rows. The air region above the level supplies them; it can be as
+    # small as a tenth of the ROI when the vessel is nearly full; the quietest quarter of the rows is used
+    # and the estimate is capped (T_MAX) so that structured differences cannot switch the ROI to "unchanged").
+    rm = d.mean(axis=1); quiet = np.argsort(rm)[:max(3, round(len(rm) * QUIET_FRAC))]
+    q = d[quiet]; T = min(T_MAX, max(0.008, float(q.mean() + 3 * q.std())))
+    # T_MAX: the floor describes sensor noise, which never reaches a quarter of full scale. In real footage the
+    # "quiet" rows may carry structured differences (exposure drift, droplets on the glass, a sub-pixel
+    # shift of the pattern); without the cap they inflate T until the liquid rows count as unchanged.
     d = np.where(d > T, np.minimum(d, 0.6), 0.0)
     return d.mean(axis=1), d, T
 
@@ -535,8 +543,12 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
             # still show the pattern in place weakly (ncc1 >= 0.3: haze, film, thin deposit) the
             # plateau really continues and the jump is the surface; if they do not (dark, reflected or
             # refracted: a band the jump detector could not bridge) the identity end is the surface.
-            between = ncc1[top:min(n, int(first))] if first is not None else np.zeros(0)
-            if not len(between) or (between >= 0.3).mean() < 0.5:
+            # "Pattern still in place" means the identity fits (nearly) as well as the best warp, not merely
+            # that it correlates: a periodic pattern magnified by a liquid still correlates 0.3-0.7 with
+            # itself at M = 1, but a real lens beats the identity clearly there.
+            sl = slice(top, min(n, int(first))) if first is not None else slice(0, 0)
+            between = (ncc1[sl] >= 0.3) & (ncc1[sl] >= ncc[sl] - 0.15)
+            if not len(between) or between.mean() < 0.5:
                 row_s = float(dip) if dip is not None else float(top)
                 accepted.insert(0, {"row": row_s, "jump": float("nan"), "z": float("inf"), "z2": float("inf"), "sigma": 0.0, "quality": 1.0, "ncc_below": 1.0, "line": 1.0})
                 det.mode = "warp/identity-end"

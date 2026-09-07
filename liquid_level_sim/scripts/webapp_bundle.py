@@ -19,7 +19,7 @@ import cv2
 from mvp_common import load_json
 from testset_scenes import TS_IMAGES, TS_OUT
 
-W_OUT, Q = 675, 86   # 675 px wide = 0.75 of the 900x1200 renders (detector is scale-robust; see eval_all spread table)
+W_OUT, Q = 675, 80   # 675 px wide = 0.75 of the 900x1200 renders (detector is scale-robust; see eval_all spread table); q80 keeps the page under 16 MB
 
 
 def encode(png: Path, width: int | None = W_OUT, q: int = Q) -> str:
@@ -48,7 +48,7 @@ def main(out_js: Path, case_files: list[Path]):
                 videos[c["case"]] = "data:video/mp4;base64," + base64.b64encode(mp4.read_bytes()).decode("ascii")
                 out.append({"id": c["case"].split("_")[0], "case": c["case"], "kind": "video", "label": c["label"], "note": c["note"],
                             "base": c["baseline"], "video": c["case"], "fps": c["fps"], "seconds": c["seconds"], "frames": c["n_frames"],
-                            "roi": c["roi_frac"], "gtFrames": [f["gt_rows_frac"] for f in c["frames"]]})
+                            "roi": c["roi_frac"], "gtFrames": [f["gt_rows_frac"] for f in c["frames"]] if any(f["gt_rows_frac"] for f in c["frames"]) else None})
                 continue
             for key in ("baseline", "compare"):
                 if c[key] not in images:

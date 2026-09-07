@@ -1,0 +1,35 @@
+{
+  "resolution": [
+    810,
+    1080
+  ],
+  "image_dir": "C:\\Users\\ysun13\\Desktop\\projects\\ChemTankSim\\liquid_level_sim\\outputs\\real\\images",
+  "cases": [
+    {
+      "case": "P1_real_tumbler_photo",
+      "baseline": "P1_real_empty",
+      "compare": "P1_real_full",
+      "roi_frac": [
+        0.265,
+        0.218,
+        0.395,
+        0.588
+      ],
+      "gt_rows_frac": [],
+      "gt_kinds": [],
+      "gt_liquids": [],
+      "label": "real photo · glass tumbler · rg checker panel · empty vs filled",
+      "note": "Two photographs from the same tripod position: empty tumbler, then filled to about three quarters. Backlit red/green checker panel, room lights off. No ground truth; the reading is the front-rim contact line as judged by eye.",
+      "source": {
+        "baseline": "20260907-140026.JPG",
+        "compare": "20260907-140152.JPG",
+        "crop": [
+          555,
+          0,
+          1365,
+          1080
+        ]
+      }
+    }
+  ]
+}

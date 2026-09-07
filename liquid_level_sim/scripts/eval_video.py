@@ -89,10 +89,10 @@ def main(meta_path: Path):
     for f in meta["frames"]:
         img = (srgb(frames_dir / f"frame_{f['i']:03d}.png") if decoded is None else srgb_array(decoded[f["i"]]))[y0:y1, x0:x1]
         det = detect(base, img, horizon_row=(H / 2 - y0) / 2)
-        gt_pct = [(y1 - g * H) / (y1 - y0) * 100 for g in f["gt_rows_frac"]]
+        gt_pct = [(y1 - g * H) / (y1 - y0) * 100 for g in f["gt_rows_frac"]]   # empty for real footage
         est_pct = [(y1 - (y0 + l["row"] * 2)) / (y1 - y0) * 100 for l in det.levels]
         pct = lambda r: (y1 - (y0 + r * 2)) / (y1 - y0) * 100 if r is not None else None
-        rows.append({"i": f["i"], "t": f["t"], "fill": f["fill"], "gt_pct": gt_pct[0] if gt_pct else None,
+        rows.append({"i": f["i"], "t": f["t"], "fill": f.get("fill"), "gt_pct": gt_pct[0] if gt_pct else None,
                      "est_pct": est_pct[0] if est_pct else None, "n_levels": len(est_pct), "mode": det.mode,
                      "err_pt": (est_pct[0] - gt_pct[0]) if est_pct and gt_pct else None,
                      "hyp": {"raw": est_pct[0] if est_pct else None, "dip": pct(det.dip), "first": pct(det.first_jump), "top": pct(det.surface)}})
@@ -112,16 +112,22 @@ def main(meta_path: Path):
     json.dump({"summary": summary, "frames": rows}, open(out_dir / "eval_video.json", "w"), indent=1)
     t = [r["t"] for r in rows]
     fig, ax = plt.subplots(figsize=(8, 3.6))
-    ax.plot(t, [r["gt_pct"] for r in rows], "--", color="#22c55e", lw=1.4, label="ground truth (front rim)")
+    has_gt = any(r["gt_pct"] is not None for r in rows)
+    if has_gt:
+        ax.plot(t, [r["gt_pct"] if r["gt_pct"] is not None else np.nan for r in rows], "--", color="#22c55e", lw=1.4, label="ground truth (front rim)")
     ax.plot(t, [r["est_pct"] if r["est_pct"] is not None else np.nan for r in rows], ".", color="#f6b545", ms=4, alpha=.6, label="per-frame detection")
     ax.plot(t, [r["tracked_pct"] if r["tracked_pct"] is not None else np.nan for r in rows], color="#f6b545", lw=1.6, label="temporal track")
     ax.set_xlabel("time (s)"); ax.set_ylabel("level (% of ROI height)"); ax.grid(alpha=.3); ax.legend(loc="lower right")
-    ax.set_title(f"{meta['case']}, {meta['fps']} fps · per frame: median {summary['median_err_pt']:+.2f} pt, max {summary['max_abs_err_pt']:.1f} pt · "
-                 f"tracked: median {summary['tracked_median_err_pt']:+.2f} pt, max {summary['tracked_max_abs_err_pt']:.1f} pt", fontsize=9)
+    if has_gt:
+        ax.set_title(f"{meta['case']}, {meta['fps']} fps · per frame: median {summary['median_err_pt']:+.2f} pt, max {summary['max_abs_err_pt']:.1f} pt · "
+                     f"tracked: median {summary['tracked_median_err_pt']:+.2f} pt, max {summary['tracked_max_abs_err_pt']:.1f} pt", fontsize=9)
+    else:
+        ax.set_title(f"{meta['case']}, {meta['fps']} fps · real footage, no ground truth · {summary['found']}/{summary['frames']} frames read", fontsize=9)
     fig.tight_layout(); fig.savefig(out_dir / "level_vs_time.png", dpi=110)
     print(json.dumps(summary, indent=1))
+    fmt = lambda v, d=1: "-" if v is None else round(v, d)
     for r in rows[::10]:
-        print(f"  t={r['t']:.2f}s fill={r['fill']:.3f} GT={r['gt_pct']:.1f}% est={r['est_pct'] if r['est_pct'] is None else round(r['est_pct'], 1)}% err={r['err_pt'] if r['err_pt'] is None else round(r['err_pt'], 2)} mode={r['mode']} n={r['n_levels']}")
+        print(f"  t={r['t']:.2f}s fill={fmt(r['fill'], 3)} GT={fmt(r['gt_pct'])}% est={fmt(r['est_pct'])}% tracked={fmt(r['tracked_pct'])}% err={fmt(r['err_pt'], 2)} mode={r['mode']} n={r['n_levels']}")
 
 
 if __name__ == "__main__":
