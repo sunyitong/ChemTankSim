@@ -48,14 +48,16 @@ def main(out_js: Path, case_files: list[Path]):
                 videos[c["case"]] = "data:video/mp4;base64," + base64.b64encode(mp4.read_bytes()).decode("ascii")
                 out.append({"id": c["case"].split("_")[0], "case": c["case"], "kind": "video", "label": c["label"], "note": c["note"],
                             "base": c["baseline"], "video": c["case"], "fps": c["fps"], "seconds": c["seconds"], "frames": c["n_frames"],
-                            "roi": c["roi_frac"], "gtFrames": [f["gt_rows_frac"] for f in c["frames"]] if any(f["gt_rows_frac"] for f in c["frames"]) else None})
+                            "roi": c["roi_frac"], "gtFrames": [f["gt_rows_frac"] for f in c["frames"]] if any(f["gt_rows_frac"] for f in c["frames"]) else None,
+                            "layers": c.get("layers", "single")})
                 continue
             for key in ("baseline", "compare"):
                 if c[key] not in images:
                     images[c[key]] = encode(img_dir / f"{c[key]}.png")
             out.append({"id": c["case"].split("_")[0], "case": c["case"], "label": c["label"], "note": c["note"],
                         "base": c["baseline"], "cmp": c["compare"], "roi": c["roi_frac"],
-                        "gt": [{"frac": f, "kind": k, "liquid": l} for f, k, l in zip(c["gt_rows_frac"], c["gt_kinds"], c["gt_liquids"])]})
+                        "gt": [{"frac": f, "kind": k, "liquid": l} for f, k, l in zip(c["gt_rows_frac"], c["gt_kinds"], c["gt_liquids"])],
+                        "layers": "multi" if len(c["gt_rows_frac"]) >= 2 else "single"})   # presets the app's single / multi-level mode
     js = ("window.CASES = " + json.dumps(out, ensure_ascii=False) + ";\nwindow.CASE_IMAGES = " + json.dumps(images)
           + ";\nwindow.CASE_VIDEOS = " + json.dumps(videos) + ";\n")
     out_js.write_text(js, encoding="utf-8")

@@ -28,10 +28,13 @@ def track(frames, dt, gate=3.0, alpha=0.6, patience=6):
     prediction is blended in (alpha) when within `gate`; otherwise the track coasts, and only after six
     consecutive misses (0.3 s at 20 fps) re-acquires at the median of the last three raw values. The
     patience matters when the raw detections alternate between two solutions (the far rim and the
-    front rim of one surface): a single frame back within the gate keeps the track on its branch. A
-    hypothesis that has not moved for two frames while the level should have is a stuck luminance
-    feature and is ignored when another hypothesis is available."""
-    out, lvl, vel, bad, recent, band, prev = [], None, 0.0, 0, [], None, {}
+    front rim of one surface): a single frame back within the gate keeps the track on its branch.
+    While coasting the velocity halves every frame and the track never drifts more than `gate` from
+    the last accepted level: a level that is not observed is held, not extrapolated (a pour can stop
+    at any moment, and extrapolating through the last frames of a sequence overshoots). A hypothesis
+    that has not moved for two frames while the level should have is a stuck luminance feature and is
+    ignored when another hypothesis is available."""
+    out, lvl, vel, bad, recent, band, prev, anchor = [], None, 0.0, 0, [], None, {}, None
     for f in frames:
         raw, dip, first, top = f.get("raw"), f.get("dip"), f.get("first"), f.get("top")
         if top is not None and dip is not None:
@@ -40,7 +43,7 @@ def track(frames, dt, gate=3.0, alpha=0.6, patience=6):
             out.append(lvl); continue
         recent = (recent + [raw])[-3:]
         if lvl is None:
-            lvl = dip if dip is not None else raw; out.append(lvl); prev = {"dip": dip, "first": first, "top": top}; continue
+            lvl = dip if dip is not None else raw; anchor = lvl; out.append(lvl); prev = {"dip": dip, "first": first, "top": top}; continue
         pred = lvl + vel * dt
         hyps = {}
         if dip is not None: hyps["dip"] = dip
@@ -52,13 +55,13 @@ def track(frames, dt, gate=3.0, alpha=0.6, patience=6):
         cand = live if live else hyps
         k_best = min(cand, key=lambda k: abs(cand[k] - pred)); m = cand[k_best]; e = m - pred
         if abs(e) <= gate:
-            new = pred + alpha * e; vel = 0.7 * vel + 0.3 * (new - lvl) / dt; lvl = new; bad = 0
+            new = pred + alpha * e; vel = 0.7 * vel + 0.3 * (new - lvl) / dt; lvl = new; bad = 0; anchor = lvl
         else:
             bad += 1
             if bad >= patience:
-                lvl, vel, bad = float(np.median(recent)), 0.0, 0
+                lvl, vel, bad = float(np.median(recent)), 0.0, 0; anchor = lvl
             else:
-                lvl, vel = pred, vel * 0.9
+                lvl, vel = float(np.clip(pred, anchor - gate, anchor + gate)), vel * 0.5
         prev = {"dip": dip, "first": first, "top": top}
         out.append(lvl)
     return out
@@ -90,7 +93,7 @@ def main(meta_path: Path):
     rows = []
     for f in meta["frames"]:
         img = (srgb(frames_dir / f"frame_{f['i']:03d}.png") if decoded is None else srgb_array(decoded[f["i"]]))[y0:y1, x0:x1]
-        det = detect(base, img, horizon_row=(H / 2 - y0) / 2)
+        det = detect(base, img, max_levels=3 if meta.get("layers") == "multi" else 1, horizon_row=(H / 2 - y0) / 2)   # pouring sequences: single level unless declared
         gt_pct = [(y1 - g * H) / (y1 - y0) * 100 for g in f["gt_rows_frac"]]   # empty for real footage
         est_pct = [(y1 - (y0 + l["row"] * 2)) / (y1 - y0) * 100 for l in det.levels]
         pct = lambda r: (y1 - (y0 + r * 2)) / (y1 - y0) * 100 if r is not None else None

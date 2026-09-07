@@ -38,7 +38,7 @@ liquid_level_sim/
 │                                 差异热图 / 叠加模式，右侧 0–100% 刻度与液位估计；Adaptive 鲁棒差分（热图）；
 │                                 液位检测 v3（几何优先，见 level_detect.py）：顶面 + 液-液界面，模式标签 WARP / IDENTITY-END / PHOTOMETRIC；
 │                                 顶栏按钮内嵌 37 组案例（A 容器/镜头、B 分层液体、S/V 水垢、R 夹具遮挡、K 金属 + 水垢 + HDRI、F 三段注液视频、P 真实拍摄的照片对与注水视频；合成案例含真值与误差显示）；
-│                                 视频模式：原速播放逐帧检测 + 多假说时序跟踪、进度条/逐帧步进、液位-时间轨迹；纯前端，双击直接打开
+│                                 视频模式：原速播放逐帧检测 + 多假说时序跟踪（脱靶时保持不外推）、进度条/逐帧步进、液位-时间轨迹；Layers 开关 = 单/多液位预设（默认单液位，分层案例自动切到多液位）；纯前端，双击直接打开
 │                                 重建：webapp_bundle.py <cases_embed.js> <cases.json…> [cases_video.json] → webapp_build.py <模板> <cases_embed.js> <输出>
 ├─ scenes/mvp/             <pattern>_f<fill>[_nomen].pbrt, free_surface*.ply, manifest*.json
 ├─ scenes/generated/       旧管线场景
