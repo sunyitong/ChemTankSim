@@ -1,0 +1,296 @@
+{
+  "resolution": [
+    300,
+    400
+  ],
+  "spp": 24,
+  "env": "childrens_hospital",
+  "jobs": [
+    {
+      "name": "base_K1_reagent_rod_scale_tide_water45_smoke",
+      "role": "baseline",
+      "combo": "K1_reagent_rod_scale_tide_water45",
+      "vessel": "reagent",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.9,
+          "y": 0.2,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 7.0
+        }
+      ],
+      "env": {
+        "file": "../../outputs/env/childrens_hospital_equiarea.exr",
+        "scale": 0.7886427060086918,
+        "rotate": 0.0,
+        "id": "childrens_hospital"
+      },
+      "layers": [],
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Wide-mouth reagent bottle",
+        "inner_height_cm": 17.9,
+        "layers": [],
+        "rim_row_front": 86.43572935105506,
+        "bottom_row_front": 310.4243409379214
+      },
+      "jitter": false,
+      "render_seconds": 1.4,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_K1_reagent_rod_scale_tide_water45_smoke.png"
+    },
+    {
+      "name": "K1_reagent_rod_scale_tide_water45_smoke",
+      "role": "compare",
+      "combo": "K1_reagent_rod_scale_tide_water45",
+      "baseline": "base_K1_reagent_rod_scale_tide_water45_smoke",
+      "vessel": "reagent",
+      "camera": "normal",
+      "pattern": "rg_checker",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.9,
+          "y": 0.2,
+          "radius": 0.4,
+          "z0_frac": 0.08,
+          "above_rim": 7.0
+        }
+      ],
+      "deposit": "tide",
+      "env": {
+        "file": "../../outputs/env/childrens_hospital_equiarea.exr",
+        "scale": 0.670346300107388,
+        "rotate": 12.0,
+        "id": "childrens_hospital"
+      },
+      "layers": [
+        [
+          "water",
+          0.45
+        ]
+      ],
+      "note": "wide-mouth reagent bottle, steel stirrer rod through the neck, tide-mark limescale, lab HDRI (compare frame: room light rotated 12 deg, dimmed 15 %)",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            9.25
+          ],
+          "look": [
+            0.0,
+            0.0,
+            9.25
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Wide-mouth reagent bottle",
+        "inner_height_cm": 17.9,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 8.655,
+            "z_bottom_cm": 0.6,
+            "fill_of_inner_height": 0.45,
+            "top_row_front": 207.59566275815763,
+            "top_row_back": 206.48776633607775,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 86.43572935105506,
+        "bottom_row_front": 310.4243409379214
+      },
+      "jitter": true,
+      "render_seconds": 1.7,
+      "post": {
+        "gain": 0.9749006791739893,
+        "shift_px": [
+          0.4674507583500742,
+          -1.8916017672853092
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "K1_reagent_rod_scale_tide_water45_smoke.png"
+    },
+    {
+      "name": "base_K2_gourd_rod_thermo_scale_vase_water40_mosaic_smoke",
+      "role": "baseline",
+      "combo": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.9,
+          "y": 0.2,
+          "radius": 0.3,
+          "z0_frac": 0.08,
+          "above_rim": 7.0
+        },
+        {
+          "type": "rod",
+          "material": "glass",
+          "x": -0.9,
+          "y": -0.3,
+          "radius": 0.25,
+          "z0_frac": 0.15,
+          "above_rim": 9.0
+        }
+      ],
+      "env": {
+        "file": "../../outputs/env/childrens_hospital_equiarea.exr",
+        "scale": 0.7886427060086918,
+        "rotate": 0.0,
+        "id": "childrens_hospital"
+      },
+      "layers": [],
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [],
+        "rim_row_front": 72.04887715960565,
+        "bottom_row_front": 325.1707906955597
+      },
+      "jitter": false,
+      "render_seconds": 1.4,
+      "post": {
+        "gain": 1.0,
+        "shift_px": [
+          0.0,
+          0.0
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "base_K2_gourd_rod_thermo_scale_vase_water40_mosaic_smoke.png"
+    },
+    {
+      "name": "K2_gourd_rod_thermo_scale_vase_water40_mosaic_smoke",
+      "role": "compare",
+      "combo": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
+      "baseline": "base_K2_gourd_rod_thermo_scale_vase_water40_mosaic_smoke",
+      "vessel": "gourd",
+      "camera": "normal",
+      "pattern": "mosaic",
+      "fixtures": [
+        {
+          "type": "rod",
+          "material": "steel",
+          "x": 0.9,
+          "y": 0.2,
+          "radius": 0.3,
+          "z0_frac": 0.08,
+          "above_rim": 7.0
+        },
+        {
+          "type": "rod",
+          "material": "glass",
+          "x": -0.9,
+          "y": -0.3,
+          "radius": 0.25,
+          "z0_frac": 0.15,
+          "above_rim": 9.0
+        }
+      ],
+      "deposit": "vase",
+      "env": {
+        "file": "../../outputs/env/childrens_hospital_equiarea.exr",
+        "scale": 0.670346300107388,
+        "rotate": 12.0,
+        "id": "childrens_hospital"
+      },
+      "layers": [
+        [
+          "water",
+          0.4
+        ]
+      ],
+      "note": "gourd flask, steel rod + glass thermometer through the neck, water-line ring at 60 % with film, lab HDRI (compare frame: room light rotated 12 deg, dimmed 15 %)",
+      "gt": {
+        "camera": {
+          "eye": [
+            0.0,
+            -60.0,
+            10.5
+          ],
+          "look": [
+            0.0,
+            0.0,
+            10.5
+          ],
+          "fov_short_axis_deg": 24.0
+        },
+        "vessel": "Gourd flask",
+        "inner_height_cm": 20.5,
+        "layers": [
+          {
+            "liquid": "water",
+            "label": "water",
+            "eta": 1.333,
+            "z_top_cm": 8.700000000000001,
+            "z_bottom_cm": 0.5,
+            "fill_of_inner_height": 0.4000000000000001,
+            "top_row_front": 222.53360506617517,
+            "top_row_back": 219.96349877775648,
+            "kind": "free surface"
+          }
+        ],
+        "rim_row_front": 72.04887715960565,
+        "bottom_row_front": 325.1707906955597
+      },
+      "jitter": true,
+      "render_seconds": 2.1,
+      "post": {
+        "gain": 0.9821799533764968,
+        "shift_px": [
+          -1.8480422682193938,
+          -1.8693006727175754
+        ],
+        "noise_sigma_at_0.8": 0.014491376746189439
+      },
+      "png": "K2_gourd_rod_thermo_scale_vase_water40_mosaic_smoke.png"
+    }
+  ]
+}

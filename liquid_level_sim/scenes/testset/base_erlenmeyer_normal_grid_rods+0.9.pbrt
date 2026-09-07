@@ -12,7 +12,10 @@ AttributeBegin  # light panel (Lambertian light box)
   Material "diffuse" "rgb reflectance" [0 0 0]
   Shape "trianglemesh" "point3 P" [30 25 -30.75 -30 25 -30.75 -30 25 49.25 30 25 49.25] "point2 uv" [0 0 1 0 1 1 0 1] "integer indices" [0 1 2 0 2 3]
 AttributeEnd
-LightSource "infinite" "rgb L" [0.2 0.2 0.21]
+AttributeBegin  # environment light
+  Rotate 0 0 0 1
+  LightSource "infinite" "string filename" ["../../outputs/env/childrens_hospital_equiarea.exr"] "float scale" [0.788643]
+AttributeEnd
 AttributeBegin  # matte black pedestal
   Material "diffuse" "rgb reflectance" [0.04 0.04 0.04]
   Shape "cylinder" "float radius" [4] "float zmin" [-8.05] "float zmax" [-0.05]

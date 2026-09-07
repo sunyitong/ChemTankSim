@@ -17,6 +17,7 @@ import cv2
 import numpy as np
 
 import mvp_patterns
+from env_light import env_light
 from mvp_common import PBRT_EXE, PROJ_ROOT, Setup, check_pbrt, run, save_json
 from testset_post import process
 from testset_scenes import CAMERAS, TS_PATTERNS, TS_SCENES, VESSELS, Combo, build_scene
@@ -66,7 +67,9 @@ def main():
     ap.add_argument("--smoke", action="store_true"); ap.add_argument("--spp", type=int, default=160)
     ap.add_argument("--res", default="900x1200"); ap.add_argument("--only", default=None); ap.add_argument("--force", action="store_true")
     ap.add_argument("--nthreads", type=int, default=None); ap.add_argument("--skip-render", action="store_true")
+    ap.add_argument("--env", default=None, help="Poly Haven HDRI id prepared by env_map.py (default: constant ambient)")
     a = ap.parse_args()
+    light = {"env": env_light(a.env)} if a.env else {"ambient": AMBIENT}
     w, h = (int(v) for v in a.res.lower().split("x")); spp, tag = a.spp, ""
     if a.smoke:
         w, h, spp, tag = 300, 400, 24, "_smoke"
@@ -82,13 +85,13 @@ def main():
         bkey = (c.vessel, c.camera, c.pattern, fixture_key(c))
         if bkey not in seen:                               # baseline: empty vessel with the same fixtures
             bname = f"base_{c.vessel}_{c.camera}_{c.pattern}_{fixture_key(c)}{tag}"
-            text, gt = build_scene(c, False, w, h, spp, {"ambient": AMBIENT}, bname + ".exr")
+            text, gt = build_scene(c, False, w, h, spp, light, bname + ".exr")
             (TS_SCENES / f"{bname}.pbrt").write_text(text, encoding="utf-8")
             jobs.append({"name": bname, "role": "baseline", "combo": None, "vessel": c.vessel, "camera": c.camera, "pattern": c.pattern,
                          "fixtures": [i for i in c.inserts if i.get("frames", "both") == "both"], "layers": [], "gt": gt, "jitter": False})
             seen[bkey] = bname
         name = f"{c.name}{tag}"
-        text, gt = build_scene(c, True, w, h, spp, {"ambient": AMBIENT}, name + ".exr")
+        text, gt = build_scene(c, True, w, h, spp, light, name + ".exr")
         (TS_SCENES / f"{name}.pbrt").write_text(text, encoding="utf-8")
         jobs.append({"name": name, "role": "compare", "combo": c.name, "baseline": seen[bkey], "vessel": c.vessel, "camera": c.camera,
                      "pattern": c.pattern, "fixtures": c.inserts, "layers": c.layers, "note": c.note, "gt": gt, "jitter": True})
@@ -136,7 +139,7 @@ def main():
     if rows:
         per = 2; rows += [np.zeros_like(rows[0])] * ((-len(rows)) % per)
         cv2.imwrite(str(OUT / f"contact_sheet{tag}.png"), np.concatenate([np.concatenate(rows[i:i + per], axis=1) for i in range(0, len(rows), per)], axis=0))
-    save_json({"resolution": [w, h], "spp": spp, "jobs": jobs}, OUT / f"manifest{tag}.json")
+    save_json({"resolution": [w, h], "spp": spp, "env": a.env, "jobs": jobs}, OUT / f"manifest{tag}.json")
     save_json({"resolution": [w, h], "cases": cases, "image_dir": str(IMAGES)}, OUT / f"cases{tag}.json")
     print("done ->", OUT)
 

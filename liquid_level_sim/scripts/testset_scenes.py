@@ -374,7 +374,11 @@ def build_scene(combo: Combo, filled: bool, width: int, height: int, spp: int, t
     pattern_rel = None if combo.pattern == "white" else f"{REL_PAT}/{combo.pattern}.png"
     parts = [header(cfg, out_image, spp, width, height), "", "WorldBegin", panel(cfg, combo.pattern, pattern_rel)]
     scale = bool(tex and tex.get("kind") == "scale")
-    if tex and tex.get("ambient"):                          # lit room: makes translucent deposits look white, not dark
+    if tex and tex.get("env"):                              # laboratory HDRI (equal-area map): reflections on glass and metal,
+        e = tex["env"]                                       # structured room light instead of a constant ambient term
+        parts += ["AttributeBegin  # environment light", f"  Rotate {_f(e.get('rotate', 0.0))} 0 0 1",
+                  f'  LightSource "infinite" "string filename" ["{e["file"]}"] "float scale" [{_f(e.get("scale", 1.0))}]', "AttributeEnd"]
+    elif tex and tex.get("ambient"):                        # lit room: makes translucent deposits look white, not dark
         a = tex["ambient"]
         parts.append(f'LightSource "infinite" "rgb L" [{_f(a)} {_f(a)} {_f(a * 1.05)}]')
     if vessel.kind == "revolved":

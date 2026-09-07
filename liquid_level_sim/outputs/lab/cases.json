@@ -1,0 +1,53 @@
+{
+  "resolution": [
+    900,
+    1200
+  ],
+  "cases": [
+    {
+      "case": "K1_reagent_rod_scale_tide_water45",
+      "baseline": "base_K1_reagent_rod_scale_tide_water45",
+      "compare": "K1_reagent_rod_scale_tide_water45",
+      "roi_frac": [
+        0.31509216106276333,
+        0.219422656710971,
+        0.3698156778744734,
+        0.5533048623004991
+      ],
+      "gt_rows_frac": [
+        0.518989156895394
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "reagent · normal · rg_checker · steel rod + tide marks · lab HDRI",
+      "note": "wide-mouth reagent bottle, steel stirrer rod through the neck, tide-mark limescale, lab HDRI (compare frame: room light rotated 12 deg, dimmed 15 %)"
+    },
+    {
+      "case": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
+      "baseline": "base_K2_gourd_rod_thermo_scale_vase_water40_mosaic",
+      "compare": "K2_gourd_rod_thermo_scale_vase_water40_mosaic",
+      "roi_frac": [
+        0.22898313878639207,
+        0.18345552623234745,
+        0.5420337224272159,
+        0.6261381171732183
+      ],
+      "gt_rows_frac": [
+        0.5563340126654379
+      ],
+      "gt_kinds": [
+        "free surface"
+      ],
+      "gt_liquids": [
+        "water"
+      ],
+      "label": "gourd · normal · mosaic · rod + thermometer + limescale ring · lab HDRI",
+      "note": "gourd flask, steel rod + glass thermometer through the neck, water-line ring at 60 % with film, lab HDRI (compare frame: room light rotated 12 deg, dimmed 15 %)"
+    }
+  ],
+  "image_dir": "C:\\Users\\ysun13\\Desktop\\projects\\ChemTankSim\\liquid_level_sim\\outputs\\lab\\images"
+}

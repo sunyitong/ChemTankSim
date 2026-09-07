@@ -21,6 +21,7 @@ import cv2
 import numpy as np
 
 import mvp_patterns
+from env_light import env_light
 from mvp_common import PBRT_EXE, PROJ_ROOT, Setup, check_pbrt, run, save_json
 from testset_post import process
 from testset_scenes import CAMERAS, TS_PATTERNS, TS_SCENES, VESSELS, Combo, build_scene
@@ -66,7 +67,9 @@ def main():
     ap.add_argument("--smoke", action="store_true"); ap.add_argument("--spp", type=int, default=32)
     ap.add_argument("--res", default="450x600"); ap.add_argument("--fps", type=int, default=20); ap.add_argument("--seconds", type=float, default=4.0)
     ap.add_argument("--nthreads", type=int, default=None); ap.add_argument("--force", action="store_true"); ap.add_argument("--encode-only", action="store_true")
+    ap.add_argument("--env", default=None, help="Poly Haven HDRI id prepared by env_map.py (default: constant ambient)")
     a = ap.parse_args()
+    light = {"env": env_light(a.env)} if a.env else {"ambient": AMBIENT}
     w, h = (int(v) for v in a.res.lower().split("x")); spp, fps, seconds = a.spp, a.fps, a.seconds
     n = round(fps * seconds) + 1
     if a.smoke:
@@ -82,7 +85,7 @@ def main():
         print("=== scenes ===")
         rng = np.random.default_rng(5)
         jobs = []
-        text, gt0 = build_scene(replace(base_combo, name="F1_baseline"), False, w, h, spp, {"ambient": AMBIENT}, "F1_baseline.exr")
+        text, gt0 = build_scene(replace(base_combo, name="F1_baseline"), False, w, h, spp, light, "F1_baseline.exr")
         (TS_SCENES / "F1_baseline.pbrt").write_text(text, encoding="utf-8")
         jobs.append({"name": "F1_baseline", "frame": None, "t": None, "fill": 0.0, "gt": gt0})
         for i in range(n):
@@ -90,7 +93,7 @@ def main():
             fill = F0 + (F1 - F0) * (t / seconds)
             z_lvl = vessel.tb + fill * vessel.inner_height
             c = replace(base_combo, name=f"F1_f{i:03d}", layers=[("water", fill)], inserts=[TUBE, stream_for(vessel, z_lvl, t, rng)])
-            text, gt = build_scene(c, True, w, h, spp, {"ambient": AMBIENT}, f"{c.name}.exr")
+            text, gt = build_scene(c, True, w, h, spp, light, f"{c.name}.exr")
             (TS_SCENES / f"{c.name}.pbrt").write_text(text, encoding="utf-8")
             jobs.append({"name": c.name, "frame": i, "t": t, "fill": fill, "gt": gt})
         print(f"  {len(jobs)} scenes at {w}x{h}, {spp} spp")
@@ -120,7 +123,7 @@ def main():
                 "baseline": "F1_baseline", "video": "F1_cyl_pour.mp4",
                 "roi_frac": [max(0.0, (w / 2 - half) / w), y0 / h, min(1.0, 2 * half / w), (y1 - y0) / h],
                 "frames": frames, "label": "cylinder · normal · rg_checker · pouring, 20 fps",
-                "note": base_combo.note, "tube": TUBE, "fill_range": [F0, F1]}
+                "note": base_combo.note, "tube": TUBE, "fill_range": [F0, F1], "env": a.env}
         save_json(meta, OUT / "video_meta.json")
         save_json({"resolution": [w, h], "cases": [meta], "image_dir": str(FRAMES)}, OUT / "cases_video.json")
         # contact sheet: baseline + 5 frames

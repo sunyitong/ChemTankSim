@@ -72,6 +72,8 @@ class Detection:
     ncc1: np.ndarray | None = None              # correlation of the identity hypothesis (M = 1)
     amb: np.ndarray | None = None               # fraction of warp hypotheses within 0.10 of the best NCC
     surface: int | None = None                  # row after the identity plateau (free-surface upper bound)
+    dip: int | None = None                      # contact-line row found below the identity end (None if no band)
+    first_jump: float | None = None             # located row of the first jump candidate at or below the plateau end
 
 
 # ----------------------------------------------------------------------------- 1. robust pair
@@ -428,7 +430,27 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
             bot_l = next((r for r in range(top, min(n - 3, top + 3 * w)) if liquid[r] and liquid[r + 1] and liquid[r + 2]), None)
             if bot_l is not None:
                 stop = int(min(stop, bot_l + 2))
-        dip = next((r for r in range(top, stop) if rs[r] < RHO_DIP * ref and rs[r + 1] < RHO_DIP * ref), None)
+        # The contact line is the steepest bright-to-dark fall of the row luminance inside the band: the
+        # far rim's view of the surface mirrors the bright panel, the liquid below is a little darker than
+        # the baseline and a total-internal-reflection band is much darker. A fixed absolute threshold
+        # would fire on the liquid's own luminance texture; the fall does not.
+        # What lies directly below the identity end decides where the contact line is:
+        #   * a band BRIGHTER than the air region = the far rim's view of the surface mirroring the panel
+        #     (camera above the level): the level is where that brightness returns to the air level;
+        #   * a band DARKER than the air region = meniscus shadow / total internal reflection (camera at
+        #     or below the level): the level is its first row;
+        #   * neither (clear liquid, no visible band): the identity end itself.
+        # A bright band is the far rim only when the surface is seen from ABOVE (level below the image
+        # horizon); seen from below, a bright band is the total-internal-reflection mirror of the lit
+        # liquid and the level is at its start like any dark band.
+        dip = None
+        below = rs[top + 1:min(top + 4, n)]
+        camera_above = horizon_row is not None and top > horizon_row
+        if camera_above and len(below) and below.mean() >= 1.03 * ref:
+            dip = next((r for r in range(top + 1, stop) if rs[r + 1] < 1.0 * ref), None)
+        else:
+            dip = next((r for r in range(top, stop) if rs[r] < RHO_DIP * ref and rs[r + 1] < RHO_DIP * ref), None)
+        det.dip, det.first_jump = dip, first
         if first is not None and first <= top + 2 * w:
             # The first jump belongs to the surface. A jump located above the identity end means the
             # trailing identity rows were band artefacts (mirrored periodic pattern): take the jump.

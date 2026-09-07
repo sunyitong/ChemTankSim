@@ -28,14 +28,16 @@ liquid_level_sim/
 │  ├─ eval_all.py           全部案例 × 多工作分辩率评估 → outputs/eval_all/{eval_all.md, eval_all.json, profiles_*.png}
 │  ├─ inserts_run.py        夹具部分遮挡样本（搅拌轴 / 温度计 / 加液管）→ outputs/inserts/ （网页 R 组）
 │  ├─ pour_video.py         注液序列：20 fps × 4 s 液位上升 + 液柱/液滴 → outputs/pour/F1_cyl_pour.mp4 + video_meta.json（网页 F 组）
-│  ├─ eval_video.py         注液序列逐帧评估 → outputs/pour/{eval_video.json, level_vs_time.png}
+│  ├─ eval_video.py         注液序列逐帧评估 + 多假说时序跟踪 → outputs/pour/{eval_video.json, level_vs_time.png}
+│  ├─ env_map.py / env_light.py  实验室 HDRI（Poly Haven CC0）→ pbrt 等面积环境贴图；scripts 通过 --env <id> 使用
+│  ├─ lab_run.py            K 组：试剂瓶 / 葫芦瓶 + 金属棒 + 水垢 + 实验室 HDRI（对比帧环境光旋转、减弱）→ outputs/lab/
 │  │  --- 旧管线（随机烧杯 + GT 掩膜通道，保留供 Phase 1 复用） ---
 │  ├─ gen_scenes.py / render.py / analyze.py / build_report.py / run_all.py
 ├─ webapp/level_diff_bench.html   单文件网页应用（英文 UI）：上传空容器基准图 + 有液位对比图，框选 ROI，
 │                                 差异热图 / 叠加模式，右侧 0–100% 刻度与液位估计；Adaptive 鲁棒差分（热图）；
 │                                 液位检测 v3（几何优先，见 level_detect.py）：顶面 + 液-液界面，模式标签 WARP / IDENTITY-END / PHOTOMETRIC；
-│                                 顶栏按钮内嵌 31 组案例（A 容器/镜头、B 分层液体、S/V 水垢、R 夹具遮挡、F 注液视频；含真值与误差显示）；
-│                                 视频模式：原速播放逐帧检测、进度条/逐帧步进、液位-时间轨迹；纯前端，双击直接打开
+│                                 顶栏按钮内嵌 33 组案例（A 容器/镜头、B 分层液体、S/V 水垢、R 夹具遮挡、K 金属 + 水垢 + HDRI、F 注液视频；含真值与误差显示）；
+│                                 视频模式：原速播放逐帧检测 + 多假说时序跟踪、进度条/逐帧步进、液位-时间轨迹；纯前端，双击直接打开
 │                                 重建：webapp_bundle.py <cases_embed.js> <cases.json…> [cases_video.json] → webapp_build.py <模板> <cases_embed.js> <输出>
 ├─ scenes/mvp/             <pattern>_f<fill>[_nomen].pbrt, free_surface*.ply, manifest*.json
 ├─ scenes/generated/       旧管线场景

@@ -1,0 +1,12 @@
+{
+ "id": "carpentry_shop_02",
+ "res": "2k",
+ "source": "https://polyhaven.com/a/carpentry_shop_02 (CC0)",
+ "mean_luminance": 0.5519997507062853,
+ "p99_9_luminance": 120.00138854980469,
+ "equiarea": "carpentry_shop_02_equiarea.exr",
+ "size": [
+  1024,
+  2048
+ ]
+}

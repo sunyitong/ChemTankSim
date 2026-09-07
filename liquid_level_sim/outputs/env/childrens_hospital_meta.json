@@ -1,0 +1,12 @@
+{
+ "id": "childrens_hospital",
+ "res": "2k",
+ "source": "https://polyhaven.com/a/childrens_hospital (CC0)",
+ "mean_luminance": 0.3550403723595893,
+ "p99_9_luminance": 72.1449966430664,
+ "equiarea": "childrens_hospital_equiarea.exr",
+ "size": [
+  1024,
+  2048
+ ]
+}
