@@ -204,7 +204,7 @@ select{font:inherit;font-size:12px;height:28px;background:var(--surface);color:v
           <button id="mOver" aria-pressed="false">Overlay</button>
         </div>
         <label class="tog" title="Heat map: denoise, exposure match, shift search, adaptive threshold. Level detection always runs on the aligned pair."><input type="checkbox" id="adapt" checked>Adaptive</label>
-        <label class="tog" title="Multi-level mode: also report liquid|liquid interfaces below the free surface (pink) and show the per-row magnification curve. Off = single level, only the free surface (default; layered cases switch it on)."><input type="checkbox" id="layers">Layers</label>
+        <label class="tog" title="Multi-level mode: also report liquid|liquid interfaces below the free surface (pink lines). Off = single level, only the free surface (default; layered cases switch it on). The per-row magnification curve on the right is always shown."><input type="checkbox" id="layers">Layers</label>
       </div>
     </section>
   </main>
@@ -876,7 +876,7 @@ function drawAnalysis(g, v) {
     for (let k = 0; k < rows; k++) g.lineTo(X + (A.prof[k] / A.pmax) * pw, Y + (k + 0.5) / rows * H);
     g.lineTo(X, Y + H); g.closePath();
     g.fillStyle = "rgba(255,90,90,.18)"; g.fill(); g.strokeStyle = PROF; g.lineWidth = 1.5; g.stroke();
-    if (state.layers && A.logM) {                                    // magnification profile along the right edge (pink)
+    if (A.logM) {                                                    // magnification profile along the right edge (pink): always shown, it is the detector's core measurement
       let lo = Infinity, hi = -Infinity; for (const vv of A.logM) { if (vv < lo) lo = vv; if (vv > hi) hi = vv; }
       const span = Math.max(hi - lo, 0.3), n = A.logM.length;
       g.beginPath();
