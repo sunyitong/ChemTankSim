@@ -19,16 +19,18 @@ from level_detect import detect  # noqa: E402
 from mvp_common import PROJ_ROOT, load_json  # noqa: E402
 
 
-def track(frames, dt, gate=3.0, alpha=0.6):
+def track(frames, dt, gate=3.0, alpha=0.6, patience=6):
     """Causal multi-hypothesis tracker (same rules as the web app). Each frame offers the detector's
     surface hypotheses in level percent: `dip` (contact line), `first` (located warp jump), `top`
     (identity end = far rim when the surface is seen from above) and `raw` (the detector's own choice).
     The far-rim band thickness b = top - dip is learned (EMA) whenever both exist, so `top - b` is a
     hypothesis even in frames without a contact line. The hypothesis nearest a constant-velocity
-    prediction is blended in (alpha) when within `gate`; otherwise the track coasts, and after three
-    misses re-acquires at the median of the last three raw values. A hypothesis that has not moved for
-    two frames while the level should have is a stuck luminance feature and is ignored when another
-    hypothesis is available."""
+    prediction is blended in (alpha) when within `gate`; otherwise the track coasts, and only after six
+    consecutive misses (0.3 s at 20 fps) re-acquires at the median of the last three raw values. The
+    patience matters when the raw detections alternate between two solutions (the far rim and the
+    front rim of one surface): a single frame back within the gate keeps the track on its branch. A
+    hypothesis that has not moved for two frames while the level should have is a stuck luminance
+    feature and is ignored when another hypothesis is available."""
     out, lvl, vel, bad, recent, band, prev = [], None, 0.0, 0, [], None, {}
     for f in frames:
         raw, dip, first, top = f.get("raw"), f.get("dip"), f.get("first"), f.get("top")
@@ -53,7 +55,7 @@ def track(frames, dt, gate=3.0, alpha=0.6):
             new = pred + alpha * e; vel = 0.7 * vel + 0.3 * (new - lvl) / dt; lvl = new; bad = 0
         else:
             bad += 1
-            if bad >= 3:
+            if bad >= patience:
                 lvl, vel, bad = float(np.median(recent)), 0.0, 0
             else:
                 lvl, vel = pred, vel * 0.9

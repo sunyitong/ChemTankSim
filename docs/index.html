@@ -1202,10 +1202,10 @@ function enterVideo(meta, chipText, id) {
 // percent: the contact-line dip, the located warp jump and the identity end (= the far rim when the surface
 // is seen from above); the far-rim band thickness b = top - dip is learned whenever both exist so top - b
 // stays available. The hypothesis nearest a constant-velocity prediction is blended in when within GATE
-// points; otherwise the track coasts, and after three misses it re-acquires at the median of the last three
+// points; otherwise the track coasts, and only after TRACK_PATIENCE misses it re-acquires at the median of the last three
 // raw detections. A hypothesis that has not moved for two frames while the level should have is a stuck
 // luminance feature and is ignored when another one is available. Resets whenever frames are not consecutive.
-const TRACK_GATE = 3.0, TRACK_ALPHA = 0.6;
+const TRACK_GATE = 3.0, TRACK_ALPHA = 0.6, TRACK_PATIENCE = 6;   // misses before re-acquisition (0.3 s at 20 fps)
 function trackStep(m, i, hyp) {                            // hyp: {raw, dip, first, top} in percent (null = absent)
   const dt = 1 / m.fps, T = m.track;
   if (hyp.top != null && hyp.dip != null) m.band = m.band == null ? hyp.top - hyp.dip : 0.8 * m.band + 0.2 * (hyp.top - hyp.dip);
@@ -1221,7 +1221,7 @@ function trackStep(m, i, hyp) {                            // hyp: {raw, dip, fi
   if (!live.length) live = Object.entries(cands);
   const [, mval] = live.reduce((b, c) => Math.abs(c[1] - pred) < Math.abs(b[1] - pred) ? c : b), e = mval - pred;
   if (Math.abs(e) <= TRACK_GATE) { const nv = pred + TRACK_ALPHA * e; T.vel = 0.7 * T.vel + 0.3 * (nv - T.lvl) / dt; T.lvl = nv; T.bad = 0; }
-  else if (++T.bad >= 3) { T.lvl = median(T.recent); T.vel = 0; T.bad = 0; }
+  else if (++T.bad >= TRACK_PATIENCE) { T.lvl = median(T.recent); T.vel = 0; T.bad = 0; }   // patience: one frame back within the gate keeps the branch
   else { T.lvl = pred; T.vel *= 0.9; }
   T.prev = hyp;
   return T.lvl;

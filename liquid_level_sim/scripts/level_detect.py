@@ -445,10 +445,11 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
             top = j + 1; break
     det.ident = identity; det.surface = top
     if top is not None:
-        # Candidates far above the identity end are not the surface. A candidate slightly above it
+        # Candidates far above the identity end are not the surface. A candidate above it (up to 2w: the
+        # plateau can run past the level where the vessel's own optics return the pattern to M ~ 1)
         # contradicts identity rows and is kept only if it is a real regime change (|dlogM| >= LOGM_LIQ):
         # a deposit edge or a static luminance feature perturbs the warp by ~0.1, a lens does not.
-        accepted = [a for a in accepted if a["row"] >= top - w and (a["row"] >= top or abs(a["jump"]) >= LOGM_LIQ)]
+        accepted = [a for a in accepted if a["row"] >= top - 2 * w and (a["row"] >= top or abs(a["jump"]) >= LOGM_LIQ)]
 
         # The free surface has identity above and a lens below: |log M| must grow across it. A step from
         # a deposit-refracted band (M != 1 through film of varying thickness) back to clean glass is not.
@@ -555,6 +556,13 @@ def detect(b_roi: np.ndarray, c_roi: np.ndarray, max_levels: int = MAX_LEVELS, h
     # Secondary boundaries (liquid|liquid interfaces) are reported only where the magnification is
     # measured stably on both sides and the jump is a step: its significance must not shrink when the
     # plateau windows are doubled (curvature / caustic artefacts of a vessel whose radius varies do).
+    if top is None and horizon_row is not None and len(accepted) >= 2 and accepted[0]["row"] > horizon_row:
+        # No identity end, surface seen from ABOVE: the far rim and the front contact line are both strong
+        # candidates a band apart (the surface's projected depth, <= 0.5 x the distance below the horizon,
+        # at most w). Two candidates that close are the two rims of ONE surface: the level is the lower one.
+        depth = min(w, int(round(0.5 * (accepted[0]["row"] - horizon_row)))) + 2
+        if accepted[1]["row"] - accepted[0]["row"] <= depth:
+            accepted = accepted[1:]
     # The lowest BOTTOM_ZONE of the ROI is where rays pass through the vessel bottom (a real warp
     # change that is not a liquid boundary): no secondary boundary is reported there.
     det.levels = [a for i, a in enumerate(accepted)
