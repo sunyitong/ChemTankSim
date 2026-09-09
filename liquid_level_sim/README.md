@@ -30,6 +30,7 @@ liquid_level_sim/
 │  ├─ pour_video.py         注液序列 F1 圆柱 / F2 锥形瓶 + 水线环 / F3 试剂瓶 + 潮痕（均含 PTFE 加液管、实验室 HDRI）：20 fps × 4 s 液位上升 + 液柱/液滴 → outputs/pour/<序列>/{*.mp4, video_meta.json}（网页 F 组）
 │  ├─ eval_video.py         注液序列逐帧评估 + 多假说时序跟踪 → outputs/pour/<序列>/{eval_video.json, level_vs_time.png}（无 PNG 帧时解码 MP4；无真值时只画轨迹）
 │  ├─ real_cases.py         真实拍摄：照片对 P1 + 注水视频 P2（竖画幅裁切、抽帧、MP4）→ outputs/real/（网页 P 组）
+│  ├─ print_patterns.py     A4 透明胶片背光标定图案 8 页（黑/透明棋盘、红绿棋盘、非周期马赛克 4/8/12 mm、随机竖条纹）→ outputs/print_patterns/*.pdf
 │  ├─ env_map.py / env_light.py  实验室 HDRI（Poly Haven CC0）→ pbrt 等面积环境贴图；scripts 通过 --env <id> 使用
 │  ├─ lab_run.py            K 组：试剂瓶 / 葫芦瓶 + 金属棒 + 水垢 + 实验室 HDRI（对比帧环境光旋转、减弱）→ outputs/lab/
 │  │  --- 旧管线（随机烧杯 + GT 掩膜通道，保留供 Phase 1 复用） ---
