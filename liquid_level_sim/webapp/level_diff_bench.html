@@ -795,10 +795,11 @@ function onRoiChanged(final) { clampRoi(); requestAnalysis(final); scheduleDraw(
 
 // ------------------------------------------------------------------ drawing
 const views = [$("#v1"), $("#v2"), $("#v3")], canvases = [$("#c1"), $("#c2"), $("#c3")];
-const PAD_L = 36, PAD_R = 110, PAD_V = 14;               // side margins leave room for the ruler + labels
+const PAD_L = 36, PAD_R = 110, PAD_V = 14;               // analysis view: the right margin holds the profile, curve and labels; image views are centred with equal margins
 function dims() { const im = state.base || state.cmp; return im ? { w: im.w, h: im.h } : null; }
 function fitRect(view, w, h) {
-  const cw = view.clientWidth, ch = view.clientHeight, padR = cw < 460 ? 86 : PAD_R, aw = Math.max(40, cw - PAD_L - padR), ah = Math.max(40, ch - 2 * PAD_V);
+  const cw = view.clientWidth, ch = view.clientHeight, analysis = view === views[2];
+  const padR = analysis ? (cw < 460 ? 86 : PAD_R) : PAD_L, aw = Math.max(40, cw - PAD_L - padR), ah = Math.max(40, ch - 2 * PAD_V);
   const s = Math.min(aw / w, ah / h);
   return { s, ox: PAD_L + (aw - w * s) / 2, oy: PAD_V + (ah - h * s) / 2 };
 }
