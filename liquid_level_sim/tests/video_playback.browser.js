@@ -10,15 +10,19 @@
     }
   };
   const check = (ok, message) => { if (!ok) throw new Error(message); };
+  check((window.CASES || []).find(c=>c.id==='F5')?.label.includes('P5'), 'Page still contains the pre-approval F5 bundle');
   const snapshot = () => {
     const video = q('#vid'), canvas = document.createElement('canvas');
     canvas.width = video.videoWidth; canvas.height = video.videoHeight;
     const ctx = canvas.getContext('2d'); ctx.drawImage(video, 0, 0);
     const data = ctx.getImageData(0,0,canvas.width,canvas.height).data;
-    let hash = 2166136261;
-    for (let i = 0; i < data.length; i += 64) hash = Math.imul(hash ^ data[i], 16777619);
+    let hash = 2166136261, colourEnergy = 0, samples = 0;
+    for (let i = 0; i < data.length; i += 64) {
+      hash = Math.imul(hash ^ data[i], 16777619);
+      colourEnergy += Math.abs(data[i]-data[i+1]) + Math.abs(data[i+1]-data[i+2]); samples++;
+    }
     return {frame:+q('#vseek').value, actualTime:video.currentTime, shownTime:q('#vtime').textContent,
-      pixelHash:hash>>>0, level:q('#mLevel').textContent,
+      pixelHash:hash>>>0, colourEnergy:colourEnergy/(2*samples), level:q('#mLevel').textContent,
       seekable:Array.from({length:video.seekable.length},(_,i)=>[video.seekable.start(i),video.seekable.end(i)])};
   };
   const select = async id => {
@@ -36,6 +40,7 @@
     check(q('#vid').currentSrc.startsWith('blob:'),`${id}: external clip is not locally seekable`);
     const frames=[snapshot(), await seek(50,25), await seek(100,25)];
     check(new Set(frames.map(f=>f.pixelHash)).size===3,`${id}: decoded video pixels are frozen`);
+    check(id==='F5' ? frames[1].colourEnergy>5 : frames[1].colourEnergy<2, `${id}: wrong colour/white-backlight asset`);
     // Replaying from the end must advance the real media clock and finish at the actual last frame.
     q('#vplay').click();
     await wait(()=>+q('#vseek').value>5 && +q('#vseek').value<95,`${id}: replay did not advance`);

@@ -1,0 +1,30 @@
+{
+  "reference_commit": "3f8221f",
+  "preserved_code_sha256": "75d4d4102306d037e461afe1a897451f5541adfa1c6c249718fc6a47c98db99d",
+  "original_layout_detector_tracker_unchanged": true,
+  "legacy_cases_unchanged": 37,
+  "videos": {
+    "F4": {
+      "fps": 25.0,
+      "frames": 101,
+      "unique_frames": 101,
+      "resolution": [
+        720,
+        540
+      ],
+      "spp": 64,
+      "gt_rows_monotonic": true
+    },
+    "F5": {
+      "fps": 25.0,
+      "frames": 101,
+      "unique_frames": 101,
+      "resolution": [
+        720,
+        540
+      ],
+      "spp": 64,
+      "gt_rows_monotonic": true
+    }
+  }
+}

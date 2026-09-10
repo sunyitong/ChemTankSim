@@ -1,0 +1,24 @@
+{
+  "scenes": {
+    "D1": {
+      "same_except_samples_and_output_paths": true
+    },
+    "D2": {
+      "same_except_samples_and_output_paths": true
+    }
+  },
+  "textures": {
+    "dirt.png": true,
+    "inner_relief.png": true,
+    "inner_silt.png": true,
+    "outer_roughness.png": true,
+    "P5_mosaic_8mm.png": true,
+    "ruler.png": true,
+    "scale_amount_dry_reactor.png": true,
+    "scale_amount_wet_reactor.png": true,
+    "scale_refl_reactor.png": true,
+    "scale_rough_reactor.png": true,
+    "scale_thick_reactor.png": true,
+    "scale_trans_reactor.png": true
+  }
+}

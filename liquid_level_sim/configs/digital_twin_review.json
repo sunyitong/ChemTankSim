@@ -1,0 +1,28 @@
+{
+  "status": "STATIC PREVIEW ONLY - awaiting user approval for video rendering and playback fix",
+  "texture_seed": 20260911,
+  "pattern": "P5_mosaic_8mm.png",
+  "pattern_page": 5,
+  "panel_width_cm": 21.0,
+  "panel_height_cm": 29.7,
+  "panel_y_cm": 20.0,
+  "panel_center_z_cm": 11.2,
+  "environment": "childrens_hospital",
+  "environment_mean_radiance": 0.10,
+  "environment_rotation_deg": 32,
+  "backlight_radiance": 0.95,
+  "key_radiance": [1.35, 1.30, 1.23],
+  "edge_radiance": [0.62, 0.68, 0.76],
+  "deposit": {
+    "fleck_count": 110000,
+    "fleck_strength": 0.95,
+    "haze_strength": 0.52,
+    "bottom_multiplier": 2.2,
+    "dry_roughness": 0.25,
+    "wet_roughness": 0.12,
+    "wet_scattering_reduction": 2.0,
+    "rings": [[11.8, 2.7, 0.13, 0.32], [6.1, 1.8, 0.15, 0.24], [10.5, 0.40, 0.07, 0.12]]
+  },
+  "sensor": {"blur_px": 0.35, "noise_sigma": 0.0015},
+  "preview": {"width": 720, "height": 540, "spp": 128, "D1_level_z_cm": 9.75, "D2_level_z_cm": 11.6}
+}

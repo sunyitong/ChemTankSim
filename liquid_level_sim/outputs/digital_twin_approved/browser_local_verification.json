@@ -1,0 +1,198 @@
+{
+  "cases": {
+    "F1": {
+      "first": {
+        "actualTime": 0.025,
+        "colourEnergy": 92.02942222222222,
+        "frame": 0,
+        "level": "16.2%",
+        "pixelHash": 2659520657,
+        "seekable": [
+          [
+            0,
+            4.05
+          ]
+        ],
+        "shownTime": "0.00 s"
+      },
+      "middle": {
+        "actualTime": 2.025,
+        "colourEnergy": 92.91487407407408,
+        "frame": 40,
+        "level": "34.8%",
+        "pixelHash": 3932427265,
+        "seekable": [
+          [
+            0,
+            4.05
+          ]
+        ],
+        "shownTime": "2.00 s"
+      }
+    },
+    "F4": {
+      "end": {
+        "actualTime": 4.019999,
+        "colourEnergy": 0,
+        "frame": 100,
+        "level": "68.3%",
+        "pixelHash": 1911491758,
+        "seekable": [
+          [
+            0,
+            4.04
+          ]
+        ],
+        "shownTime": "4.00 s"
+      },
+      "frames": [
+        {
+          "actualTime": 0.02,
+          "colourEnergy": 0,
+          "frame": 0,
+          "level": "16.8%",
+          "pixelHash": 2421078638,
+          "seekable": [
+            [
+              0,
+              4.04
+            ]
+          ],
+          "shownTime": "0.00 s"
+        },
+        {
+          "actualTime": 2.02,
+          "colourEnergy": 0,
+          "frame": 50,
+          "level": "48.6%",
+          "pixelHash": 2509499429,
+          "seekable": [
+            [
+              0,
+              4.04
+            ]
+          ],
+          "shownTime": "2.00 s"
+        },
+        {
+          "actualTime": 4.019999,
+          "colourEnergy": 0,
+          "frame": 100,
+          "level": "63.2%",
+          "pixelHash": 1911491758,
+          "seekable": [
+            [
+              0,
+              4.04
+            ]
+          ],
+          "shownTime": "4.00 s"
+        }
+      ],
+      "playing": {
+        "actualTime": 0.26,
+        "colourEnergy": 0,
+        "frame": 6,
+        "level": "20.7%",
+        "pixelHash": 775532788,
+        "seekable": [
+          [
+            0,
+            4.04
+          ]
+        ],
+        "shownTime": "0.24 s"
+      }
+    },
+    "F5": {
+      "end": {
+        "actualTime": 4.019999,
+        "colourEnergy": 20.877572016460903,
+        "frame": 100,
+        "level": "96.6%",
+        "pixelHash": 3246486548,
+        "seekable": [
+          [
+            0,
+            4.04
+          ]
+        ],
+        "shownTime": "4.00 s"
+      },
+      "frames": [
+        {
+          "actualTime": 0.02,
+          "colourEnergy": 18.55767489711934,
+          "frame": 0,
+          "level": "44.3%",
+          "pixelHash": 593505668,
+          "seekable": [
+            [
+              0,
+              4.04
+            ]
+          ],
+          "shownTime": "0.00 s"
+        },
+        {
+          "actualTime": 2.02,
+          "colourEnergy": 20.258847736625516,
+          "frame": 50,
+          "level": "68.1%",
+          "pixelHash": 1044571226,
+          "seekable": [
+            [
+              0,
+              4.04
+            ]
+          ],
+          "shownTime": "2.00 s"
+        },
+        {
+          "actualTime": 4.019999,
+          "colourEnergy": 20.877572016460903,
+          "frame": 100,
+          "level": "96.7%",
+          "pixelHash": 3246486548,
+          "seekable": [
+            [
+              0,
+              4.04
+            ]
+          ],
+          "shownTime": "4.00 s"
+        }
+      ],
+      "playing": {
+        "actualTime": 0.3,
+        "colourEnergy": 18.49123456790123,
+        "frame": 6,
+        "level": "45.5%",
+        "pixelHash": 212477514,
+        "seekable": [
+          [
+            0,
+            4.04
+          ]
+        ],
+        "shownTime": "0.24 s"
+      }
+    }
+  },
+  "passed": true,
+  "rapidSwitch": {
+    "actualTime": 3.02,
+    "colourEnergy": 20.431316872427985,
+    "frame": 75,
+    "level": "49.7%",
+    "pixelHash": 2844065367,
+    "seekable": [
+      [
+        0,
+        4.04
+      ]
+    ],
+    "shownTime": "3.00 s"
+  },
+  "url": "http://127.0.0.1:8765/"
+}

@@ -1,0 +1,9 @@
+{
+  "inner_fleck_coverage_gt_0_2": 0.11766433715820312,
+  "inner_haze_mean_tau": 0.6534368991851807,
+  "fixed_seed": 20260911,
+  "comparison_references": [
+    "15_525.png",
+    "60_30.png"
+  ]
+}

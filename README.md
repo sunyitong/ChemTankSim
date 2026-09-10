@@ -4,8 +4,8 @@ Synthetic-data study of reading the liquid level in a transparent vessel from ho
 refracts a structured light panel behind it, rendered with a physically based renderer
 (pbrt-v4), plus a browser tool that compares an empty-vessel baseline with a filled photo.
 
-**Live demo (GitHub Pages):** `https://sunyitong.github.io/ChemTankSim/` — the Level Diff Bench
-web app with 25 bundled test cases. Gallery of renders: `https://sunyitong.github.io/ChemTankSim/gallery.html`
+**Live demo (GitHub Pages):** `https://sunyitong.github.io/ChemTankSim/` — the Level Diff Bench.
+The local bundle includes 39 cases. Gallery of renders: `https://sunyitong.github.io/ChemTankSim/gallery.html`
 
 ## What is here
 
@@ -17,9 +17,10 @@ web app with 25 bundled test cases. Gallery of renders: `https://sunyitong.githu
 | `liquid_level_sim/scripts/scale_model.py`, `scale_run.py` | Physically motivated limescale deposits (water-line ring, creep, film, tide marks, droplets, drips) |
 | `liquid_level_sim/scripts/env_map.py`, `env_light.py`, `lab_run.py` | Laboratory HDRI environment light (Poly Haven CC0, equal-area map for pbrt-v4) and the K group: two more vessels with a steel fixture, limescale and a changed room light in the filled frame |
 | `liquid_level_sim/scripts/real_cases.py` | First real footage: a phone photo pair (empty / filled tumbler) and a 43 s pouring video in front of a backlit checker panel, cropped to a portrait window, sampled and embedded as cases P1 / P2 (no ground truth) |
+| `liquid_level_sim/scripts/digital_twin_approved.py`, `digital_twin_review.py`, `digital_twin_web.py` | Reactor geometry based on the Basler reference photos; user-approved heavy ring scale, frosted walls, grime and indoor reflections. F4 white-backlight and F5 PDF P5 colour-mosaic filling videos at 25 fps. Original web layout and detection code are preserved. See `liquid_level_sim/docs/DIGITAL_TWIN.md`. |
 | `liquid_level_sim/scripts/inserts_run.py`, `pour_video.py`, `eval_video.py` | Fixtures that partly occlude the pattern (stirrer shaft, thermometer, dosing tube) and three 20 fps pouring sequences (cylinder; Erlenmeyer and reagent bottle with limescale, a dosing tube through the neck and the lab HDRI) with per-frame evaluation and a temporal tracker |
 | `liquid_level_sim/scripts/level_detect.py`, `eval_all.py` | Level detector v3 (geometry first: per-row refraction-warp jumps, identity-plateau end, contact-line dip; deposits are photometric only and ignored) and its multi-resolution evaluation |
-| `liquid_level_sim/webapp/level_diff_bench.html` | Single-file web app: ROI box, difference heat map / overlay, adaptive robust diff, v3 multi-level detection (same code as `level_detect.py`), 37 bundled cases (35 synthetic with ground truth, a real photo pair and a real pouring video), video mode for four sequences (real-time frame-by-frame detection, multi-hypothesis temporal tracker that holds rather than extrapolates, level-vs-time trace), single / multi-level mode preset per case |
+| `liquid_level_sim/webapp/level_diff_bench.html` | Web app: ROI box, difference heat map / overlay, adaptive robust diff, v3 multi-level detection (same code as `level_detect.py`), 39 bundled cases (37 synthetic with ground truth, a real photo pair and a real pouring video), video mode for six sequences, multi-hypothesis temporal tracker, level-vs-time trace. F4/F5 media are in the adjacent `twin_assets/` directory. |
 | `liquid_level_sim/outputs/**/images`, `compare`, `eval` | Rendered PNG datasets, contact sheets, metrics, reports (EXR originals are not tracked) |
 | `docs/` | GitHub Pages site (`index.html` = web app, `gallery.html` = renders) |
 

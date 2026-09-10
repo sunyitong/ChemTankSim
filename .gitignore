@@ -28,3 +28,18 @@ desktop.ini
 liquid_level_sim/outputs/pour/*/frames/frame_*.png
 liquid_level_sim/outputs/pour/quality/*.png
 liquid_level_sim/outputs/real/*/frames/frame_*.png
+
+# Original experiments remain local; the approved bundle is tracked separately.
+liquid_level_sim/scenes/digital_twin/
+liquid_level_sim/outputs/digital_twin/
+liquid_level_sim/scenes/digital_twin_review/
+liquid_level_sim/scenes/digital_twin_approved/
+liquid_level_sim/outputs/digital_twin_review/*
+!liquid_level_sim/outputs/digital_twin_review/D1_approval.png
+!liquid_level_sim/outputs/digital_twin_review/D2_approval.png
+!liquid_level_sim/outputs/digital_twin_review/approval_comparison.png
+!liquid_level_sim/outputs/digital_twin_review/approval_manifest.json
+!liquid_level_sim/outputs/digital_twin_review/material_stats.json
+liquid_level_sim/outputs/digital_twin_approved/*/frames/frame_*.png
+liquid_level_sim/outputs/digital_twin_approved/**/*.sha256
+liquid_level_sim/outputs/digital_twin_approved/*/render_log.txt

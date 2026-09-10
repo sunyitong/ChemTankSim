@@ -1,0 +1,8 @@
+[
+  {
+    "scene": "D2_011.pbrt",
+    "retry": 1,
+    "seed": 100014,
+    "reason": "PBRT spherical-triangle sampling NaN"
+  }
+]

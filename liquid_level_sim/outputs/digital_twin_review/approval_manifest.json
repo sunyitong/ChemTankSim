@@ -1,0 +1,98 @@
+{
+  "status": "awaiting user approval",
+  "kind": "isolated stills, no animation",
+  "settings": {
+    "status": "STATIC PREVIEW ONLY - awaiting user approval for video rendering and playback fix",
+    "texture_seed": 20260911,
+    "pattern": "P5_mosaic_8mm.png",
+    "pattern_page": 5,
+    "panel_width_cm": 21.0,
+    "panel_height_cm": 29.7,
+    "panel_y_cm": 20.0,
+    "panel_center_z_cm": 11.2,
+    "environment": "childrens_hospital",
+    "environment_mean_radiance": 0.1,
+    "environment_rotation_deg": 32,
+    "backlight_radiance": 0.95,
+    "key_radiance": [
+      1.35,
+      1.3,
+      1.23
+    ],
+    "edge_radiance": [
+      0.62,
+      0.68,
+      0.76
+    ],
+    "deposit": {
+      "fleck_count": 110000,
+      "fleck_strength": 0.95,
+      "haze_strength": 0.52,
+      "bottom_multiplier": 2.2,
+      "dry_roughness": 0.25,
+      "wet_roughness": 0.12,
+      "wet_scattering_reduction": 2.0,
+      "rings": [
+        [
+          11.8,
+          2.7,
+          0.13,
+          0.32
+        ],
+        [
+          6.1,
+          1.8,
+          0.15,
+          0.24
+        ],
+        [
+          10.5,
+          0.4,
+          0.07,
+          0.12
+        ]
+      ]
+    },
+    "sensor": {
+      "blur_px": 0.35,
+      "noise_sigma": 0.0015
+    },
+    "preview": {
+      "width": 720,
+      "height": 540,
+      "spp": 128,
+      "D1_level_z_cm": 9.75,
+      "D2_level_z_cm": 11.6
+    }
+  },
+  "stills": [
+    {
+      "id": "D1",
+      "image": "D1_approval.png",
+      "gt_rows_frac": [
+        0.6159390057185226
+      ],
+      "scene_sha256": "31ecf9d2dfe2bdc59dd9fcf5d1c1914c69632f9662bff8ef8c17ab619e15a7f2",
+      "resolution": [
+        720,
+        540
+      ],
+      "spp": 128,
+      "seconds": 47.88
+    },
+    {
+      "id": "D2",
+      "image": "D2_approval.png",
+      "gt_rows_frac": [
+        0.4680168260086834
+      ],
+      "scene_sha256": "c5acbdaa3ff1f4f685ff0c93383197174d5d76684fbcadaa67e52bb37064d32d",
+      "resolution": [
+        720,
+        540
+      ],
+      "spp": 128,
+      "seconds": 48.44
+    }
+  ]
+}

@@ -3,6 +3,8 @@
 研究计划、假设与路线图见 **[docs/RESEARCH.md](docs/RESEARCH.md)**（总纲，按阶段追加实验记录）。
 渲染器为本仓库 `../pbrt-v4/build/pbrt.exe`（CPU 版，见 `../build_pbrt.bat`）。
 
+新增 F4/F5 数字孪生的已确认外观、播放修复、重渲和网页资源打包命令见 **[docs/DIGITAL_TWIN.md](docs/DIGITAL_TWIN.md)**。现有网页共 39 个案例；新增视频通过相邻 `twin_assets/` 加载，使用本地 HTTP 服务或 GitHub Pages 查看。
+
 ## 目录
 
 ```
